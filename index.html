@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GPT Product Lab – AI Systems Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GPT Product Lab is your library of AI-powered systems, books, and custom GPTs for income, learning, history, gaming, betting, and local business growth.">
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-elevated: #020617;
+      --card: #020617;
+      --card-border: rgba(148,163,184,0.4);
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.10);
+      --accent-strong: #0ea5e9;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --muted-soft: #64748b;
+      --success: #22c55e;
+      --danger: #f97316;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3.5rem;
+    }
+
+    /* NAVBAR */
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #22c55e, #16a34a 45%, #052e16 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #ecfdf5;
+      box-shadow: 0 15px 40px rgba(22,163,74,0.45);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text-main {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .logo-text-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      font-size: 0.86rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+      border-color: rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.85);
+    }
+
+    .nav-link-primary {
+      border-radius: 999px;
+      padding: 0.4rem 0.95rem;
+      border: 1px solid rgba(56,189,248,0.7);
+      background: radial-gradient(circle at top left, var(--accent-soft), rgba(15,23,42,0.9));
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .nav-link-primary:hover {
+      border-color: var(--accent);
+      color: #f9fafb;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.22), #020617);
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        justify-content: flex-start;
+      }
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.4fr);
+      gap: 2.25rem;
+      margin-bottom: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(156,163,175,0.7);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 12px rgba(34,197,94,0.8);
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 3.3vw, 3rem);
+      margin: 0 0 0.7rem;
+      color: #f9fafb;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #22c55e, #4ade80, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 1.02rem;
+      color: #cbd5f5;
+      max-width: 34rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.6rem;
+      font-size: 0.96rem;
+    }
+
+    .hero-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-list li span.icon {
+      color: var(--success);
+      font-size: 0.92rem;
+      margin-top: 0.2rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.75rem 1.7rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.96rem;
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      box-shadow: 0 20px 45px rgba(22,163,74,0.5);
+    }
+
+    .btn-primary span.icon {
+      font-size: 1.1rem;
+    }
+
+    .btn-secondary {
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.8);
+      color: var(--text);
+    }
+
+    .btn-secondary span.icon {
+      font-size: 1.1rem;
+    }
+
+    .hero-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .hero-right-card {
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.16), rgba(15,23,42,1));
+      border-radius: 1.6rem;
+      border: 1px solid rgba(148,163,184,0.45);
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 22px 60px rgba(15,23,42,0.9);
+    }
+
+    .hero-right-title {
+      font-size: 1.05rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .hero-right-sub {
+      font-size: 0.9rem;
+      color: #cbd5f5;
+      margin-bottom: 1rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1rem;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      color: #e5e7eb;
+      background: rgba(15,23,42,0.85);
+    }
+
+    .hero-right-highlight {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .hero-right-highlight span {
+      color: var(--accent);
+    }
+
+    /* SECTION BASE */
+
+    .section {
+      margin-bottom: 2.75rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 30rem;
+    }
+
+    /* GRIDS */
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    @media (max-width: 1000px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: rgba(15,23,42,0.92);
+      border-radius: 1.1rem;
+      padding: 1rem 1rem;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 16px 40px rgba(15,23,42,0.8);
+    }
+
+    .card-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted-soft);
+      margin-bottom: 0.35rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+      color: #f9fafb;
+    }
+
+    .card-text {
+      font-size: 0.88rem;
+      color: #cbd5f5;
+      margin-bottom: 0.7rem;
+    }
+
+    .card-link {
+      font-size: 0.84rem;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card-link span.icon {
+      font-size: 0.95rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.3rem;
+    }
+
+    .pill {
+      font-size: 0.73rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      color: var(--muted);
+    }
+
+    .divider {
+      border: none;
+      margin: 2.5rem 0 2rem;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #4b5563, transparent);
+    }
+
+    /* FOOTER */
+
+    .footer {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- NAVBAR -->
+    <header class="nav">
+      <div class="nav-left">
+        <div class="logo-circle">GP</div>
+        <div class="logo-text">
+          <div class="logo-text-main">GPT Product Lab</div>
+          <div class="logo-text-sub">AI Systems • GPTs • Book Bundles</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="income-systems.html" class="nav-link nav-link-primary">Income Systems</a>
+        <a href="systems.html" class="nav-link">All Systems</a>
+        <a href="gamers.html" class="nav-link">Gamers</a>
+        <a href="betting-lab.html" class="nav-link">Betting Lab</a>
+        <a href="learning-lab.html" class="nav-link">Learning Lab</a>
+        <a href="local-business-systems.html" class="nav-link">Local Business Systems</a>
+        <a href="free-history.html" class="nav-link">Free History GPT</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          AI System Library • Built Around Real Use-Cases
+        </div>
+        <h1 class="hero-title">
+          Design income, decode history, and level up with <span>focused AI systems.</span>
+        </h1>
+        <p class="hero-sub">
+          GPT Product Lab is your private library of custom GPTs, book bundles, and tools for building income, auditing history, learning faster, betting smarter, and playing deeper.
+        </p>
+        <ul class="hero-list">
+          <li><span class="icon">✔</span> <span><strong>Income Systems:</strong> Build the income you actually want using AI as your designer and execution engine.</span></li>
+          <li><span class="icon">✔</span> <span><strong>History Tools:</strong> Use the free History Revealer GPT to verify whether what you were taught matches the real record.</span></li>
+          <li><span class="icon">✔</span> <span><strong>Gamers, Betting & Learning:</strong> Systems for strategy, discipline, and faster learning—without wading through generic AI fluff.</span></li>
+        </ul>
+        <div class="cta-row">
+          <a href="income-systems.html" class="btn btn-primary">
+            <span class="icon">💰</span>
+            <span>Start with Income Systems</span>
+          </a>
+          <a href="free-history.html" class="btn btn-secondary">
+            <span class="icon">📜</span>
+            <span>Launch Free History GPT</span>
+          </a>
+        </div>
+        <div class="hero-note">
+          You don’t have to use everything. Start with the system that solves your biggest problem right now.
+        </div>
+      </div>
+      <aside class="hero-right-card">
+        <h2 class="hero-right-title">Featured: Income Architect Pro</h2>
+        <p class="hero-right-sub">
+          Turn AI into your personal Income Designer, Offer Builder, Market Analyst, and Execution Coach. Stop chasing “random hustles” and architect an income system that fits you.
+        </p>
+        <div class="chip-row">
+          <div class="chip">Income Architect GPT</div>
+          <div class="chip">Pro / Elite Book Bundles</div>
+          <div class="chip">Offer & Pricing Templates</div>
+        </div>
+        <p class="hero-right-highlight">
+          <span>Where to find it:</span> <strong>Income Systems</strong> → <em>Income Architect</em> bundle.
+        </p>
+      </aside>
+    </section>
+
+    <!-- START HERE STRIP -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Start Here, Based on What You Want Most</h2>
+        <p class="section-sub">
+          Different visitors want different outcomes. Pick the lane that matches why you’re here and explore the systems built for that goal.
+        </p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-label">If your #1 goal is money</div>
+          <div class="card-title">Income Systems</div>
+          <p class="card-text">
+            Architect income with AI instead of chasing random side hustles. Start with Income Architect Pro/Elite and build a designed income path, not a guess.
+          </p>
+          <a href="income-systems.html" class="card-link">
+            <span>Explore Income Systems</span>
+            <span class="icon">→</span>
+          </a>
+          <div class="pill-row">
+            <div class="pill">Income Architect GPT</div>
+            <div class="pill">Offer Design</div>
+            <div class="pill">Execution Plans</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">If you want unfiltered history</div>
+          <div class="card-title">Free History Revealer GPT</div>
+          <p class="card-text">
+            Check whether the history you were taught matches what actually happened. Use TruthTrace™ analysis to audit textbooks, teachers, and talking points.
+          </p>
+          <a href="free-history.html" class="card-link">
+            <span>Launch Free History GPT</span>
+            <span class="icon">→</span>
+          </a>
+          <div class="pill-row">
+            <div class="pill">Civil War & Parties</div>
+            <div class="pill">Reconstruction & Jim Crow</div>
+            <div class="pill">History Bundles</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">If you help local businesses</div>
+          <div class="card-title">Local Business Systems</div>
+          <p class="card-text">
+            Use AI-powered client and agency engines, plus niche deal packs (HVAC, restaurants, and more) to deliver trust and authority for local businesses.
+          </p>
+          <a href="local-business-systems.html" class="card-link">
+            <span>View Local Business Systems</span>
+            <span class="icon">→</span>
+          </a>
+          <div class="pill-row">
+            <div class="pill">Client Engine</div>
+            <div class="pill">Agency Engine</div>
+            <div class="pill">Niche Packs</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- BROWSE BY CATEGORY -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Browse by Category</h2>
+        <p class="section-sub">
+          Every system is built to solve a specific kind of problem: income, gaming, betting, learning, local client work, or history truth. Here’s where everything lives.
+        </p>
+      </div>
+      <div class="grid-4">
+        <div class="card">
+          <div class="card-label">Category</div>
+          <div class="card-title">Income Systems</div>
+          <p class="card-text">
+            Systems for designing, launching, and scaling income streams with AI doing the heavy thinking and structuring work.
+          </p>
+          <a href="income-systems.html" class="card-link">
+            <span>Go to Income Systems</span>
+            <span class="icon">→</span>
+          </a>
+          <div class="pill-row">
+            <div class="pill">Income Architect</div>
+            <div class="pill">Pro / Elite</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Category</div>
+          <div class="card-title">Gamers</div>
+          <p class="card-text">
+            Naval commanders, pirate captains, XCOM strategists, RPG planners—AI copilots built to deepen your play and tactics.
+          </p>
+          <a href="gamers.html" class="card-link">
+            <span>Go to Gamers</span>
+            <span class="icon">→</span>
+          </a>
+          <div class="pill-row">
+            <div class="pill">Naval & Pirate GPTs</div>
+            <div class="pill">Tactics & Builds</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Category</div>
+          <div class="card-title">Betting Lab</div>
+          <p class="card-text">
+            Tools for sports bettors and poker players who want structure, discipline, and clear plus-minus style systems.
+          </p>
+          <a href="betting-lab.html" class="card-link">
+            <span>Go to Betting Lab</span>
+            <span class="icon">→</span>
+          </a>
+          <div class="pill-row">
+            <div class="pill">LineSharp / AI Betting</div>
+            <div class="pill">Poker Point Count</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Category</div>
+          <div class="card-title">Learning Lab</div>
+          <p class="card-text">
+            GPTs and systems that help you use AI as a study coach, explainer, and mental load reducer while you learn hard things.
+          </p>
+          <a href="learning-lab.html" class="card-link">
+            <span>Go to Learning Lab</span>
+            <span class="icon">→</span>
+          </a>
+          <div class="pill-row">
+            <div class="pill">AI Study Aids</div>
+            <div class="pill">Skill Learning</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Category</div>
+          <div class="card-title">Local Business Systems</div>
+          <p class="card-text">
+            Kits and engines that help you deliver reputation, trust, and content systems for local businesses using AI.
+          </p>
+          <a href="local-business-systems.html" class="card-link">
+            <span>Go to Local Business Systems</span>
+            <span class="icon">→</span>
+          </a>
+          <div class="pill-row">
+            <div class="pill">Client Engine</div>
+            <div class="pill">Local Niche Packs</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Category</div>
+          <div class="card-title">Free History GPT</div>
+          <p class="card-text">
+            Access the History Revealer GPT and browse history book bundles that show you how the narratives were built.
+          </p>
+          <a href="free-history.html" class="card-link">
+            <span>Go to Free History GPT</span>
+            <span class="icon">→</span>
+          </a>
+          <div class="pill-row">
+            <div class="pill">History Revealer GPT</div>
+            <div class="pill">History Bundles</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Overview</div>
+          <div class="card-title">All Systems</div>
+          <p class="card-text">
+            Want to see everything in one place? Browse the full catalog of GPTs, books, and bundles across every category.
+          </p>
+          <a href="systems.html" class="card-link">
+            <span>Browse All Systems</span>
+            <span class="icon">→</span>
+          </a>
+          <div class="pill-row">
+            <div class="pill">Flagships</div>
+            <div class="pill">Bundles</div>
+            <div class="pill">Experimental</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      GPT Product Lab • You don’t need every system. You just need the right one for where you are now.
+    </div>
+  </div>
+</body>
+</html>
