@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>GPT Product Lab – AI Systems Library</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="GPT Product Lab is your library of AI-powered systems, books, and custom GPTs for income, learning, history, gaming, betting, and local business growth.">
+  <meta charset="UTF-8" />
+  <title>GPT Product Lab – AI SEO Systems for Local Businesses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #020617;
-      --bg-elevated: #020617;
-      --card: #020617;
-      --card-border: rgba(148,163,184,0.4);
-      --accent: #38bdf8;
-      --accent-soft: rgba(56,189,248,0.10);
-      --accent-strong: #0ea5e9;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --muted-soft: #64748b;
-      --success: #22c55e;
-      --danger: #f97316;
+      --bg: #050816;
+      --bg-alt: #101528;
+      --accent: #ffb22c;
+      --accent-soft: rgba(255, 178, 44, 0.14);
+      --text: #f5f7ff;
+      --muted: #a0a4b8;
+      --border: #262c45;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.4);
+      --radius-lg: 18px;
+      --radius-xl: 26px;
     }
 
     * {
@@ -28,9 +25,9 @@
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #020617 100%);
+      background: radial-gradient(circle at top, #20284a 0, #050816 45%, #02030a 100%);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     a {
@@ -38,664 +35,913 @@
       text-decoration: none;
     }
 
-    .page {
-      max-width: 1180px;
+    .page-wrap {
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 1.5rem 1.5rem 3.5rem;
+      padding: 20px 16px 72px;
     }
 
-    /* NAVBAR */
-
+    /* NAV */
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      padding: 8px 4px 16px;
     }
 
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 10px;
     }
 
-    .logo-circle {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #22c55e, #16a34a 45%, #052e16 100%);
+    .nav-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at top, #ffb22c, #ff8f2c);
+      box-shadow: 0 0 20px rgba(255,178,44,0.6);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #ecfdf5;
-      box-shadow: 0 15px 40px rgba(22,163,74,0.45);
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .logo-text-main {
+      font-weight: 800;
       font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      color: #1d1308;
     }
 
-    .logo-text-sub {
-      font-size: 0.78rem;
+    .nav-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .nav-subtitle {
+      font-size: 0.7rem;
       color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
     }
 
-    .nav-links {
+    .nav-right {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      justify-content: flex-end;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
     }
 
     .nav-link {
-      font-size: 0.86rem;
-      padding: 0.35rem 0.8rem;
+      padding: 6px 10px;
       border-radius: 999px;
-      color: var(--muted);
       border: 1px solid transparent;
+      cursor: pointer;
     }
 
     .nav-link:hover {
+      border-color: rgba(255,255,255,0.2);
       color: var(--text);
-      border-color: rgba(148,163,184,0.6);
-      background: rgba(15,23,42,0.85);
     }
 
-    .nav-link-primary {
-      border-radius: 999px;
-      padding: 0.4rem 0.95rem;
-      border: 1px solid rgba(56,189,248,0.7);
-      background: radial-gradient(circle at top left, var(--accent-soft), rgba(15,23,42,0.9));
+    .nav-link.primary {
+      border-color: rgba(255,178,44,0.5);
+      background: rgba(255,178,44,0.06);
       color: var(--accent);
-      font-weight: 500;
-    }
-
-    .nav-link-primary:hover {
-      border-color: var(--accent);
-      color: #f9fafb;
-      background: radial-gradient(circle at top left, rgba(56,189,248,0.22), #020617);
-    }
-
-    @media (max-width: 900px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .nav-links {
-        justify-content: flex-start;
-      }
     }
 
     /* HERO */
-
-    .hero {
+    header.hero {
+      margin-top: 16px;
+      margin-bottom: 32px;
+      padding: 20px 18px 22px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, rgba(255,178,44,0.16), rgba(8,10,28,0.97));
+      border: 1px solid rgba(255,178,44,0.22);
+      box-shadow: var(--shadow-soft);
       display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.4fr);
-      gap: 2.25rem;
-      margin-bottom: 2.5rem;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 26px;
       align-items: center;
     }
 
-    @media (max-width: 880px) {
-      .hero {
+    @media (max-width: 860px) {
+      header.hero {
         grid-template-columns: 1fr;
       }
     }
 
-    .badge {
+    .hero-label {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.3rem 0.75rem;
+      gap: 8px;
+      padding: 5px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(156,163,175,0.7);
-      font-size: 0.75rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(8,11,30,0.9);
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.14em;
       color: var(--muted);
-      margin-bottom: 0.85rem;
+      margin-bottom: 10px;
     }
 
-    .badge-dot {
+    .hero-dot {
       width: 8px;
       height: 8px;
       border-radius: 999px;
-      background: var(--success);
-      box-shadow: 0 0 12px rgba(34,197,94,0.8);
+      background: #21f3a3;
+      box-shadow: 0 0 10px rgba(33,243,163,0.9);
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 3.3vw, 3rem);
-      margin: 0 0 0.7rem;
-      color: #f9fafb;
+      font-size: clamp(2.1rem, 3vw + 1rem, 2.8rem);
+      line-height: 1.1;
+      margin: 0 0 10px;
     }
 
-    .hero-title span {
-      background: linear-gradient(120deg, #22c55e, #4ade80, #22c55e);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .hero-title span.accent {
+      color: var(--accent);
     }
 
-    .hero-sub {
-      font-size: 1.02rem;
-      color: #cbd5f5;
-      max-width: 34rem;
-      margin-bottom: 1.25rem;
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 12px;
     }
 
-    .hero-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.6rem;
-      font-size: 0.96rem;
+    .hero-subtitle strong {
+      color: var(--text);
     }
 
-    .hero-list li {
+    .hero-bullets {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
+      gap: 8px 18px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .hero-bullets {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-bullets span {
       display: flex;
+      gap: 8px;
       align-items: flex-start;
-      gap: 0.55rem;
-      margin-bottom: 0.4rem;
     }
 
-    .hero-list li span.icon {
-      color: var(--success);
-      font-size: 0.92rem;
-      margin-top: 0.2rem;
+    .hero-bullets span::before {
+      content: "✓";
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 1px;
     }
 
-    .cta-row {
+    .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.85rem;
+      gap: 10px;
       align-items: center;
-      margin-bottom: 0.75rem;
+      margin-top: 4px;
     }
 
-    .btn {
+    .btn-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.45rem;
-      padding: 0.75rem 1.7rem;
+      padding: 10px 20px;
       border-radius: 999px;
+      background: linear-gradient(135deg, #ffb22c, #ff8f2c);
+      color: #201208;
+      font-weight: 600;
+      font-size: 0.94rem;
       border: none;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
       cursor: pointer;
-      font-size: 0.96rem;
-      font-weight: 500;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
       text-decoration: none;
       white-space: nowrap;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #022c22;
-      box-shadow: 0 20px 45px rgba(22,163,74,0.5);
+    .btn-primary span.arrow {
+      margin-left: 8px;
+      font-size: 1.05rem;
     }
 
-    .btn-primary span.icon {
-      font-size: 1.1rem;
-    }
-
-    .btn-secondary {
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(148,163,184,0.8);
-      color: var(--text);
-    }
-
-    .btn-secondary span.icon {
-      font-size: 1.1rem;
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.7);
     }
 
     .hero-note {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: var(--muted);
     }
 
-    .hero-right-card {
-      background: radial-gradient(circle at top left, rgba(56,189,248,0.16), rgba(15,23,42,1));
-      border-radius: 1.6rem;
-      border: 1px solid rgba(148,163,184,0.45);
-      padding: 1.5rem 1.4rem;
-      box-shadow: 0 22px 60px rgba(15,23,42,0.9);
-    }
-
-    .hero-right-title {
-      font-size: 1.05rem;
-      margin: 0 0 0.5rem;
-    }
-
-    .hero-right-sub {
-      font-size: 0.9rem;
-      color: #cbd5f5;
-      margin-bottom: 1rem;
-    }
-
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      margin-bottom: 1rem;
-    }
-
-    .chip {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-      color: #e5e7eb;
-      background: rgba(15,23,42,0.85);
-    }
-
-    .hero-right-highlight {
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .hero-right-highlight span {
+    .hero-note strong {
       color: var(--accent);
     }
 
-    /* SECTION BASE */
-
-    .section {
-      margin-bottom: 2.75rem;
+    .hero-right-card {
+      border-radius: 20px;
+      background: rgba(5, 8, 26, 0.96);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 14px 14px 16px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .section-header {
+    .hero-right-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top, rgba(255,178,44,0.16), transparent 65%);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    .hero-right-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-mini-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .hero-right-main {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-right-main span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-pill-row {
       display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: baseline;
-      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
     }
 
-    .section-title {
-      font-size: 1.3rem;
+    .hero-pill {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(11,16,42,0.96);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
     }
 
-    .section-sub {
+    .hero-pill.live {
+      background: var(--accent-soft);
+      border-color: rgba(255,178,44,0.7);
+      color: var(--accent);
+    }
+
+    .hero-micro {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-micro strong {
+      color: var(--text);
+    }
+
+    /* SECTION WRAPPER */
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    section {
+      border-radius: var(--radius-lg);
+      background: rgba(7, 10, 28, 0.96);
+      border: 1px solid var(--border);
+      padding: 18px 16px 20px;
+    }
+
+    h2.section-title {
+      font-size: 1.2rem;
+      margin: 0 0 6px;
+    }
+
+    .section-kicker {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .section-text {
       font-size: 0.9rem;
       color: var(--muted);
-      max-width: 30rem;
+      margin: 4px 0 8px;
     }
 
-    /* GRIDS */
-
-    .grid-3 {
+    /* NICHE GRID */
+    .niche-grid {
+      margin-top: 14px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.4rem;
+      gap: 14px;
     }
 
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1.3rem;
-    }
-
-    @media (max-width: 1000px) {
-      .grid-4 {
+    @media (max-width: 900px) {
+      .niche-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 700px) {
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-      .grid-4 {
+    @media (max-width: 620px) {
+      .niche-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .card {
-      background: rgba(15,23,42,0.92);
-      border-radius: 1.1rem;
-      padding: 1rem 1rem;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 16px 40px rgba(15,23,42,0.8);
-    }
-
-    .card-label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted-soft);
-      margin-bottom: 0.35rem;
-    }
-
-    .card-title {
-      font-size: 1rem;
-      margin-bottom: 0.35rem;
-      color: #f9fafb;
-    }
-
-    .card-text {
-      font-size: 0.88rem;
-      color: #cbd5f5;
-      margin-bottom: 0.7rem;
-    }
-
-    .card-link {
-      font-size: 0.84rem;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .card-link span.icon {
-      font-size: 0.95rem;
-    }
-
-    .pill-row {
+    .niche-card {
+      border-radius: 16px;
+      background: rgba(5, 8, 26, 0.98);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 10px 11px 12px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.3rem;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 110px;
     }
 
-    .pill {
-      font-size: 0.73rem;
-      padding: 0.18rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.7);
-      color: var(--muted);
+    .niche-card.live {
+      border-color: rgba(255,178,44,0.7);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.55);
+      background-image: radial-gradient(circle at top left, rgba(255,178,44,0.16), rgba(5, 8, 26, 0.98));
     }
 
-    .divider {
-      border: none;
-      margin: 2.5rem 0 2rem;
-      height: 1px;
-      background: linear-gradient(to right, transparent, #4b5563, transparent);
+    .niche-name {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 2px;
     }
 
-    /* FOOTER */
-
-    .footer {
+    .niche-desc {
       font-size: 0.8rem;
       color: var(--muted);
-      text-align: center;
-      margin-top: 1rem;
+      margin-bottom: 6px;
     }
 
+    .niche-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .niche-label {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      color: var(--muted);
+      background: rgba(10, 14, 32, 0.96);
+      white-space: nowrap;
+    }
+
+    .niche-label.live {
+      border-color: rgba(0,200,125,0.7);
+      color: #86f4c4;
+      background: rgba(0,200,125,0.08);
+    }
+
+    .niche-label.soon {
+      border-color: rgba(255,178,44,0.7);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .niche-link {
+      font-size: 0.78rem;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.22);
+      color: var(--text);
+      text-align: center;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .niche-link.disabled {
+      opacity: 0.55;
+      cursor: default;
+      border-style: dashed;
+    }
+
+    .niche-price {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* HOW IT WORKS */
+    .how-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 820px) {
+      .how-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .steps-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 8px 0 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .steps-list li {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .steps-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(255,178,44,0.12);
+      color: var(--accent);
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .steps-text strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 6px 0 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .bullet-list li::before {
+      content: "• ";
+      color: var(--muted);
+    }
+
+    /* OTHER CREATIONS */
+    .other-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.3fr);
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 820px) {
+      .other-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .other-card {
+      border-radius: 14px;
+      background: rgba(4, 7, 22, 0.96);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 10px 12px 12px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .other-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .other-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(9,12,30,0.96);
+      margin-bottom: 4px;
+      color: var(--muted);
+    }
+
+    .other-link {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-align: center;
+      opacity: 0.75;
+    }
   </style>
 </head>
 <body>
-  <div class="page">
-
-    <!-- NAVBAR -->
-    <header class="nav">
+  <div class="page-wrap">
+    <!-- NAV -->
+    <nav class="nav">
       <div class="nav-left">
-        <div class="logo-circle">GP</div>
-        <div class="logo-text">
-          <div class="logo-text-main">GPT Product Lab</div>
-          <div class="logo-text-sub">AI Systems • GPTs • Book Bundles</div>
+        <div class="nav-logo">G</div>
+        <div>
+          <div class="nav-title">GPT Product Lab</div>
+          <div class="nav-subtitle">AI SEO Systems for Local Businesses</div>
         </div>
       </div>
-      <nav class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="income-systems.html" class="nav-link nav-link-primary">Income Systems</a>
-        <a href="systems.html" class="nav-link">All Systems</a>
-        <a href="gamers.html" class="nav-link">Gamers</a>
-        <a href="betting-lab.html" class="nav-link">Betting Lab</a>
-        <a href="learning-lab.html" class="nav-link">Learning Lab</a>
-        <a href="local-business-systems.html" class="nav-link">Local Business Systems</a>
-        <a href="free-history.html" class="nav-link">Free History GPT</a>
-      </nav>
-    </header>
+      <div class="nav-right">
+        <div class="nav-link primary" onclick="document.getElementById('niche-grid').scrollIntoView({behavior:'smooth'})">
+          SEO Systems
+        </div>
+        <div class="nav-link" onclick="document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">
+          How It Works
+        </div>
+        <div class="nav-link" onclick="document.getElementById('other-lab').scrollIntoView({behavior:'smooth'})">
+          Other Tools
+        </div>
+      </div>
+    </nav>
 
     <!-- HERO -->
-    <section class="hero">
+    <header class="hero">
       <div>
-        <div class="badge">
-          <span class="badge-dot"></span>
-          AI System Library • Built Around Real Use-Cases
+        <div class="hero-label">
+          <span class="hero-dot"></span>
+          <span>AI-Powered Local SEO Kits</span>
         </div>
         <h1 class="hero-title">
-          Design income, decode history, and level up with <span>focused AI systems.</span>
+          Get an <span class="accent">SEO System</span> Built for Your Type of Business.
         </h1>
-        <p class="hero-sub">
-          GPT Product Lab is your private library of custom GPTs, book bundles, and tools for building income, auditing history, learning faster, betting smarter, and playing deeper.
+        <p class="hero-subtitle">
+          GPT Product Lab creates done-for-you <strong>SEO systems for local service businesses</strong>.  
+          Each kit is built around one industry and one goal: helping customers find you first when they search on Google.
         </p>
-        <ul class="hero-list">
-          <li><span class="icon">✔</span> <span><strong>Income Systems:</strong> Build the income you actually want using AI as your designer and execution engine.</span></li>
-          <li><span class="icon">✔</span> <span><strong>History Tools:</strong> Use the free History Revealer GPT to verify whether what you were taught matches the real record.</span></li>
-          <li><span class="icon">✔</span> <span><strong>Gamers, Betting & Learning:</strong> Systems for strategy, discipline, and faster learning—without wading through generic AI fluff.</span></li>
-        </ul>
-        <div class="cta-row">
-          <a href="income-systems.html" class="btn btn-primary">
-            <span class="icon">💰</span>
-            <span>Start with Income Systems</span>
-          </a>
-          <a href="free-history.html" class="btn btn-secondary">
-            <span class="icon">📜</span>
-            <span>Launch Free History GPT</span>
-          </a>
+        <div class="hero-bullets">
+          <span>Designed for real-world businesses like auto repair shops, massage therapists, chiropractors, HVAC companies, dentists, and more.</span>
+          <span>Each kit combines a private AI engine, a simple step-by-step manual, and ready-to-use templates for your website and Google Business Profile.</span>
+          <span>Run audits, see what your competitors are doing, and publish better SEO content in minutes instead of weeks.</span>
+          <span>Pay once, keep the system. No monthly retainers or long-term agency contracts.</span>
         </div>
-        <div class="hero-note">
-          You don’t have to use everything. Start with the system that solves your biggest problem right now.
+        <div class="hero-cta-row">
+          <a href="#niche-grid" class="btn-primary">
+            Find Your Business Type<span class="arrow">↓</span>
+          </a>
+          <span class="hero-note">
+            <strong>First kit available now:</strong> Auto Repair SEO System · One-time price: $97
+          </span>
         </div>
       </div>
+
       <aside class="hero-right-card">
-        <h2 class="hero-right-title">Featured: Income Architect Pro</h2>
-        <p class="hero-right-sub">
-          Turn AI into your personal Income Designer, Offer Builder, Market Analyst, and Execution Coach. Stop chasing “random hustles” and architect an income system that fits you.
-        </p>
-        <div class="chip-row">
-          <div class="chip">Income Architect GPT</div>
-          <div class="chip">Pro / Elite Book Bundles</div>
-          <div class="chip">Offer & Pricing Templates</div>
+        <div class="hero-right-inner">
+          <div class="hero-mini-title">Featured SEO System</div>
+          <div class="hero-right-main">
+            <span>Auto Repair SEO System</span> – AI-powered local search for independent auto repair shops.
+          </div>
+          <div class="hero-pill-row">
+            <div class="hero-pill live">Available now</div>
+            <div class="hero-pill">Competitive analysis included</div>
+            <div class="hero-pill">Website + Google Business support</div>
+          </div>
+          <div class="hero-micro">
+            If you run an auto repair shop, start there.  
+            If you’re in another industry, check the list below to see if your niche is already on the way.
+          </div>
         </div>
-        <p class="hero-right-highlight">
-          <span>Where to find it:</span> <strong>Income Systems</strong> → <em>Income Architect</em> bundle.
-        </p>
       </aside>
-    </section>
+    </header>
 
-    <!-- START HERE STRIP -->
-    <section class="section">
-      <div class="section-header">
-        <h2 class="section-title">Start Here, Based on What You Want Most</h2>
-        <p class="section-sub">
-          Different visitors want different outcomes. Pick the lane that matches why you’re here and explore the systems built for that goal.
+    <main>
+      <!-- NICHE SEO KITS GRID -->
+      <section id="niche-grid">
+        <div class="section-kicker">Choose your industry</div>
+        <h2 class="section-title">Local SEO Systems by Niche</h2>
+        <p class="section-text">
+          Find the system that matches your type of business. Each kit includes a private AI SEO engine, a practical manual, and plug-and-play templates built for that niche.
         </p>
-      </div>
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-label">If your #1 goal is money</div>
-          <div class="card-title">Income Systems</div>
-          <p class="card-text">
-            Architect income with AI instead of chasing random side hustles. Start with Income Architect Pro/Elite and build a designed income path, not a guess.
-          </p>
-          <a href="income-systems.html" class="card-link">
-            <span>Explore Income Systems</span>
-            <span class="icon">→</span>
-          </a>
-          <div class="pill-row">
-            <div class="pill">Income Architect GPT</div>
-            <div class="pill">Offer Design</div>
-            <div class="pill">Execution Plans</div>
+
+        <div class="niche-grid">
+          <!-- Row 1 -->
+          <div class="niche-card live">
+            <div>
+              <div class="niche-name">Auto Repair SEO System</div>
+              <div class="niche-desc">
+                Help your shop show up when drivers search for brakes, diagnostics, AC repair, and more in your area.
+              </div>
+            </div>
+            <div class="niche-meta-row">
+              <div>
+                <div class="niche-label live">Available</div>
+                <div class="niche-price">One-time price: $97</div>
+              </div>
+              <a href="/auto-repair-seo-system" class="niche-link">
+                View Auto Repair System →
+              </a>
+            </div>
+          </div>
+
+          <div class="niche-card">
+            <div>
+              <div class="niche-name">Massage Therapist SEO System</div>
+              <div class="niche-desc">
+                Get more first-time and repeat clients by showing up for massage and bodywork searches in your city.
+              </div>
+            </div>
+            <div class="niche-meta-row">
+              <div>
+                <div class="niche-label soon">Coming soon</div>
+                <div class="niche-price">Planned: One-time kit · $97</div>
+              </div>
+              <div class="niche-link disabled">Not yet available</div>
+            </div>
+          </div>
+
+          <div class="niche-card">
+            <div>
+              <div class="niche-name">Chiropractor SEO System</div>
+              <div class="niche-desc">
+                Make your practice easier to find for back pain, injury, and wellness searches.
+              </div>
+            </div>
+            <div class="niche-meta-row">
+              <div>
+                <div class="niche-label soon">Coming soon</div>
+                <div class="niche-price">Planned: One-time kit · $97</div>
+              </div>
+              <div class="niche-link disabled">Not yet available</div>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="niche-card">
+            <div>
+              <div class="niche-name">HVAC SEO System</div>
+              <div class="niche-desc">
+                Show up for AC repair, furnace repair, and emergency calls when homeowners need you most.
+              </div>
+            </div>
+            <div class="niche-meta-row">
+              <div>
+                <div class="niche-label soon">Coming soon</div>
+                <div class="niche-price">Planned: One-time kit · $97</div>
+              </div>
+              <div class="niche-link disabled">Not yet available</div>
+            </div>
+          </div>
+
+          <div class="niche-card">
+            <div>
+              <div class="niche-name">Dentist SEO System</div>
+              <div class="niche-desc">
+                Attract more patients searching for cleanings, cosmetic work, implants, and Invisalign.
+              </div>
+            </div>
+            <div class="niche-meta-row">
+              <div>
+                <div class="niche-label soon">Coming soon</div>
+                <div class="niche-price">Planned: One-time kit · $97</div>
+              </div>
+              <div class="niche-link disabled">Not yet available</div>
+            </div>
+          </div>
+
+          <div class="niche-card">
+            <div>
+              <div class="niche-name">Tattoo Shop SEO System</div>
+              <div class="niche-desc">
+                Help local clients find your artists, styles, and portfolio when they search for tattoos nearby.
+              </div>
+            </div>
+            <div class="niche-meta-row">
+              <div>
+                <div class="niche-label soon">Coming soon</div>
+                <div class="niche-price">Planned: One-time kit · $97</div>
+              </div>
+              <div class="niche-link disabled">Not yet available</div>
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="niche-card">
+            <div>
+              <div class="niche-name">Roofing SEO System</div>
+              <div class="niche-desc">
+                Be the roofer homeowners see first when they search for leaks, hail damage, or replacements.
+              </div>
+            </div>
+            <div class="niche-meta-row">
+              <div>
+                <div class="niche-label soon">Coming soon</div>
+                <div class="niche-price">Planned: One-time kit · $97</div>
+              </div>
+              <div class="niche-link disabled">Not yet available</div>
+            </div>
+          </div>
+
+          <div class="niche-card">
+            <div>
+              <div class="niche-name">Plumber SEO System</div>
+              <div class="niche-desc">
+                Capture emergency calls and routine plumbing work from local search instead of losing them to competitors.
+              </div>
+            </div>
+            <div class="niche-meta-row">
+              <div>
+                <div class="niche-label soon">Coming soon</div>
+                <div class="niche-price">Planned: One-time kit · $97</div>
+              </div>
+              <div class="niche-link disabled">Not yet available</div>
+            </div>
+          </div>
+
+          <div class="niche-card">
+            <div>
+              <div class="niche-name">Restaurant SEO System</div>
+              <div class="niche-desc">
+                Bring more guests in the door by showing up for “near me” and cuisine-specific searches.
+              </div>
+            </div>
+            <div class="niche-meta-row">
+              <div>
+                <div class="niche-label soon">Coming soon</div>
+                <div class="niche-price">Planned: One-time kit · $97</div>
+              </div>
+              <div class="niche-link disabled">Not yet available</div>
+            </div>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="niche-card">
+            <div>
+              <div class="niche-name">Real Estate Agent SEO System</div>
+              <div class="niche-desc">
+                Help buyers and sellers find you when they search for neighborhoods and homes in your area.
+              </div>
+            </div>
+            <div class="niche-meta-row">
+              <div>
+                <div class="niche-label soon">Coming soon</div>
+                <div class="niche-price">Planned: One-time kit · $97</div>
+              </div>
+              <div class="niche-link disabled">Not yet available</div>
+            </div>
+          </div>
+
+          <div class="niche-card">
+            <div>
+              <div class="niche-name">Gym & Trainer SEO System</div>
+              <div class="niche-desc">
+                Show up for local searches about weight loss, strength training, and fitness programs.
+              </div>
+            </div>
+            <div class="niche-meta-row">
+              <div>
+                <div class="niche-label soon">Coming soon</div>
+                <div class="niche-price">Planned: One-time kit · $97</div>
+              </div>
+              <div class="niche-link disabled">Not yet available</div>
+            </div>
+          </div>
+
+          <div class="niche-card">
+            <div>
+              <div class="niche-name">Pet Groomer SEO System</div>
+              <div class="niche-desc">
+                Help pet owners find your grooming, daycare, and pet care services when they search nearby.
+              </div>
+            </div>
+            <div class="niche-meta-row">
+              <div>
+                <div class="niche-label soon">Coming soon</div>
+                <div class="niche-price">Planned: One-time kit · $97</div>
+              </div>
+              <div class="niche-link disabled">Not yet available</div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="card">
-          <div class="card-label">If you want unfiltered history</div>
-          <div class="card-title">Free History Revealer GPT</div>
-          <p class="card-text">
-            Check whether the history you were taught matches what actually happened. Use TruthTrace™ analysis to audit textbooks, teachers, and talking points.
-          </p>
-          <a href="free-history.html" class="card-link">
-            <span>Launch Free History GPT</span>
-            <span class="icon">→</span>
-          </a>
-          <div class="pill-row">
-            <div class="pill">Civil War & Parties</div>
-            <div class="pill">Reconstruction & Jim Crow</div>
-            <div class="pill">History Bundles</div>
+      <!-- HOW IT WORKS -->
+      <section id="how-it-works">
+        <div class="section-kicker">Simple for business owners</div>
+        <h2 class="section-title">How an AI SEO System Works for Your Business</h2>
+        <div class="how-grid">
+          <div>
+            <p class="section-text">
+              Each kit is built so you don’t have to become an SEO expert. You follow clear steps, and the system does most of the thinking and writing for you.
+            </p>
+            <ul class="steps-list">
+              <li>
+                <div class="steps-num">1</div>
+                <div class="steps-text">
+                  <strong>Choose your industry.</strong>
+                  If your type of business is listed above and available, click into your system page to see exactly what’s included.
+                </div>
+              </li>
+              <li>
+                <div class="steps-num">2</div>
+                <div class="steps-text">
+                  <strong>Unlock your SEO system.</strong>
+                  Pay once, get access to a private AI engine, a step-by-step manual, and ready-to-use templates built for your industry.
+                </div>
+              </li>
+              <li>
+                <div class="steps-num">3</div>
+                <div class="steps-text">
+                  <strong>Follow the plan.</strong>
+                  Run the audits, see what your competitors are doing, publish better content, and follow the 90-day action plan to improve how you show up on Google.
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="section-text">
+              What you can expect from a typical kit:
+            </p>
+            <ul class="bullet-list">
+              <li>A private AI engine trained for one niche (auto repair, chiropractor, etc.).</li>
+              <li>A practical manual that explains what to do in plain language.</li>
+              <li>Templates for your website pages and Google Business Profile posts.</li>
+              <li>Competitive analysis so you can see why other businesses rank higher.</li>
+              <li>A 90-day action plan that fits around a busy schedule.</li>
+            </ul>
           </div>
         </div>
+      </section>
 
-        <div class="card">
-          <div class="card-label">If you help local businesses</div>
-          <div class="card-title">Local Business Systems</div>
-          <p class="card-text">
-            Use AI-powered client and agency engines, plus niche deal packs (HVAC, restaurants, and more) to deliver trust and authority for local businesses.
-          </p>
-          <a href="local-business-systems.html" class="card-link">
-            <span>View Local Business Systems</span>
-            <span class="icon">→</span>
-          </a>
-          <div class="pill-row">
-            <div class="pill">Client Engine</div>
-            <div class="pill">Agency Engine</div>
-            <div class="pill">Niche Packs</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- BROWSE BY CATEGORY -->
-    <section class="section">
-      <div class="section-header">
-        <h2 class="section-title">Browse by Category</h2>
-        <p class="section-sub">
-          Every system is built to solve a specific kind of problem: income, gaming, betting, learning, local client work, or history truth. Here’s where everything lives.
+      <!-- OTHER TOOLS -->
+      <section id="other-lab">
+        <div class="section-kicker">Other tools</div>
+        <h2 class="section-title">Specialty GPTs Outside Local SEO</h2>
+        <p class="section-text">
+          GPT Product Lab also creates a few focused tools outside the local SEO kits. These are for more specialized use cases.
         </p>
-      </div>
-      <div class="grid-4">
-        <div class="card">
-          <div class="card-label">Category</div>
-          <div class="card-title">Income Systems</div>
-          <p class="card-text">
-            Systems for designing, launching, and scaling income streams with AI doing the heavy thinking and structuring work.
-          </p>
-          <a href="income-systems.html" class="card-link">
-            <span>Go to Income Systems</span>
-            <span class="icon">→</span>
-          </a>
-          <div class="pill-row">
-            <div class="pill">Income Architect</div>
-            <div class="pill">Pro / Elite</div>
+        <div class="other-grid">
+          <div class="other-card">
+            <div class="other-pill">For poker players</div>
+            <div class="other-title">Poker Point Count GPT</div>
+            <p>
+              A strategy assistant based on the Poker Point Count concept, helping you quickly profile opponents and think through hands. Separate from the local SEO systems.
+            </p>
+            <div class="other-link">Learn more about Poker Point Count (add link)</div>
+          </div>
+
+          <div class="other-card">
+            <div class="other-pill">For history & politics</div>
+            <div class="other-title">American Mind Virus Projects</div>
+            <p>
+              Political and historical analysis books and GPTs live under a different brand, so this site can stay focused on tools that help local businesses get customers.
+            </p>
+            <div class="other-link">Visit American Mind Virus (add link)</div>
           </div>
         </div>
+      </section>
+    </main>
 
-        <div class="card">
-          <div class="card-label">Category</div>
-          <div class="card-title">Gamers</div>
-          <p class="card-text">
-            Naval commanders, pirate captains, XCOM strategists, RPG planners—AI copilots built to deepen your play and tactics.
-          </p>
-          <a href="gamers.html" class="card-link">
-            <span>Go to Gamers</span>
-            <span class="icon">→</span>
-          </a>
-          <div class="pill-row">
-            <div class="pill">Naval & Pirate GPTs</div>
-            <div class="pill">Tactics & Builds</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-label">Category</div>
-          <div class="card-title">Betting Lab</div>
-          <p class="card-text">
-            Tools for sports bettors and poker players who want structure, discipline, and clear plus-minus style systems.
-          </p>
-          <a href="betting-lab.html" class="card-link">
-            <span>Go to Betting Lab</span>
-            <span class="icon">→</span>
-          </a>
-          <div class="pill-row">
-            <div class="pill">LineSharp / AI Betting</div>
-            <div class="pill">Poker Point Count</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-label">Category</div>
-          <div class="card-title">Learning Lab</div>
-          <p class="card-text">
-            GPTs and systems that help you use AI as a study coach, explainer, and mental load reducer while you learn hard things.
-          </p>
-          <a href="learning-lab.html" class="card-link">
-            <span>Go to Learning Lab</span>
-            <span class="icon">→</span>
-          </a>
-          <div class="pill-row">
-            <div class="pill">AI Study Aids</div>
-            <div class="pill">Skill Learning</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-label">Category</div>
-          <div class="card-title">Local Business Systems</div>
-          <p class="card-text">
-            Kits and engines that help you deliver reputation, trust, and content systems for local businesses using AI.
-          </p>
-          <a href="local-business-systems.html" class="card-link">
-            <span>Go to Local Business Systems</span>
-            <span class="icon">→</span>
-          </a>
-          <div class="pill-row">
-            <div class="pill">Client Engine</div>
-            <div class="pill">Local Niche Packs</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-label">Category</div>
-          <div class="card-title">Free History GPT</div>
-          <p class="card-text">
-            Access the History Revealer GPT and browse history book bundles that show you how the narratives were built.
-          </p>
-          <a href="free-history.html" class="card-link">
-            <span>Go to Free History GPT</span>
-            <span class="icon">→</span>
-          </a>
-          <div class="pill-row">
-            <div class="pill">History Revealer GPT</div>
-            <div class="pill">History Bundles</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-label">Overview</div>
-          <div class="card-title">All Systems</div>
-          <p class="card-text">
-            Want to see everything in one place? Browse the full catalog of GPTs, books, and bundles across every category.
-          </p>
-          <a href="systems.html" class="card-link">
-            <span>Browse All Systems</span>
-            <span class="icon">→</span>
-          </a>
-          <div class="pill-row">
-            <div class="pill">Flagships</div>
-            <div class="pill">Bundles</div>
-            <div class="pill">Experimental</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer">
-      GPT Product Lab • You don’t need every system. You just need the right one for where you are now.
-    </div>
+    <footer>
+      &copy; <span id="year"></span> GPT Product Lab · AI SEO Systems for Local Businesses
+    </footer>
   </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
