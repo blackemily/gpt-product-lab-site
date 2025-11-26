@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Auto Repair SEO System – AI-Powered Local Search Domination</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-alt: #12172a;
+      --accent: #ffb22c;
+      --accent-soft: rgba(255, 178, 44, 0.12);
+      --text: #f5f7ff;
+      --muted: #a0a4b8;
+      --border: #262c45;
+      --danger: #ff4b4b;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.4);
+      --radius-lg: 18px;
+      --radius-xl: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1d2545 0, #050816 45%, #02030a 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    header.hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 768px) {
+      header.hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      background: rgba(10, 15, 35, 0.9);
+      border-radius: 999px;
+      padding: 6px 14px;
+      border: 1px solid rgba(255,255,255,0.03);
+      margin-bottom: 14px;
+    }
+
+    .hero-label span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(255,178,44,0.8);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw + 1rem, 2.9rem);
+      line-height: 1.1;
+      margin: 0 0 14px;
+    }
+
+    .hero-title span.highlight {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 18px;
+    }
+
+    .hero-bullets {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 8px 18px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      .hero-bullets {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-bullets span {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .hero-bullets span::before {
+      content: "✓";
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 1px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ffb22c, #ff8f2c);
+      color: #201208;
+      font-weight: 600;
+      font-size: 0.98rem;
+      border: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary span.arrow {
+      margin-left: 8px;
+      font-size: 1.1rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn-secondary-link {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-decoration: underline;
+      text-decoration-style: dashed;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+
+    .hero-guarantee {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-guarantee strong {
+      color: var(--accent);
+    }
+
+    .hero-card {
+      border-radius: var(--radius-xl);
+      padding: 18px 18px 20px;
+      background: radial-gradient(circle at top left, #343d6b 0, #14192d 32%, #050715 80%);
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top, rgba(255,178,44,0.12), transparent 65%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .hero-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-title {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-card-main {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-card-main span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-card-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-card-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .hero-card-list li::before {
+      content: "•";
+      color: var(--accent);
+      margin-top: 1px;
+    }
+
+    .hero-card-tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      opacity: 0.85;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    section {
+      border-radius: var(--radius-lg);
+      background: rgba(11, 15, 35, 0.92);
+      border: 1px solid var(--border);
+      padding: 20px 18px;
+    }
+
+    section.alt {
+      background: radial-gradient(circle at top left, rgba(255,178,44,0.08), rgba(9, 10, 25, 0.98));
+      border-color: rgba(255,178,44,0.15);
+    }
+
+    h2.section-title {
+      font-size: 1.25rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .section-text {
+      font-size: 0.94rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(10, 12, 32, 0.9);
+      color: var(--muted);
+    }
+
+    .pill.negative {
+      border-color: rgba(255,75,75,0.4);
+      color: #ff9191;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 22px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card-muted {
+      border-radius: 12px;
+      border: 1px dashed rgba(255,255,255,0.12);
+      padding: 10px 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: rgba(4, 7, 20, 0.8);
+    }
+
+    .list-check {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .list-check li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .list-check li::before {
+      content: "✓";
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 1px;
+    }
+
+    .list-dash {
+      list-style: none;
+      padding-left: 0;
+      margin: 6px 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .list-dash li::before {
+      content: "– ";
+      color: var(--muted);
+    }
+
+    .included-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .included-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .included-item {
+      border-radius: 14px;
+      background: rgba(6, 9, 24, 0.96);
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+    }
+
+    .included-label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .included-title {
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+    }
+
+    .included-desc {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .included-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-soft);
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .included-badge span.icon {
+      font-size: 0.9rem;
+    }
+
+    .steps-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 12px 0 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .steps-list li {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 9px;
+      align-items: flex-start;
+    }
+
+    .steps-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(255,178,44,0.12);
+      color: var(--accent);
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .steps-text strong {
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+    }
+
+    .badge.good {
+      border-color: rgba(0, 200, 125, 0.5);
+      color: #86f4c4;
+    }
+
+    .faq-item {
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 8px 10px;
+      margin-bottom: 8px;
+      background: rgba(2, 6, 22, 0.9);
+    }
+
+    .faq-q {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 20px 16px 10px;
+    }
+
+    .cta-section p {
+      margin: 6px 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .cta-emphasis {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .cta-subline {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-align: center;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="hero">
+      <div>
+        <div class="hero-label">
+          <span class="dot"></span>
+          <span>GPT Product Lab · Local SEO System</span>
+        </div>
+        <h1 class="hero-title">
+          Auto Repair <span class="highlight">SEO System</span><br />
+          Powered by AI – Built Just for Shops Like Yours
+        </h1>
+        <p class="hero-subtitle">
+          Turn Google into your busiest referral source. This Auto Repair SEO System combines a private AI engine, a practical implementation manual, competitive analysis, and plug-and-play templates so you can attract more brake jobs, diagnostics, and repeat customers without hiring an agency.
+        </p>
+
+        <div class="hero-bullets">
+          <span>Show up when drivers search “brake repair near me” instead of sending those jobs to the big chains.</span>
+          <span>Fix your website, Google Business Profile, and reviews with clear, step-by-step guidance.</span>
+          <span>Run a local competitor analysis so you can see exactly what nearby shops are doing to outrank you.</span>
+          <span>Use a private GPT system that writes SEO-ready pages, posts, and updates for your shop in minutes.</span>
+        </div>
+
+        <div class="hero-cta-row">
+          <a href="YOUR_GUMROAD_URL_HERE" class="btn-primary">
+            Unlock the Auto Repair SEO System<span class="arrow">→</span>
+          </a>
+          <span class="btn-secondary-link" onclick="document.getElementById('whats-inside').scrollIntoView({behavior:'smooth'})">
+            See everything that’s included
+          </span>
+        </div>
+        <div class="hero-guarantee">
+          <strong>One-time access.</strong> No retainers, no contracts, no monthly SEO fees.
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-content">
+          <div class="hero-card-title">Before vs. After the System</div>
+          <div class="hero-card-main">
+            <span>Before:</span> Invisible on Google, relying on whoever happens to drive past your sign.
+          </div>
+          <ul class="hero-card-list">
+            <li>Competing with national chains who outspend you on ads.</li>
+            <li>Website written years ago, never updated for SEO.</li>
+            <li>Google Business Profile half-complete or inconsistent.</li>
+          </ul>
+          <div class="hero-card-main">
+            <span>After:</span> Your shop shows up when drivers in your area search for the exact work you want.</span>
+          </div>
+          <ul class="hero-card-list">
+            <li>AI-powered audits show you what to fix first.</li>
+            <li>Competitor scans reveal why nearby shops outrank you – and how to beat them.</li>
+            <li>Done-for-you templates for services like brakes, AC, diagnostics, and more.</li>
+          </ul>
+          <div class="hero-card-tagline">
+            Built for real auto shops that want more cars in the bays – not more confusing marketing jargon.
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <section>
+        <div class="section-kicker">Why this exists</div>
+        <h2 class="section-title">Auto repair is local. If you’re not visible on Google, you’re invisible to drivers.</h2>
+        <p class="section-text">
+          Drivers don’t flip through the phone book. They pull out their phones and search:
+        </p>
+        <ul class="list-dash">
+          <li>“check engine light near me”</li>
+          <li>“brake repair [your city]”</li>
+          <li>“AC repair auto”</li>
+          <li>“oil change open now”</li>
+        </ul>
+        <p class="section-text">
+          When your shop doesn’t show up in those results, the work automatically goes somewhere else – usually the dealers and big chains.
+        </p>
+        <div class="pill-row">
+          <div class="pill negative">You work hard, but Google doesn’t know it.</div>
+          <div class="pill negative">Your website and Google Business Profile don’t tell the full story.</div>
+          <div class="pill">This system fixes that without you becoming an “SEO expert.”</div>
+        </div>
+      </section>
+
+      <section id="whats-inside" class="alt">
+        <div class="section-kicker">What you get</div>
+        <h2 class="section-title">Everything in the Auto Repair SEO System</h2>
+        <div class="included-grid">
+          <div>
+            <div class="included-item">
+              <div class="included-badge">
+                <span class="icon">⚙️</span>
+                Private AI SEO Engine
+              </div>
+              <div class="included-label">Core Component #1</div>
+              <div class="included-title">Auto Repair SEO GPT Engine (Private Access)</div>
+              <div class="included-desc">
+                A niche-trained GPT that knows how to:
+              </div>
+              <ul class="list-check">
+                <li>Audit your existing website and Google Business Profile.</li>
+                <li>Suggest specific fixes to titles, headings, and service descriptions.</li>
+                <li>Analyze nearby competitors and show you exactly what they’re doing to outrank you.</li>
+                <li>Compare competitor Google Business Profiles, services, keywords, and content.</li>
+                <li>Extract competitor keywords so the system can generate optimized versions for your shop.</li>
+                <li>Generate SEO-ready pages for brakes, AC, diagnostics, tires, and more.</li>
+                <li>Create Google Business posts that match what drivers are searching.</li>
+                <li>Draft a 90-day local SEO plan tailored to your location and services.</li>
+              </ul>
+              <div class="card-muted">
+                You don’t write “marketing copy.”  
+                You answer a few questions about your shop and approve what the system generates.
+              </div>
+            </div>
+
+            <div class="included-item">
+              <div class="included-badge">
+                <span class="icon">📘</span>
+                System Manual
+              </div>
+              <div class="included-label">Core Component #2</div>
+              <div class="included-title">Auto Repair SEO System Manual (PDF)</div>
+              <div class="included-desc">
+                This isn’t a theory book. It’s an implementation guide that shows you exactly how to run the system:
+              </div>
+              <ul class="list-check">
+                <li>Auto repair SEO in plain language – no tech jargon.</li>
+                <li>How to set up and connect the GPT engine to your shop details.</li>
+                <li>What to do first if your time is limited.</li>
+                <li>Which pages and updates matter most for local rankings.</li>
+                <li>How to measure real-world results: calls, bookings, and walk-ins.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="included-item">
+              <div class="included-badge">
+                <span class="icon">📂</span>
+                Templates & Tools
+              </div>
+              <div class="included-label">Core Component #3</div>
+              <div class="included-title">Done-for-You Auto Repair SEO Templates</div>
+              <div class="included-desc">
+                Plug-and-play templates built specifically for independent auto repair shops:
+              </div>
+              <ul class="list-check">
+                <li>Service page template (brakes, AC, diagnostics, tires, etc.).</li>
+                <li>Google Business Profile optimization checklist.</li>
+                <li>Review request script for happy customers.</li>
+                <li>Local content starter prompts for blog posts and updates.</li>
+                <li>Quick-start “Fix This First” checklist.</li>
+              </ul>
+            </div>
+
+            <div class="included-item">
+              <div class="included-badge">
+                <span class="icon">🗓️</span>
+                90-Day Plan
+              </div>
+              <div class="included-label">Core Component #4</div>
+              <div class="included-title">90-Day Auto Repair SEO Action Plan</div>
+              <div class="included-desc">
+                A simple, week-by-week plan the system generates and the manual explains:
+              </div>
+              <ul class="list-check">
+                <li>Weeks 1–2: Clean up the basics (website + Google Business Profile).</li>
+                <li>Weeks 3–6: Add and improve high-value service pages.</li>
+                <li>Weeks 7–10: Build local authority with posts and content.</li>
+                <li>Weeks 11–12: Tune, refine, and track what’s working.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-kicker">How it works</div>
+        <h2 class="section-title">From “invisible online” to “Google is sending us work” – in 5 steps</h2>
+        <ul class="steps-list">
+          <li>
+            <div class="steps-num">1</div>
+            <div class="steps-text">
+              <strong>Unlock the Auto Repair SEO System.</strong>
+              Get instant access to your private GPT engine, the system manual, and all templates.
+            </div>
+          </li>
+          <li>
+            <div class="steps-num">2</div>
+            <div class="steps-text">
+              <strong>Tell the system about your shop.</strong>
+              Location, services, typical jobs, and what kind of customer you want more of.
+            </div>
+          </li>
+          <li>
+            <div class="steps-num">3</div>
+            <div class="steps-text">
+              <strong>Run your first audit.</strong>
+              The GPT engine reviews your website and Google Business Profile and shows you what to fix first.
+            </div>
+          </li>
+          <li>
+            <div class="steps-num">3B</div>
+            <div class="steps-text">
+              <strong>See exactly what your competitors are ranking for.</strong>
+              The system compares your shop to nearby competitors and gives you a clear plan to beat them in local search.
+            </div>
+          </li>
+          <li>
+            <div class="steps-num">4</div>
+            <div class="steps-text">
+              <strong>Deploy SEO-ready content.</strong>
+              Use the system to generate service pages, posts, and updates – then paste them into your site and Google Business Profile.
+            </div>
+          </li>
+          <li>
+            <div class="steps-num">5</div>
+            <div class="steps-text">
+              <strong>Follow the 90-day plan.</strong>
+              Each week, you’ll have a short list of actions that move you higher in local search and bring more cars into your bays.
+            </div>
+          </li>
+        </ul>
+        <div class="badge-row">
+          <div class="badge good">No agency needed</div>
+          <div class="badge good">Built for busy shop owners</div>
+          <div class="badge">Works with basic websites</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-kicker">Is this for you?</div>
+        <h2 class="section-title">Who the Auto Repair SEO System is (and isn’t) for</h2>
+        <div class="grid-2">
+          <div>
+            <h3 style="margin:0 0 6px;font-size:1rem;">This IS for you if:</h3>
+            <ul class="list-check">
+              <li>You run an independent auto repair shop or small chain.</li>
+              <li>You want more of the work you’re best at (brakes, diagnostics, AC, etc.).</li>
+              <li>You’re tired of guessing what to do with your website or Google Business Profile.</li>
+              <li>You’re willing to follow a simple plan and copy-paste what the system gives you.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="margin:0 0 6px;font-size:1rem;">This is NOT for you if:</h3>
+            <ul class="list-dash">
+              <li>You expect results without making any changes to your online presence.</li>
+              <li>You prefer to pay an agency thousands per month to “handle it.”</li>
+              <li>You want a get-rich-quick trick instead of a real, durable SEO foundation.</li>
+            </ul>
+            <div class="card-muted">
+              This system won’t turn your shop into a national chain overnight.  
+              It will help more local drivers find you, call you, and book work with you instead of the shop down the street.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-kicker">Common questions</div>
+        <h2 class="section-title">FAQ</h2>
+
+        <div class="faq-item">
+          <div class="faq-q">Do I need to understand SEO or AI to use this?</div>
+          <div class="faq-a">
+            No. The system is built so a busy shop owner or manager can follow it. The manual explains the “why,” and the AI engine does most of the writing and technical heavy lifting. Your job is to approve and paste.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Is this a subscription or a one-time access?</div>
+          <div class="faq-a">
+            It’s a one-time access system. You unlock the Auto Repair SEO System once and can keep using the manual, templates, and AI engine workflow as often as you’d like.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Does the system show me what my competitors are doing?</div>
+          <div class="faq-a">
+            Yes. The AI engine analyzes nearby shops, compares their Google Business Profiles, extracts their ranking keywords, and shows you exactly why they’re ranking higher — plus what you need to do to outrank them.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How fast will I see results?</div>
+          <div class="faq-a">
+            SEO is not instant. Many shops start seeing movement in a few weeks once they fix obvious issues and add proper service pages. The 90-day plan is designed to build a real foundation that continues paying off over time.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Can I use this if my website is basic or old?</div>
+          <div class="faq-a">
+            Yes. The system is built to work with simple websites. If you can edit text on your site (or have someone who can), you can copy-paste the improvements the AI engine generates for you.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What exactly do I get when I purchase?</div>
+          <div class="faq-a">
+            You’ll receive: (1) the Auto Repair SEO System Manual (PDF), (2) access instructions and setup workflow for your private Auto Repair SEO GPT engine, and (3) all related templates, checklists, and the 90-day action plan.
+          </div>
+        </div>
+      </section>
+
+      <section class="alt cta-section">
+        <div class="section-kicker">Next step</div>
+        <h2 class="section-title">Turn Google into a steady source of new customers for your shop</h2>
+        <p class="cta-emphasis">
+          Unlock the Auto Repair SEO System and put AI to work filling your bays with better jobs.
+        </p>
+
+        <p class="cta-emphasis" style="font-size:1.4rem; color:var(--accent); font-weight:700; margin-top:14px;">
+          One-time price: $97
+        </p>
+
+        <a href="YOUR_GUMROAD_URL_HERE" class="btn-primary">
+          Get Access to the Auto Repair SEO System<span class="arrow">→</span>
+        </a>
+        <p class="cta-subline">
+          No contracts. No monthly retainers. Immediate access after purchase.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      &copy; <span id="year"></span> GPT Product Lab · Auto Repair SEO System
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
