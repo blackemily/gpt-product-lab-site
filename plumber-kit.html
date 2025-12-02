@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plumber SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg-color: #020617;
+      --bg-alt: #02091b;
+      --card-bg: #020817;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --accent-strong: #4ade80;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --danger: #f97373;
+      --warning: #facc15;
+      --shadow-soft: 0 18px 60px rgba(15, 23, 42, 0.9);
+      --radius-xl: 1.5rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      color: var(--text-main);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.08), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(34, 197, 94, 0.12), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(59, 130, 246, 0.08), transparent 55%),
+        linear-gradient(135deg, #020617 0%, #020617 55%, #020617 100%);
+      background-attachment: fixed;
+    }
+
+    .page-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
+    @media (min-width: 768px) {
+      .page-shell {
+        padding: 32px 24px 96px;
+      }
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #bbf7d0 0, #22c55e 40%, #16a34a 70%, #15803d 100%);
+      box-shadow:
+        0 0 32px rgba(34, 197, 94, 0.45),
+        0 0 64px rgba(22, 163, 74, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 35%;
+      border-radius: inherit;
+      background: rgba(15, 23, 42, 0.34);
+      filter: blur(4px);
+    }
+
+    .brand-text-main {
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .brand-text-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--text-muted);
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.22), transparent 55%);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr);
+      gap: 22px;
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 60%),
+                  radial-gradient(circle at 110% 10%, rgba(59, 130, 246, 0.15), transparent 55%),
+                  rgba(15, 23, 42, 0.96);
+      border-radius: 24px;
+      padding: 22px 18px 20px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.45fr) minmax(0, 1.1fr);
+        padding: 30px 26px 26px;
+      }
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      opacity: 0.4;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(34, 197, 94, 0.3), transparent 60%),
+        radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.3), transparent 55%),
+        radial-gradient(circle at 0% 100%, rgba(139, 92, 246, 0.25), transparent 55%);
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .hero-main,
+    .hero-side {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-pre {
+      font-size: 0.82rem;
+      color: #a5b4fc;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-pre-line {
+      width: 28px;
+      height: 1px;
+      background: linear-gradient(to right, rgba(129, 140, 248, 0), rgba(129, 140, 248, 1));
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.9rem;
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+      color: #f9fafb;
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    .hero-sub {
+      margin: 0 0 14px;
+      font-size: 0.98rem;
+      color: #d1d5db;
+      max-width: 460px;
+    }
+
+    .hero-sub strong {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .hero-bullets {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .hero-bullet {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .hero-bullet-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.6);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #bbf7d0;
+      font-size: 0.6rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      border-radius: 999px;
+      padding: 9px 16px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.17s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 10% 0%, #bbf7d0 0, #22c55e 35%, #15803d 80%);
+      color: #022c22;
+      box-shadow:
+        0 14px 30px rgba(34, 197, 94, 0.45),
+        0 0 0 1px rgba(22, 101, 52, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow:
+        0 18px 40px rgba(34, 197, 94, 0.6),
+        0 0 0 1px rgba(21, 128, 61, 0.9);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      border-color: rgba(148, 163, 184, 0.4);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .btn-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-guarantee {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-guarantee span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .hero-guarantee-pill {
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #e5e7eb;
+    }
+
+    .hero-side-card {
+      border-radius: 20px;
+      padding: 14px 14px 12px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.6), transparent 55%),
+                  radial-gradient(circle at 120% 0%, rgba(34, 197, 94, 0.2), transparent 55%),
+                  rgba(15, 23, 42, 0.9);
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-side-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 4px 9px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-side-pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 14px rgba(34, 197, 94, 0.9);
+    }
+
+    .price-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+    }
+
+    .price-currency {
+      font-size: 0.98rem;
+      color: #bbf7d0;
+    }
+
+    .price-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #bbf7d0;
+    }
+
+    .price-tagline {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .price-chip {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.16);
+      border: 1px solid rgba(34, 197, 94, 0.7);
+      color: #bbf7d0;
+      font-size: 0.74rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    .price-chip-highlight {
+      height: 7px;
+      width: 7px;
+      border-radius: 999px;
+      background: #bbf7d0;
+      box-shadow: 0 0 18px rgba(187, 247, 208, 0.9);
+    }
+
+    .stack-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.8fr);
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 767px) {
+      .stack-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .stack-column {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .stack-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    .stack-list {
+      display: grid;
+      gap: 4px;
+    }
+
+    .stack-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stack-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.9);
+      flex-shrink: 0;
+    }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .rating-stars {
+      display: inline-flex;
+      align-items: center;
+      gap: 1px;
+      color: #fbbf24;
+      font-size: 0.8rem;
+    }
+
+    .micro-line {
+      font-size: 0.74rem;
+      color: #6b7280;
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title-pill {
+      width: 34px;
+      height: 1px;
+      border-radius: 999px;
+      background: linear-gradient(to right, rgba(34, 197, 94, 0), rgba(34, 197, 94, 0.9));
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      max-width: 320px;
+      text-align: right;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .pill-accent {
+      border-color: rgba(34, 197, 94, 0.7);
+      color: #bbf7d0;
+      background: rgba(22, 163, 74, 0.13);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      }
+    }
+
+    .card {
+      border-radius: 18px;
+      padding: 12px 13px;
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.24), transparent 60%),
+                  rgba(15, 23, 42, 0.9);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.9);
+    }
+
+    .card-alt {
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.18), transparent 55%),
+                  rgba(15, 23, 42, 0.95);
+    }
+
+    .card-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .card-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .list {
+      display: grid;
+      gap: 5px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-size: 0.85rem;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      color: var(--text-muted);
+    }
+
+    .list-bullet {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.9);
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .list-bullet-accent {
+      background: rgba(34, 197, 94, 0.9);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .module-card {
+      border-radius: 16px;
+      padding: 10px 11px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .module-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #9ca3af;
+      margin-bottom: 5px;
+    }
+
+    .module-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .module-body {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .module-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 0.72rem;
+      color: #bbf7d0;
+      background: rgba(22, 163, 74, 0.18);
+      border: 1px solid rgba(34, 197, 94, 0.7);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    @media (min-width: 768px) {
+      .steps {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    .step-card {
+      border-radius: 15px;
+      padding: 8px 9px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      font-size: 0.7rem;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-size: 0.83rem;
+      font-weight: 600;
+      margin-bottom: 3px;
+      color: #e5e7eb;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .compare {
+        grid-template-columns: 1.02fr 1.18fr;
+      }
+    }
+
+    .compare-card {
+      border-radius: 18px;
+      padding: 11px 12px;
+      border: 1px solid rgba(30, 64, 175, 0.6);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .compare-card.highlight {
+      border-color: rgba(34, 197, 94, 0.75);
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.26), transparent 55%),
+                  rgba(8, 16, 31, 0.98);
+      box-shadow:
+        0 14px 42px rgba(22, 163, 74, 0.55),
+        0 0 0 1px rgba(15, 23, 42, 0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-label-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .compare-label {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .compare-pill {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+    }
+
+    .compare-pill-accent {
+      border-color: rgba(34, 197, 94, 0.9);
+      background: rgba(22, 163, 74, 0.1);
+      color: #bbf7d0;
+    }
+
+    .compare-list {
+      display: grid;
+      gap: 5px;
+      font-size: 0.8rem;
+    }
+
+    .compare-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      color: var(--text-muted);
+    }
+
+    .compare-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .compare-icon.bad {
+      background: rgba(127, 29, 29, 0.85);
+      border: 1px solid rgba(248, 113, 113, 0.9);
+      color: #fecaca;
+    }
+
+    .compare-icon.good {
+      background: rgba(22, 163, 74, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.8);
+      color: #bbf7d0;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    @media (min-width: 768px) {
+      .faq-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .faq-item {
+      border-radius: 14px;
+      padding: 9px 10px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      font-size: 0.82rem;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #e5e7eb;
+    }
+
+    .faq-a {
+      color: var(--text-muted);
+    }
+
+    .cta-final {
+      margin-top: 32px;
+      border-radius: 22px;
+      padding: 16px 14px 14px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.22), transparent 55%),
+                  radial-gradient(circle at 120% 0, rgba(59, 130, 246, 0.15), transparent 55%),
+                  rgba(15, 23, 42, 0.98);
+      box-shadow: 0 18px 52px rgba(15, 23, 42, 1);
+      text-align: center;
+    }
+
+    .cta-headline {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #f9fafb;
+    }
+
+    .cta-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .cta-micro {
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    .cta-micro strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 22px;
+      font-size: 0.76rem;
+      color: #6b7280;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .footer-pill span {
+      color: #9ca3af;
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section-kicker {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div>
+          <div class="brand-text-main">GPT Product Lab</div>
+          <div class="brand-text-sub">Niche SEO System Kits</div>
+        </div>
+      </div>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>Plumber SEO System Kit • New</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-main">
+          <div class="hero-pre">
+            <span class="hero-pre-line"></span>
+            Turn local plumbing searches into booked jobs
+          </div>
+          <h1>Plumber SEO System Kit</h1>
+          <p class="hero-sub">
+            A done-for-you, <strong>90-day local SEO system</strong> that turns “plumber near me” searches
+            into <strong>booked, profitable jobs</strong> for your business — without hiring a big agency.
+          </p>
+          <div class="hero-bullets">
+            <div class="hero-bullet">
+              <div class="hero-bullet-icon">✓</div>
+              <div>Fill your schedule with high-value local jobs instead of waiting for the phone to ring.</div>
+            </div>
+            <div class="hero-bullet">
+              <div class="hero-bullet-icon">✓</div>
+              <div>Step-by-step SEO workflows written for plumbers and office staff, not marketers.</div>
+            </div>
+            <div class="hero-bullet">
+              <div class="hero-bullet-icon">✓</div>
+              <div>Built-in prompts &amp; templates you can run through the Limited GPT or give to your team.</div>
+            </div>
+          </div>
+
+          <div class="hero-cta-row">
+            <!-- TODO: replace with actual Limited GPT URL -->
+            <a href="#limited-gpt-link" class="btn btn-ghost">
+              Try the Limited GPT First
+            </a>
+            <!-- TODO: replace with actual checkout URL -->
+            <a href="#full-kit-checkout" class="btn btn-primary">
+              Get the Full SEO System Kit
+            </a>
+          </div>
+          <div class="btn-sub">Lifetime access • One-time payment • Use across all your service areas</div>
+
+          <div class="hero-guarantee">
+            <span class="hero-guarantee-pill">
+              No retainers • No contracts • No “mystery SEO”
+            </span>
+            <span>Built for local plumbing companies that depend on Google to keep trucks moving.</span>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="hero-side-card">
+            <div class="hero-side-pill">
+              <span class="hero-side-pill-dot"></span>
+              90-Day Local Job Pipeline
+            </div>
+
+            <div class="price-row">
+              <div>
+                <div class="price-main">
+                  <span class="price-currency">$</span>
+                  <span class="price-value">197</span>
+                </div>
+                <div class="price-tagline">One-time payment • Lifetime updates included</div>
+              </div>
+              <div class="price-chip">
+                <span class="price-chip-highlight"></span>
+                For plumbing businesses
+              </div>
+            </div>
+
+            <div class="stack-row">
+              <div class="stack-column">
+                <div class="stack-label">Solve</div>
+                <div class="stack-list">
+                  <div class="stack-item">
+                    <span class="stack-dot"></span>
+                    <span>“We’re invisible in Google when people search for a local plumber.”</span>
+                  </div>
+                  <div class="stack-item">
+                    <span class="stack-dot"></span>
+                    <span>Lead flow that swings from dead quiet to overwhelming.</span>
+                  </div>
+                  <div class="stack-item">
+                    <span class="stack-dot"></span>
+                    <span>Websites that look okay but don’t actually bring in calls.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="stack-column">
+                <div class="stack-label">Replace</div>
+                <div class="stack-list">
+                  <div class="stack-item">
+                    <span class="stack-dot"></span>
+                    <span>$800+ /mo retainers &amp; confusing SEO reports.</span>
+                  </div>
+                  <div class="stack-item">
+                    <span class="stack-dot"></span>
+                    <span>Random ads and coupons with no long-term plan.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rating-row">
+              <div>
+                <div class="rating-stars">★★★★★</div>
+                <span>SEO stack adapted for home-service pros.</span>
+              </div>
+            </div>
+            <div class="micro-line">
+              Built so you can keep running jobs — and still have a predictable stream of new calls coming in.
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section" id="who-it-is-for">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-title-pill"></span>
+            Who This Kit Is For
+          </div>
+          <div class="section-kicker">
+            For <strong>local plumbing companies</strong> that want their best customers to find them in Google — not just on flyers or old directories.
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card card-alt">
+            <div class="card-title">Designed for real-world plumbing operations</div>
+            <div class="card-sub">From one-truck operators to small fleets, this kit meets you where your business is right now.</div>
+            <ul class="list">
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Solo plumbers who rely on word-of-mouth and want steady calls from nearby homeowners.</span>
+              </li>
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Small plumbing teams that want to fill slow days and add more profitable jobs to the schedule.</span>
+              </li>
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Companies expanding to new suburbs and needing each service area to show up for local searches.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Especially useful if you’ve ever said…</div>
+            <div class="card-sub">You don’t have to be “good at SEO.” The workflows assume you’d rather be on site with customers.</div>
+            <ul class="list">
+              <li class="list-item">
+                <span class="list-bullet"></span>
+                <span>“We pay for a website but I can’t tell if it does anything except sit there.”</span>
+              </li>
+              <li class="list-item">
+                <span class="list-bullet"></span>
+                <span>“Google Ads cost a fortune and stop working the minute I pause them.”</span>
+              </li>
+              <li class="list-item">
+                <span class="list-bullet"></span>
+                <span>“I’m tired of agencies throwing jargon at me but not showing real leads or jobs.”</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pill-row">
+          <span class="pill pill-accent">Local, service-based SEO</span>
+          <span class="pill">Emergency calls • Leaks • Drains • Installs</span>
+          <span class="pill">Residential &amp; light commercial</span>
+          <span class="pill">Single or multi-location businesses</span>
+        </div>
+      </section>
+
+      <section class="section" id="what-it-does">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-title-pill"></span>
+            What This Kit Does For You
+          </div>
+          <div class="section-kicker">
+            The goal is simple: <strong>more of the right calls</strong> from people in your service area who are ready to book a plumber — within 90 days.
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="module-card">
+            <div class="module-tag">Outcome 01</div>
+            <div class="module-title">Turn “near me” searches into booked jobs</div>
+            <p class="module-body">
+              Rank for the profitable phrases your customers actually type when they need help now — “emergency plumber near me,” “water heater repair,” “clogged drain [city].”
+            </p>
+            <div class="module-chip">
+              <span>From “searching for help” → “we’ll be there at 3pm.”</span>
+            </div>
+          </div>
+
+          <div class="module-card">
+            <div class="module-tag">Outcome 02</div>
+            <div class="module-title">Replace random marketing with a 90-day plan</div>
+            <p class="module-body">
+              Get a simple content and optimization calendar that spells out what to fix, publish, and improve — week by week — no guessing.
+            </p>
+            <div class="module-chip">
+              <span>Every task tied to more calls.</span>
+            </div>
+          </div>
+
+          <div class="module-card">
+            <div class="module-tag">Outcome 03</div>
+            <div class="module-title">Stop feeling stuck with agencies</div>
+            <p class="module-body">
+              Know exactly what work should be happening, what to watch in your reports, and how to hold any vendor accountable.
+            </p>
+            <div class="module-chip">
+              <span>Control your own lead flow.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="what-you-get">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-title-pill"></span>
+            What You Get Inside
+          </div>
+          <div class="section-kicker">
+            Think of it as a <strong>plumber-specific SEO operating system</strong> you can run every 90 days, not just another stack of PDFs.
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="module-card">
+            <div class="module-tag">Module 1</div>
+            <div class="module-title">Local SEO Blueprint for Plumbers</div>
+            <p class="module-body">
+              A plain-English strategy that shows how customers find you, which services to target, and which numbers actually matter.
+            </p>
+            <ul class="list">
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Plumber-ready keyword library (drains, leaks, heaters, installs, emergency, plus cities &amp; suburbs).</span>
+              </li>
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Clear rules for structuring service pages so Google understands what you actually do.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="module-card">
+            <div class="module-tag">Module 2</div>
+            <div class="module-title">Google Business Profile &amp; Map Pack SOPs</div>
+            <p class="module-body">
+              Click-through SOPs to tune your Google listing and map visibility so you show up when people urgently need a plumber.
+            </p>
+            <ul class="list">
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Checklist for categories, photos, services, offers, and call tracking.</span>
+              </li>
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Review-request text templates that make it easy for happy customers to rate you.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="module-card">
+            <div class="module-tag">Module 3</div>
+            <div class="module-title">90-Day SEO Action &amp; Content Calendar</div>
+            <p class="module-body">
+              A week-by-week plan so someone on your team always knows “what’s next” for SEO and leads.
+            </p>
+            <ul class="list">
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Page outlines for home, main service, emergency, and service-area pages.</span>
+              </li>
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Blog ideas and FAQs mapped to common customer questions (with GPT-ready prompts).</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="module-card">
+            <div class="module-tag">Module 4</div>
+            <div class="module-title">On-Page SEO Swipe Files</div>
+            <p class="module-body">
+              Fill-in-the-blank templates for titles, meta descriptions, headers, and internal links tailored to local plumbing searches.
+            </p>
+            <ul class="list">
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>SEO-clean examples you can copy, tweak, and paste into your site.</span>
+              </li>
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Call-to-action ideas that get visitors to call or request a quote right away.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="module-card">
+            <div class="module-tag">Module 5</div>
+            <div class="module-title">Conversion Page &amp; Phone Flow Frameworks</div>
+            <p class="module-body">
+              Layouts and language for turning website visits into booked jobs and estimates your team can handle easily.
+            </p>
+            <ul class="list">
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Contact, quote, and emergency-service page best practices.</span>
+              </li>
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Suggested call scripts and intake questions for office staff to qualify jobs quickly.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="module-card">
+            <div class="module-tag">Module 6</div>
+            <div class="module-title">Tracking &amp; “Is This Working?” Dashboard</div>
+            <p class="module-body">
+              Simple tracking with the 4 numbers that matter most for plumbers — not a 30-page report you’ll never read.
+            </p>
+            <ul class="list">
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Template dashboard in Google Sheets or Notion you can check in minutes.</span>
+              </li>
+              <li class="list-item">
+                <span class="list-bullet list-bullet-accent"></span>
+                <span>Monthly review prompts and “if this, then do that” adjustments.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="how-it-works">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-title-pill"></span>
+            How It Works in 4 Steps
+          </div>
+          <div class="section-kicker">
+            A single 90-day cycle you can repeat as you grow your team and open new service areas.
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step-card">
+            <div class="step-badge">1</div>
+            <div class="step-title">Set your local foundations</div>
+            <div>
+              Use the Blueprint and Google Profile SOPs to align your website, map listing, and calls around the jobs you most want — and the areas you actually serve.
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">2</div>
+            <div class="step-title">Launch your 90-day SEO plan</div>
+            <div>
+              Follow the calendar to publish and update the exact pages that move you up for “plumber near me,” emergency, and key service searches.
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">3</div>
+            <div class="step-title">Turn website visits into calls</div>
+            <div>
+              Use the conversion frameworks so more visitors pick up the phone, request an estimate, or book online while they’re still motivated.
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">4</div>
+            <div class="step-title">Review, tune, and repeat</div>
+            <div>
+              Check your dashboard once a month, make the recommended tweaks, and rerun the system so your rankings and calls keep climbing.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="compare">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-title-pill"></span>
+            Limited GPT vs Full SEO System Kit
+          </div>
+          <div class="section-kicker">
+            Start with the Limited GPT to taste the workflows, then upgrade to the full kit when you’re ready to roll out the entire system.
+          </div>
+        </div>
+
+        <div class="compare">
+          <div class="compare-card">
+            <div class="compare-label-row">
+              <div class="compare-label">Limited GPT</div>
+              <div class="compare-pill">Try it free first</div>
+            </div>
+            <div class="compare-list">
+              <div class="compare-item">
+                <div class="compare-icon bad">–</div>
+                <div>Access to a <strong>small slice</strong> of the prompts and checklists from the full kit.</div>
+              </div>
+              <div class="compare-item">
+                <div class="compare-icon bad">–</div>
+                <div>Helps you draft or improve a few key pages, but <strong>without</strong> the full 90-day SEO game plan.</div>
+              </div>
+              <div class="compare-item">
+                <div class="compare-icon bad">–</div>
+                <div>No central dashboard or job-tracking system — you’re still guessing what’s actually working.</div>
+              </div>
+              <div class="compare-item">
+                <div class="compare-icon bad">–</div>
+                <div>Great for <strong>testing fit</strong>, not enough to replace your agency or build your own system yet.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="compare-card highlight">
+            <div class="compare-label-row">
+              <div class="compare-label">Full Plumber SEO System Kit</div>
+              <div class="compare-pill compare-pill-accent">Most businesses choose this</div>
+            </div>
+            <div class="compare-list">
+              <div class="compare-item">
+                <div class="compare-icon good">✓</div>
+                <div>The complete 90-day local SEO system designed specifically for plumbers and home-service teams.</div>
+              </div>
+              <div class="compare-item">
+                <div class="compare-icon good">✓</div>
+                <div>Step-by-step SOPs, calendars, and prompts you can run through the GPT, use yourself, or hand to staff.</div>
+              </div>
+              <div class="compare-item">
+                <div class="compare-icon good">✓</div>
+                <div>Conversion frameworks that turn website visitors into calls, quotes, and booked jobs.</div>
+              </div>
+              <div class="compare-item">
+                <div class="compare-icon good">✓</div>
+                <div>Simple tracking dashboard so you can see rankings, calls, and jobs improve month after month.</div>
+              </div>
+              <div class="compare-item">
+                <div class="compare-icon good">✓</div>
+                <div>One-time payment, lifetime updates as search, maps, and best practices change.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-title-pill"></span>
+            Questions Plumbers Ask Before Getting Started
+          </div>
+          <div class="section-kicker">
+            A few quick answers. If you’re nodding along, the kit was built with your business in mind.
+          </div>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">Do I need to be “techy” for this to work?</div>
+            <div class="faq-a">
+              No. The system assumes you’d rather be fixing pipes than fixing websites. Each workflow is written as clear steps your office, a helper, or any contractor can follow.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Can I use this if I already work with an SEO or marketing agency?</div>
+            <div class="faq-a">
+              Yes. Many plumbing companies use the kit as a way to direct their agency — it clarifies what work actually matters and makes it obvious if you’re getting real results or just fancy reports.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How much time will I need to implement the 90-day plan?</div>
+            <div class="faq-a">
+              Most businesses can move through the plan in 1–2 focused hours per week. You can batch tasks, delegate to an office manager, or stretch the timeline if your crew is slammed.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">What kinds of jobs will this help us get?</div>
+            <div class="faq-a">
+              The kit is built to attract a mix of high-urgency jobs (leaks, backups, emergencies) and higher-ticket work (water heaters, repipes, bathroom installs) in the areas you choose to focus on.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Will this work if we cover multiple cities or suburbs?</div>
+            <div class="faq-a">
+              Yes. You’ll see specific guidance on building service-area pages so each city or neighborhood you serve has a real chance of ranking locally in Google.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">What happens when Google changes again?</div>
+            <div class="faq-a">
+              Your purchase includes lifetime updates. When important changes hit local search or the map pack, the core workflows and checklists are updated so you’re not left guessing.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-final" id="full-kit-checkout">
+        <div class="cta-headline">Ready to Stop Leaving Local Jobs on the Table?</div>
+        <div class="cta-sub">
+          Turn “plumber near me” searches into a steady flow of booked jobs with a plumber-specific SEO system your team can actually run.
+        </div>
+        <div class="cta-buttons">
+          <!-- TODO: replace with actual Limited GPT URL -->
+          <a href="#limited-gpt-link" class="btn btn-ghost">
+            Try the Limited GPT First
+          </a>
+          <!-- TODO: replace with actual checkout URL -->
+          <a href="#full-kit-checkout" class="btn btn-primary">
+            Get the Plumber SEO System Kit for $197
+          </a>
+        </div>
+        <div class="cta-micro">
+          One-time payment • Lifetime updates • Built for local plumbing businesses that depend on Google
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-pill">
+        <span>Made for plumbers who want steady local leads — not guesswork and jargon.</span>
+      </div>
+      <div>© GPT Product Lab • Plumber SEO System Kit</div>
+    </footer>
+  </div>
+</body>
+</html>
