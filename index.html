@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>GPT Product Lab — Niche SEO System Kits</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
       --bg: #0f172a;
@@ -14,8 +14,6 @@
       --accent-soft: rgba(56, 189, 248, 0.15);
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
-      --badge-available: #22c55e;
-      --badge-soon: #f97316;
       --btn-disabled: #4b5563;
     }
 
@@ -101,7 +99,9 @@
     .category {
       padding: 1.5rem 1.25rem;
       border-radius: 1rem;
-      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 55%), var(--bg-alt);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 55%),
+        var(--bg-alt);
       border: 1px solid rgba(15, 23, 42, 0.9);
     }
 
@@ -132,7 +132,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 0.85rem 0.9rem;
+      padding: 0.9rem;
       border-radius: 0.9rem;
       background: var(--card-bg);
       border: 1px solid var(--border-subtle);
@@ -145,7 +145,7 @@
       justify-content: space-between;
       gap: 0.5rem;
       align-items: flex-start;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
 
     .card h3 {
@@ -155,11 +155,12 @@
 
     .badge {
       font-size: 0.7rem;
-      padding: 0.2rem 0.5rem;
+      padding: 0.1rem 0.5rem;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.7);
-      color: #e5e7eb;
       white-space: nowrap;
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.9);
     }
 
     .tagline {
@@ -169,15 +170,62 @@
 
     .card-footer {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 0.75rem;
       margin-top: 0.75rem;
     }
 
+    /* We reuse the .price span but hide the dollar amount and inject value cues */
     .price {
-      font-weight: 600;
-      font-size: 0.92rem;
+      font-weight: 400;
+      font-size: 0.78rem;
+      color: transparent;          /* hide the literal $197 */
+      position: relative;
+      max-width: 60%;
+    }
+
+    .price::before {
+      content: "Agency license included · Resell-ready system · 90-day SEO implementation plan";
+      color: var(--text-muted);
+      white-space: normal;
+    }
+
+    /* Category-specific value cues to avoid everything looking identical */
+
+    /* 1 — Trades & Home Services */
+    .category:nth-of-type(1) .price::before {
+      content: "Local-service SEO playbooks · Agency resale rights · 90-day implementation plan";
+    }
+
+    /* 2 — Health & Medical */
+    .category:nth-of-type(2) .price::before {
+      content: "Patient-focused SEO workflows · Agency license included · 90-day growth plan";
+    }
+
+    /* 3 — Fitness & Personal Services */
+    .category:nth-of-type(3) .price::before {
+      content: "Demand-driving local content · Agency-ready GPT prompts · 90-day SEO roadmap";
+    }
+
+    /* 4 — Pets & Animal Services */
+    .category:nth-of-type(4) .price::before {
+      content: "Pet-owner search journeys · Resellable system kit · 90-day visibility plan";
+    }
+
+    /* 5 — Food & Hospitality */
+    .category:nth-of-type(5) .price::before {
+      content: "Reservation-focused SEO flows · Agency license · 90-day content calendar";
+    }
+
+    /* 6 — Real Estate & Professional */
+    .category:nth-of-type(6) .price::before {
+      content: "Lead-generation SEO funnels · Done-for-you prompts · 90-day deal flow roadmap";
+    }
+
+    /* 7 — Education & Creative */
+    .category:nth-of-type(7) .price::before {
+      content: "Enrollment-driven SEO assets · Agency resale rights · 90-day execution plan";
     }
 
     .btn {
@@ -194,7 +242,10 @@
       gap: 0.25rem;
       white-space: nowrap;
       cursor: pointer;
-      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
     }
 
     .btn-available {
@@ -206,13 +257,6 @@
 
     .btn-available:hover {
       filter: brightness(1.08);
-    }
-
-    .btn-disabled {
-      background: rgba(15, 23, 42, 0.8);
-      border-color: var(--btn-disabled);
-      color: var(--text-muted);
-      cursor: not-allowed;
     }
 
     @media (max-width: 640px) {
@@ -232,6 +276,7 @@
       }
       .hero-pill {
         margin-top: 0.5rem;
+        white-space: normal;
       }
     }
   </style>
@@ -249,14 +294,15 @@
           </p>
         </div>
         <div class="hero-pill">
-          <span>Niche-specific GPT SEO systems for local businesses</span>
+          <span>Niche-specific GPT SEO systems</span>
           <span>&nbsp;&middot;&nbsp;</span>
-          <strong>One-time price: $197 per kit</strong>
+          <strong>All kits launch-ready at $197 each</strong>
         </div>
       </div>
     </header>
 
     <main>
+      <!-- 1. Trades & Home Services -->
       <section class="category">
         <h2>Trades &amp; Home Services</h2>
         <div class="product-grid">
@@ -442,6 +488,7 @@
         </div>
       </section>
 
+      <!-- 2. Health & Medical -->
       <section class="category">
         <h2>Health &amp; Medical</h2>
         <div class="product-grid">
@@ -627,6 +674,7 @@
         </div>
       </section>
 
+      <!-- 3. Fitness & Personal Services -->
       <section class="category">
         <h2>Fitness &amp; Personal Services</h2>
         <div class="product-grid">
@@ -716,43 +764,7 @@
 
           <article class="card">
             <div class="card-header">
-              <h3>Barber Shop SEO System Kit</h3>
-              <span class="badge">System Kit</span>
-            </div>
-            <p class="tagline">SEO system kit from GPT Product Lab.</p>
-            <div class="card-footer">
-              <span class="price">$197</span>
-              <a href="#" class="btn btn-available">View System Kit</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-header">
-              <h3>Hair Salon SEO System Kit</h3>
-              <span class="badge">System Kit</span>
-            </div>
-            <p class="tagline">SEO system kit from GPT Product Lab.</p>
-            <div class="card-footer">
-              <span class="price">$197</span>
-              <a href="#" class="btn btn-available">View System Kit</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-header">
-              <h3>Nail Salon SEO System Kit</h3>
-              <span class="badge">System Kit</span>
-            </div>
-            <p class="tagline">SEO system kit from GPT Product Lab.</p>
-            <div class="card-footer">
-              <span class="price">$197</span>
-              <a href="#" class="btn btn-available">View System Kit</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-header">
-              <h3>Spa &amp; Wellness SEO System Kit</h3>
+              <h3>Wellness Coach SEO System Kit</h3>
               <span class="badge">System Kit</span>
             </div>
             <p class="tagline">SEO system kit from GPT Product Lab.</p>
@@ -776,30 +788,6 @@
 
           <article class="card">
             <div class="card-header">
-              <h3>Wedding Planner SEO System Kit</h3>
-              <span class="badge">System Kit</span>
-            </div>
-            <p class="tagline">SEO system kit from GPT Product Lab.</p>
-            <div class="card-footer">
-              <span class="price">$197</span>
-              <a href="#" class="btn btn-available">View System Kit</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-header">
-              <h3>Makeup Artist SEO System Kit</h3>
-              <span class="badge">System Kit</span>
-            </div>
-            <p class="tagline">SEO system kit from GPT Product Lab.</p>
-            <div class="card-footer">
-              <span class="price">$197</span>
-              <a href="#" class="btn btn-available">View System Kit</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-header">
               <h3>Tanning Studio SEO System Kit</h3>
               <span class="badge">System Kit</span>
             </div>
@@ -812,6 +800,7 @@
         </div>
       </section>
 
+      <!-- 4. Pets & Animal Services -->
       <section class="category">
         <h2>Pets &amp; Animal Services</h2>
         <div class="product-grid">
@@ -820,7 +809,7 @@
               <h3>Pet Groomer SEO System Kit</h3>
               <span class="badge">System Kit</span>
             </div>
-            <p class="tagline">Keep your grooming calendar full.</p>
+            <p class="tagline">Own local “pet grooming near me”.</p>
             <div class="card-footer">
               <span class="price">$197</span>
               <a href="/groomer-kit" class="btn btn-available">View System Kit</a>
@@ -973,6 +962,7 @@
         </div>
       </section>
 
+      <!-- 5. Food & Hospitality -->
       <section class="category">
         <h2>Food &amp; Hospitality</h2>
         <div class="product-grid">
@@ -981,7 +971,7 @@
               <h3>Restaurant SEO System Kit</h3>
               <span class="badge">System Kit</span>
             </div>
-            <p class="tagline">Fill more tables from local search.</p>
+            <p class="tagline">Turn local searches into reservations.</p>
             <div class="card-footer">
               <span class="price">$197</span>
               <a href="/restaurant-kit" class="btn btn-available">View System Kit</a>
@@ -1038,43 +1028,7 @@
 
           <article class="card">
             <div class="card-header">
-              <h3>Bar &amp; Lounge SEO System Kit</h3>
-              <span class="badge">System Kit</span>
-            </div>
-            <p class="tagline">SEO system kit from GPT Product Lab.</p>
-            <div class="card-footer">
-              <span class="price">$197</span>
-              <a href="#" class="btn btn-available">View System Kit</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-header">
-              <h3>Hotel &amp; Resort SEO System Kit</h3>
-              <span class="badge">System Kit</span>
-            </div>
-            <p class="tagline">SEO system kit from GPT Product Lab.</p>
-            <div class="card-footer">
-              <span class="price">$197</span>
-              <a href="#" class="btn btn-available">View System Kit</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-header">
-              <h3>Event Venue SEO System Kit</h3>
-              <span class="badge">System Kit</span>
-            </div>
-            <p class="tagline">SEO system kit from GPT Product Lab.</p>
-            <div class="card-footer">
-              <span class="price">$197</span>
-              <a href="#" class="btn btn-available">View System Kit</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-header">
-              <h3>Meal Prep SEO System Kit</h3>
+              <h3>Bar &amp; Nightlife SEO System Kit</h3>
               <span class="badge">System Kit</span>
             </div>
             <p class="tagline">SEO system kit from GPT Product Lab.</p>
@@ -1134,6 +1088,7 @@
         </div>
       </section>
 
+      <!-- 6. Real Estate & Professional Services -->
       <section class="category">
         <h2>Real Estate &amp; Professional Services</h2>
         <div class="product-grid">
@@ -1188,18 +1143,6 @@
           <article class="card">
             <div class="card-header">
               <h3>Law Firm SEO System Kit</h3>
-              <span class="badge">System Kit</span>
-            </div>
-            <p class="tagline">SEO system kit from GPT Product Lab.</p>
-            <div class="card-footer">
-              <span class="price">$197</span>
-              <a href="#" class="btn btn-available">View System Kit</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-header">
-              <h3>IT Services SEO System Kit</h3>
               <span class="badge">System Kit</span>
             </div>
             <p class="tagline">SEO system kit from GPT Product Lab.</p>
@@ -1295,6 +1238,7 @@
         </div>
       </section>
 
+      <!-- 7. Education & Creative -->
       <section class="category">
         <h2>Education &amp; Creative</h2>
         <div class="product-grid">
@@ -1384,7 +1328,7 @@
 
           <article class="card">
             <div class="card-header">
-              <h3>Language School SEO System Kit</h3>
+              <h3>Graphic Design Studio SEO System Kit</h3>
               <span class="badge">System Kit</span>
             </div>
             <p class="tagline">SEO system kit from GPT Product Lab.</p>
@@ -1408,7 +1352,7 @@
 
           <article class="card">
             <div class="card-header">
-              <h3>Craft Workshop SEO System Kit</h3>
+              <h3>Language School SEO System Kit</h3>
               <span class="badge">System Kit</span>
             </div>
             <p class="tagline">SEO system kit from GPT Product Lab.</p>
@@ -1423,4 +1367,3 @@
   </div>
 </body>
 </html>
-
