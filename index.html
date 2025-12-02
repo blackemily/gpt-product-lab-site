@@ -4,2077 +4,1707 @@
   <meta charset="UTF-8" />
   <title>GPT Product Lab — Niche SEO System Kits</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="GPT Product Lab is your library of niche SEO system kits for serious local agencies. Pre-defined niches, plug-and-play GPT workflows, and productized systems you can resell." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="GPT Product Lab offers niche SEO system kits for serious local agencies. Plug-and-play GPT-powered SEO systems for 100+ local niches with simple, productized pricing." />
   <style>
     :root {
       --bg: #020617;
-      --bg-alt: #020617;
-      --card: #020617;
-      --card-border: #1e293b;
-      --accent: #6366f1;
-      --accent-soft: rgba(99, 102, 241, 0.16);
-      --accent-strong: rgba(129, 140, 248, 0.24);
-      --accent-soft-border: rgba(129, 140, 248, 0.4);
-      --accent-text: #e0e7ff;
-      --muted: #64748b;
-      --muted-soft: #0b1120;
+      --bg-alt: #020818;
+      --card-bg: #020617;
+      --card-border: rgba(148, 163, 184, 0.22);
+      --primary: #38bdf8;
+      --primary-soft: rgba(56, 189, 248, 0.18);
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
       --text: #e5e7eb;
-      --heading: #f9fafb;
+      --muted: #9ca3af;
+      --muted-soft: #6b7280;
+      --headline: #f9fafb;
       --chip-bg: rgba(15, 23, 42, 0.9);
-      --radius-lg: 1.2rem;
-      --radius-md: 0.85rem;
+      --radius-lg: 20px;
+      --radius-xl: 24px;
       --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 16px 35px rgba(15, 23, 42, 0.9);
+      --shadow-subtle: 0 12px 32px rgba(15, 23, 42, 0.7);
+      --grid-gap: 1.5rem;
     }
 
     * {
       box-sizing: border-box;
-    }
-
-    html, body {
       margin: 0;
       padding: 0;
     }
 
     body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #020617 0, #020617 52%, #020617 100%);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .page {
       min-height: 100vh;
-      background:
-        radial-gradient(circle at top left, rgba(129, 140, 248, 0.14), transparent 58%),
-        radial-gradient(circle at top right, rgba(56, 189, 248, 0.12), transparent 60%),
-        radial-gradient(circle at 120% 120%, rgba(52, 211, 153, 0.12), transparent 60%);
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #020617 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      padding: 24px 16px 48px;
     }
 
-    .shell {
+    .site-shell {
       max-width: 1120px;
       margin: 0 auto;
-      padding: 2.5rem 1.25rem 4rem;
     }
 
-    header {
-      margin-bottom: 3rem;
+    header.site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #38bdf8 0, #0ea5e9 35%, #2563eb 70%, #312e81 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9), 0 0 0 10px rgba(15, 23, 42, 0.9);
+      color: #e5f3ff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-text-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-soft);
+    }
+
+    .brand-text-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
 
     .hero-chip {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.22rem 0.6rem 0.24rem 0.3rem;
+      gap: 0.4rem;
+      padding: 0.2rem 0.65rem;
       border-radius: 999px;
-      background: linear-gradient(135deg, rgba(15,23,42,0.94), rgba(15,23,42,0.92));
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.8);
-      margin-bottom: 1.6rem;
+      background: var(--chip-bg);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.65);
+      font-size: 0.72rem;
+      color: var(--muted);
     }
 
     .hero-chip-pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.28rem;
-      padding: 0.18rem 0.7rem;
+      justify-content: center;
+      padding: 0.12rem 0.5rem;
       border-radius: 999px;
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.2), rgba(37, 99, 235, 0.18));
-      border: 1px solid rgba(129, 140, 248, 0.7);
-      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9);
-    }
-
-    .hero-chip-pill-dot {
-      width: 0.52rem;
-      height: 0.52rem;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #e0f2fe, #38bdf8);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.32), 0 0 14px rgba(59, 130, 246, 0.7);
-    }
-
-    .hero-chip-pill-text {
-      font-size: 0.78rem;
+      background: radial-gradient(circle at 20% 0, rgba(59, 130, 246, 0.9), rgba(56, 189, 248, 0.8));
+      font-size: 0.65rem;
       font-weight: 600;
+      color: #e5f3ff;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent-text);
     }
 
-    .hero-chip-text {
-      font-size: 0.78rem;
-      color: #cbd5f5;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
+    .hero {
+      position: relative;
+      border-radius: 26px;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.1), transparent 55%),
+                  radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.08), transparent 55%),
+                  rgba(15, 23, 42, 0.96);
+      padding: 1.75rem 1.5rem 1.75rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
     }
 
-    .hero-chip-divider {
-      width: 1px;
-      height: 0.8rem;
-      background: linear-gradient(to bottom, rgba(148,163,184,0.3), rgba(148,163,184,0.7));
-    }
-
-    .hero-chip-badge {
-      padding: 0.15rem 0.5rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      font-size: 0.74rem;
-      color: #e2e8f0;
-    }
-
-    .hero-main {
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-      gap: 2.4rem;
-      align-items: center;
-    }
-
-    @media (max-width: 900px) {
-      .hero-main {
-        grid-template-columns: minmax(0, 1fr);
+    @media (min-width: 768px) {
+      .hero {
+        padding: 2.25rem 2.25rem 2.25rem;
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+        gap: 2.25rem;
+        align-items: center;
       }
     }
 
-    .hero-title {
-      font-size: clamp(2.35rem, 3.1vw, 2.9rem);
-      line-height: 1.08;
-      letter-spacing: -0.04em;
-      color: var(--heading);
-      margin: 0 0 1.1rem;
-      text-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+    .hero-left {
+      position: relative;
+      z-index: 1;
     }
 
-    .hero-title span {
-      background: linear-gradient(120deg, #a5b4fc, #38bdf8);
+    .hero-eyebrow {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted-soft);
+    }
+
+    .hero-title {
+      margin-top: 0.75rem;
+      font-size: clamp(1.9rem, 3vw, 2.35rem);
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--headline);
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(135deg, #38bdf8, #22c55e);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .hero-sub {
-      font-size: 0.97rem;
+    .hero-body {
+      margin-top: 0.9rem;
+      font-size: 0.98rem;
       line-height: 1.7;
       color: var(--muted);
-      max-width: 36rem;
-      margin-bottom: 1.4rem;
+      max-width: 34rem;
     }
 
-    .hero-bullets {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.8rem;
+    .hero-body-strong {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--muted-soft);
+    }
+
+    .hero-body-strong span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      margin-top: 1.3rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
+      align-items: center;
     }
 
-    .hero-bullets li {
-      font-size: 0.86rem;
-      color: #cbd5f5;
-      padding: 0.28rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.45);
+    .hero-cta {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-    }
-
-    .hero-bullets li span {
-      width: 0.42rem;
-      height: 0.42rem;
+      justify-content: center;
+      padding: 0.6rem 1.1rem;
       border-radius: 999px;
-      background: linear-gradient(135deg, #a5b4fc, #38bdf8);
-      box-shadow: 0 0 12px rgba(129, 140, 248, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.9);
+      background: radial-gradient(circle at 20% 0, rgba(56, 189, 248, 0.12), rgba(37, 99, 235, 0.38));
+      color: #e5f3ff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
     }
 
-    .hero-footnote {
-      font-size: 0.8rem;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+    .hero-cta:hover {
+      background: radial-gradient(circle at 20% 0, rgba(56, 189, 248, 0.2), rgba(37, 99, 235, 0.6));
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.95);
+    }
+
+    .hero-cta-secondary {
+      display: inline-flex;
       align-items: center;
-    }
-
-    .hero-footnote strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .hero-footnote-dot {
-      width: 0.26rem;
-      height: 0.26rem;
+      justify-content: center;
+      padding: 0.55rem 1rem;
       border-radius: 999px;
-      background: rgba(148, 163, 184, 0.8);
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-decoration: none;
+    }
+
+    .hero-right {
+      position: relative;
+      margin-top: 1.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-right {
+        margin-top: 0;
+      }
     }
 
     .hero-panel {
-      border-radius: 1.4rem;
-      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.14), transparent 55%),
-                  radial-gradient(circle at 100% 0, rgba(129,140,248,0.2), transparent 55%),
-                  linear-gradient(145deg, rgba(15,23,42,0.98), rgba(15,23,42,0.96));
+      position: relative;
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(17, 24, 39, 0.97));
       border: 1px solid rgba(148, 163, 184, 0.5);
-      box-shadow: var(--shadow-soft);
-      padding: 1.4rem 1.4rem 1.3rem;
-      position: relative;
+      padding: 1.1rem;
+      box-shadow: var(--shadow-subtle);
       overflow: hidden;
-    }
-
-    .hero-panel::before {
-      content: "";
-      position: absolute;
-      inset: -30%;
-      background-image: radial-gradient(circle at 0 0, rgba(59,130,246,0.16), transparent 55%),
-                        radial-gradient(circle at 100% 0, rgba(56,189,248,0.18), transparent 55%),
-                        radial-gradient(circle at 50% 120%, rgba(45,212,191,0.16), transparent 55%);
-      opacity: 0.8;
-      pointer-events: none;
-    }
-
-    .hero-panel-inner {
-      position: relative;
-      z-index: 1;
     }
 
     .hero-panel-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 0.75rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .hero-panel-title {
-      font-size: 0.95rem;
-      font-weight: 550;
-      color: #e5e7eb;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .hero-panel-title span {
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: #cbd5f5;
-    }
-
-    .hero-panel-status {
-      font-size: 0.74rem;
-      color: #bbf7d0;
-      padding: 0.12rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(74, 222, 128, 0.7);
-      background: rgba(22, 163, 74, 0.12);
-      display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
+      margin-bottom: 1rem;
     }
 
-    .hero-panel-status-dot {
-      width: 0.38rem;
-      height: 0.38rem;
+    .hero-badge {
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #bbf7d0, #22c55e);
-      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.35);
-    }
-
-    .hero-panel-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 0.9rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .hero-panel-metric {
-      border-radius: 0.9rem;
-      padding: 0.7rem 0.85rem;
-      background: rgba(15, 23, 42, 0.86);
-      border: 1px solid rgba(148, 163, 184, 0.55);
-    }
-
-    .hero-panel-metric-label {
-      font-size: 0.73rem;
+      padding: 0.18rem 0.6rem;
+      background: var(--primary-soft);
+      color: #e0f2fe;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #9ca3af;
-      margin-bottom: 0.3rem;
+      border: 1px solid rgba(56, 189, 248, 0.6);
     }
 
-    .hero-panel-metric-main {
-      font-size: 0.9rem;
-      color: #e5e7eb;
-      margin-bottom: 0.25rem;
+    .hero-panel-tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
     }
 
-    .hero-panel-metric-sub {
-      font-size: 0.78rem;
-      color: #a5b4fc;
-    }
-
-    .hero-panel-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .legend {
       display: grid;
-      gap: 0.32rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin-bottom: 1rem;
     }
 
-    .hero-panel-list li {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
+    .legend-pill {
+      border-radius: 999px;
+      padding: 0.32rem 0.7rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.95);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .legend-pill span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .hero-mini-grid {
+      margin-top: 0.6rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    .hero-mini-card {
+      border-radius: 14px;
+      padding: 0.6rem 0.7rem;
+      background: radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.18), transparent 55%),
+                  rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .hero-mini-title {
       font-size: 0.78rem;
-      color: #cbd5f5;
+      color: var(--headline);
+      margin-bottom: 0.2rem;
     }
 
-    .hero-panel-list-bullet {
-      width: 0.4rem;
-      height: 0.4rem;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #e0e7ff, #818cf8);
-      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.55);
+    .hero-mini-body {
+      font-size: 0.7rem;
+      color: var(--muted);
     }
 
-    .hero-panel-footer {
-      margin-top: 0.7rem;
-      padding-top: 0.6rem;
-      border-top: 1px dashed rgba(148, 163, 184, 0.5);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.77rem;
-      color: #9ca3af;
-    }
-
-    .hero-panel-footer span {
-      color: #e5e7eb;
-    }
-
-    .hero-panel-pill {
-      padding: 0.18rem 0.65rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      background: rgba(15, 23, 42, 0.9);
-      color: #e5e7eb;
-      font-size: 0.75rem;
-    }
-
-    main {
-      margin-top: 3rem;
+    .hero-mini-body span {
+      color: var(--accent);
+      font-weight: 500;
     }
 
     .catalog-header {
+      margin-top: 2.5rem;
+      margin-bottom: 1.35rem;
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1.5rem;
-      margin-bottom: 1.7rem;
       flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: center;
     }
 
-    .catalog-heading h2 {
-      font-size: 1.22rem;
-      letter-spacing: -0.02em;
-      color: var(--heading);
-      margin: 0 0 0.3rem;
+    .catalog-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--headline);
     }
 
-    .catalog-heading p {
-      margin: 0;
+    .catalog-subtitle {
       font-size: 0.85rem;
       color: var(--muted);
+      max-width: 32rem;
     }
 
     .catalog-legend {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      align-items: center;
-      font-size: 0.78rem;
-      color: #cbd5f5;
+      gap: 0.4rem;
+      font-size: 0.74rem;
     }
 
     .catalog-legend-pill {
-      padding: 0.25rem 0.55rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 0.26rem 0.65rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--muted-soft);
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.3rem;
     }
 
     .catalog-legend-pill-dot {
-      width: 0.38rem;
-      height: 0.38rem;
+      width: 6px;
+      height: 6px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #bfdbfe, #60a5fa);
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.45);
+      background: var(--accent);
     }
 
-    .catalog-legend-divider {
-      width: 1px;
-      height: 0.8rem;
-      background: linear-gradient(to bottom, rgba(148,163,184,0.2), rgba(148,163,184,0.7));
+    main {
+      margin-top: 1.5rem;
     }
 
-    .catalog-legend span {
-      color: #94a3b8;
-    }
-
-    .category {
-      margin-bottom: 2.4rem;
+    .category-section {
+      margin-bottom: 2.5rem;
     }
 
     .category-header {
       display: flex;
-      align-items: baseline;
       justify-content: space-between;
+      align-items: baseline;
       gap: 0.75rem;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.85rem;
     }
 
     .category-title {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      letter-spacing: -0.01em;
-      color: #e5e7eb;
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-    }
-
-    .category-label {
-      font-size: 0.74rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #94a3b8;
+      color: var(--muted-soft);
     }
 
-    .category-title-pill {
-      padding: 0.1rem 0.45rem;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      color: #c4b5fd;
-      border: 1px solid rgba(167, 139, 250, 0.6);
-      background: rgba(30, 64, 175, 0.3);
+    .category-caption {
+      font-size: 0.8rem;
+      color: var(--muted);
     }
 
     .kit-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.85rem;
-    }
-
-    @media (max-width: 980px) {
-      .kit-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .kit-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: var(--grid-gap);
     }
 
     .kit-card {
-      position: relative;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.08), transparent 55%),
+                  var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 1rem 1rem 0.9rem;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.85);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 0.8rem 0.9rem 0.8rem;
-      border-radius: var(--radius-md);
-      background: radial-gradient(circle at 0 0, rgba(148,163,184,0.08), transparent 53%),
-                  radial-gradient(circle at 100% 0, rgba(59,130,246,0.12), transparent 60%),
-                  rgba(15, 23, 42, 0.98);
-      border: 1px solid rgba(30, 64, 175, 0.6);
-      box-shadow: var(--shadow-card);
-      text-decoration: none;
-      color: inherit;
+      gap: 0.4rem;
+      position: relative;
       overflow: hidden;
     }
 
-    .kit-card:hover {
-      border-color: rgba(129, 140, 248, 0.95);
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 1);
-      transform: translateY(-1px);
-      transition: transform 120ms ease-out, box-shadow 120ms ease-out, border-color 120ms ease-out;
-    }
-
-    .kit-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 0.6rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .kit-card-title {
-      font-size: 0.93rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: #e5e7eb;
-      margin: 0;
-    }
-
-    .kit-card-tag {
+    .kit-type {
       font-size: 0.7rem;
-      padding: 0.12rem 0.55rem;
-      border-radius: 999px;
-      color: #c7d2fe;
-      border: 1px solid rgba(129, 140, 248, 0.75);
-      background: rgba(15, 23, 42, 0.96);
-      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted-soft);
     }
 
-    .kit-card-body {
-      margin-bottom: 0.55rem;
+    .kit-name {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--headline);
     }
 
-    .kit-card-tagline {
-      font-size: 0.8rem;
-      color: #cbd5f5;
-      margin: 0 0 0.2rem;
+    .kit-tagline {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
     }
 
-    .kit-card-value {
-      font-size: 0.75rem;
-      color: #a5b4fc;
+    .kit-value {
+      margin-top: 0.15rem;
+      font-size: 0.76rem;
+      color: var(--muted-soft);
     }
 
-    .kit-card-footer {
+    .kit-footer {
+      margin-top: 0.5rem;
+      padding-top: 0.55rem;
+      border-top: 1px solid rgba(31, 41, 55, 0.95);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.78rem;
-      color: #9ca3af;
-      margin-top: 0.25rem;
+      gap: 0.5rem;
     }
 
-    .kit-card-link {
+    .kit-link {
+      font-size: 0.78rem;
       font-weight: 500;
-      color: #c4b5fd;
+      color: var(--primary);
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.28rem;
+      gap: 0.3rem;
+      padding: 0.28rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      transition: background 140ms ease, transform 140ms ease, box-shadow 140ms ease;
     }
 
-    .kit-card-link span {
-      font-size: 0.85em;
-      opacity: 0.9;
+    .kit-link:hover {
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-0.5px);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.5);
     }
 
-    .kit-card-meta {
-      font-size: 0.74rem;
-      color: #6b7280;
+    .kit-meta {
+      font-size: 0.7rem;
+      color: var(--muted-soft);
+      text-align: right;
     }
 
     footer {
       margin-top: 2.5rem;
-      padding-top: 1.4rem;
-      border-top: 1px solid rgba(30, 64, 175, 0.7);
-      font-size: 0.78rem;
-      color: #6b7280;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(15, 23, 42, 0.95);
+      font-size: 0.75rem;
+      color: var(--muted-soft);
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.75rem;
+      justify-content: space-between;
     }
 
-    footer a {
-      color: #9ca3af;
-      text-decoration: none;
-    }
+    @media (max-width: 639px) {
+      header.site-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-    footer a:hover {
-      text-decoration: underline;
+      .legend {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-mini-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <div class="shell">
-      <header>
-        <div class="hero-chip">
-          <div class="hero-chip-pill">
-            <div class="hero-chip-pill-dot"></div>
-            <div class="hero-chip-pill-text">Local SEO System Kits</div>
-          </div>
-          <div class="hero-chip-divider"></div>
-          <div class="hero-chip-text">
-            <span>100 pre-defined local niches</span>
-            <span class="hero-chip-divider"></span>
-            <span>Simple, productized pricing · Resell-ready systems</span>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-mark">GP</div>
+        <div class="brand-text">
+          <div class="brand-text-title">GPT Product Lab</div>
+          <div class="brand-text-sub">Niche SEO system kits for local agencies</div>
+        </div>
+      </div>
+      <div class="hero-chip">
+        <span class="hero-chip-pill">Launch-Ready Kits</span>
+        <span>Built for resellable, productized SEO services</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-eyebrow">SEO System Kits for Serious Niche Agencies</div>
+        <h1 class="hero-title">
+          Plug-and-play <span class="highlight">GPT-powered SEO kits</span> for local service niches.
+        </h1>
+        <p class="hero-body">
+          Pre-defined local niches, each with a complete GPT-driven SEO system kit: workflows, prompts, templates,
+          and a 90-day rollout plan. Simple, productized pricing so you can resell with predictable margins and clean delivery.
+        </p>
+        <p class="hero-body-strong">
+          <span>Each kit ships as a resell-ready package</span> — including a 90-day SEO action plan, niche-specific templates,
+          and ready-to-use GPT instructions for your team.
+        </p>
+        <div class="hero-actions">
+          <a href="#catalog" class="hero-cta">Browse full kit catalog</a>
+          <div class="hero-cta-secondary">
+            Easy-to-resell system kits · Agency license included
           </div>
         </div>
+      </div>
 
-        <div class="hero-main">
-          <div>
-            <h1 class="hero-title">
-              SEO System Kits for <span>Serious Niche Agencies</span>
-            </h1>
-            <p class="hero-sub">
-              100 pre-defined local niches, each with a plug-and-play GPT-powered SEO system kit. Built so you can resell
-              predictable, repeatable SEO systems without rebuilding workflows for every new client.
-            </p>
-            <ul class="hero-bullets">
-              <li><span></span>Agency-ready GPT workflows &amp; SOPs</li>
-              <li><span></span>Local-service keyword maps &amp; content frameworks</li>
-              <li><span></span>Simple, productized pricing for easy resell margins</li>
-            </ul>
-            <div class="hero-footnote">
-              <strong>How it works:</strong>
-              <span class="hero-footnote-dot"></span>
-              <span>Pick a niche kit · Plug into your agency stack · Resell as a packaged SEO offer</span>
+      <div class="hero-right">
+        <div class="hero-panel">
+          <div class="hero-panel-header">
+            <div class="hero-badge">Niche SEO Kit Catalog</div>
+            <div class="hero-panel-tagline">Local-service coverage with consistent, productized systems.</div>
+          </div>
+          <div class="legend">
+            <div class="legend-pill"><span>Local niches</span> · service-first SEO</div>
+            <div class="legend-pill"><span>GPT workflows</span> · ready for client delivery</div>
+            <div class="legend-pill"><span>Agency-focused</span> · simple, predictable pricing</div>
+          </div>
+          <div class="hero-mini-grid">
+            <div class="hero-mini-card">
+              <div class="hero-mini-title">Local Service Infrastructure</div>
+              <div class="hero-mini-body">
+                GBP, on-page, internal links, and outreach flows tuned for
+                <span>local &amp; maps visibility</span>.
+              </div>
+            </div>
+            <div class="hero-mini-card">
+              <div class="hero-mini-title">Actionable 90-Day Plans</div>
+              <div class="hero-mini-body">
+                Week-by-week implementation workflows so your team can
+                <span>deploy each kit without reinventing strategy</span>.
+              </div>
             </div>
           </div>
-
-          <aside class="hero-panel" aria-label="SEO kit snapshot">
-            <div class="hero-panel-inner">
-              <div class="hero-panel-header">
-                <div class="hero-panel-title">
-                  Auto Repair SEO System Kit
-                  <span>Example local SEO system you can plug into your agency today.</span>
-                </div>
-                <div class="hero-panel-status">
-                  <div class="hero-panel-status-dot"></div>
-                  Ready to Resell
-                </div>
-              </div>
-
-              <div class="hero-panel-grid">
-                <div class="hero-panel-metric">
-                  <div class="hero-panel-metric-label">What you get</div>
-                  <div class="hero-panel-metric-main">
-                    90-day SEO execution plan with GPT prompts, workflows, and SOPs.
-                  </div>
-                  <div class="hero-panel-metric-sub">
-                    Built specifically for local auto repair &amp; maintenance shops.
-                  </div>
-                </div>
-                <div class="hero-panel-metric">
-                  <div class="hero-panel-metric-label">Designed for</div>
-                  <ul class="hero-panel-list">
-                    <li>
-                      <div class="hero-panel-list-bullet"></div>
-                      Agencies selling local SEO retainers
-                    </li>
-                    <li>
-                      <div class="hero-panel-list-bullet"></div>
-                      Productized SEO services &amp; micro-agencies
-                    </li>
-                    <li>
-                      <div class="hero-panel-list-bullet"></div>
-                      Operators building repeatable service lines
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="hero-panel-footer">
-                <div>
-                  Resell-ready:
-                  <span>Agency license, local SEO workflows, and niche content templates included.</span>
-                </div>
-                <div class="hero-panel-pill">No custom scoping · Just add your fee</div>
-              </div>
-            </div>
-          </aside>
         </div>
-      </header>
-
-      <main>
-        <section class="catalog-header">
-          <div class="catalog-heading">
-            <h2>SEO System Kit Catalog</h2>
-            <p>
-              Browse the kits by niche. Each one includes GPT workflows, templates, and a 90-day SEO plan tailored to that
-              specific local service.
-            </p>
-          </div>
-          <div class="catalog-legend">
-            <div class="catalog-legend-pill">
-              <div class="catalog-legend-pill-dot"></div>
-              <span>System Kit</span>
-            </div>
-            <div class="catalog-legend-divider"></div>
-            <span>Each card shows: niche-specific tagline, value cues, and a link to the full kit page.</span>
-          </div>
-        </section>
-
-        <!-- Trades & Home Services -->
-        <section class="category" aria-labelledby="cat-trades">
-          <div class="category-header">
-            <div class="category-title">
-              <span id="cat-trades">Trades &amp; Home Services</span>
-              <span class="category-title-pill">Local Services</span>
-            </div>
-            <div class="category-label">High-intent “near me” searches</div>
-          </div>
-          <div class="kit-grid">
-            <a class="kit-card" href="/auto-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Auto Repair SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Unlock hidden repair and maintenance search traffic in your city.</p>
-                <p class="kit-card-value">Local-service SEO playbooks · Resell-ready system · 90-day implementation plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">Built for auto repair shops</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/hvac-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">HVAC SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Fill your installation and service calendar with high-value HVAC jobs.</p>
-                <p class="kit-card-value">Done-for-you local SEO flows · Agency resale rights · 90-day rollout roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For HVAC contractors</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/plumber-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Plumber SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn emergency leak and blockage searches into booked plumbing calls.</p>
-                <p class="kit-card-value">Local-service SEO playbooks · Resell-ready system · 90-day implementation plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For residential plumbers</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/roofing-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Roofing SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Dominate storm, hail, and leak repair searches before competitors do.</p>
-                <p class="kit-card-value">Call-driving content templates · Repeatable SOPs · 90-day ranking plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For roofing companies</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/electrician-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Electrician SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture urgent electrical repair and upgrade searches across your service area.</p>
-                <p class="kit-card-value">Done-for-you local SEO flows · Agency resale rights · 90-day rollout roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For electricians</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/landscaper-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Landscaper SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Own “lawn care near me” and recurring maintenance searches in your market.</p>
-                <p class="kit-card-value">Local-service SEO playbooks · Resell-ready system · 90-day implementation plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For landscapers &amp; lawn care</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/home-cleaning-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Home Cleaning SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn one-time deep cleans into recurring home cleaning clients.</p>
-                <p class="kit-card-value">Call-driving content templates · Repeatable SOPs · 90-day ranking plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For maid &amp; cleaning services</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/pest-control-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Pest Control SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn pest emergencies into long-term prevention and service plans.</p>
-                <p class="kit-card-value">Done-for-you local SEO flows · Agency resale rights · 90-day rollout roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For pest control companies</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/handyman-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Handyman SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Show up first when homeowners search for small repair help.</p>
-                <p class="kit-card-value">Local-service SEO playbooks · Resell-ready system · 90-day implementation plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For handyman services</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/flooring-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Flooring Contractor SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Win premium flooring and remodel projects from local search.</p>
-                <p class="kit-card-value">Call-driving content templates · Repeatable SOPs · 90-day ranking plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For flooring contractors</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/window-glass-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Window &amp; Glass SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture high-intent replacement window and glass repair searches.</p>
-                <p class="kit-card-value">Done-for-you local SEO flows · Agency resale rights · 90-day rollout roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For window &amp; glass shops</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/painter-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Painter SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Fill your painting calendar with high-margin interior and exterior jobs.</p>
-                <p class="kit-card-value">Local-service SEO playbooks · Resell-ready system · 90-day implementation plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For painting contractors</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/garage-door-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Garage Door SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Convert broken door emergencies into replacement and service calls.</p>
-                <p class="kit-card-value">Call-driving content templates · Repeatable SOPs · 90-day ranking plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For garage door companies</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/pool-service-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Pool Service SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Stay top of mind for weekly pool cleaning, opening, and repair searches.</p>
-                <p class="kit-card-value">Done-for-you local SEO flows · Agency resale rights · 90-day rollout roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For pool care companies</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/solar-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Solar Installer SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Attract qualified solar consultations and quote requests in your region.</p>
-                <p class="kit-card-value">Local-service SEO playbooks · Resell-ready system · 90-day implementation plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For solar installers</span>
-              </div>
-            </a>
-          </div>
-        </section>
-
-        <!-- Health & Medical -->
-        <section class="category" aria-labelledby="cat-health">
-          <div class="category-header">
-            <div class="category-title">
-              <span id="cat-health">Health &amp; Medical</span>
-              <span class="category-title-pill">Clinical &amp; Wellness</span>
-            </div>
-            <div class="category-label">Patient-intent, appointment-driven searches</div>
-          </div>
-          <div class="kit-grid">
-            <a class="kit-card" href="/chiro-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Chiropractor SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Bring in more new-patient calls for adjustment and pain relief care.</p>
-                <p class="kit-card-value">Patient-focused SEO workflows · Agency license included · 90-day growth plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For chiropractic clinics</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/massage-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Massage Therapist SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Keep your massage schedule filled with high-value recurring clients.</p>
-                <p class="kit-card-value">Patient-focused SEO workflows · Agency license included · 90-day growth plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For massage studios</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/dentist-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Dentist SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Attract more implant, cosmetic, and family dentistry patients from search.</p>
-                <p class="kit-card-value">Treatment-focused search funnels · Clinic-ready assets · 90-day visibility plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For dental practices</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/pt-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Physical Therapy SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn rehab, sports injury, and post-surgery searches into booked PT sessions.</p>
-                <p class="kit-card-value">Patient-focused SEO workflows · Agency license included · 90-day growth plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For PT clinics</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/podiatrist-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Podiatrist SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Own bunion, heel pain, and diabetic foot care queries in your market.</p>
-                <p class="kit-card-value">HIPAA-aware content prompts · Resellable system · 90-day new-patient roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For podiatry clinics</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/optometry-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Optometrist SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture eye exam, glasses, and contact lens shoppers before big-box stores.</p>
-                <p class="kit-card-value">Patient-focused SEO workflows · Agency license included · 90-day growth plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For eye care practices</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/medspa-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Medical Spa SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Fill your aesthetics and skin treatment calendar with ideal local clients.</p>
-                <p class="kit-card-value">Treatment-focused search funnels · Clinic-ready assets · 90-day visibility plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For med spa brands</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/urgent-care-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Urgent Care SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Intercept “urgent care near me” searches before national chains do.</p>
-                <p class="kit-card-value">HIPAA-aware content prompts · Resellable system · 90-day new-patient roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For urgent care centers</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/primary-care-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Primary Care SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Become the go-to clinic for family medicine and wellness searches.</p>
-                <p class="kit-card-value">Patient-focused SEO workflows · Agency license included · 90-day growth plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For primary care groups</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/psychology-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Psychologist SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Connect with motivated therapy seekers looking for psychological support.</p>
-                <p class="kit-card-value">Treatment-focused search funnels · Clinic-ready assets · 90-day visibility plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For psychology practices</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/counselor-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Counselor &amp; Therapist SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Stand out in crowded counseling, telehealth, and couples therapy searches.</p>
-                <p class="kit-card-value">HIPAA-aware content prompts · Resellable system · 90-day new-patient roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For therapy practices</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/ortho-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Orthodontist SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Generate more braces and aligner consultations from local families.</p>
-                <p class="kit-card-value">Patient-focused SEO workflows · Agency license included · 90-day growth plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For ortho practices</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/derm-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Dermatologist SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Own acne, cosmetic, and skin cancer queries in your local market.</p>
-                <p class="kit-card-value">Treatment-focused search funnels · Clinic-ready assets · 90-day visibility plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For dermatology clinics</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/allergy-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Allergy Clinic SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture seasonal allergy, testing, and immunotherapy searches.</p>
-                <p class="kit-card-value">Patient-focused SEO workflows · Agency license included · 90-day growth plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For allergy centers</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/weight-loss-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Weight Loss Clinic SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn weight loss and body transformation intent into program enrollments.</p>
-                <p class="kit-card-value">HIPAA-aware content prompts · Resellable system · 90-day new-patient roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For weight loss clinics</span>
-              </div>
-            </a>
-          </div>
-        </section>
-
-        <!-- Fitness & Personal Services -->
-        <section class="category" aria-labelledby="cat-fitness">
-          <div class="category-header">
-            <div class="category-title">
-              <span id="cat-fitness">Fitness &amp; Personal Services</span>
-              <span class="category-title-pill">Lifestyle &amp; Coaching</span>
-            </div>
-            <div class="category-label">Membership, class, and session-based offers</div>
-          </div>
-          <div class="kit-grid">
-            <a class="kit-card" href="/gym-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Gym &amp; Trainer SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Convert local gym and personal training searches into memberships.</p>
-                <p class="kit-card-value">Demand-driving local content · Agency-ready GPT prompts · 90-day SEO roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For gyms &amp; trainers</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/yoga-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Yoga Studio SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Fill your yoga classes with students searching for calm and strength.</p>
-                <p class="kit-card-value">Class-filling content templates · Plug-and-play SOPs · 90-day growth track</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For yoga studios</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/pilates-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Pilates Studio SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Win premium reformer and studio clients from local search results.</p>
-                <p class="kit-card-value">Demand-driving local content · Agency-ready GPT prompts · 90-day SEO roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For pilates studios</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/martial-arts-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Martial Arts SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn kids and adult self-defense searches into long-term students.</p>
-                <p class="kit-card-value">Membership-focused funnels · Resell-ready playbook · 90-day campaign plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For martial arts schools</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/crossfit-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">CrossFit Box SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture high-intent CrossFit and functional fitness searchers.</p>
-                <p class="kit-card-value">Demand-driving local content · Agency-ready GPT prompts · 90-day SEO roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For CrossFit gyms</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/dance-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Dance Studio SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Fill youth and adult dance classes from neighborhood search traffic.</p>
-                <p class="kit-card-value">Class-filling content templates · Plug-and-play SOPs · 90-day growth track</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For dance studios</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/stylist-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Personal Stylist SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Show up first when locals search for wardrobe, styling, and image help.</p>
-                <p class="kit-card-value">Membership-focused funnels · Resell-ready playbook · 90-day campaign plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For personal stylists</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/wellness-coach-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Wellness Coach SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn wellness, habit change, and burnout searches into coaching packages.</p>
-                <p class="kit-card-value">Demand-driving local content · Agency-ready GPT prompts · 90-day SEO roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For wellness coaches</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/life-coach-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Life Coach SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Connect with clients looking for guidance, clarity, and transformation.</p>
-                <p class="kit-card-value">Membership-focused funnels · Resell-ready playbook · 90-day campaign plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For life coaches</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/tanning-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Tanning Studio SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Dominate “tanning near me” and membership searches in your area.</p>
-                <p class="kit-card-value">Class-filling content templates · Plug-and-play SOPs · 90-day growth track</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For tanning salons</span>
-              </div>
-            </a>
-          </div>
-        </section>
-
-        <!-- Pets & Animal Services -->
-        <section class="category" aria-labelledby="cat-pets">
-          <div class="category-header">
-            <div class="category-title">
-              <span id="cat-pets">Pets &amp; Animal Services</span>
-              <span class="category-title-pill">Pet Owners</span>
-            </div>
-            <div class="category-label">High-emotion, recurring pet care demand</div>
-          </div>
-          <div class="kit-grid">
-            <a class="kit-card" href="/pet-groomer-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Pet Groomer SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Fill your grooming calendar with loyal pet owners and ideal breeds.</p>
-                <p class="kit-card-value">Pet-owner search journeys · Resellable system kit · 90-day visibility plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For grooming salons</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/vet-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Veterinary Clinic SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Bring more pet owners in for exams, vaccines, and preventive care.</p>
-                <p class="kit-card-value">Local pet-intent keywords · Agency-ready workflows · 90-day booking roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For veterinary clinics</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/dog-walker-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Dog Walker SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Own “dog walker near me” in the neighborhoods you actually serve.</p>
-                <p class="kit-card-value">Pet-owner search journeys · Resellable system kit · 90-day visibility plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For dog walking services</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/dog-trainer-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Dog Trainer SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn puppy and behavior problem searches into training packages.</p>
-                <p class="kit-card-value">Local pet-intent keywords · Agency-ready workflows · 90-day booking roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For dog trainers</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/pet-boarding-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Pet Boarding SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture holiday and vacation boarding requests before big kennels.</p>
-                <p class="kit-card-value">Pet-owner search journeys · Resellable system kit · 90-day visibility plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For pet boarding facilities</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/equine-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Equine Services SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Show up first for boarding, training, and riding lesson searches.</p>
-                <p class="kit-card-value">Local pet-intent keywords · Agency-ready workflows · 90-day booking roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For equine facilities</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/mobile-groomer-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Mobile Groomer SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Win busy owners searching for mobile, at-home grooming options.</p>
-                <p class="kit-card-value">Done-for-you pet content · Simple SOP stack · 90-day growth blueprint</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For mobile groomers</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/pet-sitter-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Pet Sitter SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn last-minute pet sitting and drop-in searches into repeat clients.</p>
-                <p class="kit-card-value">Pet-owner search journeys · Resellable system kit · 90-day visibility plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For pet sitters</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/exotic-pet-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Exotic Pet SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture niche exotic pet care and specialty supply search traffic.</p>
-                <p class="kit-card-value">Local pet-intent keywords · Agency-ready workflows · 90-day booking roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For exotic pet services</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/pet-adoption-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Pet Adoption SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Match high-intent adopters with your available pets via search.</p>
-                <p class="kit-card-value">Done-for-you pet content · Simple SOP stack · 90-day growth blueprint</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For shelters &amp; rescues</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/pet-daycare-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Pet Daycare SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Keep your daycare full of high-lifetime-value, recurring pet clients.</p>
-                <p class="kit-card-value">Pet-owner search journeys · Resellable system kit · 90-day visibility plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For pet daycare centers</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/aquarium-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Aquarium Services SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Own tank setup, reef, and maintenance search demand in your region.</p>
-                <p class="kit-card-value">Done-for-you pet content · Simple SOP stack · 90-day growth blueprint</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For aquarium pros</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/farm-feed-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Farm &amp; Feed SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Attract hobby farmers and pros searching for feed, tack, and supplies.</p>
-                <p class="kit-card-value">Local pet-intent keywords · Agency-ready workflows · 90-day booking roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For farm &amp; feed stores</span>
-              </div>
-            </a>
-          </div>
-        </section>
-
-        <!-- Food & Hospitality -->
-        <section class="category" aria-labelledby="cat-food">
-          <div class="category-header">
-            <div class="category-title">
-              <span id="cat-food">Food &amp; Hospitality</span>
-              <span class="category-title-pill">Restaurants &amp; Venues</span>
-            </div>
-            <div class="category-label">Reservation, order, and booking-driven</div>
-          </div>
-          <div class="kit-grid">
-            <a class="kit-card" href="/restaurant-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Restaurant SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn “restaurants near me” searches into tables and regulars.</p>
-                <p class="kit-card-value">Reservation-focused SEO flows · Agency license · 90-day content calendar</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For local restaurants</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/cafe-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Café &amp; Coffee Shop SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Bring in daily regulars searching for coffee, wifi, and pastries.</p>
-                <p class="kit-card-value">Menu and location SEO · Resell-ready kit · 90-day demand plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For cafés &amp; coffee shops</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/food-truck-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Food Truck SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Dominate local “food truck near me” and event catering searches.</p>
-                <p class="kit-card-value">Reservation-focused SEO flows · Agency license · 90-day content calendar</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For food trucks</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/catering-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Catering SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture wedding, corporate, and private event catering inquiries.</p>
-                <p class="kit-card-value">Menu and location SEO · Resell-ready kit · 90-day demand plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For catering companies</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/bakery-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Bakery SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn cake, pastry, and custom order searches into steady revenue.</p>
-                <p class="kit-card-value">Reservation-focused SEO flows · Agency license · 90-day content calendar</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For bakeries</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/bar-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Bar &amp; Nightlife SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Fill bar seats with nightlife, event, and happy hour search traffic.</p>
-                <p class="kit-card-value">Local “near me” optimization · Pre-built prompts · 90-day traffic roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For bars &amp; venues</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/juice-bar-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Juice Bar SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Own smoothie, juice, and healthy snack searches around your location.</p>
-                <p class="kit-card-value">Menu and location SEO · Resell-ready kit · 90-day demand plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For juice bars</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/ghost-kitchen-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Ghost Kitchen SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Win delivery-first customers across maps, apps, and local search.</p>
-                <p class="kit-card-value">Local “near me” optimization · Pre-built prompts · 90-day traffic roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For virtual kitchens</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/ice-cream-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Ice Cream Shop SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn family treat and dessert searches into repeat ice cream visits.</p>
-                <p class="kit-card-value">Reservation-focused SEO flows · Agency license · 90-day content calendar</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For ice cream shops</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/fine-dining-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Fine Dining SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture special occasion and tasting menu seekers searching online.</p>
-                <p class="kit-card-value">Local “near me” optimization · Pre-built prompts · 90-day traffic roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For fine dining concepts</span>
-              </div>
-            </a>
-          </div>
-        </section>
-
-        <!-- Real Estate & Professional Services -->
-        <section class="category" aria-labelledby="cat-real-estate">
-          <div class="category-header">
-            <div class="category-title">
-              <span id="cat-real-estate">Real Estate &amp; Professional Services</span>
-              <span class="category-title-pill">Lead Gen</span>
-            </div>
-            <div class="category-label">Consultation and deal flow driven</div>
-          </div>
-          <div class="kit-grid">
-            <a class="kit-card" href="/real-estate-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Real Estate Agent SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture motivated buyers and sellers before portal leads get expensive.</p>
-                <p class="kit-card-value">Lead-generation SEO funnels · Done-for-you prompts · 90-day deal flow roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For real estate agents</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/mortgage-broker-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Mortgage Broker SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn rate, refi, and pre-approval searches into mortgage applications.</p>
-                <p class="kit-card-value">High-intent keyword maps · Plug-and-play workflows · 90-day lead system</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For mortgage brokers</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/insurance-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Insurance Agency SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Dominate auto, home, and business insurance quote searches locally.</p>
-                <p class="kit-card-value">Lead-generation SEO funnels · Done-for-you prompts · 90-day deal flow roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For insurance agencies</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/accounting-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Accounting Firm SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Win bookkeeping, tax, and advisory clients from search year-round.</p>
-                <p class="kit-card-value">Local authority content · Resellable asset pack · 90-day pipeline plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For accounting practices</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/law-firm-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Law Firm SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn urgent legal intent into qualified consultations and retainers.</p>
-                <p class="kit-card-value">Lead-generation SEO funnels · Done-for-you prompts · 90-day deal flow roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For law firms</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/marketing-agency-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Marketing Agency SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Attract better-fit marketing clients with SEO that matches your positioning.</p>
-                <p class="kit-card-value">Local authority content · Resellable asset pack · 90-day pipeline plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For agencies &amp; studios</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/consultant-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Consultant SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Bring in higher-ticket consulting clients looking for your specific expertise.</p>
-                <p class="kit-card-value">High-intent keyword maps · Plug-and-play workflows · 90-day lead system</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For solo &amp; boutique consultants</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/architect-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Architect SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture dream home, remodel, and commercial design project leads.</p>
-                <p class="kit-card-value">Local authority content · Resellable asset pack · 90-day pipeline plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For architecture firms</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/engineer-surveyor-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Engineer &amp; Surveyor SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Own engineering, land survey, and permitting search demand locally.</p>
-                <p class="kit-card-value">High-intent keyword maps · Plug-and-play workflows · 90-day lead system</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For engineering &amp; survey firms</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/staffing-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Staffing Agency SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn employer staffing searches into recurring placement contracts.</p>
-                <p class="kit-card-value">Lead-generation SEO funnels · Done-for-you prompts · 90-day deal flow roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For staffing firms</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/security-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Security Company SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture alarm, guard, and monitoring searches from local businesses.</p>
-                <p class="kit-card-value">High-intent keyword maps · Plug-and-play workflows · 90-day lead system</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For security providers</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/commercial-cleaning-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Commercial Cleaning SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Win office, warehouse, and facility cleaning contracts from search.</p>
-                <p class="kit-card-value">Lead-generation SEO funnels · Done-for-you prompts · 90-day deal flow roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For commercial cleaners</span>
-              </div>
-            </a>
-          </div>
-        </section>
-
-        <!-- Education & Creative -->
-        <section class="category" aria-labelledby="cat-education">
-          <div class="category-header">
-            <div class="category-title">
-              <span id="cat-education">Education &amp; Creative</span>
-              <span class="category-title-pill">Enrollment &amp; Projects</span>
-            </div>
-            <div class="category-label">Student intake and creative project leads</div>
-          </div>
-          <div class="kit-grid">
-            <a class="kit-card" href="/tutoring-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Tutoring Center SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Fill your tutoring schedule with motivated students and families.</p>
-                <p class="kit-card-value">Enrollment-driven SEO assets · Agency resale rights · 90-day execution plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For tutoring centers</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/music-school-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Music School SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn instrument lesson and vocal coaching searches into enrollments.</p>
-                <p class="kit-card-value">Program-focused content maps · Ready-made prompts · 90-day enrollment roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For music schools</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/art-school-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Art School SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture art class, camp, and workshop seekers in your city.</p>
-                <p class="kit-card-value">Enrollment-driven SEO assets · Agency resale rights · 90-day execution plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For art schools &amp; studios</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/test-prep-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Test Prep SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Dominate SAT, ACT, and exam prep queries in your local market.</p>
-                <p class="kit-card-value">Program-focused content maps · Ready-made prompts · 90-day enrollment roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For test prep centers</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/driving-school-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Driving School SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Own “driving lessons near me” for teens, adults, and road tests.</p>
-                <p class="kit-card-value">Enrollment-driven SEO assets · Agency resale rights · 90-day execution plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For driving schools</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/photo-studio-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Photography Studio SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Turn portrait, brand, and wedding photo searches into bookings.</p>
-                <p class="kit-card-value">Local learner keyword strategy · Resell-ready kit · 90-day growth calendar</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For photo studios</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/video-production-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Video Production SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Capture brand, event, and content video project leads from search.</p>
-                <p class="kit-card-value">Program-focused content maps · Ready-made prompts · 90-day enrollment roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For video studios</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/graphic-design-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Graphic Design Studio SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Attract branding, web, and print design clients searching online.</p>
-                <p class="kit-card-value">Enrollment-driven SEO assets · Agency resale rights · 90-day execution plan</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For design studios</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/coding-bootcamp-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Coding Bootcamp SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Win career-changer students searching for code bootcamps and tech skills.</p>
-                <p class="kit-card-value">Program-focused content maps · Ready-made prompts · 90-day enrollment roadmap</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For bootcamp operators</span>
-              </div>
-            </a>
-
-            <a class="kit-card" href="/language-school-kit.html">
-              <div class="kit-card-header">
-                <h3 class="kit-card-title">Language School SEO System Kit</h3>
-                <span class="kit-card-tag">System Kit</span>
-              </div>
-              <div class="kit-card-body">
-                <p class="kit-card-tagline">Fill classes with students searching to learn new languages locally.</p>
-                <p class="kit-card-value">Local learner keyword strategy · Resell-ready kit · 90-day growth calendar</p>
-              </div>
-              <div class="kit-card-footer">
-                <span class="kit-card-link">View System Kit <span>↗</span></span>
-                <span class="kit-card-meta">For language schools</span>
-              </div>
-            </a>
-          </div>
-        </section>
-      </main>
-
-      <footer>
-        <span>© GPT Product Lab. Niche SEO system kits for serious local agencies.</span>
-        <span>Simple, productized system kits · Built to plug into your existing agency workflow.</span>
-      </footer>
+      </div>
+    </section>
+
+    <div id="catalog" class="catalog-header">
+      <div>
+        <div class="catalog-title">SEO Kit Catalog · Local Niches</div>
+        <div class="catalog-subtitle">
+          Browse by niche category. Every kit includes a full system manual, 90-day SEO plan, templates,
+          and GPT prompt workflows tailored to that niche’s search behavior.
+        </div>
+      </div>
+      <div class="catalog-legend">
+        <div class="catalog-legend-pill">
+          <span class="catalog-legend-pill-dot"></span>
+          Trades &amp; Home Services
+        </div>
+        <div class="catalog-legend-pill">
+          <span class="catalog-legend-pill-dot"></span>
+          Health &amp; Medical · Fitness &amp; Personal
+        </div>
+        <div class="catalog-legend-pill">
+          <span class="catalog-legend-pill-dot"></span>
+          Pets, Food, Real Estate, Education &amp; Creative
+        </div>
+      </div>
     </div>
+
+    <main>
+      <!-- Trades & Home Services -->
+      <section class="category-section">
+        <div class="category-header">
+          <h2 class="category-title">Trades &amp; Home Services</h2>
+          <p class="category-caption">Local-service SEO playbooks for high-intent, call-driven search traffic.</p>
+        </div>
+        <div class="kit-grid">
+          <!-- Auto Repair -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Auto Repair SEO System Kit</h3>
+            <p class="kit-tagline">Unlock hidden repair search traffic and turn “check engine light” searches into booked jobs.</p>
+            <p class="kit-value">Local-service SEO playbooks · Resell-ready system · 90-day implementation plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/auto-kit.html">View System Kit</a>
+              <div class="kit-meta">Repair shops · Service bays · Phone leads</div>
+            </div>
+          </article>
+
+          <!-- HVAC -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">HVAC SEO System Kit</h3>
+            <p class="kit-tagline">Fill your install and maintenance calendar from emergency heat and AC searches.</p>
+            <p class="kit-value">Service-area content templates · Agency license included · 90-day local growth roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/hvac-kit.html">View System Kit</a>
+              <div class="kit-meta">Installs · Repairs · Seasonal tune-ups</div>
+            </div>
+          </article>
+
+          <!-- Plumber -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Plumber SEO System Kit</h3>
+            <p class="kit-tagline">Turn emergency leak and drain searches into same-day plumbing calls.</p>
+            <p class="kit-value">Emergency-call SEO flows · Resellable SOPs · 90-day implementation schedule</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/plumber-kit.html">View System Kit</a>
+              <div class="kit-meta">Burst pipes · Clogs · Water heater jobs</div>
+            </div>
+          </article>
+
+          <!-- Roofing -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Roofing SEO System Kit</h3>
+            <p class="kit-tagline">Dominate storm, hail damage, and replacement searches in your region.</p>
+            <p class="kit-value">Local-service SEO playbooks · Offer-driven pages · 90-day lead surge plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/roofing-kit.html">View System Kit</a>
+              <div class="kit-meta">Insurance claims · Inspections · Full replacements</div>
+            </div>
+          </article>
+
+          <!-- Electrician -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Electrician SEO System Kit</h3>
+            <p class="kit-tagline">Turn “no power” and panel upgrade searches into high-value service calls.</p>
+            <p class="kit-value">Service-area landing pages · Resell-ready system · 90-day implementation plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/electrician-kit.html">View System Kit</a>
+              <div class="kit-meta">Panels · EV chargers · Safety inspections</div>
+            </div>
+          </article>
+
+          <!-- Landscaper -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Landscaper SEO System Kit</h3>
+            <p class="kit-tagline">Capture landscaping, lawn care, and outdoor project searches in key neighborhoods.</p>
+            <p class="kit-value">Local-service SEO playbooks · Upsell-focused offers · 90-day visibility roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/landscaper-kit.html">View System Kit</a>
+              <div class="kit-meta">Maintenance · Design · Seasonal cleanups</div>
+            </div>
+          </article>
+
+          <!-- Home Cleaning -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Home Cleaning SEO System Kit</h3>
+            <p class="kit-tagline">Fill recurring cleaning slots from “house cleaner near me” and deep clean searches.</p>
+            <p class="kit-value">Service menu content · Agency-ready prompts · 90-day booking ramp-up</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/home-cleaning-kit.html">View System Kit</a>
+              <div class="kit-meta">Recurring · Move-out · One-time deep clean</div>
+            </div>
+          </article>
+
+          <!-- Pest Control -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Pest Control SEO System Kit</h3>
+            <p class="kit-tagline">Turn pest, termite, and rodent searches into monthly treatment contracts.</p>
+            <p class="kit-value">Local-service SEO playbooks · Emergency response flows · 90-day pipeline plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/pest-control-kit.html">View System Kit</a>
+              <div class="kit-meta">Termites · Rodents · Quarterly plans</div>
+            </div>
+          </article>
+
+          <!-- Handyman -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Handyman SEO System Kit</h3>
+            <p class="kit-tagline">Organize long-tail “small job” searches into profitable handyman workdays.</p>
+            <p class="kit-value">Service-area content templates · Resell-ready system · 90-day lead clustering plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/handyman-kit.html">View System Kit</a>
+              <div class="kit-meta">Odd jobs · Punch lists · Rental turns</div>
+            </div>
+          </article>
+
+          <!-- Flooring Contractor -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Flooring Contractor SEO System Kit</h3>
+            <p class="kit-tagline">Capture replacement and remodel searches for hardwood, tile, and luxury vinyl.</p>
+            <p class="kit-value">Offer-driven pages · Agency license included · 90-day project pipeline roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/flooring-kit.html">View System Kit</a>
+              <div class="kit-meta">Residential · Commercial · Showroom leads</div>
+            </div>
+          </article>
+
+          <!-- Window & Glass -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Window &amp; Glass SEO System Kit</h3>
+            <p class="kit-tagline">Turn replacement, fogged, and broken window searches into steady installs.</p>
+            <p class="kit-value">Local-service SEO playbooks · Resellable system kit · 90-day quote volume plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/window-glass-kit.html">View System Kit</a>
+              <div class="kit-meta">Retrofits · New construction · Repair</div>
+            </div>
+          </article>
+
+          <!-- Painter -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Painter SEO System Kit</h3>
+            <p class="kit-tagline">Dominate interior, exterior, and cabinet painting searches in target zip codes.</p>
+            <p class="kit-value">Service-area content templates · Agency-ready GPT prompts · 90-day booking roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/painter-kit.html">View System Kit</a>
+              <div class="kit-meta">Residential repaints · Commercial bids</div>
+            </div>
+          </article>
+
+          <!-- Garage Door -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Garage Door SEO System Kit</h3>
+            <p class="kit-tagline">Convert broken spring and opener repair searches into urgent service calls.</p>
+            <p class="kit-value">Emergency-call SEO flows · Resell-ready system · 90-day dispatch plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/garage-door-kit.html">View System Kit</a>
+              <div class="kit-meta">Repairs · New doors · Opener installs</div>
+            </div>
+          </article>
+
+          <!-- Pool Service -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Pool Service SEO System Kit</h3>
+            <p class="kit-tagline">Fill recurring pool cleaning and maintenance routes from local search.</p>
+            <p class="kit-value">Local-service SEO playbooks · Membership-focused flows · 90-day route growth plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/pool-service-kit.html">View System Kit</a>
+              <div class="kit-meta">Cleanings · Openings &amp; closings · Repairs</div>
+            </div>
+          </article>
+
+          <!-- Solar Installer -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Solar Installer SEO System Kit</h3>
+            <p class="kit-tagline">Turn solar research and quote searches into qualified install appointments.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Agency license included · 90-day project pipeline roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/solar-kit.html">View System Kit</a>
+              <div class="kit-meta">Residential arrays · Storage · Financing</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Health & Medical -->
+      <section class="category-section">
+        <div class="category-header">
+          <h2 class="category-title">Health &amp; Medical</h2>
+          <p class="category-caption">Patient-focused SEO systems for clinics, practices, and health providers.</p>
+        </div>
+        <div class="kit-grid">
+          <!-- Chiropractor -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Chiropractor SEO System Kit</h3>
+            <p class="kit-tagline">Bring in more new-patient calls from chronic pain and injury searches.</p>
+            <p class="kit-value">Patient-focused SEO workflows · Agency license included · 90-day growth plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/chiro-kit.html">View System Kit</a>
+              <div class="kit-meta">Adjustments · Auto accidents · Sports injuries</div>
+            </div>
+          </article>
+
+          <!-- Massage Therapist -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Massage Therapist SEO System Kit</h3>
+            <p class="kit-tagline">Keep your massage table fully booked with relaxation and pain relief searches.</p>
+            <p class="kit-value">Patient-focused SEO workflows · Resell-ready system · 90-day session-fill roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/massage-kit.html">View System Kit</a>
+              <div class="kit-meta">Relaxation · Sports massage · Packages</div>
+            </div>
+          </article>
+
+          <!-- Dentist -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Dentist SEO System Kit</h3>
+            <p class="kit-tagline">Attract more high-value cosmetic, implant, and family dentistry cases.</p>
+            <p class="kit-value">Treatment-line SEO flows · Agency-ready prompts · 90-day new patient plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/dentist-kit.html">View System Kit</a>
+              <div class="kit-meta">Emergency · Cosmetic · Implants</div>
+            </div>
+          </article>
+
+          <!-- Physical Therapy -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Physical Therapy SEO System Kit</h3>
+            <p class="kit-tagline">Capture rehab and mobility keyword intent and convert to PT treatment plans.</p>
+            <p class="kit-value">Patient-focused SEO workflows · Referral-friendly content · 90-day caseload growth plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/physical-therapy-kit.html">View System Kit</a>
+              <div class="kit-meta">Post-surgery · Sports rehab · Chronic pain</div>
+            </div>
+          </article>
+
+          <!-- Podiatrist -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Podiatrist SEO System Kit</h3>
+            <p class="kit-tagline">Own foot, ankle, and diabetic foot care searches in your service area.</p>
+            <p class="kit-value">Condition-specific content flows · Agency license included · 90-day appointment plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/podiatrist-kit.html">View System Kit</a>
+              <div class="kit-meta">Heel pain · Surgery · Diabetic care</div>
+            </div>
+          </article>
+
+          <!-- Optometrist -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Optometrist SEO System Kit</h3>
+            <p class="kit-tagline">Turn eye exam and glasses searches into recurring vision patients.</p>
+            <p class="kit-value">Patient-focused SEO workflows · Resellable system kit · 90-day recall &amp; retention plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/optometrist-kit.html">View System Kit</a>
+              <div class="kit-meta">Eye exams · Contacts · Medical visits</div>
+            </div>
+          </article>
+
+          <!-- Medical Spa -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Medical Spa SEO System Kit</h3>
+            <p class="kit-tagline">Capture med spa, injectables, and skin treatment search demand locally.</p>
+            <p class="kit-value">Offer-led landing pages · Agency-ready prompts · 90-day booking runway</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/medspa-kit.html">View System Kit</a>
+              <div class="kit-meta">Injectables · Facials · Memberships</div>
+            </div>
+          </article>
+
+          <!-- Urgent Care -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Urgent Care SEO System Kit</h3>
+            <p class="kit-tagline">Turn “urgent care near me” searches into walk-in visits in real time.</p>
+            <p class="kit-value">Patient-focused SEO workflows · Resell-ready system · 90-day visit volume plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/urgent-care-kit.html">View System Kit</a>
+              <div class="kit-meta">Injuries · Illness · After-hours care</div>
+            </div>
+          </article>
+
+          <!-- Primary Care -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Primary Care SEO System Kit</h3>
+            <p class="kit-tagline">Grow active patient panels through family doctor and PCP searches.</p>
+            <p class="kit-value">Patient-focused SEO workflows · Agency license included · 90-day panel growth plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/primary-care-kit.html">View System Kit</a>
+              <div class="kit-meta">Adults · Families · Preventive care</div>
+            </div>
+          </article>
+
+          <!-- Psychologist -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Psychologist SEO System Kit</h3>
+            <p class="kit-tagline">Connect with clients searching for therapy, testing, and mental health support.</p>
+            <p class="kit-value">Condition-aware content flows · Resell-ready system · 90-day inquiry growth roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/psychologist-kit.html">View System Kit</a>
+              <div class="kit-meta">Testing · Therapy · Private practice</div>
+            </div>
+          </article>
+
+          <!-- Counselor & Therapist -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Counselor &amp; Therapist SEO System Kit</h3>
+            <p class="kit-tagline">Make sure local counseling and therapy searches find the right providers.</p>
+            <p class="kit-value">Patient-focused SEO workflows · Agency license included · 90-day caseload plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/counselor-therapist-kit.html">View System Kit</a>
+              <div class="kit-meta">Individual · Couples · Group therapy</div>
+            </div>
+          </article>
+
+          <!-- Orthodontist -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Orthodontist SEO System Kit</h3>
+            <p class="kit-tagline">Capture braces and clear aligner searches for teens and adults.</p>
+            <p class="kit-value">Treatment-focused SEO flows · Resellable system kit · 90-day consult growth plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/orthodontist-kit.html">View System Kit</a>
+              <div class="kit-meta">Braces · Clear aligners · Retainers</div>
+            </div>
+          </article>
+
+          <!-- Dermatologist -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Dermatologist SEO System Kit</h3>
+            <p class="kit-tagline">Turn skin, acne, and cosmetic dermatology searches into booked visits.</p>
+            <p class="kit-value">Condition-based content workflows · Agency-ready prompts · 90-day new patient roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/dermatologist-kit.html">View System Kit</a>
+              <div class="kit-meta">Medical · Cosmetic · Procedures</div>
+            </div>
+          </article>
+
+          <!-- Allergy Clinic -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Allergy Clinic SEO System Kit</h3>
+            <p class="kit-tagline">Capture seasonal and chronic allergy searches before peak season hits.</p>
+            <p class="kit-value">Patient-focused SEO workflows · Resell-ready system · 90-day scheduling plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/allergy-clinic-kit.html">View System Kit</a>
+              <div class="kit-meta">Testing · Shots · Ongoing care</div>
+            </div>
+          </article>
+
+          <!-- Weight Loss Clinic -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Weight Loss Clinic SEO System Kit</h3>
+            <p class="kit-tagline">Turn medically supervised weight loss and program searches into consults.</p>
+            <p class="kit-value">Patient journey content · Agency license included · 90-day growth plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/weight-loss-clinic-kit.html">View System Kit</a>
+              <div class="kit-meta">Programs · Medication · Coaching</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Fitness & Personal Services -->
+      <section class="category-section">
+        <div class="category-header">
+          <h2 class="category-title">Fitness &amp; Personal Services</h2>
+          <p class="category-caption">SEO systems tuned for memberships, bookings, and personal services.</p>
+        </div>
+        <div class="kit-grid">
+          <!-- Gym & Trainer -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Gym &amp; Trainer SEO System Kit</h3>
+            <p class="kit-tagline">Convert local fitness and gym searches into long-term memberships.</p>
+            <p class="kit-value">Demand-driving local content · Agency-ready GPT prompts · 90-day SEO roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/gym-kit.html">View System Kit</a>
+              <div class="kit-meta">Memberships · PT packages · Trials</div>
+            </div>
+          </article>
+
+          <!-- Yoga Studio -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Yoga Studio SEO System Kit</h3>
+            <p class="kit-tagline">Fill your yoga classes from “yoga near me” and beginner search intent.</p>
+            <p class="kit-value">Demand-driving local content · Resell-ready system · 90-day class-fill plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/yoga-studio-kit.html">View System Kit</a>
+              <div class="kit-meta">Drop-ins · Memberships · Workshops</div>
+            </div>
+          </article>
+
+          <!-- Pilates Studio -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Pilates Studio SEO System Kit</h3>
+            <p class="kit-tagline">Attract reformer and mat Pilates clients searching for core-focused training.</p>
+            <p class="kit-value">Offer-led landing pages · Agency-ready prompts · 90-day membership roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/pilates-studio-kit.html">View System Kit</a>
+              <div class="kit-meta">Group classes · Privates · Packages</div>
+            </div>
+          </article>
+
+          <!-- Martial Arts -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Martial Arts SEO System Kit</h3>
+            <p class="kit-tagline">Convert kids, adults, and self-defense searches into recurring students.</p>
+            <p class="kit-value">Demand-driving local content · Resellable system kit · 90-day enrollment plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/martial-arts-kit.html">View System Kit</a>
+              <div class="kit-meta">Kids programs · Adults · Belt paths</div>
+            </div>
+          </article>
+
+          <!-- CrossFit Box -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">CrossFit Box SEO System Kit</h3>
+            <p class="kit-tagline">Own “CrossFit near me” and functional fitness searches in your area.</p>
+            <p class="kit-value">Demand-driving local content · Agency license included · 90-day membership ramp</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/crossfit-box-kit.html">View System Kit</a>
+              <div class="kit-meta">Intro programs · WOD fans · Community</div>
+            </div>
+          </article>
+
+          <!-- Dance Studio -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Dance Studio SEO System Kit</h3>
+            <p class="kit-tagline">Fill youth and adult dance classes from local discovery searches.</p>
+            <p class="kit-value">Enrollment-focused pages · Agency-ready prompts · 90-day registration roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/dance-studio-kit.html">View System Kit</a>
+              <div class="kit-meta">Kids classes · Recitals · Camps</div>
+            </div>
+          </article>
+
+          <!-- Personal Stylist -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Personal Stylist SEO System Kit</h3>
+            <p class="kit-tagline">Turn wardrobe, styling, and image search intent into high-ticket clients.</p>
+            <p class="kit-value">Demand-driving local content · Resell-ready system · 90-day lead pipeline plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/personal-stylist-kit.html">View System Kit</a>
+              <div class="kit-meta">Closet edits · Shopping · Personal brand</div>
+            </div>
+          </article>
+
+          <!-- Wellness Coach -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Wellness Coach SEO System Kit</h3>
+            <p class="kit-tagline">Capture holistic health and lifestyle coaching searches across your market.</p>
+            <p class="kit-value">Authority-building content flows · Agency license included · 90-day discovery plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/wellness-coach-kit.html">View System Kit</a>
+              <div class="kit-meta">Habit change · Accountability · Online options</div>
+            </div>
+          </article>
+
+          <!-- Life Coach -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Life Coach SEO System Kit</h3>
+            <p class="kit-tagline">Turn goal, career, and clarity searches into ongoing coaching clients.</p>
+            <p class="kit-value">Demand-driving local content · Resellable system kit · 90-day pipeline roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/life-coach-kit.html">View System Kit</a>
+              <div class="kit-meta">1:1 coaching · Groups · Programs</div>
+            </div>
+          </article>
+
+          <!-- Tanning Studio -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Tanning Studio SEO System Kit</h3>
+            <p class="kit-tagline">Capture spray tan and tanning bed searches ahead of busy seasons.</p>
+            <p class="kit-value">Demand-driving local content · Agency-ready prompts · 90-day booking boost plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/tanning-studio-kit.html">View System Kit</a>
+              <div class="kit-meta">Memberships · Single sessions · Packages</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Pets & Animal Services -->
+      <section class="category-section">
+        <div class="category-header">
+          <h2 class="category-title">Pets &amp; Animal Services</h2>
+          <p class="category-caption">Pet-owner journeys mapped into SEO, content, and review systems.</p>
+        </div>
+        <div class="kit-grid">
+          <!-- Pet Groomer -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Pet Groomer SEO System Kit</h3>
+            <p class="kit-tagline">Own local “pet grooming near me” and fill your grooming calendar.</p>
+            <p class="kit-value">Pet-owner search journeys · Resellable system kit · 90-day visibility plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/groomer-kit.html">View System Kit</a>
+              <div class="kit-meta">Baths · Haircuts · Add-on services</div>
+            </div>
+          </article>
+
+          <!-- Veterinary Clinic -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Veterinary Clinic SEO System Kit</h3>
+            <p class="kit-tagline">Turn urgent and routine vet searches into lifetime pet clients.</p>
+            <p class="kit-value">Pet-owner search journeys · Agency license included · 90-day new client plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/vet-clinic-kit.html">View System Kit</a>
+              <div class="kit-meta">Wellness · Emergency · Surgery</div>
+            </div>
+          </article>
+
+          <!-- Dog Walker -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Dog Walker SEO System Kit</h3>
+            <p class="kit-tagline">Capture daily dog walking and mid-day visit search demand.</p>
+            <p class="kit-value">Pet-owner search journeys · Resell-ready system · 90-day route fill roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/dog-walker-kit.html">View System Kit</a>
+              <div class="kit-meta">Recurring walks · Drop-ins · Packages</div>
+            </div>
+          </article>
+
+          <!-- Dog Trainer -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Dog Trainer SEO System Kit</h3>
+            <p class="kit-tagline">Turn obedience, puppy, and behavior search intent into training clients.</p>
+            <p class="kit-value">Pet-owner search journeys · Resellable system kit · 90-day enrollment plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/dog-trainer-kit.html">View System Kit</a>
+              <div class="kit-meta">Group classes · Private lessons · Board &amp; train</div>
+            </div>
+          </article>
+
+          <!-- Pet Boarding -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Pet Boarding SEO System Kit</h3>
+            <p class="kit-tagline">Capture holiday and vacation boarding searches before peak demand.</p>
+            <p class="kit-value">Pet-owner search journeys · Agency license included · 90-day occupancy plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/pet-boarding-kit.html">View System Kit</a>
+              <div class="kit-meta">Boarding · Suites · Premium add-ons</div>
+            </div>
+          </article>
+
+          <!-- Equine Services -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Equine Services SEO System Kit</h3>
+            <p class="kit-tagline">Reach horse owners searching for boarding, training, and lessons.</p>
+            <p class="kit-value">Pet-owner search journeys · Resell-ready system · 90-day barn capacity roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/equine-services-kit.html">View System Kit</a>
+              <div class="kit-meta">Boarding · Training · Clinics</div>
+            </div>
+          </article>
+
+          <!-- Mobile Groomer -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Mobile Groomer SEO System Kit</h3>
+            <p class="kit-tagline">Dominate mobile pet grooming and “we come to you” searches.</p>
+            <p class="kit-value">Pet-owner search journeys · Resellable system kit · 90-day route optimization plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/mobile-groomer-kit.html">View System Kit</a>
+              <div class="kit-meta">House calls · Busy professionals · Seniors</div>
+            </div>
+          </article>
+
+          <!-- Pet Sitter -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Pet Sitter SEO System Kit</h3>
+            <p class="kit-tagline">Turn in-home pet sitting searches into loyal, recurring clients.</p>
+            <p class="kit-value">Pet-owner search journeys · Agency license included · 90-day client roster plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/pet-sitter-kit.html">View System Kit</a>
+              <div class="kit-meta">Overnights · Drop-ins · Medication</div>
+            </div>
+          </article>
+
+          <!-- Exotic Pet -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Exotic Pet SEO System Kit</h3>
+            <p class="kit-tagline">Reach exotic pet owners searching for specialty care and services.</p>
+            <p class="kit-value">Pet-owner search journeys · Resell-ready system · 90-day niche visibility plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/exotic-pet-kit.html">View System Kit</a>
+              <div class="kit-meta">Reptiles · Birds · Small mammals</div>
+            </div>
+          </article>
+
+          <!-- Pet Adoption -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Pet Adoption SEO System Kit</h3>
+            <p class="kit-tagline">Connect local adopters with rescues and shelters searching for homes.</p>
+            <p class="kit-value">Cause-driven content flows · Agency license included · 90-day adoption awareness plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/pet-adoption-kit.html">View System Kit</a>
+              <div class="kit-meta">Rescues · Shelters · Foster programs</div>
+            </div>
+          </article>
+
+          <!-- Pet Daycare -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Pet Daycare SEO System Kit</h3>
+            <p class="kit-tagline">Fill weekday daycare slots from busy pet parent searches.</p>
+            <p class="kit-value">Pet-owner search journeys · Resellable system kit · 90-day enrollment roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/pet-daycare-kit.html">View System Kit</a>
+              <div class="kit-meta">Daycare · Playgroups · Packages</div>
+            </div>
+          </article>
+
+          <!-- Aquarium Services -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Aquarium Services SEO System Kit</h3>
+            <p class="kit-tagline">Turn aquarium maintenance and installation searches into service routes.</p>
+            <p class="kit-value">Pet-owner search journeys · Resell-ready system · 90-day route build-out plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/aquarium-services-kit.html">View System Kit</a>
+              <div class="kit-meta">Residential · Commercial · Custom builds</div>
+            </div>
+          </article>
+
+          <!-- Farm & Feed -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Farm &amp; Feed SEO System Kit</h3>
+            <p class="kit-tagline">Reach small farms and hobbyists searching for feed, fencing, and supplies.</p>
+            <p class="kit-value">Pet-owner &amp; farm journeys · Agency license included · 90-day local visibility plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/farm-feed-kit.html">View System Kit</a>
+              <div class="kit-meta">Feed · Supplies · Equipment</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Food & Hospitality -->
+      <section class="category-section">
+        <div class="category-header">
+          <h2 class="category-title">Food &amp; Hospitality</h2>
+          <p class="category-caption">Reservation and order-focused SEO flows for food, drink, and venues.</p>
+        </div>
+        <div class="kit-grid">
+          <!-- Restaurant -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Restaurant SEO System Kit</h3>
+            <p class="kit-tagline">Turn “restaurant near me” searches into consistent reservations and covers.</p>
+            <p class="kit-value">Reservation-focused SEO flows · Agency license · 90-day content calendar</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/restaurant-kit.html">View System Kit</a>
+              <div class="kit-meta">Dine-in · Reservations · Private events</div>
+            </div>
+          </article>
+
+          <!-- Café & Coffee Shop -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Café &amp; Coffee Shop SEO System Kit</h3>
+            <p class="kit-tagline">Capture daily coffee and remote-work search traffic in your neighborhood.</p>
+            <p class="kit-value">Reservation-focused SEO flows · Resell-ready system · 90-day local discovery plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/cafe-coffee-kit.html">View System Kit</a>
+              <div class="kit-meta">Specialty drinks · Loyalty · Events</div>
+            </div>
+          </article>
+
+          <!-- Food Truck -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Food Truck SEO System Kit</h3>
+            <p class="kit-tagline">Help hungry locals find your truck, route, and event schedule.</p>
+            <p class="kit-value">Location-aware content flows · Agency license included · 90-day demand plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/food-truck-kit.html">View System Kit</a>
+              <div class="kit-meta">Locations · Events · Catering</div>
+            </div>
+          </article>
+
+          <!-- Catering -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Catering SEO System Kit</h3>
+            <p class="kit-tagline">Turn wedding and corporate catering searches into booked events.</p>
+            <p class="kit-value">Reservation-focused SEO flows · Resell-ready system · 90-day event pipeline plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/catering-kit.html">View System Kit</a>
+              <div class="kit-meta">Weddings · Corporate · Private parties</div>
+            </div>
+          </article>
+
+          <!-- Bakery -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Bakery SEO System Kit</h3>
+            <p class="kit-tagline">Capture cake, pastry, and custom order searches in your city.</p>
+            <p class="kit-value">Reservation-focused SEO flows · Agency license · 90-day content calendar</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/bakery-kit.html">View System Kit</a>
+              <div class="kit-meta">Custom cakes · Daily pastries · Holidays</div>
+            </div>
+          </article>
+
+          <!-- Bar & Nightlife -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Bar &amp; Nightlife SEO System Kit</h3>
+            <p class="kit-tagline">Own “bars near me” and nightlife searches for your scene.</p>
+            <p class="kit-value">Event and offer flows · Resell-ready system · 90-day foot traffic roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/bar-nightlife-kit.html">View System Kit</a>
+              <div class="kit-meta">Happy hour · Events · Reservations</div>
+            </div>
+          </article>
+
+          <!-- Juice Bar -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Juice Bar SEO System Kit</h3>
+            <p class="kit-tagline">Turn smoothie and juice searches into repeat healthy customers.</p>
+            <p class="kit-value">Reservation-focused SEO flows · Agency license included · 90-day loyalty plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/juice-bar-kit.html">View System Kit</a>
+              <div class="kit-meta">Smoothies · Bowls · Subscriptions</div>
+            </div>
+          </article>
+
+          <!-- Ghost Kitchen -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Ghost Kitchen SEO System Kit</h3>
+            <p class="kit-tagline">Help delivery-first brands surface in local food and app-related searches.</p>
+            <p class="kit-value">Delivery-focused content flows · Resell-ready system · 90-day demand roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/ghost-kitchen-kit.html">View System Kit</a>
+              <div class="kit-meta">Multi brand · Delivery-only concepts</div>
+            </div>
+          </article>
+
+          <!-- Ice Cream Shop -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Ice Cream Shop SEO System Kit</h3>
+            <p class="kit-tagline">Capture seasonal and family dessert searches all year long.</p>
+            <p class="kit-value">Reservation-focused SEO flows · Agency license included · 90-day seasonal plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/ice-cream-shop-kit.html">View System Kit</a>
+              <div class="kit-meta">Walk-up · Take-home · Events</div>
+            </div>
+          </article>
+
+          <!-- Fine Dining -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Fine Dining SEO System Kit</h3>
+            <p class="kit-tagline">Turn high-intent fine dining and anniversary searches into booked tables.</p>
+            <p class="kit-value">Reservation-focused SEO flows · Resell-ready system · 90-day high-value covers plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/fine-dining-kit.html">View System Kit</a>
+              <div class="kit-meta">Tasting menus · Wine pairings · Events</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Real Estate & Professional Services -->
+      <section class="category-section">
+        <div class="category-header">
+          <h2 class="category-title">Real Estate &amp; Professional Services</h2>
+          <p class="category-caption">Lead-generation SEO funnels for deals, retainers, and long-term clients.</p>
+        </div>
+        <div class="kit-grid">
+          <!-- Real Estate Agent -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Real Estate Agent SEO System Kit</h3>
+            <p class="kit-tagline">Capture motivated buyer and seller leads from local real estate searches.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Done-for-you prompts · 90-day deal flow roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/realestate-kit.html">View System Kit</a>
+              <div class="kit-meta">Listings · Buyers · Sellers</div>
+            </div>
+          </article>
+
+          <!-- Mortgage Broker -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Mortgage Broker SEO System Kit</h3>
+            <p class="kit-tagline">Turn rate and pre-approval searches into qualified mortgage inquiries.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Agency license included · 90-day pipeline plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/mortgage-broker-kit.html">View System Kit</a>
+              <div class="kit-meta">Pre-approvals · Refinances · Purchases</div>
+            </div>
+          </article>
+
+          <!-- Insurance Agency -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Insurance Agency SEO System Kit</h3>
+            <p class="kit-tagline">Own home, auto, and business insurance searches in your region.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Resellable system kit · 90-day quote volume plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/insurance-agency-kit.html">View System Kit</a>
+              <div class="kit-meta">Personal · Commercial · Specialty</div>
+            </div>
+          </article>
+
+          <!-- Accounting Firm -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Accounting Firm SEO System Kit</h3>
+            <p class="kit-tagline">Turn tax, bookkeeping, and advisory searches into recurring engagements.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Done-for-you prompts · 90-day client roster plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/accounting-firm-kit.html">View System Kit</a>
+              <div class="kit-meta">Tax season · Monthly books · Advisory</div>
+            </div>
+          </article>
+
+          <!-- Law Firm -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Law Firm SEO System Kit</h3>
+            <p class="kit-tagline">Capture high-intent legal searches for your practice areas.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Agency license included · 90-day case pipeline roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/law-firm-kit.html">View System Kit</a>
+              <div class="kit-meta">Injury · Family · Business law</div>
+            </div>
+          </article>
+
+          <!-- Marketing Agency -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Marketing Agency SEO System Kit</h3>
+            <p class="kit-tagline">Turn “marketing agency near me” searches into multi-service retainers.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Resell-ready system · 90-day opportunity roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/marketing-agency-kit.html">View System Kit</a>
+              <div class="kit-meta">Local brands · B2B · Niche clients</div>
+            </div>
+          </article>
+
+          <!-- Consultant -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Consultant SEO System Kit</h3>
+            <p class="kit-tagline">Help specialized consultants get found by the right decision makers.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Done-for-you prompts · 90-day authority plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/consultant-kit.html">View System Kit</a>
+              <div class="kit-meta">Strategy · Operations · Fractional roles</div>
+            </div>
+          </article>
+
+          <!-- Architect -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Architect SEO System Kit</h3>
+            <p class="kit-tagline">Turn design, renovation, and custom home searches into consults.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Agency license included · 90-day project pipeline plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/architect-kit.html">View System Kit</a>
+              <div class="kit-meta">Residential · Commercial · Remodels</div>
+            </div>
+          </article>
+
+          <!-- Engineer & Surveyor -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Engineer &amp; Surveyor SEO System Kit</h3>
+            <p class="kit-tagline">Capture engineering and land survey searches for projects and permits.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Resell-ready system · 90-day RFQ roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/engineer-surveyor-kit.html">View System Kit</a>
+              <div class="kit-meta">Civil · Structural · Land surveys</div>
+            </div>
+          </article>
+
+          <!-- Staffing Agency -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Staffing Agency SEO System Kit</h3>
+            <p class="kit-tagline">Turn hiring and temp staffing searches into employer and candidate flow.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Agency license included · 90-day job order plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/staffing-agency-kit.html">View System Kit</a>
+              <div class="kit-meta">Light industrial · Office · Specialized</div>
+            </div>
+          </article>
+
+          <!-- Security Company -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Security Company SEO System Kit</h3>
+            <p class="kit-tagline">Capture security system and guard service searches in your territory.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Resellable system kit · 90-day contract pipeline roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/security-company-kit.html">View System Kit</a>
+              <div class="kit-meta">Alarm · Monitoring · On-site guards</div>
+            </div>
+          </article>
+
+          <!-- Commercial Cleaning -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Commercial Cleaning SEO System Kit</h3>
+            <p class="kit-tagline">Turn janitorial and commercial cleaning searches into long-term contracts.</p>
+            <p class="kit-value">Lead-generation SEO funnels · Done-for-you prompts · 90-day contract win plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/commercial-cleaning-kit.html">View System Kit</a>
+              <div class="kit-meta">Office · Medical · Industrial</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Education & Creative -->
+      <section class="category-section">
+        <div class="category-header">
+          <h2 class="category-title">Education &amp; Creative</h2>
+          <p class="category-caption">Enrollment-driven SEO assets for schools, studios, and creative shops.</p>
+        </div>
+        <div class="kit-grid">
+          <!-- Tutoring Center -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Tutoring Center SEO System Kit</h3>
+            <p class="kit-tagline">Capture parents searching for academic support and test prep help.</p>
+            <p class="kit-value">Enrollment-driven SEO assets · Agency resale rights · 90-day execution plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/tutoring-center-kit.html">View System Kit</a>
+              <div class="kit-meta">K–12 · College prep · Small groups</div>
+            </div>
+          </article>
+
+          <!-- Music School -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Music School SEO System Kit</h3>
+            <p class="kit-tagline">Fill lesson schedules from instrument and vocal lesson searches.</p>
+            <p class="kit-value">Enrollment-driven SEO assets · Resellable system kit · 90-day student growth plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/music-school-kit.html">View System Kit</a>
+              <div class="kit-meta">Piano · Guitar · Voice · Bands</div>
+            </div>
+          </article>
+
+          <!-- Art School -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Art School SEO System Kit</h3>
+            <p class="kit-tagline">Turn art class and camp searches into enrolled students.</p>
+            <p class="kit-value">Enrollment-driven SEO assets · Agency resale rights · 90-day enrollment roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/art-school-kit.html">View System Kit</a>
+              <div class="kit-meta">Kids programs · Adults · Camps</div>
+            </div>
+          </article>
+
+          <!-- Test Prep -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Test Prep SEO System Kit</h3>
+            <p class="kit-tagline">Capture exam, SAT, and standardized test search demand.</p>
+            <p class="kit-value">Enrollment-driven SEO assets · Agency resale rights · 90-day score-boost roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/test-prep-kit.html">View System Kit</a>
+              <div class="kit-meta">SAT · ACT · Grad tests</div>
+            </div>
+          </article>
+
+          <!-- Driving School -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Driving School SEO System Kit</h3>
+            <p class="kit-tagline">Turn “driving lessons” searches into full class rosters.</p>
+            <p class="kit-value">Enrollment-driven SEO assets · Resell-ready system · 90-day class-fill plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/driving-school-kit.html">View System Kit</a>
+              <div class="kit-meta">Teens · Adults · Road test prep</div>
+            </div>
+          </article>
+
+          <!-- Photography Studio -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Photography Studio SEO System Kit</h3>
+            <p class="kit-tagline">Capture portrait, branding, and event photography searches.</p>
+            <p class="kit-value">Creative-service SEO flows · Agency resale rights · 90-day booking roadmap</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/photography-studio-kit.html">View System Kit</a>
+              <div class="kit-meta">Families · Weddings · Brand shoots</div>
+            </div>
+          </article>
+
+          <!-- Video Production -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Video Production SEO System Kit</h3>
+            <p class="kit-tagline">Turn corporate and creative video searches into production projects.</p>
+            <p class="kit-value">Creative-service SEO flows · Agency resale rights · 90-day project pipeline plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/video-production-kit.html">View System Kit</a>
+              <div class="kit-meta">Brand films · Events · Social content</div>
+            </div>
+          </article>
+
+          <!-- Graphic Design Studio -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Graphic Design Studio SEO System Kit</h3>
+            <p class="kit-tagline">Connect local brands searching for logos, branding, and design support.</p>
+            <p class="kit-value">Creative-service SEO flows · Resellable system kit · 90-day client roster plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/graphic-design-studio-kit.html">View System Kit</a>
+              <div class="kit-meta">Logos · Brand kits · Retainers</div>
+            </div>
+          </article>
+
+          <!-- Coding Bootcamp -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Coding Bootcamp SEO System Kit</h3>
+            <p class="kit-tagline">Turn coding bootcamp and career-change searches into enrollments.</p>
+            <p class="kit-value">Enrollment-driven SEO assets · Agency resale rights · 90-day cohort fill plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/coding-bootcamp-kit.html">View System Kit</a>
+              <div class="kit-meta">Full-time · Part-time · Online</div>
+            </div>
+          </article>
+
+          <!-- Language School -->
+          <article class="kit-card">
+            <div class="kit-type">System Kit</div>
+            <h3 class="kit-name">Language School SEO System Kit</h3>
+            <p class="kit-tagline">Capture language class and fluency search intent across your city.</p>
+            <p class="kit-value">Enrollment-driven SEO assets · Agency resale rights · 90-day enrollment execution plan</p>
+            <div class="kit-footer">
+              <a class="kit-link" href="/language-school-kit.html">View System Kit</a>
+              <div class="kit-meta">Adults · Kids · Test prep</div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>GPT Product Lab · Niche SEO system kits for agencies</div>
+      <div>Simple, productized pricing · Resell-ready assets · Built for repeatable delivery</div>
+    </footer>
   </div>
 </body>
 </html>
