@@ -1,948 +1,1426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>GPT Product Lab – AI SEO Systems for Local Businesses</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <title>GPT Product Lab &mdash; Niche SEO System Kits</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
-      --bg: #050816;
-      --bg-alt: #101528;
-      --accent: #ffb22c;
-      --accent-soft: rgba(255, 178, 44, 0.14);
-      --text: #f5f7ff;
-      --muted: #a0a4b8;
-      --border: #262c45;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.4);
-      --radius-lg: 18px;
-      --radius-xl: 26px;
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card-bg: #0b1220;
+      --border-subtle: #1e293b;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --badge-available: #22c55e;
+      --badge-soon: #f97316;
+      --btn-disabled: #4b5563;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #20284a 0, #050816 45%, #02030a 100%);
-      color: var(--text);
+      background: radial-gradient(circle at top, #1e293b 0, #020617 40%, #020617 100%);
+      color: var(--text-main);
       line-height: 1.5;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page-wrap {
-      max-width: 1120px;
+    .page {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 20px 16px 72px;
+      padding: 1.5rem 1.25rem 3rem;
     }
 
-    /* NAV */
-    .nav {
+    header {
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .logo-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 4px 16px;
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
 
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 12px;
-      background: radial-gradient(circle at top, #ffb22c, #ff8f2c);
-      box-shadow: 0 0 20px rgba(255,178,44,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1rem;
-      color: #1d1308;
-    }
-
-    .nav-title {
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    .nav-subtitle {
-      font-size: 0.7rem;
-      color: var(--muted);
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .nav-right {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .nav-link {
-      padding: 6px 10px;
+      font-size: 0.9rem;
+      padding: 0.35rem 0.75rem;
       border-radius: 999px;
-      border: 1px solid transparent;
-      cursor: pointer;
-    }
-
-    .nav-link:hover {
-      border-color: rgba(255,255,255,0.2);
-      color: var(--text);
-    }
-
-    .nav-link.primary {
-      border-color: rgba(255,178,44,0.5);
-      background: rgba(255,178,44,0.06);
-      color: var(--accent);
-    }
-
-    /* HERO */
-    header.hero {
-      margin-top: 16px;
-      margin-bottom: 32px;
-      padding: 20px 18px 22px;
-      border-radius: var(--radius-xl);
-      background: radial-gradient(circle at top left, rgba(255,178,44,0.16), rgba(8,10,28,0.97));
-      border: 1px solid rgba(255,178,44,0.22);
-      box-shadow: var(--shadow-soft);
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 26px;
-      align-items: center;
-    }
-
-    @media (max-width: 860px) {
-      header.hero {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(8,11,30,0.9);
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .hero-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #21f3a3;
-      box-shadow: 0 0 10px rgba(33,243,163,0.9);
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
     }
 
     .hero-title {
-      font-size: clamp(2.1rem, 3vw + 1rem, 2.8rem);
-      line-height: 1.1;
-      margin: 0 0 10px;
-    }
-
-    .hero-title span.accent {
-      color: var(--accent);
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
     }
 
     .hero-subtitle {
+      color: var(--text-muted);
       font-size: 0.98rem;
-      color: var(--muted);
-      max-width: 540px;
-      margin-bottom: 12px;
-    }
-
-    .hero-subtitle strong {
-      color: var(--text);
-    }
-
-    .hero-bullets {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
-      gap: 8px 18px;
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    @media (max-width: 640px) {
-      .hero-bullets {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .hero-bullets span {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-    }
-
-    .hero-bullets span::before {
-      content: "✓";
-      font-weight: 600;
-      color: var(--accent);
-      margin-top: 1px;
-    }
-
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-top: 4px;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 20px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #ffb22c, #ff8f2c);
-      color: #201208;
-      font-weight: 600;
-      font-size: 0.94rem;
-      border: none;
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
-      cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .btn-primary span.arrow {
-      margin-left: 8px;
-      font-size: 1.05rem;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.02);
-      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.7);
-    }
-
-    .hero-note {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    .hero-note strong {
-      color: var(--accent);
-    }
-
-    .hero-right-card {
-      border-radius: 20px;
-      background: rgba(5, 8, 26, 0.96);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 14px 14px 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-right-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at top, rgba(255,178,44,0.16), transparent 65%);
-      opacity: 0.75;
-      pointer-events: none;
-    }
-
-    .hero-right-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-mini-title {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .hero-right-main {
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
-
-    .hero-right-main span {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .hero-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 8px;
+      max-width: 40rem;
     }
 
     .hero-pill {
-      font-size: 0.75rem;
-      padding: 4px 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      padding: 0.35rem 0.75rem;
       border-radius: 999px;
-      background: rgba(11,16,42,0.96);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: var(--muted);
-    }
-
-    .hero-pill.live {
       background: var(--accent-soft);
-      border-color: rgba(255,178,44,0.7);
-      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #e0f2fe;
     }
 
-    .hero-micro {
-      font-size: 0.78rem;
-      color: var(--muted);
+    .hero-pill strong {
+      font-weight: 600;
     }
 
-    .hero-micro strong {
-      color: var(--text);
-    }
-
-    /* SECTION WRAPPER */
     main {
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 2rem;
     }
 
-    section {
-      border-radius: var(--radius-lg);
-      background: rgba(7, 10, 28, 0.96);
-      border: 1px solid var(--border);
-      padding: 18px 16px 20px;
+    .category {
+      padding: 1.5rem 1.25rem;
+      border-radius: 1rem;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 55%), var(--bg-alt);
+      border: 1px solid rgba(15, 23, 42, 0.9);
     }
 
-    h2.section-title {
-      font-size: 1.2rem;
-      margin: 0 0 6px;
+    .category h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
     }
 
-    .section-kicker {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted);
-      margin-bottom: 2px;
+    .category h2::after {
+      content: "";
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      margin-left: 0.5rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.7), transparent);
+      vertical-align: middle;
     }
 
-    .section-text {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin: 4px 0 8px;
-    }
-
-    /* NICHE GRID */
-    .niche-grid {
-      margin-top: 14px;
+    .product-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+      margin-top: 0.75rem;
     }
 
-    @media (max-width: 900px) {
-      .niche-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 620px) {
-      .niche-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .niche-card {
-      border-radius: 16px;
-      background: rgba(5, 8, 26, 0.98);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 10px 11px 12px;
+    .card {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 110px;
+      padding: 0.85rem 0.9rem;
+      border-radius: 0.9rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.5);
+      min-height: 150px;
     }
 
-    .niche-card.live {
-      border-color: rgba(255,178,44,0.7);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.55);
-      background-image: radial-gradient(circle at top left, rgba(255,178,44,0.16), rgba(5, 8, 26, 0.98));
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      align-items: flex-start;
+      margin-bottom: 0.4rem;
     }
 
-    .niche-name {
-      font-size: 0.98rem;
+    .card h3 {
+      font-size: 0.95rem;
       font-weight: 600;
-      margin-bottom: 2px;
     }
 
-    .niche-desc {
+    .tagline {
       font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 6px;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
     }
 
-    .niche-meta-row {
+    .badge {
+      font-size: 0.7rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid;
+      white-space: nowrap;
+    }
+
+    .badge-available {
+      border-color: rgba(34, 197, 94, 0.5);
+      background: rgba(22, 163, 74, 0.2);
+      color: #bbf7d0;
+    }
+
+    .badge-soon {
+      border-color: rgba(249, 115, 22, 0.5);
+      background: rgba(248, 113, 22, 0.15);
+      color: #fed7aa;
+    }
+
+    .card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 8px;
-      margin-top: 4px;
+      gap: 0.75rem;
+      margin-top: auto;
     }
 
-    .niche-label {
-      font-size: 0.7rem;
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
-      color: var(--muted);
-      background: rgba(10, 14, 32, 0.96);
-      white-space: nowrap;
-    }
-
-    .niche-label.live {
-      border-color: rgba(0,200,125,0.7);
-      color: #86f4c4;
-      background: rgba(0,200,125,0.08);
-    }
-
-    .niche-label.soon {
-      border-color: rgba(255,178,44,0.7);
-      color: var(--accent);
-      background: var(--accent-soft);
-    }
-
-    .niche-link {
-      font-size: 0.78rem;
-      padding: 5px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.22);
-      color: var(--text);
-      text-align: center;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .niche-link.disabled {
-      opacity: 0.55;
-      cursor: default;
-      border-style: dashed;
-    }
-
-    .niche-price {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    /* HOW IT WORKS */
-    .how-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
-      gap: 20px;
-      margin-top: 10px;
-    }
-
-    @media (max-width: 820px) {
-      .how-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .steps-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 8px 0 0;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .steps-list li {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 8px;
-      align-items: flex-start;
-    }
-
-    .steps-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      background: rgba(255,178,44,0.12);
-      color: var(--accent);
-      font-size: 0.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .steps-text strong {
-      display: block;
-      font-size: 0.9rem;
-      color: var(--text);
-    }
-
-    .bullet-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 6px 0 0;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    .bullet-list li::before {
-      content: "• ";
-      color: var(--muted);
-    }
-
-    /* OTHER CREATIONS */
-    .other-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.3fr);
-      gap: 16px;
-      margin-top: 12px;
-    }
-
-    @media (max-width: 820px) {
-      .other-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .other-card {
-      border-radius: 14px;
-      background: rgba(4, 7, 22, 0.96);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 10px 12px 12px;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    .other-title {
-      font-size: 0.96rem;
+    .price {
       font-weight: 600;
-      margin-bottom: 4px;
-      color: var(--text);
+      font-size: 0.95rem;
     }
 
-    .other-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.75rem;
-      padding: 3px 8px;
+    .btn {
+      font-size: 0.78rem;
+      padding: 0.35rem 0.75rem;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(9,12,30,0.96);
-      margin-bottom: 4px;
-      color: var(--muted);
-    }
-
-    .other-link {
-      margin-top: 6px;
-      font-size: 0.8rem;
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      border: 1px solid transparent;
+      text-decoration: none;
       cursor: pointer;
-      color: var(--accent);
+      white-space: nowrap;
     }
 
-    footer {
-      margin-top: 32px;
-      font-size: 0.76rem;
-      color: var(--muted);
-      text-align: center;
-      opacity: 0.75;
+    .btn-available {
+      background: var(--accent);
+      border-color: rgba(56, 189, 248, 0.9);
+      color: #0b1120;
+      font-weight: 600;
+    }
+
+    .btn-available:hover {
+      filter: brightness(1.08);
+    }
+
+    .btn-disabled {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: var(--btn-disabled);
+      color: var(--text-muted);
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding-bottom: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+      .category {
+        padding: 1.1rem 0.9rem;
+      }
+      .card {
+        padding: 0.75rem 0.8rem;
+      }
+      .logo-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="page-wrap">
-    <!-- NAV -->
-    <nav class="nav">
-      <div class="nav-left">
-        <div class="nav-logo">G</div>
+  <div class="page">
+    <header>
+      <div class="logo-row">
         <div>
-          <div class="nav-title">GPT Product Lab</div>
-          <div class="nav-subtitle">AI SEO Systems for Local Businesses</div>
+          <div class="logo">GPT Product Lab</div>
+          <h1 class="hero-title">SEO System Kits for Serious Niche Agencies</h1>
+          <p class="hero-subtitle">
+            100 pre-defined local niches, each with a plug-and-play GPT-powered SEO system kit.
+            Every kit is priced at <strong>$197</strong> so you can resell with simple, predictable margins.
+          </p>
+        </div>
+        <div class="hero-pill">
+          <span>Launch-ready today:</span>
+          <strong>12 Available Kits</strong>
+          <span>&nbsp;&middot;&nbsp;88 Coming Soon</span>
         </div>
       </div>
-      <div class="nav-right">
-        <div class="nav-link primary" onclick="document.getElementById('niche-grid').scrollIntoView({behavior:'smooth'})">
-          SEO Systems
-        </div>
-        <div class="nav-link" onclick="document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">
-          How It Works
-        </div>
-        <div class="nav-link" onclick="document.getElementById('other-lab').scrollIntoView({behavior:'smooth'})">
-          Other Tools
-        </div>
-      </div>
-    </nav>
-
-    <!-- HERO -->
-    <header class="hero">
-      <div>
-        <div class="hero-label">
-          <span class="hero-dot"></span>
-          <span>AI-Powered Local SEO Kits</span>
-        </div>
-        <h1 class="hero-title">
-          Get an <span class="accent">SEO System</span> Built for Your Type of Business.
-        </h1>
-        <p class="hero-subtitle">
-          GPT Product Lab creates done-for-you <strong>SEO systems for local service businesses</strong>.  
-          Each kit is built around one industry and one goal: helping customers find you first when they search on Google.
-        </p>
-        <div class="hero-bullets">
-          <span>Designed for real-world businesses like auto repair shops, massage therapists, chiropractors, HVAC companies, dentists, and more.</span>
-          <span>Each kit combines a private AI engine, a simple step-by-step manual, and ready-to-use templates for your website and Google Business Profile.</span>
-          <span>Run audits, see what your competitors are doing, and publish better SEO content in minutes instead of weeks.</span>
-          <span>Pay once, keep the system. No monthly retainers or long-term agency contracts.</span>
-        </div>
-        <div class="hero-cta-row">
-          <a href="#niche-grid" class="btn-primary">
-            Find Your Business Type<span class="arrow">↓</span>
-          </a>
-          <span class="hero-note">
-            <strong>First kit available now:</strong> Auto Repair SEO System · One-time price: $97
-          </span>
-        </div>
-      </div>
-
-      <aside class="hero-right-card">
-        <div class="hero-right-inner">
-          <div class="hero-mini-title">Featured SEO System</div>
-          <div class="hero-right-main">
-            <span>Auto Repair SEO System</span> – AI-powered local search for independent auto repair shops.
-          </div>
-          <div class="hero-pill-row">
-            <div class="hero-pill live">Available now</div>
-            <div class="hero-pill">Competitive analysis included</div>
-            <div class="hero-pill">Website + Google Business support</div>
-          </div>
-          <div class="hero-micro">
-            If you run an auto repair shop, start there.  
-            If you’re in another industry, check the list below to see if your niche is already on the way.
-          </div>
-        </div>
-      </aside>
     </header>
 
     <main>
-      <!-- NICHE SEO KITS GRID -->
-      <section id="niche-grid">
-        <div class="section-kicker">Choose your industry</div>
-        <h2 class="section-title">Local SEO Systems by Niche</h2>
-        <p class="section-text">
-          Find the system that matches your type of business. Each kit includes a private AI SEO engine, a practical manual, and plug-and-play templates built for that niche.
-        </p>
+    <section class="category">
+      <h2>Trades &amp; Home Services</h2>
+      <div class="product-grid">
+        <article class="card">
+          <div class="card-header">
+            <h3>Auto Repair SEO System Kit</h3>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <p class="tagline">Unlock hidden repair search traffic.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <a href="/auto-kit" class="btn btn-available">View System Kit</a>
+          </div>
+        </article>
 
-        <div class="niche-grid">
-          <!-- Row 1 -->
-          <div class="niche-card live">
-            <div>
-              <div class="niche-name">Auto Repair SEO System</div>
-              <div class="niche-desc">
-                Help your shop show up when drivers search for brakes, diagnostics, AC repair, and more in your area.
-              </div>
-            </div>
-            <div class="niche-meta-row">
-              <div>
-                <div class="niche-label live">Available</div>
-                <div class="niche-price">One-time price: $97</div>
-              </div>
-              <a href="auto-repair-seo-system.html" class="niche-link">
-                View Auto Repair System →
-              </a>
-            </div>
+        <article class="card">
+          <div class="card-header">
+            <h3>HVAC SEO System Kit</h3>
+            <span class="badge badge-available">Available</span>
           </div>
+          <p class="tagline">Fill your calendar with high-value installs.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <a href="/hvac-kit" class="btn btn-available">View System Kit</a>
+          </div>
+        </article>
 
-          <div class="niche-card">
-            <div>
-              <div class="niche-name">Massage Therapist SEO System</div>
-              <div class="niche-desc">
-                Get more first-time and repeat clients by showing up for massage and bodywork searches in your city.
-              </div>
-            </div>
-            <div class="niche-meta-row">
-              <div>
-                <div class="niche-label soon">Coming soon</div>
-                <div class="niche-price">Planned: One-time kit · $97</div>
-              </div>
-              <div class="niche-link disabled">Not yet available</div>
-            </div>
+        <article class="card">
+          <div class="card-header">
+            <h3>Plumber SEO System Kit</h3>
+            <span class="badge badge-available">Available</span>
           </div>
+          <p class="tagline">Turn emergency searches into booked jobs.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <a href="/plumber-kit" class="btn btn-available">View System Kit</a>
+          </div>
+        </article>
 
-          <div class="niche-card">
-            <div>
-              <div class="niche-name">Chiropractor SEO System</div>
-              <div class="niche-desc">
-                Make your practice easier to find for back pain, injury, and wellness searches.
-              </div>
-            </div>
-            <div class="niche-meta-row">
-              <div>
-                <div class="niche-label soon">Coming soon</div>
-                <div class="niche-price">Planned: One-time kit · $97</div>
-              </div>
-              <div class="niche-link disabled">Not yet available</div>
-            </div>
+        <article class="card">
+          <div class="card-header">
+            <h3>Roofing SEO System Kit</h3>
+            <span class="badge badge-available">Available</span>
           </div>
+          <p class="tagline">Dominate storm and repair searches.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <a href="/roofing-kit" class="btn btn-available">View System Kit</a>
+          </div>
+        </article>
 
-          <!-- Row 2 -->
-          <div class="niche-card">
-            <div>
-              <div class="niche-name">HVAC SEO System</div>
-              <div class="niche-desc">
-                Show up for AC repair, furnace repair, and emergency calls when homeowners need you most.
-              </div>
-            </div>
-            <div class="niche-meta-row">
-              <div>
-                <div class="niche-label soon">Coming soon</div>
-                <div class="niche-price">Planned: One-time kit · $97</div>
-              </div>
-              <div class="niche-link disabled">Not yet available</div>
-            </div>
+        <article class="card">
+          <div class="card-header">
+            <h3>Electrician SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
           </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
 
-          <div class="niche-card">
-            <div>
-              <div class="niche-name">Dentist SEO System</div>
-              <div class="niche-desc">
-                Attract more patients searching for cleanings, cosmetic work, implants, and Invisalign.
-              </div>
-            </div>
-            <div class="niche-meta-row">
-              <div>
-                <div class="niche-label soon">Coming soon</div>
-                <div class="niche-price">Planned: One-time kit · $97</div>
-              </div>
-              <div class="niche-link disabled">Not yet available</div>
-            </div>
+        <article class="card">
+          <div class="card-header">
+            <h3>Landscaper SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
           </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
 
-          <div class="niche-card">
-            <div>
-              <div class="niche-name">Tattoo Shop SEO System</div>
-              <div class="niche-desc">
-                Help local clients find your artists, styles, and portfolio when they search for tattoos nearby.
-              </div>
-            </div>
-            <div class="niche-meta-row">
-              <div>
-                <div class="niche-label soon">Coming soon</div>
-                <div class="niche-price">Planned: One-time kit · $97</div>
-              </div>
-              <div class="niche-link disabled">Not yet available</div>
-            </div>
+        <article class="card">
+          <div class="card-header">
+            <h3>Home Cleaning SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
           </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
 
-          <!-- Row 3 -->
-          <div class="niche-card">
-            <div>
-              <div class="niche-name">Roofing SEO System</div>
-              <div class="niche-desc">
-                Be the roofer homeowners see first when they search for leaks, hail damage, or replacements.
-              </div>
-            </div>
-            <div class="niche-meta-row">
-              <div>
-                <div class="niche-label soon">Coming soon</div>
-                <div class="niche-price">Planned: One-time kit · $97</div>
-              </div>
-              <div class="niche-link disabled">Not yet available</div>
-            </div>
+        <article class="card">
+          <div class="card-header">
+            <h3>Pest Control SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
           </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
 
-          <div class="niche-card">
-            <div>
-              <div class="niche-name">Plumber SEO System</div>
-              <div class="niche-desc">
-                Capture emergency calls and routine plumbing work from local search instead of losing them to competitors.
-              </div>
-            </div>
-            <div class="niche-meta-row">
-              <div>
-                <div class="niche-label soon">Coming soon</div>
-                <div class="niche-price">Planned: One-time kit · $97</div>
-              </div>
-              <div class="niche-link disabled">Not yet available</div>
-            </div>
+        <article class="card">
+          <div class="card-header">
+            <h3>Handyman SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
           </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
 
-          <div class="niche-card">
-            <div>
-              <div class="niche-name">Restaurant SEO System</div>
-              <div class="niche-desc">
-                Bring more guests in the door by showing up for “near me” and cuisine-specific searches.
-              </div>
-            </div>
-            <div class="niche-meta-row">
-              <div>
-                <div class="niche-label soon">Coming soon</div>
-                <div class="niche-price">Planned: One-time kit · $97</div>
-              </div>
-              <div class="niche-link disabled">Not yet available</div>
-            </div>
+        <article class="card">
+          <div class="card-header">
+            <h3>Flooring Contractor SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
           </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
 
-          <!-- Row 4 -->
-          <div class="niche-card">
-            <div>
-              <div class="niche-name">Real Estate Agent SEO System</div>
-              <div class="niche-desc">
-                Help buyers and sellers find you when they search for neighborhoods and homes in your area.
-              </div>
-            </div>
-            <div class="niche-meta-row">
-              <div>
-                <div class="niche-label soon">Coming soon</div>
-                <div class="niche-price">Planned: One-time kit · $97</div>
-              </div>
-              <div class="niche-link disabled">Not yet available</div>
-            </div>
+        <article class="card">
+          <div class="card-header">
+            <h3>Window &amp; Glass SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
           </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
 
-          <div class="niche-card">
-            <div>
-              <div class="niche-name">Gym & Trainer SEO System</div>
-              <div class="niche-desc">
-                Show up for local searches about weight loss, strength training, and fitness programs.
-              </div>
-            </div>
-            <div class="niche-meta-row">
-              <div>
-                <div class="niche-label soon">Coming soon</div>
-                <div class="niche-price">Planned: One-time kit · $97</div>
-              </div>
-              <div class="niche-link disabled">Not yet available</div>
-            </div>
+        <article class="card">
+          <div class="card-header">
+            <h3>Painter SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
           </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
 
-          <div class="niche-card">
-            <div>
-              <div class="niche-name">Pet Groomer SEO System</div>
-              <div class="niche-desc">
-                Help pet owners find your grooming, daycare, and pet care services when they search nearby.
-              </div>
-            </div>
-            <div class="niche-meta-row">
-              <div>
-                <div class="niche-label soon">Coming soon</div>
-                <div class="niche-price">Planned: One-time kit · $97</div>
-              </div>
-              <div class="niche-link disabled">Not yet available</div>
-            </div>
+        <article class="card">
+          <div class="card-header">
+            <h3>Garage Door SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
           </div>
-        </div>
-      </section>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
 
-      <!-- HOW IT WORKS -->
-      <section id="how-it-works">
-        <div class="section-kicker">Simple for business owners</div>
-        <h2 class="section-title">How an AI SEO System Works for Your Business</h2>
-        <div class="how-grid">
-          <div>
-            <p class="section-text">
-              Each kit is built so you don’t have to become an SEO expert. You follow clear steps, and the system does most of the thinking and writing for you.
-            </p>
-            <ul class="steps-list">
-              <li>
-                <div class="steps-num">1</div>
-                <div class="steps-text">
-                  <strong>Choose your industry.</strong>
-                  If your type of business is listed above and available, click into your system page to see exactly what’s included.
-                </div>
-              </li>
-              <li>
-                <div class="steps-num">2</div>
-                <div class="steps-text">
-                  <strong>Unlock your SEO system.</strong>
-                  Pay once, get access to a private AI engine, a step-by-step manual, and ready-to-use templates built for your industry.
-                </div>
-              </li>
-              <li>
-                <div class="steps-num">3</div>
-                <div class="steps-text">
-                  <strong>Follow the plan.</strong>
-                  Run the audits, see what your competitors are doing, publish better content, and follow the 90-day action plan to improve how you show up on Google.
-                </div>
-              </li>
-            </ul>
+        <article class="card">
+          <div class="card-header">
+            <h3>Pool Service SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
           </div>
-          <div>
-            <p class="section-text">
-              What you can expect from a typical kit:
-            </p>
-            <ul class="bullet-list">
-              <li>A private AI engine trained for one niche (auto repair, chiropractor, etc.).</li>
-              <li>A practical manual that explains what to do in plain language.</li>
-              <li>Templates for your website pages and Google Business Profile posts.</li>
-              <li>Competitive analysis so you can see why other businesses rank higher.</li>
-              <li>A 90-day action plan that fits around a busy schedule.</li>
-            </ul>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
           </div>
-        </div>
-      </section>
+        </article>
 
-      <!-- OTHER TOOLS -->
-      <section id="other-lab">
-        <div class="section-kicker">Other tools</div>
-        <h2 class="section-title">Specialty GPTs Outside Local SEO</h2>
-        <p class="section-text">
-          GPT Product Lab also creates a few focused tools outside the local SEO kits. These are for more specialized use cases.
-        </p>
-        <div class="other-grid">
-          <div class="other-card">
-            <div class="other-pill">For poker players</div>
-            <div class="other-title">Poker Point Count GPT</div>
-            <p>
-              A strategy assistant based on the Poker Point Count concept, helping you quickly profile opponents and think through hands. Separate from the local SEO systems.
-            </p>
-            <div class="other-link">Learn more about Poker Point Count (add link)</div>
+        <article class="card">
+          <div class="card-header">
+            <h3>Solar Installer SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
           </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+      </div>
+    </section>
 
-          <div class="other-card">
-            <div class="other-pill">For history & politics</div>
-            <div class="other-title">American Mind Virus Projects</div>
-            <p>
-              Political and historical analysis books and GPTs live under a different brand, so this site can stay focused on tools that help local businesses get customers.
-            </p>
-            <div class="other-link">Visit American Mind Virus (add link)</div>
+    <section class="category">
+      <h2>Health &amp; Medical</h2>
+      <div class="product-grid">
+        <article class="card">
+          <div class="card-header">
+            <h3>Chiropractor SEO System Kit</h3>
+            <span class="badge badge-available">Available</span>
           </div>
-        </div>
-      </section>
+          <p class="tagline">Bring in more new-patient calls.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <a href="/chiro-kit" class="btn btn-available">View System Kit</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Massage Therapist SEO System Kit</h3>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <p class="tagline">Keep your massage table fully booked.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <a href="/massage-kit" class="btn btn-available">View System Kit</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Dentist SEO System Kit</h3>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <p class="tagline">Attract more high-value dental cases.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <a href="/dentist-kit" class="btn btn-available">View System Kit</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Physical Therapy SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Podiatrist SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Optometrist SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Medical Spa SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Urgent Care SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Primary Care SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Psychologist SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Counselor &amp; Therapist SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Orthodontist SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Dermatologist SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Allergy Clinic SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Weight Loss Clinic SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="category">
+      <h2>Fitness &amp; Personal Services</h2>
+      <div class="product-grid">
+        <article class="card">
+          <div class="card-header">
+            <h3>Gym &amp; Trainer SEO System Kit</h3>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <p class="tagline">Convert local searches into memberships.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <a href="/gym-kit" class="btn btn-available">View System Kit</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Yoga Studio SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Pilates Studio SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Martial Arts SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>CrossFit Box SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Dance Studio SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Personal Stylist SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Barber Shop SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Hair Salon SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Nail Salon SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Spa &amp; Wellness SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Life Coach SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Wedding Planner SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Makeup Artist SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Tanning Studio SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="category">
+      <h2>Pets &amp; Animal Services</h2>
+      <div class="product-grid">
+        <article class="card">
+          <div class="card-header">
+            <h3>Pet Groomer SEO System Kit</h3>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <p class="tagline">Own local “pet grooming near me”.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <a href="/groomer-kit" class="btn btn-available">View System Kit</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Veterinary Clinic SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Dog Walker SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Dog Trainer SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Pet Boarding SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Equine Services SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Mobile Groomer SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Pet Sitter SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Exotic Pet SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Pet Adoption SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Pet Daycare SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Aquarium Services SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Farm &amp; Feed SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="category">
+      <h2>Food &amp; Hospitality</h2>
+      <div class="product-grid">
+        <article class="card">
+          <div class="card-header">
+            <h3>Restaurant SEO System Kit</h3>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <p class="tagline">Turn local searches into reservations.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <a href="/restaurant-kit" class="btn btn-available">View System Kit</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Café &amp; Coffee Shop SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Food Truck SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Catering SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Bakery SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Bar &amp; Lounge SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Hotel &amp; Resort SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Event Venue SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Meal Prep SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Juice Bar SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Ghost Kitchen SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Ice Cream Shop SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Fine Dining SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="category">
+      <h2>Real Estate &amp; Professional Services</h2>
+      <div class="product-grid">
+        <article class="card">
+          <div class="card-header">
+            <h3>Real Estate Agent SEO System Kit</h3>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <p class="tagline">Capture motivated buyer and seller leads.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <a href="/realestate-kit" class="btn btn-available">View System Kit</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Mortgage Broker SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Insurance Agency SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Accounting Firm SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Law Firm SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>IT Services SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Marketing Agency SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Consultant SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Architect SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Engineer &amp; Surveyor SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Staffing Agency SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Security Company SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Commercial Cleaning SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="category">
+      <h2>Education &amp; Creative</h2>
+      <div class="product-grid">
+        <article class="card">
+          <div class="card-header">
+            <h3>Tutoring Center SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Music School SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Art School SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Test Prep SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Driving School SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Photography Studio SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Video Production SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Language School SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Coding Bootcamp SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Craft Workshop SEO System Kit</h3>
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <p class="tagline">SEO system kit coming soon to GPT Product Lab.</p>
+          <div class="card-footer">
+            <span class="price">$197</span>
+            <button class="btn btn-disabled" disabled>Not Yet Available</button>
+          </div>
+        </article>
+      </div>
+    </section>
     </main>
-
-    <footer>
-      &copy; <span id="year"></span> GPT Product Lab · AI SEO Systems for Local Businesses
-    </footer>
   </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
-
