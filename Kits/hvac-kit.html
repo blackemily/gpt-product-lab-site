@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HVAC SEO System – AI-Powered Local Search for Heating & Cooling Companies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-alt: #12172a;
+      --accent: #ffb22c;
+      --accent-soft: rgba(255, 178, 44, 0.12);
+      --text: #f5f7ff;
+      --muted: #a0a4b8;
+      --border: #262c45;
+      --danger: #ff4b4b;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.4);
+      --radius-lg: 18px;
+      --radius-xl: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1d2545 0, #050816 45%, #02030a 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    header.hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 768px) {
+      header.hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      background: rgba(10, 15, 35, 0.9);
+      border-radius: 999px;
+      padding: 6px 14px;
+      border: 1px solid rgba(255,255,255,0.03);
+      margin-bottom: 14px;
+    }
+
+    .hero-label span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(255,178,44,0.8);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw + 1rem, 2.9rem);
+      line-height: 1.1;
+      margin: 0 0 14px;
+    }
+
+    .hero-title span.highlight {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 18px;
+    }
+
+    .hero-bullets {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 8px 18px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      .hero-bullets {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-bullets span {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .hero-bullets span::before {
+      content: "✓";
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 1px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ffb22c, #ff8f2c);
+      color: #201208;
+      font-weight: 600;
+      font-size: 0.98rem;
+      border: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary span.arrow {
+      margin-left: 8px;
+      font-size: 1.1rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn-secondary-link {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-decoration: underline;
+      text-decoration-style: dashed;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+
+    .hero-guarantee {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-guarantee strong {
+      color: var(--accent);
+    }
+
+    .hero-card {
+      border-radius: var(--radius-xl);
+      padding: 18px 18px 20px;
+      background: radial-gradient(circle at top left, #343d6b 0, #14192d 32%, #050715 80%);
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top, rgba(255,178,44,0.12), transparent 65%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .hero-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-title {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-card-main {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-card-main span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-card-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-card-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .hero-card-list li::before {
+      content: "•";
+      color: var(--accent);
+      margin-top: 1px;
+    }
+
+    .hero-card-tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      opacity: 0.85;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    section {
+      border-radius: var(--radius-lg);
+      background: rgba(11, 15, 35, 0.92);
+      border: 1px solid var(--border);
+      padding: 20px 18px;
+    }
+
+    section.alt {
+      background: radial-gradient(circle at top left, rgba(255,178,44,0.08), rgba(9, 10, 25, 0.98));
+      border-color: rgba(255,178,44,0.15);
+    }
+
+    h2.section-title {
+      font-size: 1.25rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .section-text {
+      font-size: 0.94rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(10, 12, 32, 0.9);
+      color: var(--muted);
+    }
+
+    .pill.negative {
+      border-color: rgba(255,75,75,0.4);
+      color: #ff9191;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 22px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card-muted {
+      border-radius: 12px;
+      border: 1px dashed rgba(255,255,255,0.12);
+      padding: 10px 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: rgba(4, 7, 20, 0.8);
+    }
+
+    .list-check {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .list-check li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .list-check li::before {
+      content: "✓";
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 1px;
+    }
+
+    .list-dash {
+      list-style: none;
+      padding-left: 0;
+      margin: 6px 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .list-dash li::before {
+      content: "– ";
+      color: var(--muted);
+    }
+
+    .included-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .included-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .included-item {
+      border-radius: 14px;
+      background: rgba(6, 9, 24, 0.96);
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+    }
+
+    .included-label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .included-title {
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+    }
+
+    .included-desc {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .included-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-soft);
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .included-badge span.icon {
+      font-size: 0.9rem;
+    }
+
+    .steps-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 12px 0 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .steps-list li {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 9px;
+      align-items: flex-start;
+    }
+
+    .steps-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(255,178,44,0.12);
+      border: 1px solid rgba(255,178,44,0.5);
+      color: var(--accent);
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .steps-text {
+      flex: 1;
+    }
+
+    .steps-text strong {
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 2px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+    }
+
+    .badge.good {
+      border-color: rgba(0,200,140,0.5);
+      color: #8ef2c2;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 20px 16px 10px;
+    }
+
+    .cta-section p {
+      margin: 6px 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .cta-emphasis {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .cta-subline {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-align: center;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="hero">
+      <div>
+        <div class="hero-label">
+          <span class="dot"></span>
+          <span>GPT Product Lab · Local SEO System</span>
+        </div>
+        <h1 class="hero-title">
+          HVAC <span class="highlight">SEO System</span><br />
+          AI-Powered Local Search for Heating &amp; Cooling Companies
+        </h1>
+        <p class="hero-subtitle">
+          Turn “AC repair near me” and “furnace installation [your city]” into booked calls. The HVAC SEO System combines a private AI engine,
+          a practical implementation manual, and done-for-you templates so you can keep your install and service schedules full without paying ongoing retainers.
+        </p>
+
+        <div class="hero-bullets">
+          <span>Show up when homeowners search “AC not cooling,” “heater won’t turn on,” or “new HVAC system [your city]” — before they call a big-box competitor.</span>
+          <span>Fix your website, Google Business Profile, and reviews with clear directions written specifically for HVAC companies.</span>
+          <span>Analyze local competitors to see exactly why they outrank you — and get specific steps to beat them.</span>
+          <span>Use a niche-trained GPT engine that writes SEO-ready service pages, offers, and updates aligned with the jobs you want most.</span>
+        </div>
+
+        <div class="hero-cta-row">
+          <a href="YOUR_GUMROAD_URL_HERE" class="btn-primary">
+            Unlock the HVAC SEO System<span class="arrow">→</span>
+          </a>
+          <span class="btn-secondary-link" onclick="document.getElementById('whats-inside').scrollIntoView({behavior:'smooth'})">
+            See everything that’s included
+          </span>
+        </div>
+        <div class="hero-guarantee">
+          <strong>One-time access.</strong> No retainers, no contracts, no ongoing SEO subscription.
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-content">
+          <div class="hero-card-title">Before vs. After the System</div>
+          <div class="hero-card-main">
+            <span>Before:</span> You only get calls when extreme weather hits or from repeat customers who already know you.
+          </div>
+          <ul class="hero-card-list">
+            <li>Relying on referrals, yard signs, and seasonal ads to keep the calendar full.</li>
+            <li>Website and Google Business Profile missing the details homeowners and Google need to trust you.</li>
+            <li>National brands appear everywhere in search, even in “your” neighborhoods.</li>
+          </ul>
+          <div class="hero-card-main">
+            <span>After:</span> You’re the HVAC company people find when they’re actively searching and ready to book.
+          </div>
+          <ul class="hero-card-list">
+            <li>AI-powered audits reveal exactly what’s blocking your local visibility.</li>
+            <li>Service pages built around core profit centers: installs, replacements, repairs, tune-ups, indoor air quality, and more.</li>
+            <li>A structured 90-day rollout that steadily grows rankings, reviews, and high-value calls.</li>
+          </ul>
+          <div class="hero-card-tagline">
+            Built for independent HVAC companies and small local teams that want more profitable jobs, not more marketing noise.
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <section>
+        <div class="section-kicker">Why this exists</div>
+        <h2 class="section-title">Homeowners call whoever they see first when the comfort stops — not necessarily the best tech in town.</h2>
+        <p class="section-text">
+          When systems fail, most homeowners don’t browse for an hour comparing brands. They search things like:
+        </p>
+        <ul class="list-dash">
+          <li>“AC repair near me”</li>
+          <li>“heater not working [your city]”</li>
+          <li>“emergency HVAC service”</li>
+          <li>“HVAC installation financing [your city]”</li>
+          <li>“replace old furnace cost”</li>
+        </ul>
+        <p class="section-text">
+          If your business doesn’t show up in those moments, the job goes to someone else — often a large franchise or big-box brand that simply invested in SEO before you did.
+        </p>
+        <div class="pill-row">
+          <div class="pill negative">Your techs are excellent, but search engines don’t see you as the obvious HVAC choice yet.</div>
+          <div class="pill negative">Your website, GBP, and content weren’t built around how people actually search for heating and cooling help.</div>
+          <div class="pill">This system fixes that with a clear, HVAC-specific SEO framework powered by AI.</div>
+        </div>
+      </section>
+
+      <section id="whats-inside" class="alt">
+        <div class="section-kicker">What you get</div>
+        <h2 class="section-title">Everything in the HVAC SEO System</h2>
+        <div class="included-grid">
+          <div>
+            <div class="included-item">
+              <div class="included-badge">
+                <span class="icon">⚙️</span>
+                Private AI SEO Engine
+              </div>
+              <div class="included-label">Core Component #1</div>
+              <div class="included-title">HVAC SEO GPT Engine (Private Access)</div>
+              <div class="included-desc">
+                A niche-trained GPT that understands HVAC services, seasonality, and how homeowners search for help:
+              </div>
+              <ul class="list-check">
+                <li>Audits your website and Google Business Profile for HVAC-specific SEO problems.</li>
+                <li>Identifies gaps in your service pages (repairs, installs, maintenance, IAQ, ductwork, heat pumps, mini-splits, etc.).</li>
+                <li>Analyzes competitors and shows why they appear above you in search.</li>
+                <li>Generates SEO-ready pages for priority services and brands you install.</li>
+                <li>Creates city and neighborhood pages for your actual service area.</li>
+                <li>Writes seasonal Google Business updates (pre-summer tune-ups, pre-winter furnace checks, and more).</li>
+                <li>Builds a 90-day SEO plan aligned with your capacity and growth goals.</li>
+              </ul>
+              <div class="card-muted">
+                You don’t have to become a copywriter or SEO strategist.<br />
+                You answer a few prompts about your company, then edit and approve what the system creates.
+              </div>
+            </div>
+
+            <div class="included-item">
+              <div class="included-badge">
+                <span class="icon">📘</span>
+                System Manual
+              </div>
+              <div class="included-label">Core Component #2</div>
+              <div class="included-title">HVAC SEO System Manual (PDF)</div>
+              <div class="included-desc">
+                A practical guide that walks you through using the AI engine for maximum effect:
+              </div>
+              <ul class="list-check">
+                <li>HVAC SEO explained in straightforward, non-technical language.</li>
+                <li>Exactly what information to give the GPT engine about your business.</li>
+                <li>How to prioritize core money-making services first (installs, replacements, service plans).</li>
+                <li>Examples of “good” vs. “bad” HVAC pages and what makes the difference.</li>
+                <li>How to track real outcomes: calls, bookings, maintenance agreements, and job size — not just rankings.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="included-item">
+              <div class="included-badge">
+                <span class="icon">📂</span>
+                Templates &amp; Tools
+              </div>
+              <div class="included-label">Core Component #3</div>
+              <div class="included-title">Done-for-You HVAC SEO Templates</div>
+              <div class="included-desc">
+                Plug-and-play structures built specifically for HVAC marketing:
+              </div>
+              <ul class="list-check">
+                <li>Service page templates for repairs, installs, tune-ups, IAQ, duct cleaning, and maintenance plans.</li>
+                <li>Google Business Profile optimization checklist created for HVAC businesses.</li>
+                <li>Review request scripts for emergency calls, installs, and seasonal tune-ups.</li>
+                <li>Local content starter prompts for energy efficiency, safety, and maintenance education.</li>
+                <li>“Fix this first” HVAC SEO checklist for busy owners and operations managers.</li>
+              </ul>
+            </div>
+
+            <div class="included-item">
+              <div class="included-badge">
+                <span class="icon">🗓️</span>
+                90-Day Plan
+              </div>
+              <div class="included-label">Core Component #4</div>
+              <div class="included-title">90-Day HVAC SEO Action Plan</div>
+              <div class="included-desc">
+                A realistic, week-by-week rollout built around HVAC seasonality:
+              </div>
+              <ul class="list-check">
+                <li>Weeks 1–2: Fix GBP basics, core website pages, and tracking so you can see what’s working.</li>
+                <li>Weeks 3–6: Build high-impact service pages and location pages for your best areas.</li>
+                <li>Weeks 7–10: Expand content, grow reviews, and strengthen your presence against local competitors.</li>
+                <li>Weeks 11–12: Refine, cross-link, and prepare for upcoming seasonal peaks.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-kicker">How it works</div>
+        <h2 class="section-title">From “we only get referrals” to “we’re the obvious HVAC choice”</h2>
+        <ul class="steps-list">
+          <li>
+            <div class="steps-num">1</div>
+            <div class="steps-text">
+              <strong>Unlock the HVAC SEO System.</strong>
+              Get instant access to your private GPT engine, the system manual, and all HVAC-specific templates.
+            </div>
+          </li>
+          <li>
+            <div class="steps-num">2</div>
+            <div class="steps-text">
+              <strong>Feed it your company details.</strong>
+              Service area, main brands, preferred jobs, maintenance plans, and your ideal customer profile.
+            </div>
+          </li>
+          <li>
+            <div class="steps-num">3</div>
+            <div class="steps-text">
+              <strong>Run audits and prioritize fixes.</strong>
+              The engine analyzes your web presence and tells you exactly what to fix first and where to add content.
+            </div>
+          </li>
+          <li>
+            <div class="steps-num">4</div>
+            <div class="steps-text">
+              <strong>Deploy SEO-ready HVAC content.</strong>
+              Generate and paste in optimized service pages, location pages, and updates tailored to your market.
+            </div>
+          </li>
+          <li>
+            <div class="steps-num">5</div>
+            <div class="steps-text">
+              <strong>Follow the 90-day plan.</strong>
+              Each week, take a small set of actions that compound into more visibility, more calls, and better jobs.
+            </div>
+          </li>
+        </ul>
+        <div class="badge-row">
+          <div class="badge good">Built for HVAC businesses</div>
+          <div class="badge good">No agency required</div>
+          <div class="badge">Works with simple websites</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-kicker">Is this for you?</div>
+        <h2 class="section-title">Who the HVAC SEO System is (and isn’t) for</h2>
+        <div class="grid-2">
+          <div>
+            <h3 style="margin:0 0 6px;font-size:1rem;">This IS for you if:</h3>
+            <ul class="list-check">
+              <li>You run an independent HVAC company or a small local team (or manage marketing for one).</li>
+              <li>You want more of the profitable work: installs, replacements, maintenance plans, and higher-ticket services.</li>
+              <li>You’re tired of guessing at SEO or paying large retainers without clear results.</li>
+              <li>You or someone on your team can follow a simple plan and paste in the content the system produces.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="margin:0 0 6px;font-size:1rem;">This is NOT for you if:</h3>
+            <ul class="list-dash">
+              <li>You’re looking for a magic switch that floods you with calls without any implementation.</li>
+              <li>You want to outsource everything blindly and never see what’s being done to your brand.</li>
+              <li>You’re not interested in being visible in search and are content with your current volume.</li>
+            </ul>
+            <div class="card-muted">
+              This system won’t make you the biggest brand in the country overnight.<br />
+              It will make it easier for homeowners nearby to find, trust, and book your company when they actually need HVAC help.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-kicker">Common questions</div>
+        <h2 class="section-title">HVAC SEO System – FAQ</h2>
+
+        <div class="faq-item">
+          <div class="faq-q" style="font-weight:600; font-size:0.95rem; margin-bottom:4px;">Do I need to know SEO or AI to use this?</div>
+          <div class="faq-a section-text">
+            No. The system is designed for HVAC owners and managers, not marketers. The manual walks you through everything in plain language,
+            and the GPT engine does most of the strategic and writing work. You just answer prompts, approve copy, and paste it where it belongs.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" style="font-weight:600; font-size:0.95rem; margin-bottom:4px;">Is this a subscription?</div>
+          <div class="faq-a section-text">
+            No. This is a one-time access purchase. You unlock the HVAC SEO System once and can keep using the workflows, templates,
+            and GPT prompts as long as you want.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" style="font-weight:600; font-size:0.95rem; margin-bottom:4px;">Will this work if my website is basic or outdated?</div>
+          <div class="faq-a section-text">
+            Yes. The system is made to work with simple sites. As long as you or someone you trust can edit the text on your pages,
+            you can apply what the system gives you and see a benefit.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" style="font-weight:600; font-size:0.95rem; margin-bottom:4px;">Can this help me compete with national brands?</div>
+          <div class="faq-a section-text">
+            It’s designed to strengthen your local presence so you show up more often in your real service area. You won’t outspend a national brand,
+            but you can become the obvious local choice when someone in your city searches for HVAC services.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" style="font-weight:600; font-size:0.95rem; margin-bottom:4px;">What exactly do I receive after purchasing?</div>
+          <div class="faq-a section-text">
+            You’ll receive: (1) the HVAC SEO System Manual (PDF), (2) access instructions and workflows for your private HVAC SEO GPT engine,
+            and (3) all supporting templates, checklists, and the 90-day HVAC action plan.
+          </div>
+        </div>
+      </section>
+
+      <section class="alt cta-section">
+        <div class="section-kicker">Next step</div>
+        <h2 class="section-title">Let local search bring you more HVAC jobs, not just more noise</h2>
+        <p class="cta-emphasis">
+          Unlock the HVAC SEO System and put AI to work filling your service and install schedule with the right kind of calls.
+        </p>
+
+        <p class="cta-emphasis" style="font-size:1.4rem; color:var(--accent); font-weight:700; margin-top:14px;">
+          One-time price: $197
+        </p>
+
+        <a href="YOUR_GUMROAD_URL_HERE" class="btn-primary">
+          Get Access to the HVAC SEO System<span class="arrow">→</span>
+        </a>
+        <p class="cta-subline">
+          No contracts. No monthly retainers. Immediate access after purchase.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      &copy; <span id="year"></span> GPT Product Lab · HVAC SEO System
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
