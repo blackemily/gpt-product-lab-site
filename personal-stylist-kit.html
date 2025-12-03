@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Personal Stylist SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #05070a;
+      --bg-alt: #0b1118;
+      --bg-elevated: #111827;
+      --accent: #3bf584;
+      --accent-soft: rgba(59, 245, 132, 0.12);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2933;
+      --danger: #fb7185;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.65);
+      --radius-xl: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #020617 0, #020617 30%, #02040a 60%, #020617 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      padding: 32px 16px 48px;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0, #6ee7b7, #22c55e 40%, #16a34a 70%, #052e16 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #ecfdf5;
+      box-shadow: 0 0 24px rgba(34, 197, 94, 0.9);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.85);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-pill span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: stretch;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(12, 148, 136, 0.3));
+      border-radius: var(--radius-xl);
+      padding: 26px 26px 22px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      opacity: 0.3;
+      background:
+        radial-gradient(circle at 0 0, rgba(59, 245, 132, 0.14), transparent 52%),
+        radial-gradient(circle at 100% 0, rgba(45, 212, 191, 0.12), transparent 58%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .hero-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-pill strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 30px;
+      line-height: 1.12;
+      margin-bottom: 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-highlights span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .hero-highlights span strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-highlights span i {
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    .hero-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .price-main .amount {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ecfdf5;
+    }
+
+    .price-main .label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .price-tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 500;
+      border: 1px solid rgba(16, 185, 129, 0.6);
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.18s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(16, 185, 129, 0.65);
+      filter: brightness(1.05);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-main);
+      border-color: rgba(55, 65, 81, 0.9);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(75, 85, 99, 0.9);
+    }
+
+    .btn-secondary-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .btn-secondary-text i {
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .metric-label {
+      color: var(--text-muted);
+    }
+
+    .metric-value {
+      font-size: 13px;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .metric-value span {
+      color: var(--accent);
+    }
+
+    /* Side card */
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      border-radius: 18px;
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.12), rgba(15, 23, 42, 1));
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 18px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 100%;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .card-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .card-list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .card-list li span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .card-list li strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .card-footer {
+      margin-top: 4px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+    }
+
+    .card-footer p {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .card-badge {
+      justify-self: flex-end;
+      padding: 6px 9px;
+      border-radius: 14px;
+      background: rgba(6, 78, 59, 0.9);
+      border: 1px solid rgba(45, 212, 191, 0.8);
+      font-size: 10px;
+      color: #a7f3d0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-badge span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.18);
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    /* Generic sections */
+    section {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 20px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 20px 20px 18px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    section + section {
+      margin-top: -4px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .section-tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .pill {
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-muted);
+    }
+
+    .pill span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      font-size: 13px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      gap: 8px;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      color: var(--accent);
+      margin-top: 1px;
+      font-size: 16px;
+    }
+
+    .muted {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .badge-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      color: var(--text-muted);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+    }
+
+    /* How it works */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step {
+      border-radius: 16px;
+      padding: 10px 10px 9px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+      min-height: 100%;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .step-title {
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .step-text {
+      color: var(--text-muted);
+    }
+
+    /* Comparison */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .compare-card {
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .compare-card.limited {
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.06), rgba(15, 23, 42, 1));
+    }
+
+    .compare-card.full {
+      background: radial-gradient(circle at top, rgba(59, 245, 132, 0.12), rgba(15, 23, 42, 1));
+      border-color: rgba(34, 197, 94, 0.8);
+      box-shadow: 0 14px 32px rgba(16, 185, 129, 0.4);
+    }
+
+    .compare-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .compare-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .compare-label {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .compare-label.hot {
+      border-color: rgba(52, 211, 153, 0.9);
+      background: rgba(22, 163, 74, 0.18);
+      color: #bbf7d0;
+    }
+
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .compare-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .compare-list li span.icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    .compare-list li span.icon.ok {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--accent);
+    }
+
+    .compare-list li span.icon.no {
+      background: rgba(248, 113, 113, 0.16);
+      color: var(--danger);
+    }
+
+    .compare-footnote {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .faq-item {
+      padding: 10px 11px 9px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      font-size: 12px;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .faq-a {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 22px 20px 20px;
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.18), rgba(15, 23, 42, 1));
+      border-color: rgba(34, 197, 94, 0.8);
+      box-shadow: 0 18px 42px rgba(16, 185, 129, 0.55);
+      margin-top: 4px;
+    }
+
+    .cta-title {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .cta-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 14px;
+    }
+
+    .cta-price-row {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-size: 13px;
+    }
+
+    .cta-price-row .amount {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ecfdf5;
+    }
+
+    .cta-price-row .tag {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .cta-price-row .tag span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .cta-btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .cta-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      max-width: 1120px;
+      margin: 18px auto 0;
+      padding-top: 14px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      body {
+        padding: 22px 14px 32px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        grid-template-columns: 1fr !important;
+        padding: 20px 18px 18px;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .hero-subtitle {
+        font-size: 13px;
+      }
+
+      section {
+        padding: 18px 16px 16px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .grid-2,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn-row,
+      .cta-btn-row {
+        flex-direction: column;
+      }
+
+      .btn,
+      .cta-btn-row .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-logo">S</div>
+        <div class="brand-text">
+          <div class="brand-name">StyleRank Systems</div>
+          <div class="brand-tagline">SEO System Kits for Personal Stylists</div>
+        </div>
+      </div>
+      <div class="header-pill">
+        <span>✓</span>
+        Built for personal stylists who want consistent clients, not endless self-promotion
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-badge-row">
+            <div class="hero-pill">
+              <strong>New</strong> Personal Stylist SEO System Kit
+            </div>
+            <div class="hero-pill">
+              For solo stylists · image consultants · virtual &amp; in-person styling businesses
+            </div>
+          </div>
+
+          <h1>Personal Stylist SEO System Kit</h1>
+          <p class="hero-subtitle">
+            A plug-and-play SEO system that turns “personal stylist near me” and “wardrobe refresh” searches into
+            booked style sessions, ongoing clients, and word-of-mouth-worthy transformations.
+          </p>
+
+          <div class="hero-highlights">
+            <span><i>◎</i><strong>Niche-aware:</strong> capsule wardrobes, executive styling, plus-size, bridal &amp; more</span>
+            <span><i>◎</i><strong>Offer-led:</strong> closet edits, shopping days, lookbooks, virtual styling</span>
+            <span><i>◎</i><strong>Local &amp; online:</strong> in-person sessions &amp; remote packages</span>
+          </div>
+
+          <div class="hero-price-row">
+            <div class="price-main">
+              <span class="amount">$197</span>
+              <span class="label">one-time · yours forever</span>
+            </div>
+            <div class="price-tag">Turn searchers into dream-fit styling clients</div>
+          </div>
+
+          <p class="hero-note">
+            No retainers, no funnels, no cringe sales tactics. Just a stylist-friendly SEO framework that feels aligned with your brand.
+          </p>
+
+          <div class="btn-row">
+            <a href="#limited-gpt-link" class="btn btn-ghost">
+              Try the Limited GPT First
+            </a>
+            <!-- TODO: replace with actual Limited GPT URL -->
+
+            <a href="#full-kit-checkout" class="btn btn-primary">
+              Get the Full SEO System Kit
+            </a>
+            <!-- TODO: replace with actual checkout URL -->
+          </div>
+
+          <div class="btn-secondary-text">
+            <i>★</i> Many stylists use this kit to increase qualified enquiries and paid styling packages within 60–90 days.
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <span class="metric-label">Built for</span>
+              <span class="metric-value">
+                <span>Personal stylists, image consultants &amp; style coaches</span> at every stage of business
+              </span>
+            </div>
+            <div class="metric">
+              <span class="metric-label">SEO focus</span>
+              <span class="metric-value">
+                “Personal stylist near me”, style + city, wardrobe, shopping &amp; event styling intent
+              </span>
+            </div>
+            <div class="metric">
+              <span class="metric-label">Time to launch</span>
+              <span class="metric-value">Weekend build → <span>Monday live</span></span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="card-header">
+            <div>
+              <div class="eyebrow">Kit Snapshot</div>
+              <div class="card-title">Everything you need to be found &amp; chosen as a stylist</div>
+            </div>
+            <div class="card-pill">One-time payment · $197</div>
+          </div>
+
+          <ul class="card-list">
+            <li>
+              <span class="icon">◎</span>
+              <div>
+                <strong>Stylist keyword maps</strong><br />
+                Personal stylist near me, wardrobe stylist, closet edit, personal shopper, virtual styling, capsule wardrobe &amp; more.
+              </div>
+            </li>
+            <li>
+              <span class="icon">◎</span>
+              <div>
+                <strong>Done-for-you page outlines</strong><br />
+                Home, About, services, packages, style process, testimonials, FAQs, blog topics &amp; location pages.
+              </div>
+            </li>
+            <li>
+              <span class="icon">◎</span>
+              <div>
+                <strong>Local &amp; online SEO playbook</strong><br />
+                Google Business Profile prompts, directory ideas &amp; collaboration pages tailored to stylists.
+              </div>
+            </li>
+            <li>
+              <span class="icon">◎</span>
+              <div>
+                <strong>Content prompts inside the GPT</strong><br />
+                Style-focused copy prompts that sound like you, not like a corporate marketing brochure.
+              </div>
+            </li>
+          </ul>
+
+          <div class="card-footer">
+            <p>
+              Designed for style businesses so your website shows your eye, your process, and your personality clearly.
+            </p>
+            <div class="card-badge">
+              <span>✓</span>
+              Optimized for premium packages—not one-off discounts
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- WHO THIS KIT IS FOR -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Who this kit is for</div>
+            <h2 class="section-title">For stylists who want steady dream clients, not random inquiries</h2>
+          </div>
+          <p class="section-tagline">
+            Built for personal stylists and image consultants who want a clear SEO framework they can own,
+            without becoming a full-time marketer or social media manager.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <ul class="bullet-list">
+              <li>
+                You’re a <strong>solo personal stylist</strong> who wants a consistent flow of clients instead of
+                occasional referrals and last-minute bookings.
+              </li>
+              <li>
+                You offer <strong>virtual styling or digital lookbooks</strong> and want to attract clients outside your exact city.
+              </li>
+              <li>
+                You’ve <strong>invested in branding &amp; photos</strong>, but your site isn’t showing up for the styling work
+                you actually love doing.
+              </li>
+              <li>
+                You want <strong>aligned clients</strong> who appreciate your style, not just price shoppers looking for a deal.
+              </li>
+              <li>
+                You’re ready for a <strong>simple, repeatable system</strong> instead of trying random content ideas whenever you have time.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="pill-list" style="margin-bottom: 10px;">
+              <div class="pill"><span>Perfect for</span> personal stylists &amp; image consultants</div>
+              <div class="pill"><span>Ideal for</span> niche styling (executive, bridal, creatives, plus-size)</div>
+              <div class="pill"><span>Works with</span> any modern website platform</div>
+            </div>
+            <p class="muted" style="margin-bottom: 8px;">
+              If you can talk about your clients, your process and your packages, this kit will turn that into an
+              SEO-ready system that brings the right people to your inbox.
+            </p>
+            <div class="badge-inline">
+              <div class="badge-dot"></div>
+              No SEO jargon – written in client-friendly language for creative business owners.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT THIS KIT DOES FOR YOU -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">What this kit does for you</div>
+            <h2 class="section-title">Turn “I hope people find me” into “my calendar is booked with ideal clients”</h2>
+          </div>
+          <p class="section-tagline">
+            Get a clear SEO framework that showcases your styling, your process, and your personality so the right
+            clients can discover—and choose—you.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <ul class="bullet-list">
+              <li>
+                <strong>Clarifies what to rank for.</strong>
+                Know exactly how people search for stylists, packages, and style solutions in your area and niche.
+              </li>
+              <li>
+                <strong>Structures your whole website.</strong>
+                Replace scattered pages with a clean, intentional layout focused on services, transformation, and next steps.
+              </li>
+              <li>
+                <strong>Highlights your unique style.</strong>
+                Use prompts that spotlight your point of view and process instead of sounding like every other stylist.
+              </li>
+              <li>
+                <strong>Boosts local &amp; online visibility.</strong>
+                Support both in-person and online offers with SEO tuned to your city, region, and target clients.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul class="bullet-list">
+              <li>
+                <strong>Gives you a simple weekly rhythm.</strong>
+                Realistic checklists you can follow in a couple of focused hours per week.
+              </li>
+              <li>
+                <strong>Supports collaborations &amp; referrals.</strong>
+                Create pages geared toward photographers, brands, and professionals who can send you clients.
+              </li>
+              <li>
+                <strong>Reduces reliance on social media.</strong>
+                Build a long-term source of leads that doesn’t vanish if the algorithm changes.
+              </li>
+              <li>
+                <strong>Protects your creative energy.</strong>
+                Spend more time styling and less time staring at a blank screen wondering what to write.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU GET INSIDE -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">What you get inside</div>
+            <h2 class="section-title">The personal stylist SEO playbook, packaged as a system</h2>
+          </div>
+          <p class="section-tagline">
+            Not a generic marketing course—this is a stylist-centered execution kit with prompts, structures and
+            checklists you can use immediately.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <h3 style="font-size: 14px; margin-bottom: 6px;">1. Stylist SEO Foundation</h3>
+            <ul class="bullet-list" style="margin-bottom: 12px;">
+              <li>Keyword map for core services: personal styling, wardrobe edit, shopping, corporate image, events &amp; more.</li>
+              <li>Niche &amp; audience terms: plus-size, petite, men’s style, bridal, professionals, creatives, busy parents.</li>
+              <li>Search intent prompts to capture “help with my style”, “closet overhaul”, “what to wear to…” queries.</li>
+            </ul>
+
+            <h3 style="font-size: 14px; margin-bottom: 6px;">2. Site Architecture Templates</h3>
+            <ul class="bullet-list">
+              <li>Home, About, services, packages, portfolio/testimonials and “How it works” page templates.</li>
+              <li>Layouts for local + virtual businesses, including service areas and clearly defined offers.</li>
+              <li>Internal linking patterns that guide visitors from discovery to “book a call” without feeling pushy.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 style="font-size: 14px; margin-bottom: 6px;">3. Copy &amp; Content Prompts</h3>
+            <ul class="bullet-list" style="margin-bottom: 12px;">
+              <li>GPT prompts for each service page, written in client-friendly language you can customize.</li>
+              <li>FAQ clusters for pricing, process, travel, online styling, returns, and what clients can expect.</li>
+              <li>Bio &amp; brand story prompts that highlight your expertise and aesthetic without bragging.</li>
+            </ul>
+
+            <h3 style="font-size: 14px; margin-bottom: 6px;">4. Local &amp; Online Visibility System</h3>
+            <ul class="bullet-list">
+              <li>Google Business Profile checklist for local stylists, written with style clients in mind.</li>
+              <li>Content rhythm for blogs, quick tips, and client stories that support your SEO and brand.</li>
+              <li>Simple review &amp; testimonial framework aligned with your brand voice and platforms you use.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">How it works</div>
+            <h2 class="section-title">Launch your personal stylist SEO system in a weekend</h2>
+          </div>
+          <p class="section-tagline">
+            Follow the guided steps, plug your styling details into the prompts, and publish an SEO-ready site
+            that reflects your brand and attracts the clients you love working with.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-title">Download your kit</div>
+            <div class="step-text">
+              Get instant access after checkout. Open the stylist-focused frameworks, checklists and GPT prompts in
+              your preferred workspace.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-title">Map your offers &amp; clients</div>
+            <div class="step-text">
+              Clarify your packages, price points, ideal clients and service areas using the guided worksheets.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-title">Generate &amp; refine your pages</div>
+            <div class="step-text">
+              Run the prompts, add your stories and images, then lightly edit to sound like you before publishing.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-title">Run the weekly rhythm</div>
+            <div class="step-text">
+              Use the recurring checklist for content, collaborations and reviews that keep your brand discoverable.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIMITED GPT VS FULL KIT -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Limited GPT vs Full Kit</div>
+            <h2 class="section-title">Try the prompts, then unlock the full stylist SEO system</h2>
+          </div>
+          <p class="section-tagline">
+            The Limited GPT lets you experiment with style prompts. The full kit gives you the complete structure,
+            strategy and checklists to turn SEO into a reliable client pipeline.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare-card limited">
+            <div class="compare-title-row">
+              <div class="compare-name">Personal Stylist SEO – Limited GPT</div>
+              <div class="compare-label">Free to explore</div>
+            </div>
+            <ul class="compare-list">
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Sample prompts for services and “About” page copy.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Basic headlines and FAQ ideas around wardrobe and styling.</span>
+              </li>
+              <li>
+                <span class="icon no">✕</span>
+                <span>No complete keyword map or site architecture templates.</span>
+              </li>
+              <li>
+                <span class="icon no">✕</span>
+                <span>No weekly visibility &amp; collaboration checklist.</span>
+              </li>
+              <li>
+                <span class="icon no">✕</span>
+                <span>No implementation roadmap or priority plan.</span>
+              </li>
+            </ul>
+            <div class="compare-footnote">
+              Great if you want to feel the stylist-centered prompts before investing in the full kit.
+            </div>
+            <div class="btn-row" style="margin-top: 10px;">
+              <a href="#limited-gpt-link" class="btn btn-ghost" style="width: 100%; justify-content: center;">
+                Try the Limited GPT First
+              </a>
+              <!-- TODO: replace with actual Limited GPT URL -->
+            </div>
+          </div>
+
+          <div class="compare-card full">
+            <div class="compare-title-row">
+              <div class="compare-name">Full Personal Stylist SEO System Kit</div>
+              <div class="compare-label hot">Most stylists choose this</div>
+            </div>
+            <ul class="compare-list">
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Full personal stylist keyword map for services, niches &amp; local intent.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Complete site architecture templates for local &amp; virtual styling businesses.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Done-for-you page outlines + GPT prompts for every core stylist page type.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Local &amp; online visibility checklists, including Google Business Profile guidance.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Execution roadmap for week 1, month 1, and quarter 1.</span>
+              </li>
+            </ul>
+            <div class="compare-footnote">
+              One-time <strong>$197</strong> investment. Use it for your current brand and any future style projects you launch.
+            </div>
+            <div class="btn-row" style="margin-top: 10px;">
+              <a href="#full-kit-checkout" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                Get the Full SEO System Kit – $197
+              </a>
+              <!-- TODO: replace with actual checkout URL -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">FAQ</div>
+            <h2 class="section-title">Questions personal stylists ask before grabbing the kit</h2>
+          </div>
+          <p class="section-tagline">
+            Not sure if this is right for your style business? Here are straightforward answers in stylist-friendly language.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">How is this different from generic “small business marketing” advice?</div>
+            <div class="faq-a">
+              This kit is built specifically for stylists. The examples, prompts and structures center on outfits,
+              closets, body types, events and transformations—not generic service business templates.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Do I need to understand SEO or copywriting?</div>
+            <div class="faq-a">
+              No. The kit is written in plain language. You’ll see which pages to create, what to include, and get
+              prompts that generate draft copy you can adjust to match your tone.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Will this work with my current website?</div>
+            <div class="faq-a">
+              Yes. The system focuses on structure, content and visibility, so it works with WordPress, Squarespace,
+              Wix, Webflow and most other platforms used by stylists and creatives.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Can an assistant or VA implement this for me?</div>
+            <div class="faq-a">
+              Absolutely. The workflows and checklists are written so you can hand them to a VA while still approving
+              all final wording and imagery for brand alignment.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How long before I see more enquiries from search?</div>
+            <div class="faq-a">
+              Timelines vary, but many stylists see better rankings and more organic enquiries within 60–90 days of
+              publishing the recommended pages and following the checklist consistently.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is $197 a subscription or one-time?</div>
+            <div class="faq-a">
+              It’s a one-time payment of <strong>$197</strong>. You keep ongoing access to the Personal Stylist SEO
+              System Kit and can reuse it as your business, services or brand evolves.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="cta-section">
+        <div class="eyebrow">Ready to style more clients</div>
+        <div class="cta-title">Let the right people discover the stylist you already are</div>
+        <p class="cta-subtitle">
+          Grab the Personal Stylist SEO System Kit once for <strong>$197</strong>, plug in your services and stories,
+          and launch a grounded SEO system that quietly brings new clients while you focus on styling.
+        </p>
+
+        <div class="cta-price-row">
+          <span class="amount">$197</span>
+          <span class="tag">
+            One-time · <span>no retainer</span> · use for all your style brands and offers
+          </span>
+        </div>
+
+        <div class="cta-btn-row">
+          <a href="#limited-gpt-link" class="btn btn-ghost">
+            Try the Limited GPT First
+          </a>
+          <!-- TODO: replace with actual Limited GPT URL -->
+
+          <a href="#full-kit-checkout" class="btn btn-primary">
+            Get the Full SEO System Kit
+          </a>
+          <!-- TODO: replace with actual checkout URL -->
+        </div>
+
+        <div class="cta-note">
+          Your styling already changes how people show up in their lives. This kit helps more of them find you.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div>© <span id="year"></span> StyleRank Systems · Personal Stylist SEO System Kit</div>
+    <div class="footer-links">
+      <span>For educational &amp; marketing support purposes only. Not financial, legal, or career advice.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
