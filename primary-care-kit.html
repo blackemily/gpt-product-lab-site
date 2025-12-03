@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Primary Care SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #050810;
+      --bg-elevated: #0b1020;
+      --bg-soft: #111827;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --accent-strong: rgba(34, 197, 94, 0.35);
+      --border-subtle: #1f2937;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --text-soft: #6b7280;
+      --danger: #f97373;
+      --warning: #eab308;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #0b1120 0%, #020617 50%, #020617 100%);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .page-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #4ade80, #22c55e 40%, #0ea5e9 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #020617;
+      font-size: 16px;
+      font-weight: 800;
+      box-shadow: 0 0 0 2px #020617, 0 0 40px rgba(34, 197, 94, 0.55);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .header-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7));
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .header-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.9);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Buttons */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.16s ease-out;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, #4ade80, #22c55e 40%, #16a34a 100%);
+      color: #020617;
+      box-shadow:
+        0 0 0 1px rgba(34, 197, 94, 0.7),
+        0 18px 45px rgba(22, 163, 74, 0.48);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow:
+        0 0 0 1px rgba(34, 197, 94, 0.95),
+        0 22px 55px rgba(22, 163, 74, 0.7);
+      filter: brightness(1.03);
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.7);
+      border-color: rgba(148, 163, 184, 0.4);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: transparent;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .btn-ghost:hover {
+      color: var(--text-main);
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-subtext {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    /* Hero */
+
+    .hero {
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.04), transparent 55%),
+                  radial-gradient(circle at bottom, rgba(34, 197, 94, 0.05), transparent 60%);
+      border-radius: 28px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 24px 22px;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.15), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.22), transparent 55%);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text-soft);
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .hero-eyebrow span {
+      color: #a5f3fc;
+    }
+
+    h1.hero-title {
+      font-size: 30px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .hero-highlight {
+      color: #4ade80;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 16px;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .hero-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    }
+
+    .hero-price-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.25), rgba(15, 23, 42, 0.95));
+      color: var(--text-main);
+      font-size: 12px;
+    }
+
+    .hero-price-main {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .hero-price-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-soft);
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-card {
+      border-radius: 20px;
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.18), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 16px 16px 14px;
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 8px;
+    }
+
+    .hero-card-title {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-card-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.13);
+      border: 1px solid rgba(74, 222, 128, 0.6);
+      font-size: 11px;
+      color: #bbf7d0;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .metric {
+      padding: 8px 9px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(30, 64, 175, 0.5);
+    }
+
+    .metric-label {
+      font-size: 10px;
+      color: var(--text-soft);
+      margin-bottom: 2px;
+    }
+
+    .metric-value {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .metric-sub {
+      font-size: 10px;
+      color: #4ade80;
+      margin-top: 2px;
+    }
+
+    .metric-sub.bad {
+      color: #fb7185;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 6px;
+    }
+
+    .hero-tagline {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 10px;
+    }
+
+    .hero-tagline span {
+      color: #22c55e;
+    }
+
+    /* Sections */
+
+    .section {
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 20px 18px;
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.85);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      white-space: nowrap;
+    }
+
+    .section-description {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    /* Grids */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    /* Cards & list styles */
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-soft);
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .bullet-item {
+      display: flex;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .bullet-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #bbf7d0;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .bullet-text strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .card-soft {
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 12px 12px 11px;
+    }
+
+    .card-soft h3 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .card-soft p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .step-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--text-soft);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-body {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .step-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .step-text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Comparison */
+
+    .compare-col {
+      border-radius: 16px;
+      padding: 14px 13px 13px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: rgba(15, 23, 42, 0.96);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-col.limited {
+      border-style: dashed;
+      border-color: rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.16), rgba(15, 23, 42, 0.96));
+    }
+
+    .compare-col.full {
+      border-color: rgba(34, 197, 94, 0.7);
+      box-shadow: 0 16px 40px rgba(22, 163, 74, 0.35);
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.16), rgba(15, 23, 42, 0.96));
+    }
+
+    .compare-badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 9px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .compare-badge.limited {
+      border: 1px solid rgba(148, 163, 184, 0.85);
+      color: var(--text-soft);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .compare-badge.full {
+      border: 1px solid rgba(34, 197, 94, 0.9);
+      color: #bbf7d0;
+      background: rgba(34, 197, 94, 0.18);
+    }
+
+    .compare-title {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .compare-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 9px;
+    }
+
+    .compare-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 7px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .compare-item {
+      display: flex;
+      gap: 7px;
+      align-items: flex-start;
+    }
+
+    .compare-tick, .compare-x {
+      margin-top: 2px;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      flex-shrink: 0;
+    }
+
+    .compare-tick {
+      border: 1px solid rgba(74, 222, 128, 0.9);
+      background: rgba(22, 163, 74, 0.18);
+      color: #bbf7d0;
+    }
+
+    .compare-x {
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .compare-note {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 9px;
+    }
+
+    /* FAQ */
+
+    .faq-item {
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 11px 11px 10px;
+    }
+
+    .faq-q {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* CTA */
+
+    .cta {
+      border-radius: 24px;
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.26), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(34, 197, 94, 0.9);
+      padding: 20px 18px 22px;
+      box-shadow: 0 18px 55px rgba(22, 163, 74, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background:
+        radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.24), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.18), transparent 55%);
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+    }
+
+    .cta-title {
+      font-size: 20px;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .cta-sub {
+      font-size: 13px;
+      color: #e5e7eb;
+      margin-bottom: 10px;
+    }
+
+    .cta-price-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: #bbf7d0;
+      margin-bottom: 10px;
+    }
+
+    .cta-price {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .cta-right-note {
+      font-size: 11px;
+      color: #d1fae5;
+      text-align: left;
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 16px 20px 26px;
+      font-size: 11px;
+      color: var(--text-soft);
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-soft);
+    }
+
+    .footer-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* Mobile */
+
+    @media (max-width: 880px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .page-inner {
+        padding: 22px 16px 44px;
+      }
+
+      .hero-inner,
+      .grid-2,
+      .grid-3,
+      .compare-grid,
+      .faq-grid,
+      .cta-inner {
+        grid-template-columns: 1fr !important;
+      }
+
+      .hero {
+        padding: 18px 16px;
+      }
+
+      h1.hero-title {
+        font-size: 24px;
+      }
+
+      .cta {
+        padding: 18px 16px 20px;
+      }
+
+      footer {
+        padding: 14px 16px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-shell">
+  <div class="page-inner">
+    <header>
+      <div class="brand">
+        <div class="brand-logo">PC</div>
+        <div class="brand-text">
+          <div class="brand-name">Primary Care Growth Systems</div>
+          <div class="brand-sub">SEO & patient flow for family & internal medicine clinics</div>
+        </div>
+      </div>
+      <div class="header-pill">
+        <span class="header-dot"></span>
+        Primary Care SEO System Kit • Instant digital access
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="primary-care-hero">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-eyebrow">
+              <span>Primary care clinics</span> • Turn local searches into new patients & visits
+            </div>
+            <h1 id="primary-care-hero" class="hero-title">
+              <span class="hero-highlight">Primary Care</span> SEO System Kit
+            </h1>
+            <p class="hero-subtitle">
+              Turn “primary care doctor near me” searches into new patient appointments, annual physicals,
+              and ongoing primary care relationships. A complete plug-and-play SEO system built specifically
+              for family medicine and internal medicine practices.
+            </p>
+
+            <div class="hero-meta-row">
+              <div class="hero-price-pill">
+                <span class="hero-price-main">$197</span>
+                <span class="hero-price-label">One-time • Full Kit Access</span>
+              </div>
+              <div>
+                <span class="hero-dot"></span>
+                <span>Designed for independent & small group practices, not hospital marketing departments.</span>
+              </div>
+            </div>
+
+            <div class="btn-row">
+              <a href="#limited-gpt-link" class="btn btn-outline">
+                Try the Limited GPT First
+              </a>
+              <!-- TODO: replace with actual Limited GPT URL -->
+
+              <a href="#full-kit-checkout" class="btn btn-primary">
+                Get the Full SEO System Kit
+              </a>
+              <!-- TODO: replace with actual checkout URL -->
+            </div>
+            <div class="btn-subtext">
+              No subscriptions. Immediate digital access to all assets & workflows.
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-card">
+              <div class="hero-card-header">
+                <div class="hero-card-title">Primary Care Search Snapshot</div>
+                <div class="hero-card-badge">Built for Local Maps Pack</div>
+              </div>
+
+              <div class="hero-metrics">
+                <div class="metric">
+                  <div class="metric-label">Typical Before</div>
+                  <div class="metric-value">10–20</div>
+                  <div class="metric-sub bad">New patients / month from Google</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Target After</div>
+                  <div class="metric-value">30–60+</div>
+                  <div class="metric-sub">New patients & visits / month from organic</div>
+                </div>
+              </div>
+
+              <div class="hero-card-footer">
+                <span>Focus: “primary care + city” & common symptom searches</span>
+                <span>Time: ~2–4 hrs/week</span>
+              </div>
+
+              <div class="hero-tagline">
+                Stop relying only on health plan directories — <span>let search send the right patients to your front desk.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHO THIS KIT IS FOR -->
+      <section class="section" id="who-for">
+        <div class="section-header">
+          <h2 class="section-title">Who this kit is for</h2>
+          <div class="section-tag">Primary care • Family & internal medicine</div>
+        </div>
+        <p class="section-description">
+          This kit is built for real-world primary care practices — family medicine, internal medicine, and combined clinics.
+          If you provide ongoing care and want more of the right patients finding you via search, this is designed around you.
+        </p>
+
+        <div class="grid-2">
+          <div class="card-soft">
+            <h3>Perfect fit if you are:</h3>
+            <ul class="bullet-list">
+              <li class="bullet-item">
+                <div class="bullet-icon">✓</div>
+                <div class="bullet-text">
+                  <strong>Independent PCP, clinic owner, or practice manager</strong> who wants a more predictable flow
+                  of new patients and annual visits.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">✓</div>
+                <div class="bullet-text">
+                  Working in a <strong>small group practice</strong> that depends on local reputation and wants search
+                  to match the quality of care you provide every day.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">✓</div>
+                <div class="bullet-text">
+                  Offering <strong>same-day or next-day visits</strong>, preventive care, chronic disease management,
+                  and want those capabilities visible in Google search & Maps.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">✓</div>
+                <div class="bullet-text">
+                  Working with a generic marketing agency but <strong>still not seeing local rankings and calls</strong>
+                  that justify the monthly retainer.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-soft">
+            <h3>Probably not for you if:</h3>
+            <ul class="bullet-list">
+              <li class="bullet-item">
+                <div class="bullet-icon">×</div>
+                <div class="bullet-text">
+                  You’re a <strong>large hospital system or multi-state network</strong> with an internal marketing team
+                  that controls your website and SEO centrally.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">×</div>
+                <div class="bullet-text">
+                  You won’t allocate at least <strong>2–3 hours per week</strong> or a team member to implement
+                  the workflows consistently.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">×</div>
+                <div class="bullet-text">
+                  You only care about <strong>short-term campaign spikes</strong> instead of building a long-term,
+                  inbound patient panel.
+                </div>
+              </li>
+            </ul>
+
+            <div style="margin-top: 10px; font-size: 12px; color: var(--text-soft);">
+              If you provide comprehensive, ongoing care and want <strong style="color:#e5e7eb;">more of the right
+              patients finding you first</strong>, this kit is built around you.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT THIS KIT DOES FOR YOU -->
+      <section class="section" id="what-it-does">
+        <div class="section-header">
+          <h2 class="section-title">What this kit does for you</h2>
+          <div class="section-tag">From “nice clinic site” to full panels & visits</div>
+        </div>
+        <p class="section-description">
+          Instead of guessing what to publish or paying for vague SEO retainers, you’ll follow a concrete system that
+          turns local searches into new patients, preventive visits, and better use of your provider schedules.
+        </p>
+
+        <div class="grid-2">
+          <div>
+            <ul class="bullet-list">
+              <li class="bullet-item">
+                <div class="bullet-icon">🏥</div>
+                <div class="bullet-text">
+                  <strong>Dominate “primary care + city” searches</strong> with pre-built page blueprints
+                  for family medicine, internal medicine, pediatrics-as-primary, and more.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">📍</div>
+                <div class="bullet-text">
+                  <strong>Push your clinic into the Maps Pack</strong> using a review, photo, and posting engine
+                  tuned for primary care patients and their families.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">📈</div>
+                <div class="bullet-text">
+                  <strong>Capture common symptom & problem searches</strong> like “high blood pressure doctor”,
+                  “annual physical near me”, “diabetes doctor”, and “same day primary care”.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">📞</div>
+                <div class="bullet-text">
+                  <strong>Turn visitors into new patient calls and portal messages</strong> with page layouts and copy
+                  aligned with how people actually choose a primary care doctor.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="card-soft" style="margin-bottom: 10px;">
+              <h3>Real outcomes: a healthier, more stable panel</h3>
+              <p>
+                The goal is simple: more <strong>aligned patients on your panel</strong>, better visit utilization,
+                and stronger continuity. Rankings and clicks only matter if they translate into scheduled visits
+                and ongoing primary care relationships.
+              </p>
+            </div>
+
+            <div class="pill-list">
+              <span class="pill">Primary care keyword & page map</span>
+              <span class="pill">Maps Pack ranking workflows</span>
+              <span class="pill">Review & reputation flows</span>
+              <span class="pill">Symptom & service content prompts</span>
+              <span class="pill">Conversion-focused “become a patient” pages</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU GET INSIDE -->
+      <section class="section" id="what-you-get">
+        <div class="section-header">
+          <h2 class="section-title">What you get inside the kit</h2>
+          <div class="section-tag">Assets, workflows & prompts you can deploy immediately</div>
+        </div>
+        <p class="section-description">
+          Every piece is built so an MD/DO, NP/PA, clinic manager, or operations lead can implement
+          without needing to become an SEO specialist.
+        </p>
+
+        <div class="grid-2">
+          <div class="card-soft">
+            <h3>1. Primary Care SEO Architecture & Templates</h3>
+            <ul class="bullet-list">
+              <li class="bullet-item">
+                <div class="bullet-icon">●</div>
+                <div class="bullet-text">
+                  <strong>Clinic website blueprint</strong> covering family medicine, internal medicine,
+                  pediatrics as primary, women’s health, chronic care, and behavioral health integrations.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">●</div>
+                <div class="bullet-text">
+                  <strong>Service & location page outlines</strong> for “primary care in [City]”, “new patient visits”,
+                  “annual physicals”, “chronic disease management”, and more.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">●</div>
+                <div class="bullet-text">
+                  <strong>Meta title & description swipe file</strong> tuned to local primary care search behavior
+                  and click-through.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-soft">
+            <h3>2. Google Business Profile & Local Maps Engine</h3>
+            <ul class="bullet-list">
+              <li class="bullet-item">
+                <div class="bullet-icon">●</div>
+                <div class="bullet-text">
+                  <strong>GBP optimization checklist</strong> specifically for primary care clinics — categories,
+                  services, attributes (telehealth, hours, languages), and accepted insurances where allowed.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">●</div>
+                <div class="bullet-text">
+                  <strong>Review request flows</strong> that help patients share realistic, compliant feedback
+                  without disclosing protected health information in public reviews.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">●</div>
+                <div class="bullet-text">
+                  <strong>Photo & post cadence</strong> for team intros, community engagement, clinic updates,
+                  and preventive health education topics.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-soft">
+            <h3>3. Patient Education & Conversion Systems</h3>
+            <ul class="bullet-list">
+              <li class="bullet-item">
+                <div class="bullet-icon">●</div>
+                <div class="bullet-text">
+                  <strong>Education content bank</strong> for “Do I need a primary care doctor?”, “urgent care vs PCP”,
+                  “which vaccines do I need?”, “how often for checkups?”, and more.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">●</div>
+                <div class="bullet-text">
+                  <strong>FAQ & objection templates</strong> that address insurance, panel status (accepting / closed),
+                  telehealth options, and access in plain language your patients understand.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">●</div>
+                <div class="bullet-text">
+                  <strong>Conversion-driven calls to action</strong> aligned with “become a patient”, new patient forms,
+                  phone calls, and portal sign-ups.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-soft">
+            <h3>4. Implementation & Tracking Dashboards</h3>
+            <ul class="bullet-list">
+              <li class="bullet-item">
+                <div class="bullet-icon">●</div>
+                <div class="bullet-text">
+                  <strong>90-day rollout plan</strong> that fits around clinic schedules, provider templates,
+                  and staff capacity without overwhelming your team.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">●</div>
+                <div class="bullet-text">
+                  <strong>Ranking & lead tracking sheets</strong> that connect keywords to new patients,
+                  visit volume, and revenue — not just traffic.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">●</div>
+                <div class="bullet-text">
+                  <strong>Simple reporting snapshots</strong> for owners, medical directors, and operations leads —
+                  no confusing marketing dashboards.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="section" id="how-it-works">
+        <div class="section-header">
+          <h2 class="section-title">How it works</h2>
+          <div class="section-tag">A realistic system for busy primary care teams</div>
+        </div>
+        <p class="section-description">
+          You don’t need a full-time marketer to make this system work. You need a few focused hours, consistency,
+          and someone who cares about keeping panels healthy and schedules appropriately full.
+        </p>
+
+        <div class="grid-2">
+          <div>
+            <div class="step-list">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-body">
+                  <div class="step-title">Plug in your clinic details</div>
+                  <div class="step-text">
+                    Input your locations, providers, services, accepted insurances (where appropriate), and ideal patient mix.
+                    The kit’s prompts and templates adapt around your actual practice structure and access model.
+                  </div>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-body">
+                  <div class="step-title">Deploy core SEO pages & GBP foundation</div>
+                  <div class="step-text">
+                    Use the outlines, meta templates, and internal link maps to set up or refine your core services,
+                    “become a patient” pages, and location pages, plus your Google Business Profile.
+                  </div>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-body">
+                  <div class="step-title">Turn everyday visits into SEO fuel</div>
+                  <div class="step-text">
+                    Each day in clinic becomes anonymized education content, FAQs, and practice updates —
+                    captured via simple prompts and staff-friendly checklists that respect privacy requirements.
+                  </div>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-body">
+                  <div class="step-title">Review bookings & refine monthly</div>
+                  <div class="step-text">
+                    Track which keywords and pages drive new patients, visit volume, and panel growth,
+                    then iterate with a monthly sprint checklist — no complex tools needed.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-soft">
+            <h3>Time & team expectations</h3>
+            <ul class="bullet-list">
+              <li class="bullet-item">
+                <div class="bullet-icon">⏱</div>
+                <div class="bullet-text">
+                  <strong>Initial setup:</strong> ~1–2 focused days to implement core pages, GBP optimization,
+                  and basic tracking dashboards (can be split across several weeks).
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">📅</div>
+                <div class="bullet-text">
+                  <strong>Weekly maintenance:</strong> 2–4 hours for content updates, GBP posts,
+                  review follow-ups, and simple reporting checks.
+                </div>
+              </li>
+              <li class="bullet-item">
+                <div class="bullet-icon">👥</div>
+                <div class="bullet-text">
+                  Works best when <strong>one person “owns” the system</strong> — practice manager,
+                  operations lead, or a marketing-minded staff member supported by leadership.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIMITED GPT VS FULL KIT -->
+      <section class="section" id="comparison">
+        <div class="section-header">
+          <h2 class="section-title">Limited GPT vs Full SEO System Kit</h2>
+          <div class="section-tag">Try the brain, then unlock the full body</div>
+        </div>
+        <p class="section-description">
+          The Limited GPT lets you experience a slice of the strategy. The full kit gives you every asset,
+          workflow, and implementation detail so you can execute without reinventing the wheel.
+        </p>
+
+        <div class="compare-grid">
+          <div class="compare-col limited">
+            <div class="compare-badge limited">
+              Limited GPT
+            </div>
+            <div class="compare-title">Try the strategy engine for free</div>
+            <div class="compare-sub">
+              Ask questions, generate ideas, and test-drive the thinking behind the Primary Care SEO System Kit.
+            </div>
+            <ul class="compare-list">
+              <li class="compare-item">
+                <div class="compare-tick">?</div>
+                <div>Brainstorm <strong>primary care SEO topics</strong> & content angles specific to your practice and patient mix.</div>
+              </li>
+              <li class="compare-item">
+                <div class="compare-tick">?</div>
+                <div>Get example <strong>headline and copy ideas</strong> for service, symptom, and location pages.</div>
+              </li>
+              <li class="compare-item">
+                <div class="compare-tick">?</div>
+                <div>Ask implementation questions and <strong>sanity check your current strategy.</strong></div>
+              </li>
+              <li class="compare-item">
+                <div class="compare-x">×</div>
+                <div>No access to the <strong>complete templates, checklists, or tracking dashboards.</strong></div>
+              </li>
+              <li class="compare-item">
+                <div class="compare-x">×</div>
+                <div>No ready-made <strong>internal linking maps or rollout plans.</strong></div>
+              </li>
+            </ul>
+            <div class="compare-note">
+              Great to explore ideas and see how the system thinks before committing to the full kit.
+            </div>
+          </div>
+
+          <div class="compare-col full">
+            <div class="compare-badge full">
+              Full SEO System Kit • $197
+            </div>
+            <div class="compare-title">Everything you need to deploy the system</div>
+            <div class="compare-sub">
+              Includes all templates, workflows, and implementation details — plus the GPT assistant to help you use them.
+            </div>
+            <ul class="compare-list">
+              <li class="compare-item">
+                <div class="compare-tick">✓</div>
+                <div>Complete <strong>primary care SEO site architecture</strong> & internal linking blueprints.</div>
+              </li>
+              <li class="compare-item">
+                <div class="compare-tick">✓</div>
+                <div>Ready-to-use <strong>page outlines, meta templates, and content frameworks</strong> for core services & common conditions.</div>
+              </li>
+              <li class="compare-item">
+                <div class="compare-tick">✓</div>
+                <div>Google Business Profile <strong>optimization checklists, review flows, and posting cadences.</strong></div>
+              </li>
+              <li class="compare-item">
+                <div class="compare-tick">✓</div>
+                <div>Everyday visit & clinic <strong>content capture system</strong> your team can follow in minutes.</div>
+              </li>
+              <li class="compare-item">
+                <div class="compare-tick">✓</div>
+                <div>Weekly & monthly <strong>sprint and tracking dashboards</strong> to connect SEO to bookings, visits, and revenue.</div>
+              </li>
+            </ul>
+            <div class="compare-note">
+              One-time payment of <strong>$197</strong> for full, ongoing access — no subscriptions or retainers.
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row" style="margin-top: 18px;">
+          <a href="#limited-gpt-link" class="btn btn-outline">
+            Try the Limited GPT First
+          </a>
+          <!-- TODO: replace with actual Limited GPT URL -->
+          <a href="#full-kit-checkout" class="btn btn-primary">
+            Upgrade to Full SEO System Kit — $197
+          </a>
+          <!-- TODO: replace with actual checkout URL -->
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" id="faq">
+        <div class="section-header">
+          <h2 class="section-title">Frequently asked questions</h2>
+          <div class="section-tag">Primary Care SEO System Kit • $197 one-time</div>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">Will this work for both family medicine and internal medicine?</div>
+            <div class="faq-a">
+              Yes. The architecture supports family medicine, internal medicine, and combined clinics. You can emphasize
+              pediatrics, adults only, medicare-heavy, or mixed panels while maintaining a clear site structure
+              that search engines and patients understand.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Does this work if most of our patients come through insurance or health plan directories?</div>
+            <div class="faq-a">
+              It complements that reality. Many patients still search your name, clinic, or “primary care near me”
+              before choosing. The kit helps your site and Maps listing make a strong case so those searches turn
+              into scheduled visits instead of calls to another clinic down the street.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Do I need a web developer or agency to implement this?</div>
+            <div class="faq-a">
+              No. If someone on your team can edit basic pages in your website platform (WordPress, Webflow, Wix,
+              Squarespace, or a healthcare-specific CMS), they can use this kit. Technical steps are broken down
+              into plain-language checklists with clear “do this / don’t do this” guidance.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How long until we see more new patients from SEO?</div>
+            <div class="faq-a">
+              SEO isn’t instant, but many local clinics begin seeing movement within 6–12 weeks in less competitive areas,
+              and 3–6 months where there are more options for patients. The system is built so improvements compound
+              month after month instead of resetting.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is the $197 a monthly subscription?</div>
+            <div class="faq-a">
+              No. The Primary Care SEO System Kit is a <strong>single one-time payment of $197</strong>.
+              You get ongoing access to the full kit as it exists today, plus incremental refinements
+              that are rolled into your version.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">What if we already work with a marketing agency?</div>
+            <div class="faq-a">
+              Many practices use the kit as a <strong>strategy blueprint</strong> for their agency.
+              You can give them the assets and workflows and say, “Implement this for our clinic,” instead of paying
+              them to figure out a primary care SEO plan from scratch.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="cta" id="final-cta">
+        <div class="cta-inner">
+          <div>
+            <div class="cta-title">
+              Turn “primary care doctor near me” searches into ongoing patient relationships — predictably.
+            </div>
+            <div class="cta-sub">
+              Own your local demand for primary care instead of relying only on health plan directories and referrals.
+              One complete SEO system, built for clinics that provide real continuity and whole-person care.
+            </div>
+            <div class="cta-price-row">
+              <span class="cta-price">$197</span>
+              <span>one-time • full access to the Primary Care SEO System Kit</span>
+            </div>
+            <div class="btn-row">
+              <a href="#limited-gpt-link" class="btn btn-outline">
+                Try the Limited GPT First
+              </a>
+              <!-- TODO: replace with actual Limited GPT URL -->
+              <a href="#full-kit-checkout" class="btn btn-primary">
+                Get the Full SEO System Kit
+              </a>
+              <!-- TODO: replace with actual checkout URL -->
+            </div>
+            <div class="btn-subtext">
+              Start with the Limited GPT to explore the strategy — upgrade to the full kit whenever you’re ready.
+            </div>
+          </div>
+          <div class="cta-right-note">
+            Inside, you’ll find structures, prompts, and workflows tailored to primary care — built to help you show up
+            where patients are searching, communicate what makes your clinic different, and turn that attention into
+            healthy panels and steady visit volume. Implement once, refine monthly, and let your SEO finally match the
+            quality of care your team delivers every day.
+          </div>
+        </div>
+      </section>
+
+      <!-- Invisible anchors for placeholder links -->
+      <div id="limited-gpt-link" style="position:relative;top:-80px;"></div>
+      <div id="full-kit-checkout" style="position:relative;top:-80px;"></div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-row">
+      <div>© <span id="year"></span> Primary Care Growth Systems. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Disclaimer</a>
+      </div>
+    </div>
+    <div style="margin-top: 8px;">
+      Nothing in this kit is medical, financial, or legal advice. Results will vary based on your market,
+      competition, website platform, team, and implementation effort. Always comply with healthcare advertising rules,
+      privacy regulations, and professional guidelines in your jurisdiction.
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Set current year in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
