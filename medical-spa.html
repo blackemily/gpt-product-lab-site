@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Medical Spa SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #05070a;
+      --bg-elevated: #0b1018;
+      --bg-soft: #111827;
+      --accent: #3af07a;
+      --accent-soft: rgba(58, 240, 122, 0.12);
+      --accent-strong: rgba(58, 240, 122, 0.22);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #111827;
+      --danger: #f87171;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 65%, #000 100%);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 40px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.9);
+      border: 1px solid var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(58, 240, 122, 0.3);
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-weight: 650;
+      letter-spacing: -0.03em;
+    }
+
+    p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .hero {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-main h1 {
+      font-size: 34px;
+      line-height: 1.08;
+      margin: 14px 0 12px;
+    }
+
+    .hero-main h1 span.highlight {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      max-width: 450px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin: 16px 0 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 99px;
+      background: var(--accent);
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .price {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .price-note {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn-row-left {
+      justify-content: flex-start;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #020617;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.5), 0 15px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      border-color: rgba(31, 41, 55, 0.9);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .btn-tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-side {
+      background: radial-gradient(circle at top left, rgba(58, 240, 122, 0.18), transparent 60%), var(--bg-elevated);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-side-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .hero-side-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .hero-side-tag {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--accent-soft);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+
+    .hero-metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .metric {
+      padding: 8px 9px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 1);
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .metric-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .hero-side-list {
+      padding: 10px 10px 0;
+      margin: 0;
+      list-style: none;
+      border-radius: 14px;
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 60%), #020617;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .hero-side-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      padding: 7px 0;
+      color: var(--text-muted);
+    }
+
+    .hero-side-list li + li {
+      border-top: 1px dashed rgba(55, 65, 81, 0.8);
+    }
+
+    .check {
+      margin-top: 3px;
+      width: 13px;
+      height: 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: var(--accent);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .hero-side-footer {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(55, 65, 81, 0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-side-footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lock-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--accent);
+    }
+
+    /* Sections */
+
+    .section {
+      margin-top: 36px;
+      padding: 22px 18px 20px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.94));
+      border: 1px solid var(--border-subtle);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 20px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 22px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .bullet-item {
+      padding: 9px 10px;
+      border-radius: 12px;
+      background: #020617;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .bullet-item-strong {
+      color: var(--text-main);
+    }
+
+    .bullet-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent);
+      margin-bottom: 3px;
+    }
+
+    .divider-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(156, 163, 175, 0.7);
+      margin: 18px 0 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .divider-label::before,
+    .divider-label::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: radial-gradient(circle, rgba(55, 65, 81, 0.8), transparent);
+    }
+
+    /* What you get inside */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .feature-card {
+      background: #020617;
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 10px 11px 11px;
+      font-size: 12px;
+    }
+
+    .feature-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .feature-title {
+      font-size: 13px;
+      color: var(--text-main);
+      margin-bottom: 5px;
+    }
+
+    .feature-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* How it works */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .step-card {
+      background: #020617;
+      border-radius: 14px;
+      padding: 10px 11px 11px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 12px;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: var(--accent-strong);
+      color: #020617;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .step-title {
+      font-size: 13px;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .step-text {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Comparison */
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .compare-card {
+      background: #020617;
+      border-radius: 16px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 14px 13px 13px;
+    }
+
+    .compare-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .compare-title {
+      font-size: 14px;
+    }
+
+    .compare-pill {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border: 1px solid rgba(55, 65, 81, 1);
+      color: var(--text-muted);
+    }
+
+    .compare-pill-strong {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .compare-price {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .compare-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .compare-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      padding: 4px 0;
+    }
+
+    .compare-icon {
+      margin-top: 2px;
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    .compare-icon-off {
+      color: rgba(148, 163, 184, 0.8);
+    }
+
+    .compare-footnote {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .faq-item {
+      border-radius: 14px;
+      background: #020617;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 10px 11px 11px;
+    }
+
+    .faq-q {
+      font-size: 13px;
+      color: var(--text-main);
+      margin-bottom: 5px;
+    }
+
+    .faq-a {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Final CTA */
+
+    .cta-section {
+      margin-top: 32px;
+      padding: 22px 18px 22px;
+      border-radius: 20px;
+      background: radial-gradient(circle at top, rgba(58, 240, 122, 0.22), transparent 60%), #020617;
+      border: 1px solid rgba(31, 41, 55, 1);
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .cta-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .cta-price-row {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .cta-price {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .cta-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 26px;
+      padding: 16px 4px 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(31, 41, 55, 0.8);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 880px) {
+      .hero,
+      .two-col,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        gap: 22px;
+      }
+
+      .hero-main h1 {
+        font-size: 28px;
+      }
+
+      .btn-row-left {
+        justify-content: center;
+      }
+
+      .section {
+        padding: 18px 14px 16px;
+      }
+
+      .page {
+        padding: 24px 12px 32px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .features-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bullet-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main h1 {
+        font-size: 24px;
+      }
+
+      .cta-title {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!-- HERO -->
+    <header aria-label="Medical Spa SEO System Kit" class="hero">
+      <div class="hero-main">
+        <span class="pill">
+          <span class="pill-dot"></span>
+          Medical Spa Growth Engine
+          <span style="color: var(--text-muted); opacity: 0.8;">SEO System Kit</span>
+        </span>
+
+        <h1>
+          <span class="highlight">Medical Spa SEO System Kit</span><br />
+          Turn search traffic into booked treatments.
+        </h1>
+
+        <p class="hero-sub">
+          A done-for-you SEO system for medical spas that want more high-ticket bookings for injectables,
+          lasers & body treatments from Google & Google Maps — without hiring an agency.
+        </p>
+
+        <div class="hero-meta">
+          <span><span class="dot"></span> Built for med spas, aesthetic clinics & wellness studios</span>
+          <span>🕓 Launch in a weekend</span>
+          <span>💄 Perfect for injectables, lasers & body contouring</span>
+        </div>
+
+        <div class="price-row">
+          <div class="price">$197</div>
+          <div class="price-note">One-time payment · Lifetime access</div>
+        </div>
+
+        <div class="btn-row btn-row-left">
+          <a href="#limited-gpt-link" class="btn btn-ghost">
+            🤖 Try the Limited GPT First
+          </a>
+          <a href="#full-kit-checkout" class="btn btn-primary">
+            Get the Full SEO System Kit →
+          </a>
+        </div>
+
+        <div class="tag-row">
+          <span class="btn-tag">Includes templates, prompts & checklists</span>
+          <span class="btn-tag">No ad spend required</span>
+          <span class="btn-tag">Works with any med spa website platform</span>
+        </div>
+      </div>
+
+      <aside class="hero-side" aria-label="Medical spa SEO snapshot">
+        <div class="hero-side-header">
+          <div class="hero-side-title">Medical Spa SEO Snapshot</div>
+          <div class="hero-side-tag">Search-to-booking system</div>
+        </div>
+
+        <div class="hero-metric-row">
+          <div class="metric">
+            <div class="metric-label">Local keywords</div>
+            <div class="metric-value">110+</div>
+            <div class="metric-sub">Aesthetic intent mapped</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Pages covered</div>
+            <div class="metric-value">20</div>
+            <div class="metric-sub">Core & treatment pages</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Time to launch</div>
+            <div class="metric-value">2–3 days</div>
+            <div class="metric-sub">Weekend-friendly build-out</div>
+          </div>
+        </div>
+
+        <ul class="hero-side-list">
+          <li>
+            <span class="check">✓</span>
+            <span>
+              Pre-mapped keyword clusters for “med spa near me”, Botox, fillers, lip filler, laser hair removal,
+              skin tightening, facials, body contouring and more.
+            </span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span>
+              Fill-in-the-blanks page outlines & GPT prompts that write SEO-ready treatment pages in your
+              brand voice and within your clinical boundaries.
+            </span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span>
+              Plug-and-play Google Business Profile optimization checklist to help your med spa appear
+              in the local 3-pack for your highest-margin services.
+            </span>
+          </li>
+        </ul>
+
+        <div class="hero-side-footer">
+          <span>
+            <span class="lock-icon">🔒</span>
+            Keep messaging aligned with your brand, compliance & medical oversight.
+          </span>
+          <span>Zero ongoing subscription.</span>
+        </div>
+      </aside>
+    </header>
+
+    <!-- WHO THIS IS FOR -->
+    <section class="section" aria-labelledby="section-who">
+      <div class="section-header">
+        <div>
+          <h2 id="section-who" class="section-title">Who this kit is for</h2>
+          <p class="section-subtitle">
+            Medical spa owners & teams who want high-intent bookings from Google — not just likes on social media.
+          </p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <p>
+            This kit is built for real aesthetic practices that rely on local search:
+          </p>
+          <ul class="bullet-list" style="margin-top: 12px;">
+            <li class="bullet-item">
+              <div class="bullet-label">Solo injector / boutique med spa</div>
+              <div class="bullet-item-strong">
+                You’re doing consults, treatments and marketing. You need a simple SEO system
+                that brings in ideal clients without more work on your plate.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-label">Growing multi-room med spa</div>
+              <div class="bullet-item-strong">
+                You have multiple providers, devices and rooms, and want a reliable way
+                to keep them all booked from organic search.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-label">Hybrid aesthetics & wellness</div>
+              <div class="bullet-item-strong">
+                You combine injectables with IVs, weight loss, hormone therapy or wellness —
+                and need search visibility that reflects your full menu.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-label">In-house marketer</div>
+              <div class="bullet-item-strong">
+                You manage a med spa website and want clear content briefs, keyword maps and GPT prompts
+                so you can ship SEO content consistently.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p>
+            If this sounds like you, the kit was designed for your reality:
+          </p>
+          <div class="tag-row" style="margin-top: 10px;">
+            <span class="tag">You want more high-ticket treatment plans</span>
+            <span class="tag">You’re tired of coupon-only price shoppers</span>
+            <span class="tag">Your device reps keep saying “just post more”</span>
+            <span class="tag">Agencies haven’t explained what they’re doing</span>
+            <span class="tag">You need a system staff can help run</span>
+          </div>
+          <p style="margin-top: 16px;">
+            No coding, no new platforms, no 200-page SEO textbook. Just a med-spa-specific system
+            you can implement in focused blocks of time — or hand off to a trusted team member.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT THIS KIT DOES FOR YOU -->
+    <section class="section" aria-labelledby="section-does">
+      <div class="section-header">
+        <div>
+          <h2 id="section-does" class="section-title">What this kit does for you</h2>
+          <p class="section-subtitle">
+            Turn a pretty-but-random med spa website into a structured local SEO system that drives premium bookings.
+          </p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <p>
+            Instead of relying only on social or discount sites, you’ll:
+          </p>
+          <ul class="bullet-list" style="margin-top: 12px;">
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Show up when people search “med spa near me”, “Botox near me”, “lip filler in [city]”
+                and other high-intent phrases — not just your business name.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Capture treatment-specific searches (Botox, filler, laser hair removal, RF microneedling,
+                skin tightening, body contouring) and connect them to high-converting pages.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Turn concern-based searches (“acne scars”, “sun damage”, “loose skin”, “double chin”)
+                into booked consultations with clear solution pages.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Stand out from generic med spa listings with messaging that feels luxe but still medically grounded.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p>
+            Under the hood, the kit gives you the frameworks aesthetic agencies use behind the scenes:
+          </p>
+          <ul class="bullet-list" style="margin-top: 12px;">
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Pre-built keyword maps for your home, menu, treatment and location pages — tailored to med spas.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                On-page layouts that move visitors from interest to booked consults, not just “more information”.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Internal linking patterns that guide clients from concerns to ideal treatment combinations or packages.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Checklist-driven implementation so your front desk, coordinator or marketer can execute without guesswork.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT YOU GET INSIDE -->
+    <section class="section" aria-labelledby="section-get">
+      <div class="section-header">
+        <div>
+          <h2 id="section-get" class="section-title">What you get inside the Medical Spa SEO System Kit</h2>
+          <p class="section-subtitle">
+            Ready-to-use frameworks, prompts and checklists that do the heavy lifting for local med spa SEO.
+          </p>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-label">Foundation</div>
+          <div class="feature-title">Local med spa keyword map</div>
+          <div class="feature-note">
+            Organized spreadsheet of city + aesthetic terms for injectables, lasers, facials,
+            body contouring, skin concerns and memberships — ready to plug into your content.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Core pages</div>
+          <div class="feature-title">Home, About & “Why us” outlines</div>
+          <div class="feature-note">
+            Fill-in-the-blanks wireframes and GPT prompts for your main conversion pages,
+            designed to feel elevated while staying conversion-focused.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Treatments</div>
+          <div class="feature-title">Treatment & concern page templates</div>
+          <div class="feature-note">
+            Structured outlines for Botox, fillers, lip filler, lasers, RF microneedling,
+            skin tightening, chemical peels, facials, body contouring and more.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Maps</div>
+          <div class="feature-title">Google Business Profile SEO checklist</div>
+          <div class="feature-note">
+            Category, services, photos, offers, FAQs and review tactics engineered for med spa search
+            terms in your area — not generic local businesses.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Reviews</div>
+          <div class="feature-title">Review request & response scripts</div>
+          <div class="feature-note">
+            Email/SMS templates and GPT prompts that help you earn 5-star reviews and respond
+            in a brand-consistent, compliant way that supports SEO.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Content</div>
+          <div class="feature-title">Blog, FAQ & “education” calendar</div>
+          <div class="feature-note">
+            24+ content prompts for concerns, treatment comparisons, safety questions and
+            pre/post-care topics that attract high-intent local traffic.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">On-page</div>
+          <div class="feature-title">Meta, headings & link recipes</div>
+          <div class="feature-note">
+            Simple formulas for your page titles, meta descriptions, H1/H2 structure and
+            cross-linking so search engines understand your expertise.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Tracking</div>
+          <div class="feature-title">Ranking & booking tracking sheets</div>
+          <div class="feature-note">
+            Lightweight spreadsheets to track keyword movement and actual inquiries,
+            consults and treatments coming from organic search.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Team</div>
+          <div class="feature-title">Implementation SOPs for your staff</div>
+          <div class="feature-note">
+            Short, non-technical SOPs so a coordinator or front desk can implement changes
+            while you or your medical director approve final language.
+          </div>
+        </article>
+      </div>
+
+      <div class="divider-label">Built so a medical spa owner — or their team — can run it</div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" aria-labelledby="section-how">
+      <div class="section-header">
+        <div>
+          <h2 id="section-how" class="section-title">How it works</h2>
+          <p class="section-subtitle">
+            A simple, med-spa-friendly implementation path — not another marketing project that never gets finished.
+          </p>
+        </div>
+      </div>
+
+      <div class="steps-grid">
+        <article class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-title">Plug in your city & offers</div>
+          <div class="step-text">
+            Use the keyword map & prompts to build a tailored list of phrases around your city,
+            nearby areas and your highest-margin services and concerns.
+          </div>
+        </article>
+
+        <article class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-title">Refresh your key website pages</div>
+          <div class="step-text">
+            Follow the outlines and GPT prompts to upgrade your home, menu, treatment and concern pages —
+            keeping your brand tone and clinical boundaries intact.
+          </div>
+        </article>
+
+        <article class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-title">Optimize your Google Business Profile</div>
+          <div class="step-text">
+            Walk through the checklist to refine categories, services, photos, offers, FAQs and reviews
+            so you show up when people search for med spas & treatments near you.
+          </div>
+        </article>
+
+        <article class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-title">Maintain with quick monthly actions</div>
+          <div class="step-text">
+            Use the content calendar, review flow and tracking sheets to keep momentum
+            with 1–2 focused hours a month from you or your team.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- LIMITED GPT VS FULL KIT -->
+    <section class="section" aria-labelledby="section-compare">
+      <div class="section-header">
+        <div>
+          <h2 id="section-compare" class="section-title">Limited GPT vs Full Medical Spa SEO System Kit</h2>
+          <p class="section-subtitle">
+            Test-drive the focused GPT — then unlock the full library when you’re ready to make SEO a core growth channel.
+          </p>
+        </div>
+      </div>
+
+      <div class="compare-grid">
+        <!-- Limited GPT -->
+        <article class="compare-card">
+          <div class="compare-header">
+            <div class="compare-title">Limited Medical Spa SEO GPT</div>
+            <div class="compare-pill">Free preview</div>
+          </div>
+          <div class="compare-price">
+            Try select med spa SEO prompts & outlines before you commit to the full system.
+          </div>
+          <ul class="compare-list">
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Sample keyword ideas for your city and one signature service (e.g., Botox or laser).</span>
+            </li>
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Preview version of a treatment or concern page outline prompt.</span>
+            </li>
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Example Google Business Profile optimization prompt for med spas.</span>
+            </li>
+            <li>
+              <span class="compare-icon compare-icon-off">✕</span>
+              <span>Does not include the full keyword map, templates, SOPs or tracking tools.</span>
+            </li>
+          </ul>
+          <div class="btn-row">
+            <a href="#limited-gpt-link" class="btn btn-ghost">
+              🤖 Try the Limited GPT
+            </a>
+          </div>
+          <div class="compare-footnote">
+            Perfect if you want to see how the SEO prompts fit your brand, offers and compliance requirements before unlocking everything.
+          </div>
+        </article>
+
+        <!-- Full Kit -->
+        <article class="compare-card" style="border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent-soft);">
+          <div class="compare-header">
+            <div class="compare-title">Full Medical Spa SEO System Kit</div>
+            <div class="compare-pill compare-pill-strong">Best for med spas</div>
+          </div>
+          <div class="compare-price">
+            <span style="color: var(--accent); font-weight: 600;">$197 one-time</span> · full access to the complete
+            med spa SEO system and future refinements.
+          </div>
+          <ul class="compare-list">
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Full local keyword map & treatment/concern library tailored to medical spas.</span>
+            </li>
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>All core page outlines, prompts & examples (home, about, menu, treatments, concerns, locations).</span>
+            </li>
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Google Business Profile checklist, review system scripts and FAQ/QA prompts.</span>
+            </li>
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Content calendar starter, ranking & booking tracking sheets, and implementation SOPs for your team.</span>
+            </li>
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Lifetime access to med-spa-specific SEO updates as the landscape changes.</span>
+            </li>
+          </ul>
+          <div class="btn-row">
+            <a href="#full-kit-checkout" class="btn btn-primary">
+              Get the Full SEO System Kit →
+            </a>
+          </div>
+          <div class="compare-footnote">
+            Best if you want Google & Google Maps to reliably send you higher-value bookings — without ongoing agency retainers.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" aria-labelledby="section-faq">
+      <div class="section-header">
+        <div>
+          <h2 id="section-faq" class="section-title">Medical Spa SEO System Kit — FAQ</h2>
+          <p class="section-subtitle">
+            Common questions from med spa owners, injectors and in-house marketing teams.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-grid">
+        <article class="faq-item">
+          <div class="faq-q">Do I need to understand technical SEO to use this?</div>
+          <div class="faq-a">
+            No. The kit is written so a med spa owner — or a detail-focused team member — can follow it.
+            You’ll see plain-language checklists and prompts, not dense technical jargon. When something
+            technical matters (titles, meta descriptions, alt text), we show you exactly what to click and paste.
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-q">Will this work if I already have a beautiful website?</div>
+          <div class="faq-a">
+            Yes. Most med spas use the kit to optimize and expand what they already have. You keep your current site
+            (WordPress, Squarespace, Wix, Webflow, or an industry platform) and plug the outlines, keyword maps and
+            prompts into it so it finally performs in search — not just visually.
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-q">How fast will I see results?</div>
+          <div class="faq-a">
+            SEO isn’t instant, but many med spas see early movement within a few weeks once key pages and
+            Google Business Profile updates go live. The kit is designed to stack wins over 3–6 months so
+            local search becomes a dependable source of bookings.
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-q">Can my coordinator or front desk implement this?</div>
+          <div class="faq-a">
+            Yes. The SOPs are designed so a non-technical team member can do most of the work. They follow the
+            checklists and GPT prompts, then you or your medical director can approve anything that touches
+            clinical claims, pricing or compliance before publishing.
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-q">Is this only for injectables, or also for devices?</div>
+          <div class="faq-a">
+            It works for injectables <em>and</em> devices. You’ll see templates and prompts you can adapt for
+            lasers, RF, IPL, body contouring, hair restoration, peels, facials, wellness stacks and more —
+            with flexibility to match your specific tech and treatment philosophy.
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-q">Why a one-time $197 instead of a subscription?</div>
+          <div class="faq-a">
+            Because this is a system, not an agency retainer. Once you have the frameworks, prompts and checklists,
+            you own them. Use the kit for new locations, new providers and website redesigns without paying again.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta-section" aria-labelledby="section-cta">
+      <h2 id="section-cta" class="cta-title">Turn local Google searches into booked med spa treatments.</h2>
+      <p class="cta-sub">
+        Get the Medical Spa SEO System Kit and launch a complete, search-first booking engine —
+        without hiring an agency or spending months figuring SEO out on your own.
+      </p>
+
+      <div class="cta-price-row">
+        <div class="cta-price">$197</div>
+        <div class="cta-note">One-time · Lifetime access · Med-spa-focused</div>
+      </div>
+
+      <div class="btn-row">
+        <a href="#limited-gpt-link" class="btn btn-ghost">
+          🤖 Try the Limited GPT First
+        </a>
+        <a href="#full-kit-checkout" class="btn btn-primary">
+          Get the Full SEO System Kit →
+        </a>
+      </div>
+
+      <p style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">
+        No subscription, no contracts. Download instantly, implement in focused blocks of time,
+        and reuse the system as your medical spa grows and adds new services.
+      </p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>Medical Spa SEO System Kit · All rights reserved.</div>
+      <div style="margin-top: 4px;">
+        This kit does not provide medical, legal or financial advice. Always comply with local advertising laws,
+        medical board and aesthetics regulations, and your medical director’s guidelines.
+      </div>
+      <div style="margin-top: 6px;">
+        <a href="#terms">Terms</a> · <a href="#privacy">Privacy</a> · <a href="#contact">Contact</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
