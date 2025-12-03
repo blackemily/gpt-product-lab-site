@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Equine Services SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --bg-softer: #111827;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.14);
+      --accent-strong: #16a34a;
+      --accent-text: #bbf7d0;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.2);
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.6);
+      --radius-xl: 18px;
+      --radius-2xl: 24px;
+      --radius-pill: 999px;
+      --transition-fast: 0.18s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.16), transparent 55%),
+        var(--bg);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      background:
+        conic-gradient(from 180deg, #22c55e, #16a34a, #0f172a, #22c55e);
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: #022c22;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .top-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .top-pill span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-text);
+      font-weight: 500;
+      font-size: 11px;
+    }
+
+    /* Hero */
+    .hero {
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.23), transparent 55%),
+        radial-gradient(circle at bottom, rgba(59, 130, 246, 0.12), transparent 50%),
+        rgba(15, 23, 42, 0.96);
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: var(--shadow-soft);
+      padding: 26px 28px 24px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(34, 197, 94, 0.26), transparent 55%);
+      opacity: 0.85;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .hero-tagline {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-text);
+      margin-bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    h1 span {
+      color: var(--accent-text);
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 16px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      min-width: 150px;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .metric-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent-text);
+    }
+
+    .metric-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .price-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .price-amount {
+      font-size: 28px;
+      font-weight: 700;
+      color: #bbf7d0;
+    }
+
+    .price-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .price-chip {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(22, 163, 74, 0.22);
+      color: var(--accent-text);
+      border: 1px solid rgba(74, 222, 128, 0.45);
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      box-shadow: 0 12px 30px rgba(34, 197, 94, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(34, 197, 94, 0.6);
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--accent-text);
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(148, 163, 184, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .hero-side {
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top, rgba(34, 197, 94, 0.3), transparent 72%),
+        rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 16px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .hero-side-top {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .hero-side-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .hero-side-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 6px;
+      margin-top: 4px;
+    }
+
+    .hero-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-main);
+    }
+
+    .hero-bullet {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.18);
+      border: 1px solid rgba(74, 222, 128, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--accent-text);
+      flex-shrink: 0;
+    }
+
+    .hero-programs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .hero-program-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .hero-program-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .trust-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .trust-pill {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    /* Sections layout */
+    .section {
+      margin-bottom: 34px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      padding: 16px 16px 16px;
+    }
+
+    .card-soft {
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), transparent 60%),
+        rgba(15, 23, 42, 0.97);
+    }
+
+    .pill-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .pill-item {
+      padding: 10px 10px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 12px;
+    }
+
+    .pill-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .pill-main {
+      font-weight: 500;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    /* What you get grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .feature {
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.97);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .feature-tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--accent-text);
+    }
+
+    .feature-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .feature-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* How it works */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .step {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 12px 11px 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .step-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.22);
+      border: 1px solid rgba(74, 222, 128, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--accent-text);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .step-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Comparison */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+      margin-top: 6px;
+    }
+
+    .compare-col {
+      border-radius: var(--radius-xl);
+      padding: 14px 14px 14px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.97);
+    }
+
+    .compare-col.full {
+      background:
+        radial-gradient(circle at top, rgba(34, 197, 94, 0.26), transparent 65%),
+        rgba(15, 23, 42, 0.99);
+      border-color: rgba(74, 222, 128, 0.8);
+      box-shadow: 0 16px 42px rgba(34, 197, 94, 0.4);
+    }
+
+    .compare-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
+      color: var(--text-muted);
+    }
+
+    .compare-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .compare-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .compare-list li {
+      display: flex;
+      gap: 7px;
+    }
+
+    .compare-icon {
+      width: 10px;
+      margin-top: 3px;
+      flex-shrink: 0;
+      font-size: 10px;
+    }
+
+    .compare-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 12px 18px;
+    }
+
+    .faq-item {
+      padding: 10px 11px 11px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 12px;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Final CTA */
+    .cta-final {
+      border-radius: 26px;
+      padding: 22px 22px 24px;
+      background:
+        radial-gradient(circle at top, rgba(34, 197, 94, 0.28), transparent 60%),
+        rgba(15, 23, 42, 0.99);
+      border: 1px solid rgba(74, 222, 128, 0.75);
+      box-shadow: 0 20px 45px rgba(34, 197, 94, 0.45);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .cta-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .cta-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .cta-price {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .cta-price span {
+      font-size: 22px;
+      font-weight: 700;
+      color: #bbf7d0;
+    }
+
+    .cta-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 16px 20px 22px;
+      margin-top: auto;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-text);
+    }
+
+    /* Responsive: stack only on smaller screens */
+    @media (max-width: 880px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 22px 18px 20px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .hero-side {
+        order: -1;
+      }
+
+      .two-col,
+      .compare-grid,
+      .faq-grid,
+      .feature-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pill-list {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-row {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .steps {
+        grid-template-columns: 1fr !important;
+      }
+
+      .container {
+        padding-inline: 16px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .hero-programs {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="container">
+      <header>
+        <div class="brand">
+          <div class="brand-logo">EQ</div>
+          <div class="brand-text">
+            <div class="brand-title">SEO SYSTEM KIT</div>
+            <div class="brand-subtitle">Search-to-stable engine for equine services</div>
+          </div>
+        </div>
+        <div class="top-pill">
+          Equine Services SEO System Kit
+          <span>$197 one-time</span>
+        </div>
+      </header>
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-tagline">
+              <span class="hero-tag-dot"></span>
+              From “horse boarding near me” to full barns and booked services
+            </div>
+            <h1><span>Equine Services</span> SEO System Kit</h1>
+            <p class="hero-sub">
+              A plug-and-play SEO and content system built specifically for equine facilities, trainers, boarding barns,
+              riding schools, and mobile equine service providers. Turn local horse-owner searches into barn tours,
+              lessons, and service bookings without living on social media.
+            </p>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <span class="metric-label">Designed for local equine businesses</span>
+                <span class="metric-value">+8–24</span>
+                <span class="metric-note">extra inquiries per month (typical range with consistent use)</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Setup window</span>
+                <span class="metric-value">7–14 days</span>
+                <span class="metric-note">to launch a complete SEO foundation</span>
+              </div>
+            </div>
+
+            <div class="price-row">
+              <div class="price-main">
+                <div class="price-amount">$197</div>
+                <div class="price-label">one-time • lifetime access</div>
+              </div>
+              <div class="price-chip">Use across all programs &amp; locations you own</div>
+            </div>
+            <div class="hero-note">
+              No agencies, no retainers, no mystery “marketing bundles” — just a focused system you or your barn office can run.
+            </div>
+
+            <div class="btn-row">
+              <a href="#limited-gpt-link" class="btn btn-ghost">
+                Try the Limited GPT First
+              </a>
+              <a href="#full-kit-checkout" class="btn btn-primary">
+                Get the Full SEO System Kit
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-side">
+            <div class="hero-side-top">
+              <div class="hero-side-title">Made for real barns, arenas &amp; mobile rigs</div>
+              <div class="hero-side-sub">
+                Works for boarding barns, training programs, riding schools, lesson barns, show barns, and mobile equine
+                services (bodywork, dentistry, farrier work, saddle fitting, etc.).
+              </div>
+              <ul class="hero-list">
+                <li>
+                  <div class="hero-bullet">1</div>
+                  <div>Drop in your discipline focus, facility details, locations, and offerings — the kit shapes an SEO plan around your specific operation.</div>
+                </li>
+                <li>
+                  <div class="hero-bullet">2</div>
+                  <div>Generate horse-owner-focused pages, blog posts, and FAQs that answer real questions about care, turnout, training style, and facility features.</div>
+                </li>
+                <li>
+                  <div class="hero-bullet">3</div>
+                  <div>Show how you manage horses, schedules, and communication so the “right fit” owners and riders inquire first.</div>
+                </li>
+                <li>
+                  <div class="hero-bullet">4</div>
+                  <div>Plan content around show seasons, clinics, weather shifts, and program openings to keep stalls and sessions filled year-round.</div>
+                </li>
+                <li>
+                  <div class="hero-bullet">5</div>
+                  <div>Align your website, Google listing, and social links so every path points to your key offers and barn contact options.</div>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="hero-programs">
+                <div class="hero-program-pill">
+                  <span class="hero-program-dot"></span>
+                  Boarding &amp; turnout
+                </div>
+                <div class="hero-program-pill">
+                  <span class="hero-program-dot"></span>
+                  Training &amp; lessons
+                </div>
+                <div class="hero-program-pill">
+                  <span class="hero-program-dot"></span>
+                  Clinics &amp; haul-in use
+                </div>
+                <div class="hero-program-pill">
+                  <span class="hero-program-dot"></span>
+                  Mobile equine services
+                </div>
+              </div>
+              <div class="trust-row">
+                <div class="trust-pill">
+                  <span class="trust-dot"></span>
+                  Horse-first, safety-minded messaging
+                </div>
+                <div>SEO that respects your program</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Who this kit is for -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">WHO THIS KIT IS FOR</div>
+            <h2 class="section-title">Owners &amp; managers who want the right barns and books full</h2>
+          </div>
+          <p class="section-sub">
+            If “update the website” and “we should show up on Google” keep getting pushed behind feeding, mucking,
+            and teaching, this kit gives you a clear path you can follow between barn checks.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card card-soft">
+            <ul class="bullet-list">
+              <li>
+                <span class="dot"></span>
+                <div>
+                  <strong>Boarding barns &amp; training facilities</strong> that want stalls filled with horses and riders who match your care standards and program culture.
+                </div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>
+                  <strong>Riding schools &amp; lesson programs</strong> that need a steady stream of beginner and intermediate riders finding you through search instead of only word of mouth.
+                </div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>
+                  <strong>Mobile equine services</strong> like bodyworkers, saddle fitters, dentistry and farrier services
+                  who want to fill routes in specific areas and barns.
+                </div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>
+                  <strong>Show and sales barns</strong> that need clear pages for training, consignment, lease, and sale horses with serious buyer inquiries.
+                </div>
+              </li>
+            </ul>
+            <p class="muted">
+              If you can describe your horses, clients, facilities, and services, the kit can turn that into search-optimized content that brings the right people in.
+            </p>
+          </div>
+
+          <div class="card">
+            <ul class="pill-list">
+              <li class="pill-item">
+                <div class="pill-label">Perfect if...</div>
+                <div class="pill-main">You want more qualified calls and tours — not just more random clicks on your website.</div>
+              </li>
+              <li class="pill-item">
+                <div class="pill-label">Perfect if...</div>
+                <div class="pill-main">You’re tired of explaining the same facility and program details on every phone call.</div>
+              </li>
+              <li class="pill-item">
+                <div class="pill-label">Not ideal if...</div>
+                <div class="pill-main">You don’t want to publish new content or update any service/boarding pages at all.</div>
+              </li>
+              <li class="pill-item">
+                <div class="pill-label">Not ideal if...</div>
+                <div class="pill-main">You expect instant Page 1 rankings without giving the strategy time to settle in.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- What this kit does for you -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">WHAT THIS KIT DOES FOR YOU</div>
+            <h2 class="section-title">Turn local horse-owner interest into barn tours and booked work</h2>
+          </div>
+          <p class="section-sub">
+            Instead of random posts and outdated pages, you’ll launch an equine-specific SEO funnel that shows your care
+            standards, facilities, and training style — and makes it simple to reach out.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card card-soft">
+            <ul class="bullet-list">
+              <li>
+                <span class="dot"></span>
+                <div><strong>Maps local search demand</strong> around boarding, lessons, training, clinics, and mobile services in your area and surrounding towns.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div><strong>Builds a clear site structure</strong> around your boarding options, training levels,
+                  disciplines, facility features, service areas, and contact flows.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div><strong>Generates horse-owner-friendly content</strong> explaining how you manage turnout, feeding,
+                  safety, and communication — the things that actually matter to owners.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div><strong>Boosts serious inquiries</strong> with pages designed to answer questions upfront and invite calls, tours, or booking requests.</div>
+              </li>
+            </ul>
+            <p class="muted">
+              The focus is simple: more right-fit owners and riders choosing you before they ever reach out to another barn.
+            </p>
+          </div>
+
+          <div class="card">
+            <ul class="bullet-list">
+              <li>
+                <span class="dot"></span>
+                <div>Clarify your message so your website reflects how you actually care for horses and run programs.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>Give staff a simple publishing checklist they can follow in pockets of time between barn tasks.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>Reduce reliance on classified sites and generic directories that don’t show your full value.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>Turn your website into a 24/7 tour guide that sets expectations before anyone pulls into the driveway.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- What you get inside -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">WHAT YOU GET INSIDE</div>
+            <h2 class="section-title">A complete SEO &amp; content system for equine services</h2>
+          </div>
+          <p class="section-sub">
+            Everything tuned to horses and barns: boarding, training, lessons, facilities, and mobile services — structured
+            so busy owners and barn managers can actually execute.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card card-soft">
+            <div class="feature-grid">
+              <div class="feature">
+                <div class="feature-tag">Core system</div>
+                <div class="feature-title">Equine Services Site Architecture Blueprint</div>
+                <div class="feature-desc">
+                  Diagram of the exact pages you need (and what to skip) to rank for “horse boarding / training / riding lessons in [area]”
+                  and related high-intent searches.
+                </div>
+              </div>
+              <div class="feature">
+                <div class="feature-tag">Content</div>
+                <div class="feature-title">Horse-Owner Content Calendar (30+ Days)</div>
+                <div class="feature-desc">
+                  Day-by-day topics covering boarding considerations, training approaches, rider FAQs, clinic prep, and seasonal barn updates.
+                </div>
+              </div>
+              <div class="feature">
+                <div class="feature-tag">Prompts</div>
+                <div class="feature-title">AI-Ready Page, Blog &amp; FAQ Prompts</div>
+                <div class="feature-desc">
+                  Guardrailed prompts that pull in your disciplines, facilities, policies, and program details to create SEO-ready drafts quickly.
+                </div>
+              </div>
+              <div class="feature">
+                <div class="feature-tag">Conversion</div>
+                <div class="feature-title">Tour &amp; Booking Page Wireframes</div>
+                <div class="feature-desc">
+                  Page layouts that move visitors from “just looking” to “I’d like to tour / audit / book a service,” with clear next steps.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <ul class="bullet-list">
+              <li>
+                <span class="dot"></span>
+                <div><strong>Keyword clusters:</strong> organized by discipline (hunter/jumper, dressage, western, eventing, etc.), service (boarding, lessons, training, clinics), and region.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div><strong>Google Business Profile system:</strong> post, Q&amp;A, and update templates tailored to barns and mobile equine routes.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div><strong>Testimonial &amp; barn-story prompts:</strong> capture owner, rider, and student experiences that reflect your care and teaching style.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div><strong>Execution checklists:</strong> simple to-dos for owners, barn managers, and helpers so everyone knows what comes next.</div>
+              </li>
+            </ul>
+            <p class="muted">
+              Everything is formatted to copy straight into your AI tool, website platform, or project board — no technical jargon required.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">HOW IT WORKS</div>
+            <h2 class="section-title">From “we should do something online” to a working inquiry engine</h2>
+          </div>
+          <p class="section-sub">
+            You don’t need to become a marketer — just protect a few focused hours and let the system do the heavy lifting.
+          </p>
+        </div>
+
+        <div class="card card-soft">
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">01</div>
+              <div class="step-title">Complete your barn profile</div>
+              <div class="step-desc">
+                Fill in a simple worksheet: location, disciplines, facilities, turnout, feeding, programs, pricing ranges,
+                and what kind of horses and people you’re best for.
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">02</div>
+              <div class="step-title">Set your SEO foundation</div>
+              <div class="step-desc">
+                Use the architecture blueprint to organize your home, services, programs, facilities, staff, and FAQ pages
+                into a clean, search-friendly structure.
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">03</div>
+              <div class="step-title">Generate &amp; refine content</div>
+              <div class="step-desc">
+                Drop the prompts into your AI tool of choice, produce drafts, then lightly edit to match your tone and policies
+                before publishing.
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">04</div>
+              <div class="step-title">Publish &amp; track inquiries</div>
+              <div class="step-desc">
+                Publish, update your Google listing, and track tours, calls, and bookings from organic search over time —
+                adjusting as your programs evolve.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Limited GPT vs Full Kit -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">LIMITED GPT VS FULL KIT</div>
+            <h2 class="section-title">Test-drive the GPT, then unlock the full equine system</h2>
+          </div>
+          <p class="section-sub">
+            The Limited GPT gives you a small taste of the strategy. The Full SEO System Kit gives you the complete,
+            repeatable approach for your barn, facility, or mobile service.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare-col">
+            <div class="compare-label">Option 1</div>
+            <div class="compare-title">Limited Equine Services GPT</div>
+            <ul class="compare-list">
+              <li>
+                <span class="compare-icon">•</span>
+                <span>Generate sample keywords, content ideas, and a few page outlines tailored to your equine services.</span>
+              </li>
+              <li>
+                <span class="compare-icon">•</span>
+                <span>Great for experimenting and showing partners or co-owners how search-focused content could look.</span>
+              </li>
+              <li>
+                <span class="compare-icon">•</span>
+                <span>Helpful if you want a quick sense of how the system “thinks” for barns and horse owners.</span>
+              </li>
+              <li>
+                <span class="compare-icon">•</span>
+                <span>Does <strong>not</strong> include the full blueprint, content calendars, or implementation checklists.</span>
+              </li>
+            </ul>
+            <p class="compare-note">
+              Use this if you’re just exploring and want a preview before committing to a full SEO overhaul.
+            </p>
+          </div>
+
+          <div class="compare-col full">
+            <div class="compare-label">Best value</div>
+            <div class="compare-title">Full Equine Services SEO System Kit</div>
+            <ul class="compare-list">
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>Complete SEO architecture for barns, facilities, and mobile equine services.</span>
+              </li>
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>30+ day content calendar plus evergreen topics you can cycle through with each season and show year.</span>
+              </li>
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>SEO-tuned prompts for pages, blogs, FAQs, and Google Business posts that speak to horse owners and riders.</span>
+              </li>
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>Execution checklists for owners, barn managers, and any marketing help you use.</span>
+              </li>
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>One-time payment of <strong>$197</strong> — reuse for every program and location you operate.</span>
+              </li>
+            </ul>
+            <p class="compare-note">
+              Choose this if you want a real system you can run year after year, not another one-off “marketing project.”
+            </p>
+          </div>
+        </div>
+
+        <div class="btn-row" style="margin-top:18px;">
+          <a href="#limited-gpt-link" class="btn btn-ghost">Try the Limited GPT First</a>
+          <a href="#full-kit-checkout" class="btn btn-primary">Get the Full SEO System Kit for $197</a>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">FAQ</div>
+            <h2 class="section-title">Answers for busy equine business owners</h2>
+          </div>
+          <p class="section-sub">
+            The essentials on how the Equine Services SEO System Kit works, how long it takes, and who can use it.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">Is this a course, software, or a done-for-you marketing service?</div>
+            <div class="faq-a">
+              It’s a system kit: blueprints, templates, prompts, and checklists. You or your team use it with your
+              preferred AI tool and website platform. No logins, no subscriptions, no long-term retainers.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Do I need marketing or tech experience to use it?</div>
+            <div class="faq-a">
+              No. The kit is written in plain language for barn owners, managers, and equine professionals.
+              Each step tells you what to gather, what to generate, and what to publish.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Will this work if I already have a website?</div>
+            <div class="faq-a">
+              Yes. Most barns do. You’ll use the architecture and prompts to reorganize and improve what you have,
+              then add missing pages and content over time — no full rebuild required unless you want one.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Can I use this for more than one barn or service area?</div>
+            <div class="faq-a">
+              Yes. Your $197 purchase includes lifetime access. You can clone and localize the system for each facility,
+              region, or route you operate.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How long before I see results?</div>
+            <div class="faq-a">
+              Many operations can implement the foundation within 1–2 weeks. Organic visibility and inquiries typically
+              build over 2–6 months, depending on your area’s competition and how consistently you publish.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Can I hand this to a VA or marketing helper?</div>
+            <div class="faq-a">
+              Absolutely. The kit is built so you can set overall direction, then let trusted help follow the checklists
+              and prompts while you focus on horses and clients.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="section">
+        <div class="cta-final">
+          <div class="cta-title">Ready to turn searchers into riders, boarders, and clients?</div>
+          <div class="cta-sub">
+            Launch a focused SEO and content system built for equine services — without monthly retainers or marketing burnout.
+          </div>
+          <div class="cta-price">
+            One-time payment of <span>$197</span> • lifetime access • reuse across all your barns, programs, and routes.
+          </div>
+          <div class="btn-row">
+            <a href="#limited-gpt-link" class="btn btn-ghost">Try the Limited GPT First</a>
+            <a href="#full-kit-checkout" class="btn btn-primary">Get the Full SEO System Kit</a>
+          </div>
+          <div class="cta-note">
+            No subscriptions. No contracts. Just a clear, repeatable SEO system you can run between feedings and rides.
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Equine Services SEO System Kit. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#terms">Terms</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#disclaimer">Marketing &amp; Results Disclaimer</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Dynamic year -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
