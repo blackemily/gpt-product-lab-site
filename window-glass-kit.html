@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Window & Glass SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-elevated: #020617;
+      --bg-soft: #020617;
+      --card: #020617;
+      --card-soft: #020617;
+      --border-subtle: #1f2937;
+      --border-strong: #22c55e;
+      --text-main: #e5f4ff;
+      --text-muted: #9ca3af;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --danger: #f97373;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+      --shadow-subtle: 0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #111827 0, #020617 50%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-shell {
+      min-height: 100vh;
+      padding: 32px 16px 48px;
+    }
+
+    .page-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.32), transparent 55%),
+                  rgba(15, 23, 42, 0.9);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+    }
+
+    h1, h2, h3 {
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.35rem, 2.1rem + 1vw, 3rem);
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      margin-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+    }
+
+    p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+    }
+
+    .section {
+      margin-top: 40px;
+      padding: 28px 22px;
+      background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.05), transparent 55%),
+                  rgba(15, 23, 42, 0.96);
+      border-radius: 24px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section + .section {
+      margin-top: 26px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 18px;
+      gap: 16px;
+    }
+
+    .section-header p {
+      font-size: 0.9rem;
+    }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 3px;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 41, 55, 0.85);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.92);
+      white-space: nowrap;
+    }
+
+    .pill strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+      gap: 38px;
+      align-items: center;
+    }
+
+    .hero-main {
+      padding-right: 12px;
+    }
+
+    .hero-title-row {
+      margin-top: 16px;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 18px 0 16px;
+    }
+
+    .metric-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-muted);
+    }
+
+    .metric-pill span {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.83rem;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 12px 0 18px;
+    }
+
+    .price-main {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-shadow: 0 0 22px rgba(34, 197, 94, 0.5);
+    }
+
+    .price-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .btn-row-left {
+      justify-content: flex-start;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      font-weight: 550;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease,
+                  transform 0.12s ease, box-shadow 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top left, #4ade80, #22c55e);
+      color: #020617;
+      border-color: rgba(190, 242, 100, 0.8);
+      box-shadow: 0 0 22px rgba(34, 197, 94, 0.6);
+    }
+
+    .btn-primary:hover {
+      background: radial-gradient(circle at top left, #bbf7d0, #4ade80);
+      transform: translateY(-1px);
+      box-shadow: 0 0 26px rgba(74, 222, 128, 0.8);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(148, 163, 184, 0.35);
+      color: var(--text-main);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+    }
+
+    .btn-subtext {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    .hero-aside {
+      background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.08), transparent 55%),
+                  rgba(15, 23, 42, 0.98);
+      border-radius: 20px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .hero-aside-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
+
+    .hero-aside-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    .hero-badge {
+      font-size: 0.78rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      background: rgba(22, 163, 74, 0.15);
+      color: #bbf7d0;
+      white-space: nowrap;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .check-icon {
+      margin-top: 3px;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(34, 197, 94, 0.7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--accent);
+    }
+
+    .hero-aside-footnote {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+      padding-top: 10px;
+      margin-top: 6px;
+    }
+
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 28px;
+    }
+
+    .two-col-grid .left-tight {
+      max-width: 520px;
+    }
+
+    .bullets {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .bullet {
+      padding: 10px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      display: flex;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+
+    .bullet-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text-muted);
+    }
+
+    .what-you-get-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 28px;
+    }
+
+    .deliverables-list {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .deliverable {
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: rgba(15, 23, 42, 0.97);
+      padding: 10px 11px;
+      font-size: 0.86rem;
+    }
+
+    .deliverable-title {
+      font-weight: 580;
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+    }
+
+    .deliverable-tag {
+      font-size: 0.74rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 3px;
+    }
+
+    .deliverable-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .summary-card {
+      border-radius: 16px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.16), transparent 60%),
+                  rgba(15, 23, 42, 0.96);
+      padding: 14px 13px;
+      font-size: 0.9rem;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .summary-price {
+      font-size: 1.1rem;
+      font-weight: 650;
+      color: var(--accent);
+    }
+
+    .summary-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .how-it-works-steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .step {
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 10px 10px 9px;
+      font-size: 0.86rem;
+    }
+
+    .step-number {
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-weight: 580;
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 4px;
+    }
+
+    .compare-card {
+      border-radius: 16px;
+      border: 1px solid rgba(31, 41, 55, 0.96);
+      padding: 12px 12px 11px;
+      background: rgba(15, 23, 42, 0.98);
+      font-size: 0.86rem;
+    }
+
+    .compare-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .compare-label--accent {
+      color: var(--accent);
+    }
+
+    .compare-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 0.93rem;
+    }
+
+    .compare-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 6px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .compare-list li {
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .compare-icon {
+      width: 14px;
+      margin-top: 2px;
+      font-size: 11px;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .faq-item {
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 10px 10px 9px;
+      font-size: 0.87rem;
+    }
+
+    .faq-q {
+      font-weight: 560;
+      font-size: 0.92rem;
+      margin-bottom: 3px;
+      color: var(--text-main);
+    }
+
+    .faq-a {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .final-cta {
+      margin-top: 32px;
+      padding: 24px 18px 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.18), transparent 60%),
+                  rgba(15, 23, 42, 0.98);
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .final-cta h2 {
+      margin-bottom: 6px;
+    }
+
+    .final-cta p {
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .final-meta {
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 880px) {
+      .hero,
+      .two-col-grid,
+      .what-you-get-grid,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .section {
+        padding: 22px 18px;
+      }
+
+      .hero-main {
+        padding-right: 0;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .how-it-works-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .how-it-works-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .deliverables-list {
+        grid-template-columns: 1fr;
+      }
+
+      .page-shell {
+        padding-top: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <main class="page-inner">
+      <!-- HERO -->
+      <section class="section" aria-labelledby="hero-title">
+        <div class="hero">
+          <div class="hero-main">
+            <div class="badge">
+              <span class="badge-dot"></span>
+              <span>Done-with-you window & glass SEO system</span>
+            </div>
+
+            <div class="hero-title-row">
+              <h1 id="hero-title">Window & Glass SEO System Kit</h1>
+            </div>
+
+            <p class="hero-subtitle">
+              Turn “window replacement near me” and “glass repair” searches into booked jobs on autopilot.
+              This kit gives window & glass companies a proven SEO structure, content, and system you can deploy in days—not months.
+            </p>
+
+            <div class="hero-metrics">
+              <div class="metric-pill">
+                <span>3–6x</span> more high-intent window & glass leads
+              </div>
+              <div class="metric-pill">
+                <span>90 mins</span> to launch your first city page
+              </div>
+              <div class="metric-pill">
+                <span>Local</span> maps + organic visibility
+              </div>
+            </div>
+
+            <div class="price-row">
+              <div class="price-main">$197</div>
+              <div class="price-label">
+                One-time payment. Yours forever.<br />
+                Built specifically for window, glass & glazing businesses.
+              </div>
+            </div>
+
+            <div class="btn-row btn-row-left">
+              <a href="#limited-gpt-link" class="btn btn-ghost">
+                Try the Limited GPT First
+              </a>
+              <a href="#full-kit-checkout" class="btn btn-primary">
+                Get the Full SEO System Kit
+              </a>
+            </div>
+            <p class="btn-subtext">
+              No subscription. Instant access to all templates, prompts & implementation videos.
+            </p>
+          </div>
+
+          <aside class="hero-aside" aria-label="What the window & glass SEO kit unlocks">
+            <div class="hero-aside-header">
+              <div>
+                <div class="eyebrow">Revenue impact</div>
+                <div class="hero-aside-title">From random inquiries to ranked in local search</div>
+              </div>
+              <div class="hero-badge">Built for window & glass pros</div>
+            </div>
+
+            <div class="checklist">
+              <div class="check-item">
+                <div class="check-icon">✓</div>
+                <div>Rank for “window replacement + city”, “glass repair + city”, “storefront glass”, and emergency board-up keywords.</div>
+              </div>
+              <div class="check-item">
+                <div class="check-icon">✓</div>
+                <div>Fill your calendar with replacement, repair, and custom glass projects using pages and content that convert visitors into booked estimates.</div>
+              </div>
+              <div class="check-item">
+                <div class="check-icon">✓</div>
+                <div>Win the map pack with a clear Google Business Profile posting, photos, and review strategy focused on windows & glass.</div>
+              </div>
+            </div>
+
+            <p class="hero-aside-footnote">
+              You handle the installs and repairs. This kit brings the traffic, content, and repeatable SEO system
+              so you stay booked without chasing low-intent lead marketplaces.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- WHO THIS KIT IS FOR -->
+      <section class="section" aria-labelledby="who-for-title">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Who this is built for</div>
+            <h2 id="who-for-title">Who this window & glass SEO kit is for</h2>
+          </div>
+          <div class="pill">
+            Best for <strong>local window & glass brands</strong> in competitive markets
+          </div>
+        </div>
+
+        <div class="two-col-grid">
+          <div class="left-tight">
+            <p>
+              The Window & Glass SEO System Kit is designed for owners and marketing leads who are tired of guessing
+              at SEO—or paying agencies that “optimize” but never show their work.
+            </p>
+            <div class="bullets" style="margin-top:10px;">
+              <div class="bullet">
+                <div>
+                  <div class="bullet-label">Residential window companies</div>
+                  <p>
+                    Contractors focused on window replacement, retrofit, and new construction installs who want a steady flow of
+                    quote-ready homeowners instead of just seasonal bursts.
+                  </p>
+                </div>
+              </div>
+              <div class="bullet">
+                <div>
+                  <div class="bullet-label">Glass & glazing contractors</div>
+                  <p>
+                    Businesses handling glass repair, custom shower glass, mirrors, and commercial glazing that need to capture
+                    both emergency and project-based searches.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="bullets">
+              <div class="bullet">
+                <div>
+                  <div class="bullet-label">Commercial storefront & glass teams</div>
+                  <p>
+                    Companies offering storefront glass, curtain walls, and office glass that want to rank when property managers
+                    and business owners are searching for solutions.
+                  </p>
+                </div>
+              </div>
+              <div class="bullet">
+                <div>
+                  <div class="bullet-label">Agencies with window & glass clients</div>
+                  <p>
+                    Freelancers and agencies serving window and glass businesses who want a niche-specific SEO system to deploy quickly.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="chip-row">
+              <span class="chip">Residential & commercial</span>
+              <span class="chip">Emergency glass repair</span>
+              <span class="chip">Storefront & glazing</span>
+              <span class="chip">Multi-location ready</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT THIS KIT DOES FOR YOU -->
+      <section class="section" aria-labelledby="what-it-does-title">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Outcomes</div>
+            <h2 id="what-it-does-title">What this window & glass SEO kit does for you</h2>
+          </div>
+          <div class="pill">
+            From <strong>“we rely on referrals”</strong> to predictable quote requests
+          </div>
+        </div>
+
+        <div class="two-col-grid">
+          <div class="left-tight">
+            <p>
+              Instead of stuffing keywords and hoping, you’ll run a structured system: every product line, every service,
+              every city and emergency search handled with purpose-built pages and content.
+            </p>
+
+            <div class="bullets" style="margin-top:10px;">
+              <div class="bullet">
+                <div>
+                  <h3>Own the search results in your service area</h3>
+                  <p>
+                    Build out a local hub-and-spoke architecture that helps you rank for
+                    <em>[window replacement + city]</em>, <em>[glass repair + city]</em>, <em>[shower glass + city]</em>
+                    and more.
+                  </p>
+                </div>
+              </div>
+              <div class="bullet">
+                <div>
+                  <h3>Turn visitors into booked measurements & estimates</h3>
+                  <p>
+                    Use on-page conversion frameworks, photo placement, and trust elements that push visitors
+                    to schedule a free in-home or on-site measurement instead of price shopping elsewhere.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="bullets">
+              <div class="bullet">
+                <div>
+                  <h3>Speed up content production with smart prompts</h3>
+                  <p>
+                    Give your writers or AI a library of window & glass SEO prompts and outlines that generate
+                    product pages, service pages, and FAQs aligned to real search demand.
+                  </p>
+                </div>
+              </div>
+              <div class="bullet">
+                <div>
+                  <h3>Send clear local signals to Google</h3>
+                  <p>
+                    Implement GBP posts, review requests, and project gallery strategies that tell Google
+                    “we’re the trusted window & glass company in this city—show us first.”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU GET INSIDE -->
+      <section class="section" aria-labelledby="what-you-get-title">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Kit contents</div>
+            <h2 id="what-you-get-title">What you get inside the Window & Glass SEO System Kit</h2>
+          </div>
+          <div class="pill">
+            All for <strong>$197</strong> — one-time
+          </div>
+        </div>
+
+        <div class="what-you-get-grid">
+          <div>
+            <div class="deliverables-list">
+              <article class="deliverable">
+                <div class="deliverable-tag">Foundation</div>
+                <div class="deliverable-title">Window & glass site architecture blueprint</div>
+                <p>
+                  Visual map of how to structure your homepage, product lines, service pages, city pages,
+                  emergency board-up, and commercial glass pages so Google understands your relevance.
+                </p>
+                <div class="deliverable-note">Includes layouts for residential, commercial, or hybrid businesses.</div>
+              </article>
+
+              <article class="deliverable">
+                <div class="deliverable-tag">Keywords</div>
+                <div class="deliverable-title">Window & glass keyword & page mapping matrix</div>
+                <p>
+                  Pre-built spreadsheet with example keyword clusters for window replacement, glass repair,
+                  shower glass, storefronts, mirrors, and more—mapped to page types.
+                </p>
+                <div class="deliverable-note">Ready to adapt to your brand and cities.</div>
+              </article>
+
+              <article class="deliverable">
+                <div class="deliverable-tag">Content</div>
+                <div class="deliverable-title">AI-ready page, product & FAQ prompts</div>
+                <p>
+                  Fill-in-the-blank prompts for home, service, product, and city pages plus
+                  window & glass FAQ and blog topics that target high-intent searches.
+                </p>
+                <div class="deliverable-note">Optimized for tools like ChatGPT & Gemini.</div>
+              </article>
+
+              <article class="deliverable">
+                <div class="deliverable-tag">Local SEO</div>
+                <div class="deliverable-title">Google Business profile & gallery playbook</div>
+                <p>
+                  Posting cadence, review request scripts, before/after photo and project gallery strategy
+                  tailored to window & glass work.
+                </p>
+                <div class="deliverable-note">Designed to boost map-pack and image-driven discovery.</div>
+              </article>
+            </div>
+          </div>
+
+          <aside>
+            <div class="summary-card">
+              <h3>Everything you need to run window & glass SEO like a system</h3>
+              <p style="margin-top:6px;">
+                Follow the checklist, plug in your product lines and service areas, and turn your website into a 24/7
+                sales asset that feeds your installers steady work—without paying a monthly SEO retainer.
+              </p>
+
+              <div class="summary-row">
+                <div>
+                  <div class="summary-label">One-time investment</div>
+                  <div class="summary-price">$197</div>
+                </div>
+                <div style="text-align:right;">
+                  <div class="summary-label">Access includes</div>
+                  <div style="font-size:0.84rem; color:var(--text-main);">
+                    Templates, prompts, walkthrough videos<br />
+                    + implementation checklist
+                  </div>
+                </div>
+              </div>
+
+              <div class="btn-row" style="margin-top:14px;">
+                <a href="#full-kit-checkout" class="btn btn-primary">Get the Window & Glass SEO System Kit</a>
+              </div>
+              <p class="btn-subtext">
+                Downloadable assets + ongoing updates to the framework included.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="section" aria-labelledby="how-it-works-title">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Implementation</div>
+            <h2 id="how-it-works-title">How it works (in 4 practical steps)</h2>
+          </div>
+          <div class="pill">
+            Ship your first <strong>conversion-ready page</strong> this week
+          </div>
+        </div>
+
+        <div class="how-it-works-steps">
+          <div class="step">
+            <div class="step-number">Step 1</div>
+            <div class="step-title">Install the structure</div>
+            <p>
+              Use the architecture blueprint to lay out or reorganize your window & glass website:
+              core services, product lines, emergency, and city pages in the right spots.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">Step 2</div>
+            <div class="step-title">Map your service area & offers</div>
+            <p>
+              Plug your real cities, neighborhoods, and product lines into the keyword & page mapping matrix
+              to target the exact searches buyers use.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">Step 3</div>
+            <div class="step-title">Generate high-intent content</div>
+            <p>
+              Use the included prompts to produce optimized pages, product descriptions, and FAQs—either manually,
+              with AI, or through your writing team.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">Step 4</div>
+            <div class="step-title">Run the local SEO system</div>
+            <p>
+              Follow the GBP, gallery, review, and monthly maintenance playbooks to keep rankings and leads
+              compounding over time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIMITED GPT VS FULL KIT -->
+      <section class="section" aria-labelledby="compare-title">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Choose your starting point</div>
+            <h2 id="compare-title">Limited Window & Glass GPT vs Full SEO System Kit</h2>
+          </div>
+          <div class="pill">
+            Start free, upgrade when you’re ready
+          </div>
+        </div>
+
+        <div class="compare-grid">
+          <article class="compare-card">
+            <div class="compare-label">Option 1</div>
+            <div class="compare-title">Limited Window & Glass SEO GPT</div>
+            <p>
+              Try a trimmed-down version of the thinking behind the full kit directly inside a GPT.
+              Great for exploring the approach before you implement everything.
+            </p>
+
+            <ul class="compare-list">
+              <li>
+                <span class="compare-icon">•</span>
+                <span>Get example page outlines and a taste of the window & glass-specific SEO strategy.</span>
+              </li>
+              <li>
+                <span class="compare-icon">•</span>
+                <span>Ask questions about window & glass SEO and see how the system thinks through your market.</span>
+              </li>
+              <li>
+                <span class="compare-icon">•</span>
+                <span>Ideal if you’re still deciding how aggressively to invest in organic search.</span>
+              </li>
+            </ul>
+
+            <div class="btn-row" style="margin-top:12px;">
+              <a href="#limited-gpt-link" class="btn btn-ghost">Try the Limited GPT First</a>
+            </div>
+          </article>
+
+          <article class="compare-card">
+            <div class="compare-label compare-label--accent">Option 2</div>
+            <div class="compare-title">Full Window & Glass SEO System Kit</div>
+            <p>
+              The complete framework: architecture, mapping, prompts, playbooks, and checklists to implement
+              a real SEO system for your window & glass brand.
+            </p>
+
+            <ul class="compare-list">
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>Full site architecture + page mapping matrix tailored for windows, glass, and glazing.</span>
+              </li>
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>Downloadable templates, prompts, and SOPs you can hand to your team or use with AI.</span>
+              </li>
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>Local SEO / Google Business playbook built around quotes, measurements, and emergency work.</span>
+              </li>
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>One-time payment of <strong>$197</strong>, with access to framework updates included.</span>
+              </li>
+            </ul>
+
+            <div class="btn-row" style="margin-top:12px;">
+              <a href="#full-kit-checkout" class="btn btn-primary">Get the Full SEO System Kit</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" aria-labelledby="faq-title">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Questions</div>
+            <h2 id="faq-title">Window & Glass SEO System Kit FAQ</h2>
+          </div>
+          <div class="pill">
+            Clear expectations, no fluff
+          </div>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">Do I need to be “technical” to use this?</div>
+            <div class="faq-a">
+              No. If you or someone on your team can log into your website, edit pages, and copy/paste text,
+              you can implement this kit. Technical items are explained in plain language with examples.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Will this work if I already have a website?</div>
+            <div class="faq-a">
+              Yes. Many window & glass companies use the kit to reorganize an existing site, identify missing service,
+              product, and city pages, and then roll out new optimized content without rebuilding from scratch.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How fast will I see results?</div>
+            <div class="faq-a">
+              SEO timelines depend on your market and competition, but most businesses see early movement in
+              long-tail and maps searches within a few weeks once pages and GBP updates go live.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Can I use AI to generate the content?</div>
+            <div class="faq-a">
+              Yes. The prompts inside the kit are written specifically so AI tools can produce on-brand,
+              window & glass-specific content that you then lightly edit for accuracy and tone before publishing.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is this a monthly subscription?</div>
+            <div class="faq-a">
+              No. The Window & Glass SEO System Kit is a one-time purchase of <strong>$197</strong>.
+              You get ongoing access to the framework and updates to the materials included in your version.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">What if we’re already working with an SEO agency?</div>
+            <div class="faq-a">
+              Many window & glass companies use this kit to hold their agencies accountable. It gives you a clear roadmap
+              so you can see if your agency is actually building the right pages and local signals for your market.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="final-cta" aria-labelledby="final-cta-title">
+        <h2 id="final-cta-title">Turn your window & glass website into a lead machine</h2>
+        <p>
+          If you want more high-intent calls for window replacement, glass repair, custom glass, and storefront projects,
+          this kit gives you the exact SEO system to make it happen—built specifically for window & glass companies.
+        </p>
+
+        <div class="btn-row" style="margin-top:14px;">
+          <a href="#limited-gpt-link" class="btn btn-ghost">Try the Limited GPT First</a>
+          <a href="#full-kit-checkout" class="btn btn-primary">Get the Full SEO System Kit for $197</a>
+        </div>
+        <div class="final-meta">
+          Instant digital access · Keep using it for every new city, product line, or crew you add
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          © <!-- YOUR BRAND NAME -->. All rights reserved. This kit provides educational SEO guidance for window & glass businesses and is not a guarantee of specific rankings or revenue.
+        </p>
+        <p style="margin-top:4px;">
+          By purchasing, you agree to the standard
+          <a href="#terms">terms</a> and <a href="#privacy">privacy policy</a>.
+        </p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
