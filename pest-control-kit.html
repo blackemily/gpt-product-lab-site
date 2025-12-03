@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pest Control SEO System Kit – HTML Page Builder 2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #020819;
+      --card: #020b1f;
+      --card-soft: #020c22;
+      --border-subtle: #1e293b;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --accent-strong: #16a34a;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --danger: #f97373;
+      --radius-xl: 18px;
+      --radius-2xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+      --shadow-subtle: 0 12px 30px rgba(15, 23, 42, 0.75);
+      --max-width: 1080px;
+      --gap-lg: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020c1b 0, #020617 36%, #000 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px 48px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #bbf7d0, #22c55e 45%, #166534 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9), 0 0 25px rgba(34, 197, 94, 0.35);
+      font-size: 18px;
+      font-weight: 700;
+      color: #022c22;
+    }
+
+    .brand-text-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-text-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .tagline-chip {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.14), transparent 62%),
+                  rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 11px;
+      font-size: 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.32);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* HERO */
+
+    .hero {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9));
+      border-radius: var(--radius-2xl);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: var(--shadow-soft);
+      padding: 26px 24px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.09), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.04), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .hero-left h1 {
+      font-size: 30px;
+      line-height: 1.1;
+      margin: 0 0 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-left h1 span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 480px;
+    }
+
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .metric {
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 0 0, rgba(15, 118, 110, 0.25), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(30, 64, 175, 0.72);
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .metric-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e0f2fe;
+    }
+
+    .hero-checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 14px;
+      margin-bottom: 18px;
+      font-size: 12px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      color: var(--muted);
+    }
+
+    .check-icon {
+      width: 15px;
+      height: 15px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #bbf7d0, #22c55e 70%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.95);
+      font-size: 11px;
+      color: #022c22;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-row.center {
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      text-decoration: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.16s ease-out;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, #4ade80, #16a34a);
+      border-color: rgba(34, 197, 94, 0.8);
+      color: #022c22;
+      box-shadow: 0 12px 30px rgba(22, 163, 74, 0.65);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(22, 163, 74, 0.9);
+      filter: brightness(1.03);
+    }
+
+    .btn-secondary {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(148, 163, 184, 0.5);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(34, 197, 94, 0.7);
+      color: #bbf7d0;
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.14), rgba(15, 23, 42, 0.92));
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-note span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .hero-right {
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.12), rgba(15, 23, 42, 0.96));
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      padding: 16px 16px 15px;
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .price-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 12px;
+    }
+
+    .price-title {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .price-badge {
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(22, 163, 74, 0.16);
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.6);
+    }
+
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .price {
+      font-size: 26px;
+      font-weight: 700;
+      color: #bbf7d0;
+    }
+
+    .price-label {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .pay-once {
+      font-size: 11px;
+      color: rgba(74, 222, 128, 0.85);
+      margin-bottom: 10px;
+    }
+
+    .guarantee-box {
+      padding: 8px 9px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px dashed rgba(34, 197, 94, 0.65);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .guarantee-box span {
+      color: #bbf7d0;
+      font-weight: 500;
+    }
+
+    .stack-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .stack-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(30, 64, 175, 0.7);
+      color: var(--muted);
+    }
+
+    .stack-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stack-pill {
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .stack-value-strike {
+      font-size: 11px;
+      text-decoration: line-through;
+      color: rgba(148, 163, 184, 0.6);
+    }
+
+    .stack-value-real {
+      font-size: 12px;
+      font-weight: 600;
+      color: #bbf7d0;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 12px;
+      margin-top: 2px;
+      margin-bottom: 10px;
+    }
+
+    .total-row span:last-child {
+      font-weight: 600;
+      color: #bbf7d0;
+    }
+
+    .hero-right-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .hero-right-footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .dot-green {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 9px rgba(34, 197, 94, 0.8);
+    }
+
+    /* GENERIC SECTIONS */
+
+    section {
+      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.96), rgba(3, 7, 18, 0.98));
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(30, 41, 59, 0.95);
+      padding: 22px 22px 20px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    section header.section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-top: 2px;
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      max-width: 420px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: var(--gap-lg);
+    }
+
+    .card-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mini-card {
+      background: radial-gradient(circle at 0 0, rgba(15, 118, 110, 0.25), rgba(15, 23, 42, 0.97));
+      border-radius: 14px;
+      border: 1px solid rgba(30, 64, 175, 0.7);
+      padding: 10px 11px 9px;
+      font-size: 12px;
+    }
+
+    .mini-card h3 {
+      font-size: 13px;
+      margin: 0 0 4px;
+    }
+
+    .mini-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--muted);
+      font-size: 11px;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: var(--muted);
+    }
+
+    .list-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: rgba(148, 163, 184, 0.95);
+      flex-shrink: 0;
+    }
+
+    .list-item strong {
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    /* HOW IT WORKS */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      font-size: 12px;
+    }
+
+    .step-card {
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.12), rgba(15, 23, 42, 0.98));
+      border-radius: 14px;
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      padding: 10px 11px 9px;
+    }
+
+    .step-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(74, 222, 128, 0.9);
+      margin-bottom: 3px;
+    }
+
+    .step-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .step-body {
+      color: var(--muted);
+    }
+
+    /* WHAT YOU GET */
+
+    .module-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .module {
+      padding: 8px 9px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(30, 41, 59, 0.9);
+    }
+
+    .module-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .module-title {
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .module-tag {
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: rgba(148, 163, 184, 0.9);
+      white-space: nowrap;
+    }
+
+    .module ul {
+      margin: 0;
+      padding-left: 16px;
+      color: var(--muted);
+    }
+
+    .module ul li {
+      margin-bottom: 2px;
+    }
+
+    /* COMPARISON */
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .compare-card {
+      border-radius: 18px;
+      padding: 14px 13px 12px;
+      border: 1px solid rgba(30, 64, 175, 0.85);
+      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+    }
+
+    .compare-card.full {
+      border-color: rgba(34, 197, 94, 0.75);
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.12), rgba(3, 7, 18, 0.98));
+      box-shadow: 0 16px 40px rgba(22, 163, 74, 0.45);
+    }
+
+    .compare-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 4px;
+    }
+
+    .compare-label.limited {
+      color: #60a5fa;
+    }
+
+    .compare-label.full {
+      color: #bbf7d0;
+    }
+
+    .compare-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .compare-body {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .compare-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .compare-list li {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .badge {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .badge.green {
+      border-color: rgba(34, 197, 94, 0.7);
+      color: #bbf7d0;
+      background: rgba(22, 163, 74, 0.16);
+    }
+
+    .badge.red {
+      border-color: rgba(248, 113, 113, 0.65);
+      color: #fecaca;
+      background: rgba(127, 29, 29, 0.6);
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      font-size: 12px;
+    }
+
+    .faq-item {
+      padding: 10px 11px 9px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(30, 41, 59, 0.9);
+    }
+
+    .faq-q {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: #e2e8f0;
+    }
+
+    .faq-a {
+      color: var(--muted);
+    }
+
+    /* CTA */
+
+    .cta {
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.2), rgba(3, 7, 18, 0.98));
+      border-radius: 24px;
+      border: 1px solid rgba(34, 197, 94, 0.7);
+      padding: 20px 20px 18px;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(22, 163, 74, 0.6);
+    }
+
+    .cta h2 {
+      font-size: 20px;
+      margin: 0 0 6px;
+      letter-spacing: -0.03em;
+    }
+
+    .cta p {
+      margin: 0 0 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .cta-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .cta-highlights .chip {
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .cta-price-row {
+      font-size: 13px;
+      margin-bottom: 12px;
+      color: #bbf7d0;
+    }
+
+    .cta-price-row span {
+      font-weight: 600;
+    }
+
+    .cta-note {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      opacity: 0.9;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(148, 163, 184, 0.7);
+    }
+
+    footer a:hover {
+      color: #e5e7eb;
+      border-bottom-style: solid;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 880px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr !important;
+      }
+
+      .two-col,
+      .card-grid-2,
+      .compare-grid,
+      .faq-grid,
+      .steps-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .btn-row {
+        justify-content: center;
+      }
+
+      .hero-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-checklist {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 24px 14px 32px;
+      }
+
+      .hero {
+        padding: 20px 16px 18px;
+      }
+
+      section {
+        padding: 18px 16px 16px;
+      }
+
+      .hero-left h1 {
+        font-size: 24px;
+      }
+
+      .steps-grid {
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <header>
+        <div class="brand">
+          <div class="brand-icon">PC</div>
+          <div>
+            <div class="brand-text-title">Pest Control SEO System Kit</div>
+            <div class="brand-text-sub">Fill your routes with high-intent local calls</div>
+          </div>
+        </div>
+        <div class="tagline-chip">
+          <span class="tag-dot"></span>
+          Proven SEO system built only for pest control companies
+        </div>
+      </header>
+
+      <main>
+        <!-- HERO -->
+        <section class="hero">
+          <div class="hero-inner">
+            <div class="hero-left">
+              <div class="hero-pill-row">
+                <span class="pill">
+                  🕷 From “seasonal slow” to booked-out routes
+                </span>
+                <span class="pill">
+                  📍 Local search domination for pest control
+                </span>
+              </div>
+
+              <h1>
+                Turn <span>Google searches</span> into pest control service calls — on autopilot.
+              </h1>
+              <p class="hero-subtitle">
+                A battle-tested SEO system kit for pest control operators that want more booked
+                appointments, recurring contracts, and fewer “slow months” — without gambling on agencies or ads.
+              </p>
+
+              <div class="hero-metrics">
+                <div class="metric">
+                  <div class="metric-label">Built for</div>
+                  <div class="metric-value">Local pest control businesses</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Time to launch</div>
+                  <div class="metric-value">7–10 days</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Focus</div>
+                  <div class="metric-value">High-intent “near me” searches</div>
+                </div>
+              </div>
+
+              <div class="hero-checklist">
+                <div class="check-item">
+                  <span class="check-icon">✓</span>
+                  <span>Proven keyword maps for termite, rodent, bed bug, mosquito & general pest services.</span>
+                </div>
+                <div class="check-item">
+                  <span class="check-icon">✓</span>
+                  <span>On-page templates that turn “pest info” into booked inspections & monthly plans.</span>
+                </div>
+                <div class="check-item">
+                  <span class="check-icon">✓</span>
+                  <span>SEO content workflows your office team can run in a few hours per week.</span>
+                </div>
+                <div class="check-item">
+                  <span class="check-icon">✓</span>
+                  <span>Google Business Profile playbook for more clicks on <em>your</em> phone number.</span>
+                </div>
+              </div>
+
+              <div class="btn-row">
+                <a href="#limited-gpt-link" class="btn btn-secondary">
+                  Try the Limited GPT First
+                </a>
+                <a href="#full-kit-checkout" class="btn btn-primary">
+                  Get the Full SEO System Kit
+                </a>
+              </div>
+              <div class="hero-note">
+                One-time payment of <span>$197</span>. Use across every city, route, and tech you operate.
+              </div>
+            </div>
+
+            <aside class="hero-right">
+              <div>
+                <div class="price-header">
+                  <div>
+                    <div class="price-title">Pest Control SEO System Kit</div>
+                    <div class="pay-once">One-time swipe-and-deploy system for local rankings</div>
+                  </div>
+                  <div class="price-badge">
+                    Lifetime Access
+                  </div>
+                </div>
+
+                <div class="price-main">
+                  <div class="price">$197</div>
+                  <div class="price-label">one-time, all-inclusive</div>
+                </div>
+
+                <div class="guarantee-box">
+                  <span>ROI-or-it’s-on-me guarantee:</span> Implement the core keyword map & service
+                  pages within 60 days. If you don’t see <strong>more local calls or form fills</strong>, email us
+                  and we’ll work with you until you do.
+                </div>
+
+                <div class="stack-list">
+                  <div class="stack-item">
+                    <div class="stack-label">
+                      <span class="stack-pill">Keyword Engine</span>
+                      High-intent pest control keyword maps
+                    </div>
+                    <div>
+                      <div class="stack-value-strike">$297</div>
+                      <div class="stack-value-real">Included</div>
+                    </div>
+                  </div>
+                  <div class="stack-item">
+                    <div class="stack-label">
+                      <span class="stack-pill">Page Templates</span>
+                      Service + city page copy frameworks
+                    </div>
+                    <div>
+                      <div class="stack-value-strike">$249</div>
+                      <div class="stack-value-real">Included</div>
+                    </div>
+                  </div>
+                  <div class="stack-item">
+                    <div class="stack-label">
+                      <span class="stack-pill">GBP Playbook</span>
+                      Google Business Profile domination
+                    </div>
+                    <div>
+                      <div class="stack-value-strike">$149</div>
+                      <div class="stack-value-real">Included</div>
+                    </div>
+                  </div>
+                  <div class="stack-item">
+                    <div class="stack-label">
+                      <span class="stack-pill">Content System</span>
+                      Blog & FAQ content sprints
+                    </div>
+                    <div>
+                      <div class="stack-value-strike">$197</div>
+                      <div class="stack-value-real">Included</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="total-row">
+                  <span>Total value if bought separately</span>
+                  <span>$892</span>
+                </div>
+
+                <div class="btn-row center" style="margin-bottom:8px;">
+                  <a href="#full-kit-checkout" class="btn btn-primary">
+                    Get the Full Pest Control SEO System Kit – $197
+                  </a>
+                </div>
+              </div>
+
+              <div class="hero-right-footer">
+                <span><span class="dot-green"></span> No subscription, use it for every branch</span>
+                <span>Ideal for 1–25 truck operations</span>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- WHO THIS KIT IS FOR -->
+        <section>
+          <header class="section-header">
+            <div>
+              <div class="section-kicker">Who this kit is for</div>
+              <div class="section-title">Made for real pest control operators, not marketers</div>
+            </div>
+            <p class="section-subtitle">
+              Whether you’re running a small local team or multiple branches, the kit plugs into
+              your existing website and phone setup — no tech skills required.
+            </p>
+          </header>
+
+          <div class="two-col">
+            <div class="card-grid-2">
+              <div class="mini-card">
+                <h3>Owner-operators & small teams</h3>
+                <p>
+                  You’re still taking calls, quoting jobs, running routes — and SEO keeps getting
+                  pushed to “later.” This kit gives you <strong>done-for-you structure</strong> so later finally happens.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>Growing multi-tech companies</h3>
+                <p>
+                  You want every truck fully booked and more recurring revenue per route. The kit
+                  helps you own “pest control near me” across multiple suburbs & cities.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>Teams burned by agencies</h3>
+                <p>
+                  You’ve paid retainers with little to show. This time, you want a
+                  <strong>clear, repeatable system</strong> your team controls — with or without an agency.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>In-house marketers</h3>
+                <p>
+                  You handle social, flyers, yard signs and mailers — and need an SEO playbook
+                  that's specific to pest control, not generic marketing advice.
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <div class="list">
+                <div class="list-item">
+                  <div class="list-icon">✓</div>
+                  <div>
+                    <strong>You have (or can launch) a basic website.</strong><br />
+                    The kit gives you page outlines, copy prompts, and on-page SEO structure to
+                    turn that website into a lead engine.
+                  </div>
+                </div>
+                <div class="list-item">
+                  <div class="list-icon">✓</div>
+                  <div>
+                    <strong>You pick up the phone.</strong><br />
+                    More SEO traffic only matters if someone answers. This kit is built for
+                    businesses that want more <em>booked jobs</em>, not just more clicks.
+                  </div>
+                </div>
+                <div class="list-item">
+                  <div class="list-icon">✓</div>
+                  <div>
+                    <strong>You’re ready to follow a simple weekly checklist.</strong><br />
+                    2–3 hours per week is enough to deploy and maintain everything in the kit.
+                  </div>
+                </div>
+              </div>
+
+              <div class="chip-row">
+                <span class="chip">🕷 General pest</span>
+                <span class="chip">🛏️ Bed bug treatments</span>
+                <span class="chip">🐀 Rodent & wildlife</span>
+                <span class="chip">🐜 Termites</span>
+                <span class="chip">🦟 Mosquito & outdoor</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- WHAT THIS KIT DOES FOR YOU -->
+        <section>
+          <header class="section-header">
+            <div>
+              <div class="section-kicker">What this kit does for you</div>
+              <div class="section-title">From invisible online to the obvious choice in your area</div>
+            </div>
+            <p class="section-subtitle">
+              The Pest Control SEO System Kit is built to turn “pest near me” searches into real
+              inspections, treatments, and recurring service plans in your service area.
+            </p>
+          </header>
+
+          <div class="two-col">
+            <div class="list">
+              <div class="list-item">
+                <span class="list-icon">1</span>
+                <div>
+                  <strong>Dialed-in local keyword strategy</strong><br />
+                  Get specific keyword maps for pest, termite, bed bug, rodent, mosquito and more — broken
+                  down by “buy now” vs “research” searches so you prioritize what actually drives calls.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="list-icon">2</span>
+                <div>
+                  <strong>Service pages that sell the inspection</strong><br />
+                  Copy frameworks that clearly answer “Is this safe?”, “How fast can you come out?” and
+                  “What will this cost?” — the questions that convert nervous homeowners into bookings.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="list-icon">3</span>
+                <div>
+                  <strong>Google Business Profile that outranks competitors</strong><br />
+                  Structured review prompts, posting schedule, and on-profile optimization tuned for
+                  pest control searches in your city so you win the map pack.
+                </div>
+              </div>
+            </div>
+
+            <div class="list">
+              <div class="list-item">
+                <span class="list-icon">4</span>
+                <div>
+                  <strong>Blog + FAQ content that actually ranks locally</strong><br />
+                  Content workflows and prompts that answer real homeowner questions (“Are mice dangerous?”
+                  “Can termites come back?”) with built-in CTAs to schedule an inspection.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="list-icon">5</span>
+                <div>
+                  <strong>Simple tracking to see what’s working</strong><br />
+                  Dashboards and call tracking setup steps so you know which pages and keywords are turning
+                  into booked jobs and spray routes.
+                </div>
+              </div>
+              <div class="list-item">
+                <span class="list-icon">6</span>
+                <div>
+                  <strong>Scales as you add trucks & territories</strong><br />
+                  City page templates and internal linking structures that make expanding into the next suburb
+                  or town straightforward — not a guessing game.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- WHAT YOU GET INSIDE -->
+        <section>
+          <header class="section-header">
+            <div>
+              <div class="section-kicker">What you get inside</div>
+              <div class="section-title">Every asset you need to rank & convert — bundled in one kit</div>
+            </div>
+            <p class="section-subtitle">
+              You’re not buying “ideas.” You’re getting concrete checklists, templates, prompts, and workflows
+              that a non-technical office manager or marketer can run.
+            </p>
+          </header>
+
+          <div class="two-col">
+            <div class="module-list">
+              <div class="module">
+                <div class="module-top">
+                  <div class="module-title">Module 1 — Local Pest Control Keyword Engine</div>
+                  <div class="module-tag">Keyword system</div>
+                </div>
+                <ul>
+                  <li>Ready-made keyword maps for pest, termite, rodent, bed bug, mosquito & more.</li>
+                  <li>“Buy now” vs “later” intent breakdown so you prioritize money pages first.</li>
+                  <li>City + service combinations structured for maximum local coverage.</li>
+                </ul>
+              </div>
+              <div class="module">
+                <div class="module-top">
+                  <div class="module-title">Module 2 — High-Converting Service & City Pages</div>
+                  <div class="module-tag">Page templates</div>
+                </div>
+                <ul>
+                  <li>Copy frameworks for core pest, termite, bed bug, rodent & mosquito services.</li>
+                  <li>City & neighborhood page outlines with internal linking plans.</li>
+                  <li>On-page SEO checklist specific to pest control (no generic advice).</li>
+                </ul>
+              </div>
+              <div class="module">
+                <div class="module-top">
+                  <div class="module-title">Module 3 — Google Business Profile Domination</div>
+                  <div class="module-tag">Local pack</div>
+                </div>
+                <ul>
+                  <li>GBP optimization checklist tuned for pest search phrases.</li>
+                  <li>Review collection scripts your techs can use after a job.</li>
+                  <li>Posting system & photo strategy for higher map pack visibility.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="module-list">
+              <div class="module">
+                <div class="module-top">
+                  <div class="module-title">Module 4 — Blog & FAQ Content Sprints</div>
+                  <div class="module-tag">Content engine</div>
+                </div>
+                <ul>
+                  <li>15+ proven content angles that rank and naturally lead to bookings.</li>
+                  <li>Plug-and-play prompts to brief writers or run via GPT.</li>
+                  <li>Internal linking patterns that push authority to money pages.</li>
+                </ul>
+              </div>
+              <div class="module">
+                <div class="module-top">
+                  <div class="module-title">Module 5 — Tracking, Calls & Conversion Boosters</div>
+                  <div class="module-tag">Measurement</div>
+                </div>
+                <ul>
+                  <li>Simple call tracking and form tracking setup (no complex tools).</li>
+                  <li>Conversion booster checklist for phone CTAs, forms and trust blocks.</li>
+                  <li>Monthly review dashboard to see which pages drive actual revenue.</li>
+                </ul>
+              </div>
+              <div class="module">
+                <div class="module-top">
+                  <div class="module-title">Module 6 — SOPs & Quickstart Implementation Plan</div>
+                  <div class="module-tag">SOPs</div>
+                </div>
+                <ul>
+                  <li>90-day launch roadmap broken down by week.</li>
+                  <li>SOPs your office manager or marketer can follow step-by-step.</li>
+                  <li>Maintenance checklist to keep rankings growing in 2–3 hours per month.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section>
+          <header class="section-header">
+            <div>
+              <div class="section-kicker">How it works</div>
+              <div class="section-title">Install the system in weeks — benefit for years</div>
+            </div>
+            <p class="section-subtitle">
+              You don’t need to become an SEO expert. Follow the steps, copy the templates into
+              your site, update with your services and city names, and publish.
+            </p>
+          </header>
+
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-label">Step 1</div>
+              <div class="step-title">Map your service area</div>
+              <div class="step-body">
+                Use the included keyword maps to define which services you’ll promote in which cities
+                and neighborhoods. Prioritize high-intent keywords first.
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-label">Step 2</div>
+              <div class="step-title">Deploy your money pages</div>
+              <div class="step-body">
+                Plug the service & city page templates into your existing site. Swap in your brand,
+                pricing model, and territory details, then publish.
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-label">Step 3</div>
+              <div class="step-title">Tune your Google profile</div>
+              <div class="step-body">
+                Run through the GBP checklist, update categories and services, schedule photos and
+                posts, and start the review prompts for every completed job.
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-label">Step 4</div>
+              <div class="step-title">Run weekly content sprints</div>
+              <div class="step-body">
+                Have your team or writers follow the content workflows to publish targeted articles
+                and FAQs that support your core pages and rank locally.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- LIMITED GPT VS FULL KIT -->
+        <section>
+          <header class="section-header">
+            <div>
+              <div class="section-kicker">Limited GPT vs full kit</div>
+              <div class="section-title">Try the Limited GPT, then unlock the full SEO system</div>
+            </div>
+            <p class="section-subtitle">
+              The Limited GPT gives you a taste of the strategy. The full kit gives you every SOP,
+              template, and workflow you need to own your market.
+            </p>
+          </header>
+
+          <div class="compare-grid">
+            <div class="compare-card">
+              <div class="compare-label limited">Limited GPT</div>
+              <div class="compare-title">Great for getting a feel for the system</div>
+              <p class="compare-body">
+                Use the free Limited GPT to experiment with pest control SEO ideas and generate
+                sample copy — perfect if you’re just exploring your options.
+              </p>
+              <ul class="compare-list">
+                <li>
+                  <span class="badge red">Limited</span>
+                  Sample keyword ideas only
+                </li>
+                <li>
+                  <span class="badge red">Limited</span>
+                  Generic content suggestions, no full SOPs
+                </li>
+                <li>
+                  <span class="badge red">No</span>
+                  No structured 90-day implementation plan
+                </li>
+                <li>
+                  <span class="badge">✓</span>
+                  Safe way to see if the approach fits your business
+                </li>
+              </ul>
+              <div class="btn-row center" style="margin-top:10px;">
+                <a href="#limited-gpt-link" class="btn btn-secondary">
+                  Try the Limited GPT
+                </a>
+              </div>
+            </div>
+
+            <div class="compare-card full">
+              <div class="compare-label full">Full SEO System Kit</div>
+              <div class="compare-title">Everything you need to win high-intent searches</div>
+              <p class="compare-body">
+                Unlock the complete Pest Control SEO System Kit and get all templates, SOPs,
+                checklists, and workflows — built to drive real calls and bookings.
+              </p>
+              <ul class="compare-list">
+                <li>
+                  <span class="badge green">✓ Complete</span>
+                  Full local keyword maps for all major pest services
+                </li>
+                <li>
+                  <span class="badge green">✓ Ready-to-deploy</span>
+                  Service & city page frameworks with conversion built in
+                </li>
+                <li>
+                  <span class="badge green">✓ Operational</span>
+                  Step-by-step SOPs your team can own
+                </li>
+                <li>
+                  <span class="badge green">✓ Once, not monthly</span>
+                  One-time payment of <strong>$197</strong>, use for every branch and route
+                </li>
+                <li>
+                  <span class="badge green">✓ Supportive</span>
+                  Implementation guidance plus ROI-or-we-help guarantee
+                </li>
+              </ul>
+              <div class="btn-row center" style="margin-top:12px;">
+                <a href="#full-kit-checkout" class="btn btn-primary">
+                  Get the Full SEO System Kit – $197
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section>
+          <header class="section-header">
+            <div>
+              <div class="section-kicker">FAQ</div>
+              <div class="section-title">Questions pest control owners ask before they buy</div>
+            </div>
+            <p class="section-subtitle">
+              Still not sure if this fits your business? Here are straight answers to the most
+              common questions we hear from pest control operators.
+            </p>
+          </header>
+
+          <div class="faq-grid">
+            <div class="faq-item">
+              <div class="faq-q">Do I need to be “techy” or know SEO to use this?</div>
+              <div class="faq-a">
+                Nope. The kit is built so that a motivated owner, office manager, or marketer can
+                follow the SOPs step-by-step. You’ll see clear checklists like “Do this on your
+                website page” and “Click here inside Google Business Profile.”
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q">Will this work if I’m already using an agency?</div>
+              <div class="faq-a">
+                Yes. Many teams use the kit to <em>give</em> their agency a clear blueprint and
+                hold them accountable. You keep ownership of the strategy even if you change vendors later.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q">How fast will I see results?</div>
+              <div class="faq-a">
+                SEO isn’t instant, but local pest control can move quickly. Most businesses see
+                early movement in 4–8 weeks after deploying core pages and Google profile updates,
+                with compounding results over 3–9 months as content builds.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q">What if I don’t have a website yet?</div>
+              <div class="faq-a">
+                You can still use the keyword maps, GBP playbook, and content frameworks right
+                away. As soon as you launch a basic website (on any platform), simply plug in the
+                included page templates and SEO structure.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q">Is $197 a one-time payment or a subscription?</div>
+              <div class="faq-a">
+                It’s a <strong>single one-time payment of $197</strong>. No subscriptions, no
+                upsells required to “unlock” features. You get lifetime access to the kit and all updates to this version.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q">Can I use this kit across multiple cities or locations?</div>
+              <div class="faq-a">
+                Yes. The structure is designed for multi-city and multi-branch pest control
+                operations. You can duplicate the frameworks for every territory you serve under the same brand.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section class="cta">
+          <h2>Ready to turn pest problems in your city into booked appointments?</h2>
+          <p>
+            Install the Pest Control SEO System Kit once and use it to keep your techs busy,
+            phones ringing, and routes full — season after season.
+          </p>
+
+          <div class="cta-highlights">
+            <span class="chip">🏆 Built for local pest control</span>
+            <span class="chip">📈 High-intent SEO strategy</span>
+            <span class="chip">✅ Templates, SOPs & checklists</span>
+            <span class="chip">🔁 Use across all your territories</span>
+          </div>
+
+          <div class="cta-price-row">
+            One-time investment: <span>$197</span> — own the system forever, no monthly fees.
+          </div>
+
+          <div class="btn-row center">
+            <a href="#limited-gpt-link" class="btn btn-secondary">
+              Try the Limited GPT First
+            </a>
+            <a href="#full-kit-checkout" class="btn btn-primary">
+              Get the Full Pest Control SEO System Kit – $197
+            </a>
+          </div>
+
+          <div class="cta-note" style="margin-top:10px;">
+            Use the Limited GPT to explore the approach, then unlock the full kit when you’re ready
+            to roll out a proven SEO system across your pest control business.
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div>© <span id="year"></span> Pest Control SEO System Kit. All rights reserved.</div>
+        <div style="margin-top:6px;">
+          This page is for informational purposes only and does not guarantee specific results. By
+          using this kit, you remain fully responsible for your own marketing decisions and compliance
+          with all local regulations. |
+          <a href="#terms">Terms</a> · <a href="#privacy">Privacy</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
