@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wellness Coach SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --bg-softer: #111827;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.14);
+      --accent-strong: #16a34a;
+      --accent-text: #bbf7d0;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.2);
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.6);
+      --radius-xl: 18px;
+      --radius-2xl: 24px;
+      --radius-pill: 999px;
+      --transition-fast: 0.18s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.15), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.18), transparent 55%),
+        var(--bg);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      background:
+        conic-gradient(from 180deg, #22c55e, #16a34a, #0f172a, #22c55e);
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: #022c22;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .top-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .top-pill span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-text);
+      font-weight: 500;
+      font-size: 11px;
+    }
+
+    /* Hero */
+    .hero {
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.23), transparent 55%),
+        radial-gradient(circle at bottom, rgba(59, 130, 246, 0.12), transparent 50%),
+        rgba(15, 23, 42, 0.96);
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: var(--shadow-soft);
+      padding: 26px 28px 24px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(34, 197, 94, 0.26), transparent 55%);
+      opacity: 0.85;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .hero-tagline {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-text);
+      margin-bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    h1 span {
+      color: var(--accent-text);
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 16px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      min-width: 150px;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .metric-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent-text);
+    }
+
+    .metric-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .price-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .price-amount {
+      font-size: 28px;
+      font-weight: 700;
+      color: #bbf7d0;
+    }
+
+    .price-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .price-chip {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(22, 163, 74, 0.22);
+      color: var(--accent-text);
+      border: 1px solid rgba(74, 222, 128, 0.45);
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      box-shadow: 0 12px 30px rgba(34, 197, 94, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(34, 197, 94, 0.6);
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--accent-text);
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(148, 163, 184, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .hero-side {
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top, rgba(34, 197, 94, 0.3), transparent 72%),
+        rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 16px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .hero-side-top {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .hero-side-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .hero-side-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 6px;
+      margin-top: 4px;
+    }
+
+    .hero-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-main);
+    }
+
+    .hero-bullet {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.18);
+      border: 1px solid rgba(74, 222, 128, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--accent-text);
+      flex-shrink: 0;
+    }
+
+    .hero-programs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .hero-program-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .hero-program-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .trust-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .trust-pill {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    /* Sections layout */
+    .section {
+      margin-bottom: 34px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      padding: 16px 16px 16px;
+    }
+
+    .card-soft {
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), transparent 60%),
+        rgba(15, 23, 42, 0.97);
+    }
+
+    .pill-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .pill-item {
+      padding: 10px 10px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 12px;
+    }
+
+    .pill-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .pill-main {
+      font-weight: 500;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    /* What you get grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .feature {
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.97);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .feature-tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--accent-text);
+    }
+
+    .feature-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .feature-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* How it works */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .step {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 12px 11px 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .step-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.22);
+      border: 1px solid rgba(74, 222, 128, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--accent-text);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .step-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Comparison */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+      margin-top: 6px;
+    }
+
+    .compare-col {
+      border-radius: var(--radius-xl);
+      padding: 14px 14px 14px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.97);
+    }
+
+    .compare-col.full {
+      background:
+        radial-gradient(circle at top, rgba(34, 197, 94, 0.26), transparent 65%),
+        rgba(15, 23, 42, 0.99);
+      border-color: rgba(74, 222, 128, 0.8);
+      box-shadow: 0 16px 42px rgba(34, 197, 94, 0.4);
+    }
+
+    .compare-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
+      color: var(--text-muted);
+    }
+
+    .compare-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .compare-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .compare-list li {
+      display: flex;
+      gap: 7px;
+    }
+
+    .compare-icon {
+      width: 10px;
+      margin-top: 3px;
+      flex-shrink: 0;
+      font-size: 10px;
+    }
+
+    .compare-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 12px 18px;
+    }
+
+    .faq-item {
+      padding: 10px 11px 11px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 12px;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Final CTA */
+    .cta-final {
+      border-radius: 26px;
+      padding: 22px 22px 24px;
+      background:
+        radial-gradient(circle at top, rgba(34, 197, 94, 0.28), transparent 60%),
+        rgba(15, 23, 42, 0.99);
+      border: 1px solid rgba(74, 222, 128, 0.75);
+      box-shadow: 0 20px 45px rgba(34, 197, 94, 0.45);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .cta-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .cta-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .cta-price {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .cta-price span {
+      font-size: 22px;
+      font-weight: 700;
+      color: #bbf7d0;
+    }
+
+    .cta-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 16px 20px 22px;
+      margin-top: auto;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-text);
+    }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 22px 18px 20px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .hero-side {
+        order: -1;
+      }
+
+      .two-col,
+      .compare-grid,
+      .faq-grid,
+      .feature-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pill-list {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-row {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .steps {
+        grid-template-columns: 1fr !important;
+      }
+
+      .container {
+        padding-inline: 16px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .hero-programs {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="container">
+      <header>
+        <div class="brand">
+          <div class="brand-logo">WC</div>
+          <div class="brand-text">
+            <div class="brand-title">SEO SYSTEM KIT</div>
+            <div class="brand-subtitle">Client-attracting SEO for wellness coaches</div>
+          </div>
+        </div>
+        <div class="top-pill">
+          Wellness Coach SEO System Kit
+          <span>$197 one-time</span>
+        </div>
+      </header>
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-tagline">
+              <span class="hero-tag-dot"></span>
+              Turn mindful content into booked coaching clients
+            </div>
+            <h1><span>Wellness Coach</span> SEO System Kit</h1>
+            <p class="hero-sub">
+              A plug-and-play SEO and content system built specifically for wellness, life, and holistic health coaches.
+              Turn “wellness coach near me” and “burnout help” searches into aligned discovery calls without feeling salesy or spammy.
+            </p>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <span class="metric-label">Designed for solo &amp; small teams</span>
+                <span class="metric-value">+6–18</span>
+                <span class="metric-note">extra discovery calls per month (typical range with consistent use)</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Setup window</span>
+                <span class="metric-value">7–14 days</span>
+                <span class="metric-note">to launch a complete SEO foundation</span>
+              </div>
+            </div>
+
+            <div class="price-row">
+              <div class="price-main">
+                <div class="price-amount">$197</div>
+                <div class="price-label">one-time • lifetime access</div>
+              </div>
+              <div class="price-chip">Use for 1:1, groups, and digital programs</div>
+            </div>
+            <div class="hero-note">
+              No retainers, no complicated tools — just a focused system you can implement between client sessions.
+            </div>
+
+            <div class="btn-row">
+              <a href="#limited-gpt-link" class="btn btn-ghost">
+                Try the Limited GPT First
+              </a>
+              <a href="#full-kit-checkout" class="btn btn-primary">
+                Get the Full SEO System Kit
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-side">
+            <div class="hero-side-top">
+              <div class="hero-side-title">Made for real wellness coaches &amp; practitioners</div>
+              <div class="hero-side-sub">
+                Works for mindset coaches, burnout coaches, nutrition &amp; habit coaches, holistic wellness, and life coaching — whether you’re fully online, local, or hybrid.
+              </div>
+              <ul class="hero-list">
+                <li>
+                  <div class="hero-bullet">1</div>
+                  <div>Drop in your niche, ideal client, offers, and location — the kit personalizes your SEO plan around how you actually coach.</div>
+                </li>
+                <li>
+                  <div class="hero-bullet">2</div>
+                  <div>Generate values-aligned pages, blog posts, and FAQs that sound like you and attract ready-to-work clients.</div>
+                </li>
+                <li>
+                  <div class="hero-bullet">3</div>
+                  <div>Use story-based prompts to highlight your framework, client wins, and unique approach without feeling pushy.</div>
+                </li>
+                <li>
+                  <div class="hero-bullet">4</div>
+                  <div>Launch a content rhythm around launches, cohorts, and seasons (burnout, holidays, new year, back-to-work, etc.).</div>
+                </li>
+                <li>
+                  <div class="hero-bullet">5</div>
+                  <div>Align your website, calendar links, and social profiles so everything points people to one clear next step.</div>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="hero-programs">
+                <div class="hero-program-pill">
+                  <span class="hero-program-dot"></span>
+                  1:1 coaching packages
+                </div>
+                <div class="hero-program-pill">
+                  <span class="hero-program-dot"></span>
+                  Group &amp; cohort programs
+                </div>
+                <div class="hero-program-pill">
+                  <span class="hero-program-dot"></span>
+                  Corporate wellness
+                </div>
+                <div class="hero-program-pill">
+                  <span class="hero-program-dot"></span>
+                  Digital courses &amp; bundles
+                </div>
+              </div>
+              <div class="trust-row">
+                <div class="trust-pill">
+                  <span class="trust-dot"></span>
+                  Gentle, trust-building messaging
+                </div>
+                <div>SEO that feels in integrity</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Who this kit is for -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">WHO THIS KIT IS FOR</div>
+            <h2 class="section-title">Coaches who want steady clients, not constant hustle</h2>
+          </div>
+          <p class="section-sub">
+            If “update my website” and “start blogging” keep getting pushed under client work, this kit gives you a clear,
+            repeatable path you can follow in simple, focused work blocks.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card card-soft">
+            <ul class="bullet-list">
+              <li>
+                <span class="dot"></span>
+                <div>
+                  <strong>Wellness &amp; life coaches</strong> who want more values-aligned clients finding them through search instead of only social media.
+                </div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>
+                  <strong>Health, burnout &amp; stress coaches</strong> who support nervous system regulation, boundaries, habits, and sustainable change — and want content that reflects that depth.
+                </div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>
+                  <strong>Holistic &amp; spiritual coaches</strong> who want SEO that respects nuance, safety, and ethics — not generic “productivity hacks.”</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>
+                  <strong>Coaches scaling into group or corporate offers</strong> who need a site that clearly explains their framework and outcomes.
+                </div>
+              </li>
+            </ul>
+            <p class="muted">
+              If you can describe who you help, how you help, and the transformation you offer, the kit can turn that into search-optimized content that brings clients in.
+            </p>
+          </div>
+
+          <div class="card">
+            <ul class="pill-list">
+              <li class="pill-item">
+                <div class="pill-label">Perfect if...</div>
+                <div class="pill-main">You want a steady flow of discovery calls from Google and content — not only from social media trends.</div>
+              </li>
+              <li class="pill-item">
+                <div class="pill-label">Perfect if...</div>
+                <div class="pill-main">You have a site or link-in-bio, but it doesn’t clearly speak to your niche or your client journey.</div>
+              </li>
+              <li class="pill-item">
+                <div class="pill-label">Not ideal if...</div>
+                <div class="pill-main">You don’t want to publish any new content or update your pages at all.</div>
+              </li>
+              <li class="pill-item">
+                <div class="pill-label">Not ideal if...</div>
+                <div class="pill-main">You expect instant “page 1” rankings without giving the strategy time to compound.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- What this kit does for you -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">WHAT THIS KIT DOES FOR YOU</div>
+            <h2 class="section-title">Turn quiet expertise into visible, booked-out wellness work</h2>
+          </div>
+          <p class="section-sub">
+            Instead of random posts, you’ll launch a wellness-focused SEO funnel that answers real client questions,
+            showcases your framework, and gently guides people to book a call.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card card-soft">
+            <ul class="bullet-list">
+              <li>
+                <span class="dot"></span>
+                <div><strong>Maps your niche &amp; ideal client language</strong> so you can show up where people are already searching for your kind of support.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div><strong>Builds a clean site structure</strong> around your offers, frameworks, FAQs, and case studies so Google — and humans — instantly “get” you.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div><strong>Generates consent-based, compassionate content</strong> that invites self-reflection and next steps instead of pressure-heavy sales copy.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div><strong>Boosts aligned inquiries</strong> with pages designed to qualify clients and reduce “this isn’t quite what I expected” conversations.</div>
+              </li>
+            </ul>
+            <p class="muted">
+              The goal: more right-fit clients who already understand your approach by the time they land on a call.
+            </p>
+          </div>
+
+          <div class="card">
+            <ul class="bullet-list">
+              <li>
+                <span class="dot"></span>
+                <div>Clarify your message so every page reflects how you actually coach, not generic wellness advice.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>Give yourself (or a VA) precise instructions for what to publish each week or month.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>Stop reinventing your content every launch — build assets that keep delivering inquiries.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>Reduce “DM hustle” and let search quietly bring in clients while you coach, rest, and live.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- What you get inside -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">WHAT YOU GET INSIDE</div>
+            <h2 class="section-title">A complete SEO &amp; content system for your wellness coaching business</h2>
+          </div>
+          <p class="section-sub">
+            Everything tuned to coaching: your story, your method, your offers, and your client journey — structured for fast, ethical implementation.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card card-soft">
+            <div class="feature-grid">
+              <div class="feature">
+                <div class="feature-tag">Core system</div>
+                <div class="feature-title">Wellness Coach Site Architecture Blueprint</div>
+                <div class="feature-desc">
+                  Diagram of the exact pages you need (and what to skip) to rank for “[your niche] coach in [city]”
+                  and problem-based searches like burnout, boundaries, and overwhelm.
+                </div>
+              </div>
+              <div class="feature">
+                <div class="feature-tag">Content</div>
+                <div class="feature-title">Client Intent Content Calendar (30+ Days)</div>
+                <div class="feature-desc">
+                  Day-by-day topics that speak to symptoms, root causes, values, and desired outcomes — all mapped to your offers.
+                </div>
+              </div>
+              <div class="feature">
+                <div class="feature-tag">Prompts</div>
+                <div class="feature-title">AI-Ready Page, Blog &amp; FAQ Prompts</div>
+                <div class="feature-desc">
+                  Guardrailed prompts that pull in your niche, story, and framework to produce SEO-ready drafts in minutes.
+                </div>
+              </div>
+              <div class="feature">
+                <div class="feature-tag">Conversion</div>
+                <div class="feature-title">Discovery Call &amp; Offer Page Wireframes</div>
+                <div class="feature-desc">
+                  Page layouts that move visitors from “curious” to “I’m ready to talk” with transparent expectations and boundaries.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <ul class="bullet-list">
+              <li>
+                <span class="dot"></span>
+                <div><strong>Keyword clusters:</strong> grouped by symptoms (burnout, stress, low energy), identities (leaders, parents, creatives), and readiness stages.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div><strong>Visibility system:</strong> prompts for blog posts, podcast show notes, YouTube scripts, and repurposed content that all support SEO.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div><strong>Case-study &amp; testimonial templates:</strong> tell client stories ethically, focusing on process and experience, not wild promises.</div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div><strong>Execution checklists:</strong> step-by-step lists for solo coaches or VAs so everyone knows what to do next.</div>
+              </li>
+            </ul>
+            <p class="muted">
+              Everything is formatted to copy straight into your AI tool, website builder, or project management board.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">HOW IT WORKS</div>
+            <h2 class="section-title">From invisible online to a calm, consistent client pipeline</h2>
+          </div>
+          <p class="section-sub">
+            You don’t need to become a marketer — just follow the steps, protect time on your calendar, and let the system compound.
+          </p>
+        </div>
+
+        <div class="card card-soft">
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">01</div>
+              <div class="step-title">Complete your coaching profile</div>
+              <div class="step-desc">
+                Fill in a simple worksheet: niche, ideal clients, offers, transformation, boundaries, and your story —
+                this becomes the foundation for every prompt.
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">02</div>
+              <div class="step-title">Set your SEO foundation</div>
+              <div class="step-desc">
+                Use the architecture blueprint to organize your home, about, offer, niche pages, FAQs, and case studies into a clear structure.
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">03</div>
+              <div class="step-title">Generate &amp; refine content</div>
+              <div class="step-desc">
+                Drop the prompts into your AI tool, generate drafts for your key pages and priority blog posts, then lightly edit for nuance and ethics.
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">04</div>
+              <div class="step-title">Publish &amp; track inquiries</div>
+              <div class="step-desc">
+                Publish pages, integrate your calendar links, and track how many inquiries, calls, and enrollments come from organic search over time.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Limited GPT vs Full Kit -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">LIMITED GPT VS FULL KIT</div>
+            <h2 class="section-title">Experiment with the GPT, then unlock the full wellness funnel</h2>
+          </div>
+          <p class="section-sub">
+            The Limited GPT gives you a small taste of the strategy. The Full SEO System Kit gives you the complete,
+            repeatable approach for your coaching business.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare-col">
+            <div class="compare-label">Option 1</div>
+            <div class="compare-title">Limited Wellness Coach GPT</div>
+            <ul class="compare-list">
+              <li>
+                <span class="compare-icon">•</span>
+                <span>Generate sample keywords, content ideas, and a few outlines tailored to your niche and style.</span>
+              </li>
+              <li>
+                <span class="compare-icon">•</span>
+                <span>Great for experimenting and sharing quick examples with a biz partner, coach, or VA.</span>
+              </li>
+              <li>
+                <span class="compare-icon">•</span>
+                <span>Helpful if you want to see how SEO language can still feel gentle and values-aligned.</span>
+              </li>
+              <li>
+                <span class="compare-icon">•</span>
+                <span>Does <strong>not</strong> include the full blueprint, calendars, or implementation checklists.</span>
+              </li>
+            </ul>
+            <p class="compare-note">
+              Use this if you’re just exploring and want a preview of how the system “thinks” for wellness coaching.
+            </p>
+          </div>
+
+          <div class="compare-col full">
+            <div class="compare-label">Best value</div>
+            <div class="compare-title">Full Wellness Coach SEO System Kit</div>
+            <ul class="compare-list">
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>Complete SEO architecture for solo or multi-coach practices.</span>
+              </li>
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>30+ day content calendar plus evergreen topics you can cycle through every season.</span>
+              </li>
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>SEO-tuned prompts for pages, blogs, FAQs, and repurposed long-form content.</span>
+              </li>
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>Execution checklists for you and any VA or copywriter supporting you.</span>
+              </li>
+              <li>
+                <span class="compare-icon">✓</span>
+                <span>One-time payment of <strong>$197</strong>, use it as you evolve your offers and niches.</span>
+              </li>
+            </ul>
+            <p class="compare-note">
+              Choose this if you want a calm, repeatable client attraction system — not another marketing experiment.
+            </p>
+          </div>
+        </div>
+
+        <div class="btn-row" style="margin-top:18px;">
+          <a href="#limited-gpt-link" class="btn btn-ghost">Try the Limited GPT First</a>
+          <a href="#full-kit-checkout" class="btn btn-primary">Get the Full SEO System Kit for $197</a>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">FAQ</div>
+            <h2 class="section-title">Answers for busy wellness coaches</h2>
+          </div>
+          <p class="section-sub">
+            The essentials on how the Wellness Coach SEO System Kit works, how long it takes, and who can use it.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">Is this a course, software, or a done-for-you service?</div>
+            <div class="faq-a">
+              It’s a system kit: blueprints, templates, prompts, and checklists. You or your team use it with your
+              preferred AI tool and website platform. No logins, no subscriptions, no retainers.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Do I need marketing experience to use it?</div>
+            <div class="faq-a">
+              No. The kit is written in plain language for coaches. Each step tells you exactly what to fill in,
+              what to generate, and what to publish — you bring your nuance and ethics.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Will this still feel aligned with trauma-informed or consent-based practices?</div>
+            <div class="faq-a">
+              Yes. The prompts are designed to avoid pressure tactics and exaggerated promises. You remain in control
+              of what you publish and how you frame your work for your audience.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Can this be used if I work internationally or only online?</div>
+            <div class="faq-a">
+              Yes. The kit supports local and online search. You can focus on geography, identity-based niches,
+              or topic-based search, depending on how you work with clients.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How long before I see results?</div>
+            <div class="faq-a">
+              Many coaches can implement the foundation within 1–2 weeks. Organic visibility and inquiries typically
+              build over 2–6 months depending on your niche, competition, and publishing consistency.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Can I use this if I rebrand or change niches later?</div>
+            <div class="faq-a">
+              Yes. Your $197 purchase includes lifetime access. You can revisit the worksheets and prompts whenever
+              you pivot, refine your niche, or add new offers.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="section">
+        <div class="cta-final">
+          <div class="cta-title">Ready to let search quietly send you aligned clients?</div>
+          <div class="cta-sub">
+            Launch a focused SEO and content system built for wellness coaches — without monthly retainers or endless marketing courses.
+          </div>
+          <div class="cta-price">
+            One-time payment of <span>$197</span> • lifetime access • use as your offers and niche evolve.
+          </div>
+          <div class="btn-row">
+            <a href="#limited-gpt-link" class="btn btn-ghost">Try the Limited GPT First</a>
+            <a href="#full-kit-checkout" class="btn btn-primary">Get the Full SEO System Kit</a>
+          </div>
+          <div class="cta-note">
+            No subscriptions. No contracts. Just a clear, repeatable SEO system you can run at a sustainable pace.
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Wellness Coach SEO System Kit. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#terms">Terms</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#disclaimer">Marketing &amp; Results Disclaimer</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Dynamic year -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
