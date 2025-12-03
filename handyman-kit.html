@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Handyman SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-main: #040509;
+      --bg-alt: #080a12;
+      --bg-elevated: #0e111b;
+      --accent: #34d399;
+      --accent-soft: rgba(52, 211, 153, 0.1);
+      --accent-strong: #22c55e;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --danger: #f97373;
+      --danger-soft: rgba(248, 113, 113, 0.08);
+      --radius-xl: 18px;
+      --radius-2xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
+      --shadow-subtle: 0 8px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020617 0, #020617 35%, #02040a 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      padding: 32px 16px 48px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent) 0, #059669 55%, transparent 70%);
+      box-shadow: 0 0 12px rgba(52, 211, 153, 0.9);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-left {
+      padding: 24px 24px 28px;
+      border-radius: var(--radius-2xl);
+      background: radial-gradient(circle at top left, #0b1120, #020617 55%, #020617 100%);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(52, 211, 153, 0.16), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: clamp(30px, 4vw, 38px);
+      margin: 14px 0 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, var(--accent), #4ade80);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .metric-pill {
+      flex: 1 1 140px;
+      min-width: 0;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: radial-gradient(circle at top, #020617, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .metric-label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .metric-value {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .price-main {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent-strong);
+    }
+
+    .price-tagline {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.08s ease-out, box-shadow 0.08s ease-out, background 0.15s ease-out,
+        border-color 0.15s ease-out, color 0.15s ease-out;
+      white-space: nowrap;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #4ade80);
+      color: #022c22;
+      box-shadow: 0 14px 30px rgba(34, 197, 94, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(34, 197, 94, 0.32);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      border-color: rgba(55, 65, 81, 0.9);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: var(--accent);
+    }
+
+    .btn-subtext {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-confidence {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-confidence span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .check-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--accent);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .hero-right {
+      padding: 18px 18px 20px;
+      border-radius: var(--radius-2xl);
+      background: radial-gradient(circle at top right, #020617, #020617);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: var(--shadow-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .hero-right-title {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .hero-right-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .mini-card {
+      padding: 10px;
+      border-radius: 12px;
+      background: radial-gradient(circle at top left, #020617, #020617);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 12px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .mini-card span {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .mini-footer {
+      padding: 10px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot-green {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(52, 211, 153, 0.9);
+    }
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 380px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 16px 16px 18px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.98));
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.85);
+    }
+
+    .card-muted {
+      background: linear-gradient(135deg, #020617, #020617);
+    }
+
+    .pill-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .pill-label span {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .card-title {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .bullet-list {
+      margin: 10px 0 0;
+      padding-left: 0;
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .bullet-list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+
+    .bullet-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .how-it-works-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step-card {
+      padding: 14px 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top, #020617, #020617);
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    .step-label {
+      font-size: 13px;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .compare-card {
+      padding: 16px 16px 18px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, #020617, #020617);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-card.full {
+      border-color: rgba(52, 211, 153, 0.6);
+      background: radial-gradient(circle at top left, rgba(22, 163, 74, 0.3), #020617);
+    }
+
+    .compare-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .compare-tag strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .compare-title {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .compare-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .compare-pill {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(31, 41, 55, 0.9);
+      color: var(--text-muted);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .compare-pill.good {
+      border-color: rgba(52, 211, 153, 0.7);
+      color: var(--accent);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .faq-item {
+      padding: 12px 13px 13px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .faq-q {
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .faq-a {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .faq-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 12px;
+    }
+
+    .faq-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+
+    .faq-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .cta-section {
+      margin-top: 8px;
+      padding: 18px 18px 20px;
+      border-radius: var(--radius-2xl);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: radial-gradient(circle at top, rgba(21, 128, 61, 0.32), #020617);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .cta-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 14px;
+    }
+
+    .cta-price-line {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .cta-btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .cta-microcopy {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    footer {
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive behavior: horizontal on desktop, vertical only on small screens */
+    @media (max-width: 880px) {
+      .hero,
+      .two-col,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .hero {
+        gap: 20px;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .how-it-works-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .btn-row {
+        justify-content: center;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page-wrap {
+        padding: 20px 12px 32px;
+      }
+
+      .how-it-works-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <main class="container">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-left">
+          <div class="hero-inner">
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Handyman SEO System Kit
+              <span style="color: var(--text-muted);">Rank locally. Book jobs.</span>
+            </div>
+
+            <h1>
+              Turn your <span class="hero-highlight">handyman website</span> into a
+              job-booking machine.
+            </h1>
+
+            <p class="hero-subtitle">
+              A ready-to-deploy SEO system for handymen who want more local calls,
+              better-quality jobs, and a calendar filled with profitable work — without
+              becoming a full-time marketer.
+            </p>
+
+            <div class="hero-metrics">
+              <div class="metric-pill">
+                <span class="metric-label">Optimized for local search</span>
+                <span class="metric-value">“Handyman + City” terms</span>
+              </div>
+              <div class="metric-pill">
+                <span class="metric-label">Setup time</span>
+                <span class="metric-value">&lt; 2–3 hours</span>
+              </div>
+            </div>
+
+            <div class="price-row">
+              <span class="price-main">$197</span>
+              <span class="price-tagline">
+                One-time payment for the complete Handyman SEO System Kit.
+              </span>
+            </div>
+
+            <div class="btn-row">
+              <a href="#limited-gpt-link" class="btn btn-ghost">
+                <!-- TODO: replace with actual Limited GPT URL -->
+                <span>Try the Limited GPT First</span>
+              </a>
+              <a href="#full-kit-checkout" class="btn btn-primary">
+                <!-- TODO: replace with actual checkout URL -->
+                <span>Get the Full SEO System Kit</span>
+              </a>
+            </div>
+            <div class="btn-subtext">
+              No subscription • Yours forever • Built for local handyman businesses
+            </div>
+
+            <div class="hero-confidence">
+              <span>
+                <span class="check-icon">✓</span>
+                Works for solo handymen & small teams
+              </span>
+              <span>
+                <span class="check-icon">✓</span>
+                Plug-and-play SEO structure
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-right">
+          <div class="hero-right-header">
+            <div class="hero-right-title">Inside the Handyman SEO System Kit</div>
+            <div class="hero-right-pill">Local service edition</div>
+          </div>
+
+          <div class="overview-grid">
+            <div class="mini-card">
+              <strong>Service Page SEO Map</strong>
+              <span>
+                Keyword-targeted outlines for core handyman services:
+                repairs, installations, emergency jobs & more.
+              </span>
+            </div>
+            <div class="mini-card">
+              <strong>Location Page Framework</strong>
+              <span>
+                Templates to rank in your city + nearby suburbs
+                without duplicate or spammy content.
+              </span>
+            </div>
+            <div class="mini-card">
+              <strong>Handyman Content Prompts</strong>
+              <span>
+                Pre-built prompts for posts, FAQs & blogs that bring in
+                “ready-to-book” homeowners.
+              </span>
+            </div>
+            <div class="mini-card">
+              <strong>Lead-Ready Site Structure</strong>
+              <span>
+                A simple site architecture that makes Google
+                understand what you do and where you do it.
+              </span>
+            </div>
+          </div>
+
+          <div class="mini-footer">
+            <span class="dot-green"></span>
+            <span>
+              Pair the Limited GPT with the full kit to generate
+              on-brand handyman pages that are SEO-aligned — not generic fluff.
+            </span>
+          </div>
+        </aside>
+      </section>
+
+      <!-- WHO THIS KIT IS FOR -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Who this kit is for</div>
+            <h2 class="section-title">Built for real-world handyman businesses, not agencies.</h2>
+          </div>
+          <p class="section-subtitle">
+            Whether you’re climbing ladders yourself or running a small crew,
+            this kit is designed to help local handymen show up when homeowners
+            search for “help” — and convert those clicks into calls and booked jobs.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="pill-label">
+              <span>Solo Handyman</span>
+              Part-time to fully booked
+            </div>
+            <h3 class="card-title">You handle the work. The system handles the SEO.</h3>
+            <p class="card-text">
+              Perfect if you’re a one-person handyman operation juggling tools, quotes,
+              and messages — and you just want a clear, repeatable SEO plan you can
+              implement on nights or weekends.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Turn a simple 3–5 page website into a search-ready asset.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Prioritize “money pages” that actually get job requests.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Use copy prompts that sound like you, not a generic franchise.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card card-muted">
+            <div class="pill-label">
+              <span>Small Team</span>
+              Multi-tech & growing
+            </div>
+            <h3 class="card-title">Give your crew a steady stream of profitable calls.</h3>
+            <p class="card-text">
+              If you run a growing handyman team and want to stabilize your
+              calendar, this kit gives you the structure to rank in multiple
+              neighborhoods and service types without overcomplicating things.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Map out service areas and target high-value zip codes.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Standardize job-intake SEO (before/after photos, reviews & FAQs).</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Hand off content prompts to your office assistant or marketer.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT THIS KIT DOES FOR YOU -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">What this kit does for you</div>
+            <h2 class="section-title">From invisible website to steady local lead source.</h2>
+          </div>
+          <p class="section-subtitle">
+            The Handyman SEO System Kit turns scattered pages, random blog posts
+            and a quiet phone into a simple, search-focused system that works in the
+            background while you’re on the job.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">1. Aligns your site with “ready-to-book” searches</h3>
+            <p class="card-text">
+              Instead of chasing generic “DIY” traffic, the kit focuses your pages around
+              high-intent searches like “handyman near me”, “door repair [city]” and
+              “ceiling fan installation [suburb]”.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Service page keyword map tailored to handyman jobs.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Location page frameworks that call out the right neighborhoods.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Built-in FAQs that answer homeowner objections before they call.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card card-muted">
+            <h3 class="card-title">2. Makes Google understand — and trust — your business</h3>
+            <p class="card-text">
+              A clear site structure, consistent service keywords, and localized
+              content signals tell search engines exactly who you help and where
+              you work, improving visibility over time.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Simple sitemap-style layout: home, services, locations, proof.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Content prompts for reviews, project blurbs, and photo captions.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Local authority building blocks without needing a big blog.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU GET INSIDE -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">What you get inside</div>
+            <h2 class="section-title">The complete handyman SEO toolkit in one place.</h2>
+          </div>
+          <p class="section-subtitle">
+            Every piece is designed to work together: prompts, page outlines,
+            keyword maps and implementation checklists — so you’re never
+            staring at a blank screen or guessing what to write.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="pill-label">
+              <span>Core System</span>
+              Site & page structure
+            </div>
+            <h3 class="card-title">Website & Page Architecture</h3>
+            <p class="card-text">
+              A practical layout for handyman sites that prioritizes the pages
+              most likely to bring in jobs, not just traffic.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Homepage framework focused on calls & quote requests.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Service page outlines (repairs, installs, maintenance, emergencies).</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Location page template for each city or suburb you serve.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card card-muted">
+            <div class="pill-label">
+              <span>Execution Kit</span>
+              Prompts & checklists
+            </div>
+            <h3 class="card-title">SEO Prompts & Implementation Guides</h3>
+            <p class="card-text">
+              Copy-and-paste prompts and simple checklists to get everything
+              live fast — or to hand off to a VA or writer.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Handyman-specific content prompts for each core page.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>On-page checklist: titles, headings, internal links & calls-to-action.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Idea list for simple “project updates” that double as SEO content.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">How it works</div>
+            <h2 class="section-title">From download to ranking — in four focused steps.</h2>
+          </div>
+          <p class="section-subtitle">
+            No advanced tools, no agency retainers, no endless learning curve.
+            Just follow the steps like a project checklist while you keep
+            running your handyman jobs.
+          </p>
+        </div>
+
+        <div class="how-it-works-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-label">Download & pick your services</div>
+            <p>
+              Open the kit, choose the handyman services and locations you actually
+              want more of (not every possible job under the sun).
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-label">Plug in your details</div>
+            <p>
+              Use the prompts and outlines to generate content with your GPT,
+              then edit quickly to match your voice, pricing and process.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-label">Publish with the checklist</div>
+            <p>
+              Follow the on-page SEO checklist: headings, images, internal links,
+              location mentions and calls-to-action for calls and quote forms.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-label">Keep adding small wins</div>
+            <p>
+              Add quick updates — new projects, reviews and FAQs — that keep your site
+              fresh and nudge rankings up over time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIMITED GPT VS FULL KIT -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Limited GPT vs Full Kit</div>
+            <h2 class="section-title">Use the GPT to test. Use the full kit to win locally.</h2>
+          </div>
+          <p class="section-subtitle">
+            The Limited GPT lets you experiment with handyman copy and ideas.
+            The full SEO System Kit gives you the complete blueprint, prompts,
+            and structure to turn that into a ranking, job-booking asset.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare-card">
+            <div class="compare-tag">
+              <strong>Limited GPT</strong> &middot; Try it first
+            </div>
+            <h3 class="compare-title">Great for quick tests & inspiration</h3>
+            <p class="card-text">
+              Use the Limited Handyman GPT to generate sample headlines, service
+              blurbs and FAQ ideas, and get a feel for the system.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">•</div>
+                <span>Generate basic copy snippets for handyman services.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">•</div>
+                <span>Explore angle ideas for your homepage and offers.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">•</div>
+                <span>See how the tone and positioning fit your brand.</span>
+              </li>
+            </ul>
+            <div class="compare-pill-row">
+              <span class="compare-pill">Good for testing</span>
+              <span class="compare-pill">No full page map</span>
+              <span class="compare-pill">No implementation checklists</span>
+            </div>
+          </div>
+
+          <div class="compare-card full">
+            <div class="compare-tag">
+              <strong>Full SEO System Kit</strong> &middot; $197 one-time
+            </div>
+            <h3 class="compare-title">Everything you need to rank & book more jobs</h3>
+            <p class="card-text">
+              The full Handyman SEO System Kit is where the real leverage lives:
+              page-by-page plans, prompts, examples and checklists to implement
+              a proper local SEO foundation.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Complete site architecture for handyman services & locations.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>SEO-ready outlines + prompts for each “money” page.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Implementation checklists so nothing important gets missed.</span>
+              </li>
+            </ul>
+            <div class="compare-pill-row">
+              <span class="compare-pill good">$197 one-time</span>
+              <span class="compare-pill good">Keep it forever</span>
+              <span class="compare-pill good">Handyman-focused</span>
+              <span class="compare-pill good">GPT-ready prompts</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section">
+        <div class="faq-label-row">
+          <div class="faq-label">Faq</div>
+          <div class="faq-note">Honest answers for busy handymen.</div>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">Do I need to be “good with tech” to use this?</div>
+            <div class="faq-a">
+              No. If you can log into your website, paste text, upload photos
+              and edit basic settings, you can implement this kit. The prompts
+              and checklists are written for non-technical business owners.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Will this work if I only serve one small town?</div>
+            <div class="faq-a">
+              Yes. The structure is built for local search first. You’ll focus on
+              ranking in your main town and optionally add nearby suburbs or
+              neighborhoods as you grow.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Can I use this with any website platform?</div>
+            <div class="faq-a">
+              Absolutely. The kit is platform-agnostic. You can implement it on
+              WordPress, Squarespace, Wix, Webflow, or a custom-coded site —
+              the SEO principles and page structures stay the same.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How fast will I see results?</div>
+            <div class="faq-a">
+              SEO always depends on your market and competition. Most local
+              handyman sites see early movement in 4–12 weeks once core pages
+              are properly set up, with compounding gains over time.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is this a subscription or a one-time purchase?</div>
+            <div class="faq-a">
+              The Handyman SEO System Kit is a one-time payment of $197.
+              You keep the kit, frameworks and prompts forever and can reuse
+              them any time you launch new services or service areas.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Can I pair this with other marketing like ads?</div>
+            <div class="faq-a">
+              Yes. The kit helps your website convert better traffic from
+              everywhere — Google search, Google Business Profile, ads, social
+              media and referrals. Strong SEO pages help all channels perform better.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="cta-section">
+        <div class="section-kicker">Ready to stop hiding on page 3?</div>
+        <h2 class="cta-title">Turn your handyman website into a reliable lead source.</h2>
+        <p class="cta-subtitle">
+          Get the complete Handyman SEO System Kit for a one-time payment of
+          $197 and start building the kind of search presence that quietly fills
+          your schedule with the jobs you actually want.
+        </p>
+
+        <div class="cta-price-line">
+          One-time payment • No subscription • Yours to reuse as your business grows.
+        </div>
+
+        <div class="cta-btn-row">
+          <a href="#limited-gpt-link" class="btn btn-ghost">
+            <!-- TODO: replace with actual Limited GPT URL -->
+            Try the Limited GPT First
+          </a>
+          <a href="#full-kit-checkout" class="btn btn-primary">
+            <!-- TODO: replace with actual checkout URL -->
+            Get the Full SEO System Kit for $197
+          </a>
+        </div>
+
+        <div class="cta-microcopy">
+          Implement at your own pace. Keep working your jobs while your SEO quietly improves.
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <div>&copy; <span id="year"></span> Handyman SEO System Kit. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#full-kit-checkout">Get the full kit</a>
+          <a href="#limited-gpt-link">Try the Limited GPT</a>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Set current year in footer
+    (function () {
+      const el = document.getElementById("year");
+      if (el) el.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
