@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dog Trainer SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #05070a;
+      --bg-elevated: #0b1018;
+      --bg-soft: #111827;
+      --accent: #3af07a;
+      --accent-soft: rgba(58, 240, 122, 0.12);
+      --accent-strong: rgba(58, 240, 122, 0.22);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #111827;
+      --danger: #f87171;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 65%, #000 100%);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 40px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.9);
+      border: 1px solid var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(58, 240, 122, 0.3);
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-weight: 650;
+      letter-spacing: -0.03em;
+    }
+
+    p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* HERO */
+
+    .hero {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-main h1 {
+      font-size: 34px;
+      line-height: 1.08;
+      margin: 14px 0 12px;
+    }
+
+    .hero-main h1 span.highlight {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      max-width: 480px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin: 16px 0 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 99px;
+      background: var(--accent);
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .price {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .price-note {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn-row-left {
+      justify-content: flex-start;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #020617;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.5), 0 15px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      border-color: rgba(31, 41, 55, 0.9);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .btn-tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-side {
+      background: radial-gradient(circle at top left, rgba(58, 240, 122, 0.18), transparent 60%), var(--bg-elevated);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-side-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .hero-side-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .hero-side-tag {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--accent-soft);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+
+    .hero-metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .metric {
+      padding: 8px 9px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 1);
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .metric-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .hero-side-list {
+      padding: 10px 10px 0;
+      margin: 0;
+      list-style: none;
+      border-radius: 14px;
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 60%), #020617;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .hero-side-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      padding: 7px 0;
+      color: var(--text-muted);
+    }
+
+    .hero-side-list li + li {
+      border-top: 1px dashed rgba(55, 65, 81, 0.8);
+    }
+
+    .check {
+      margin-top: 3px;
+      width: 13px;
+      height: 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: var(--accent);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .hero-side-footer {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(55, 65, 81, 0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-side-footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lock-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--accent);
+    }
+
+    /* GENERIC SECTIONS */
+
+    .section {
+      margin-top: 36px;
+      padding: 22px 18px 20px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.94));
+      border: 1px solid var(--border-subtle);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 20px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 22px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .bullet-item {
+      padding: 9px 10px;
+      border-radius: 12px;
+      background: #020617;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .bullet-item-strong {
+      color: var(--text-main);
+    }
+
+    .bullet-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent);
+      margin-bottom: 3px;
+    }
+
+    .divider-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(156, 163, 175, 0.7);
+      margin: 18px 0 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .divider-label::before,
+    .divider-label::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: radial-gradient(circle, rgba(55, 65, 81, 0.8), transparent);
+    }
+
+    /* WHAT YOU GET INSIDE */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .feature-card {
+      background: #020617;
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 10px 11px 11px;
+      font-size: 12px;
+    }
+
+    .feature-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .feature-title {
+      font-size: 13px;
+      color: var(--text-main);
+      margin-bottom: 5px;
+    }
+
+    .feature-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* HOW IT WORKS */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .step-card {
+      background: #020617;
+      border-radius: 14px;
+      padding: 10px 11px 11px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 12px;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: var(--accent-strong);
+      color: #020617;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .step-title {
+      font-size: 13px;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .step-text {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* COMPARISON */
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .compare-card {
+      background: #020617;
+      border-radius: 16px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 14px 13px 13px;
+    }
+
+    .compare-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .compare-title {
+      font-size: 14px;
+    }
+
+    .compare-pill {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border: 1px solid rgba(55, 65, 81, 1);
+      color: var(--text-muted);
+    }
+
+    .compare-pill-strong {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .compare-price {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .compare-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .compare-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      padding: 4px 0;
+    }
+
+    .compare-icon {
+      margin-top: 2px;
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    .compare-icon-off {
+      color: rgba(148, 163, 184, 0.8);
+    }
+
+    .compare-footnote {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .faq-item {
+      border-radius: 14px;
+      background: #020617;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 10px 11px 11px;
+    }
+
+    .faq-q {
+      font-size: 13px;
+      color: var(--text-main);
+      margin-bottom: 5px;
+    }
+
+    .faq-a {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* FINAL CTA */
+
+    .cta-section {
+      margin-top: 32px;
+      padding: 22px 18px 22px;
+      border-radius: 20px;
+      background: radial-gradient(circle at top, rgba(58, 240, 122, 0.22), transparent 60%), #020617;
+      border: 1px solid rgba(31, 41, 55, 1);
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .cta-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .cta-price-row {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .cta-price {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .cta-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 26px;
+      padding: 16px 4px 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(31, 41, 55, 0.8);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 880px) {
+      .hero,
+      .two-col,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        gap: 22px;
+      }
+
+      .hero-main h1 {
+        font-size: 28px;
+      }
+
+      .btn-row-left {
+        justify-content: center;
+      }
+
+      .section {
+        padding: 18px 14px 16px;
+      }
+
+      .page {
+        padding: 24px 12px 32px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .features-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bullet-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main h1 {
+        font-size: 24px;
+      }
+
+      .cta-title {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!-- HERO -->
+    <header aria-label="Dog Trainer SEO System Kit" class="hero">
+      <div class="hero-main">
+        <span class="pill">
+          <span class="pill-dot"></span>
+          Dog Training Growth
+          <span style="color: var(--text-muted); opacity: 0.8;">SEO System Kit</span>
+        </span>
+
+        <h1>
+          <span class="highlight">Dog Trainer SEO System Kit</span><br />
+          Turn local searches into booked training packages.
+        </h1>
+
+        <p class="hero-sub">
+          A done-for-you SEO system for dog trainers and training schools who want steady, well-matched clients
+          from Google & Google Maps — without hiring an agency or becoming a full-time marketer.
+        </p>
+
+        <div class="hero-meta">
+          <span><span class="dot"></span> Built for in-home, group, board-and-train & sport trainers</span>
+          <span>🕓 Launch in a weekend</span>
+          <span>🐾 Works with any dog training website platform</span>
+        </div>
+
+        <div class="price-row">
+          <div class="price">$197</div>
+          <div class="price-note">One-time payment · Lifetime access</div>
+        </div>
+
+        <div class="btn-row btn-row-left">
+          <!-- TODO: replace with actual Limited GPT URL -->
+          <a href="#limited-gpt-link" class="btn btn-ghost">
+            🤖 Try the Limited GPT First
+          </a>
+          <!-- TODO: replace with actual checkout URL -->
+          <a href="#full-kit-checkout" class="btn btn-primary">
+            Get the Full SEO System Kit →
+          </a>
+        </div>
+
+        <div class="tag-row">
+          <span class="btn-tag">Includes templates, prompts & checklists</span>
+          <span class="btn-tag">No ad spend required</span>
+          <span class="btn-tag">Supports private sessions, classes & programs</span>
+        </div>
+      </div>
+
+      <aside class="hero-side" aria-label="Dog trainer SEO snapshot">
+        <div class="hero-side-header">
+          <div class="hero-side-title">Dog Training SEO Snapshot</div>
+          <div class="hero-side-tag">Search-to-booked system</div>
+        </div>
+
+        <div class="hero-metric-row">
+          <div class="metric">
+            <div class="metric-label">Local keywords</div>
+            <div class="metric-value">90+</div>
+            <div class="metric-sub">Training intent mapped</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Pages covered</div>
+            <div class="metric-value">18</div>
+            <div class="metric-sub">Core & program pages</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Time to launch</div>
+            <div class="metric-value">2–3 days</div>
+            <div class="metric-sub">Weekend-friendly rollout</div>
+          </div>
+        </div>
+
+        <ul class="hero-side-list">
+          <li>
+            <span class="check">✓</span>
+            <span>
+              Pre-mapped keyword clusters for “dog trainer near me”, “puppy training [city]”, “reactive dog help”,
+              “board and train”, “leash pulling”, “aggressive dog trainer” and more.
+            </span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span>
+              Fill-in-the-blanks page outlines & GPT prompts that create SEO-ready service, program and FAQ pages
+              in your training philosophy and voice.
+            </span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span>
+              Google Business Profile optimization checklist to help your training business appear in the local 3-pack
+              when owners search for help in your area.
+            </span>
+          </li>
+        </ul>
+
+        <div class="hero-side-footer">
+          <span>
+            <span class="lock-icon">🔒</span>
+            Keep messaging aligned with your ethics, methods & screening process.
+          </span>
+          <span>Zero ongoing subscription.</span>
+        </div>
+      </aside>
+    </header>
+
+    <!-- WHO THIS IS FOR -->
+    <section class="section" aria-labelledby="section-who">
+      <div class="section-header">
+        <div>
+          <h2 id="section-who" class="section-title">Who this kit is for</h2>
+          <p class="section-subtitle">
+            Dog trainers who want a predictable flow of right-fit clients from search — not just referrals and social media.
+          </p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <p>This kit is built for real dog training businesses with real schedules and results to deliver:</p>
+          <ul class="bullet-list" style="margin-top: 12px;">
+            <li class="bullet-item">
+              <div class="bullet-label">Solo dog trainer</div>
+              <div class="bullet-item-strong">
+                You juggle training, travel, admin and content. You need a simple system that turns
+                “dog trainer near me” searches into booked consults and programs — not random one-off sessions.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-label">Training company</div>
+              <div class="bullet-item-strong">
+                You manage a team of trainers and multiple services and want a repeatable SEO playbook
+                that works across private training, classes and board-and-train.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-label">Specialist trainer</div>
+              <div class="bullet-item-strong">
+                You focus on behaviour modification, aggression cases, sports, service or working dogs
+                and need search visibility that reflects your expertise and screening requirements.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-label">Manager / marketing support</div>
+              <div class="bullet-item-strong">
+                You support a dog training business and want clear keyword maps, content briefs and GPT prompts
+                so you can publish SEO-friendly content without guessing.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p>If this sounds like you, the kit is designed for your day-to-day reality:</p>
+          <div class="tag-row" style="margin-top: 10px;">
+            <span class="tag">You want committed training clients, not just price shoppers</span>
+            <span class="tag">You’re tired of relying only on Instagram & Facebook groups</span>
+            <span class="tag">Your website feels like a flier, not a client system</span>
+            <span class="tag">You want owners to see what makes your approach different</span>
+            <span class="tag">You’d love a system assistants can help keep updated</span>
+          </div>
+          <p style="margin-top: 16px;">
+            No coding, no new software stack, no 200-page SEO textbook. Just a dog-trainer-specific system
+            you can implement in focused blocks of time — or hand to a trusted team member with clear guardrails.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT THIS KIT DOES FOR YOU -->
+    <section class="section" aria-labelledby="section-does">
+      <div class="section-header">
+        <div>
+          <h2 id="section-does" class="section-title">What this kit does for you</h2>
+          <p class="section-subtitle">
+            Turn a basic dog training website into a structured local SEO system that quietly fills your calendar with good-fit clients.
+          </p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <p>Instead of hoping people stumble across you, you’ll:</p>
+          <ul class="bullet-list" style="margin-top: 12px;">
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Show up when people search “dog trainer near me”, “puppy training [city]”, “in-home dog training”
+                and “dog obedience classes” — not just your business name.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Capture behaviour-based searches (“leash reactivity”, “dog won’t listen”, “resource guarding”, “separation anxiety”)
+                and connect them to clear, realistic service pages.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Highlight your core offers — puppy packages, manners, behaviour modification, board-and-train, group classes —
+                in a way search engines and owners both understand.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Reduce mismatched enquiries by clearly describing who you work with, what you do (and don’t) take on,
+                and how your process works.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p>Behind the scenes, the kit gives you dog-training-specific SEO frameworks:</p>
+          <ul class="bullet-list" style="margin-top: 12px;">
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Pre-built keyword maps for home, services, behaviours, locations and FAQs — tuned to how dog owners actually search.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                On-page layouts that move visitors calmly from “I’m overwhelmed” to
+                “I understand the process and I’m ready to book a call” — without hype or unrealistic claims.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Internal linking patterns that connect behaviour pages to suitable programs, FAQs, about/trainer pages
+                and your intake form.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <div class="bullet-item-strong">
+                Checklist-driven implementation so admin or VA support can help without needing deep SEO knowledge.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT YOU GET INSIDE -->
+    <section class="section" aria-labelledby="section-get">
+      <div class="section-header">
+        <div>
+          <h2 id="section-get" class="section-title">What you get inside the Dog Trainer SEO System Kit</h2>
+          <p class="section-subtitle">
+            Ready-to-use frameworks, prompts and checklists that do the heavy lifting for local dog training SEO.
+          </p>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-label">Foundation</div>
+          <div class="feature-title">Local dog training keyword map</div>
+          <div class="feature-note">
+            Organized spreadsheet of city + dog training terms for puppy training, obedience, manners,
+            reactivity, aggression, board-and-train, group classes, sport & more — ready to plug into your content plan.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Core pages</div>
+          <div class="feature-title">Home, About & “How training works” outlines</div>
+          <div class="feature-note">
+            Fill-in-the-blanks wireframes and GPT prompts for your core pages, balancing empathy for owners,
+            clarity about methods and strong calls-to-action for next steps.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Services</div>
+          <div class="feature-title">Program & service page templates</div>
+          <div class="feature-note">
+            Structured outlines for private sessions, packages, group classes, puppy programs, behaviour modification
+            and board-and-train — including what’s included, who it’s for and results to expect.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Behaviours</div>
+          <div class="feature-title">Issue & behaviour pages</div>
+          <div class="feature-note">
+            Templates for common issues like pulling, jumping, recall, reactivity, fear, resource guarding
+            and separation anxiety that connect owners’ language to your services.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Maps</div>
+          <div class="feature-title">Google Business Profile SEO checklist</div>
+          <div class="feature-note">
+            Categories, services, photos, Q&A and review prompts designed to help your dog training business show up
+            when locals search for trainers and specific behaviour help in your area.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Process</div>
+          <div class="feature-title">Intake & process page patterns</div>
+          <div class="feature-note">
+            Simple layouts for “how we work”, discovery calls, policies and expectations
+            that pre-qualify clients and reduce back-and-forth messaging.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Content</div>
+          <div class="feature-title">Education & FAQ topic calendar</div>
+          <div class="feature-note">
+            24+ blog & FAQ prompts on training basics, leash skills, enrichment, puppies,
+            multi-dog homes, kids & dogs, gear and more — aligned with SEO and your philosophy.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">On-page</div>
+          <div class="feature-title">Meta, headings & link recipes</div>
+          <div class="feature-note">
+            Clear formulas for titles, meta descriptions, H1/H2 structure and internal links
+            that signal your services and locations to search engines.
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-label">Tracking</div>
+          <div class="feature-title">Ranking & enquiry tracking sheets</div>
+          <div class="feature-note">
+            Lightweight spreadsheets to track keyword movement and real calls, forms and bookings
+            attributed to organic search — so you can see what’s working.
+          </div>
+        </article>
+      </div>
+
+      <div class="divider-label">Built so a dog trainer — or their team — can run it</div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" aria-labelledby="section-how">
+      <div class="section-header">
+        <div>
+          <h2 id="section-how" class="section-title">How it works</h2>
+          <p class="section-subtitle">
+            A simple, dog-trainer-friendly implementation path — not another marketing project that never gets finished.
+          </p>
+        </div>
+      </div>
+
+      <div class="steps-grid">
+        <article class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-title">Plug in your city & services</div>
+          <div class="step-text">
+            Use the keyword map & prompts to build a tailored list of phrases around your service area,
+            travel radius and the programs you most want to fill (for example puppy, manners or behaviour cases).
+          </div>
+        </article>
+
+        <article class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-title">Refresh your key website pages</div>
+          <div class="step-text">
+            Follow the outlines and GPT prompts to update your home, services, behaviour and FAQ pages —
+            keeping your training methods, boundaries and tone front and centre.
+          </div>
+        </article>
+
+        <article class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-title">Optimize your Google Business Profile</div>
+          <div class="step-text">
+            Walk through the checklist to tune categories, services, photos, Q&A and reviews
+            so you show up when owners search for dog trainers and specific behaviour help nearby.
+          </div>
+        </article>
+
+        <article class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-title">Maintain with light monthly actions</div>
+          <div class="step-text">
+            Use the content calendar, tracking sheets and quick update routines to keep SEO momentum
+            with 1–2 focused hours a month from you or your support team.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- LIMITED GPT VS FULL KIT -->
+    <section class="section" aria-labelledby="section-compare">
+      <div class="section-header">
+        <div>
+          <h2 id="section-compare" class="section-title">Limited GPT vs Full Dog Trainer SEO System Kit</h2>
+          <p class="section-subtitle">
+            Try the focused GPT — then unlock the full library when you’re ready to make search a dependable source of new clients.
+          </p>
+        </div>
+      </div>
+
+      <div class="compare-grid">
+        <!-- Limited GPT -->
+        <article class="compare-card">
+          <div class="compare-header">
+            <div class="compare-title">Limited Dog Trainer SEO GPT</div>
+            <div class="compare-pill">Free preview</div>
+          </div>
+          <div class="compare-price">
+            Test a selection of dog-trainer SEO prompts & outlines before you commit to the full system.
+          </div>
+          <ul class="compare-list">
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Sample keyword ideas for your city and one core offer (for example puppy training or reactivity work).</span>
+            </li>
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Preview version of a service or behaviour page outline prompt, written specifically for dog trainers.</span>
+            </li>
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Example Google Business Profile optimization prompt tailored to dog training businesses.</span>
+            </li>
+            <li>
+              <span class="compare-icon compare-icon-off">✕</span>
+              <span>Does not include the full keyword map, templates, SOPs or tracking tools.</span>
+            </li>
+          </ul>
+          <div class="btn-row">
+            <a href="#limited-gpt-link" class="btn btn-ghost">
+              🤖 Try the Limited GPT
+            </a>
+          </div>
+          <div class="compare-footnote">
+            Ideal if you want to feel how the SEO prompts fit your tone, ethics and ideal clients before unlocking everything.
+          </div>
+        </article>
+
+        <!-- Full Kit -->
+        <article class="compare-card" style="border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent-soft);">
+          <div class="compare-header">
+            <div class="compare-title">Full Dog Trainer SEO System Kit</div>
+            <div class="compare-pill compare-pill-strong">Best for trainers</div>
+          </div>
+          <div class="compare-price">
+            <span style="color: var(--accent); font-weight: 600;">$197 one-time</span> · full access to the complete
+            dog trainer SEO system and future refinements.
+          </div>
+          <ul class="compare-list">
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Full local keyword map & topic library tailored to dog trainers and training schools.</span>
+            </li>
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>All core page outlines, prompts & examples (home, services, behaviours, locations, FAQs, process).</span>
+            </li>
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Google Business Profile checklist, enquiry-flow patterns and review request scripts that fit training work.</span>
+            </li>
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Education content calendar, ranking & enquiry tracking sheets, and implementation SOPs for your team.</span>
+            </li>
+            <li>
+              <span class="compare-icon">✓</span>
+              <span>Lifetime access to dog-trainer-specific SEO updates as the search landscape evolves.</span>
+            </li>
+          </ul>
+          <div class="btn-row">
+            <a href="#full-kit-checkout" class="btn btn-primary">
+              Get the Full SEO System Kit →
+            </a>
+          </div>
+          <div class="compare-footnote">
+            Best if you want Google to quietly send you aligned owners who show up, do the work and stay for long-term support —
+            without monthly agency fees.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" aria-labelledby="section-faq">
+      <div class="section-header">
+        <div>
+          <h2 id="section-faq" class="section-title">Dog Trainer SEO System Kit — FAQ</h2>
+          <p class="section-subtitle">
+            Common questions from dog trainers, behaviour consultants and training business owners.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-grid">
+        <article class="faq-item">
+          <div class="faq-q">Do I need to understand technical SEO to use this?</div>
+          <div class="faq-a">
+            No. The kit is written so a dog trainer — or a detail-oriented team member — can follow it.
+            You’ll see clear checklists and prompts rather than dense jargon. When something technical matters
+            (titles, meta descriptions, alt text), we show you where it lives and what to paste.
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-q">Will this work if I already have a website?</div>
+          <div class="faq-a">
+            Yes. Most trainers use the kit to improve and expand what they already have.
+            You keep your current site (WordPress, Squarespace, Wix, Weebly, platform-specific or custom)
+            and plug the outlines, keyword maps and prompts into it so it finally performs in search — not just looks nice.
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-q">How fast will I see results?</div>
+          <div class="faq-a">
+            SEO is gradual, but many trainers notice more views and better-qualified enquiries within a few weeks
+            once key pages and Google Business Profile updates go live. The kit is designed for steady progress over 3–6 months,
+            so search becomes a dependable channel instead of a mystery.
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-q">Can my admin, VA or marketing helper implement this?</div>
+          <div class="faq-a">
+            Yes. The SOPs are designed so non-technical support can handle much of the work.
+            They follow the checklists and GPT prompts, while you retain final say on training claims, policies
+            and screening language before anything is published.
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-q">Does this work for both pet dog and sport/working-dog trainers?</div>
+          <div class="faq-a">
+            Yes. The system supports pet dog trainers, behaviour specialists, sport/competition trainers
+            and working/service dog programs. You’ll see templates and prompts you can adapt for your methods,
+            ideal clients and service levels.
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-q">Why a one-time $197 instead of a subscription?</div>
+          <div class="faq-a">
+            Because this is a system, not an agency retainer. Once you have the frameworks, prompts and checklists,
+            you own them. Use the kit for new locations, new offers and website redesigns without paying again.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta-section" aria-labelledby="section-cta">
+      <h2 id="section-cta" class="cta-title">Turn “dog trainer near me” searches into clients you’re excited to work with.</h2>
+      <p class="cta-sub">
+        Get the Dog Trainer SEO System Kit and launch a search-first enquiry system —
+        without hiring an agency or spending months trying to figure SEO out on your own.
+      </p>
+
+      <div class="cta-price-row">
+        <div class="cta-price">$197</div>
+        <div class="cta-note">One-time · Lifetime access · Dog-trainer-focused</div>
+      </div>
+
+      <div class="btn-row">
+        <a href="#limited-gpt-link" class="btn btn-ghost">
+          🤖 Try the Limited GPT First
+        </a>
+        <a href="#full-kit-checkout" class="btn btn-primary">
+          Get the Full SEO System Kit →
+        </a>
+      </div>
+
+      <p style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">
+        No subscription, no contracts. Download instantly, implement between sessions,
+        and reuse the system as your business, team and service area grow.
+      </p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>Dog Trainer SEO System Kit · All rights reserved.</div>
+      <div style="margin-top: 4px;">
+        This kit is for marketing and educational purposes only and does not provide legal, financial or training advice.
+        Always follow your local regulations, insurance requirements and professional ethics in how you describe services,
+        pricing and expected results.
+      </div>
+      <div style="margin-top: 6px;">
+        <a href="#terms">Terms</a> · <a href="#privacy">Privacy</a> · <a href="#contact">Contact</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
