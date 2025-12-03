@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pilates Studio SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #05070a;
+      --bg-alt: #0b1118;
+      --bg-elevated: #111827;
+      --accent: #3bf584;
+      --accent-soft: rgba(59, 245, 132, 0.12);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2933;
+      --danger: #fb7185;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.65);
+      --radius-xl: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #020617 0, #020617 30%, #02040a 60%, #020617 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      padding: 32px 16px 48px;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0, #6ee7b7, #22c55e 40%, #16a34a 70%, #052e16 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #ecfdf5;
+      box-shadow: 0 0 24px rgba(34, 197, 94, 0.9);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.85);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-pill span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: stretch;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(12, 148, 136, 0.3));
+      border-radius: var(--radius-xl);
+      padding: 26px 26px 22px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      opacity: 0.3;
+      background:
+        radial-gradient(circle at 0 0, rgba(59, 245, 132, 0.14), transparent 52%),
+        radial-gradient(circle at 100% 0, rgba(45, 212, 191, 0.12), transparent 58%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .hero-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-pill strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 30px;
+      line-height: 1.12;
+      margin-bottom: 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-highlights span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .hero-highlights span strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-highlights span i {
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    .hero-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .price-main .amount {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ecfdf5;
+    }
+
+    .price-main .label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .price-tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 500;
+      border: 1px solid rgba(16, 185, 129, 0.6);
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.18s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(16, 185, 129, 0.65);
+      filter: brightness(1.05);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-main);
+      border-color: rgba(55, 65, 81, 0.9);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(75, 85, 99, 0.9);
+    }
+
+    .btn-secondary-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .btn-secondary-text i {
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .metric-label {
+      color: var(--text-muted);
+    }
+
+    .metric-value {
+      font-size: 13px;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .metric-value span {
+      color: var(--accent);
+    }
+
+    /* Side card */
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      border-radius: 18px;
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.12), rgba(15, 23, 42, 1));
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 18px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 100%;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .card-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .card-list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .card-list li span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .card-list li strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .card-footer {
+      margin-top: 4px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+    }
+
+    .card-footer p {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .card-badge {
+      justify-self: flex-end;
+      padding: 6px 9px;
+      border-radius: 14px;
+      background: rgba(6, 78, 59, 0.9);
+      border: 1px solid rgba(45, 212, 191, 0.8);
+      font-size: 10px;
+      color: #a7f3d0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-badge span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.18);
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    /* Generic sections */
+    section {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 20px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 20px 20px 18px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    section + section {
+      margin-top: -4px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .section-tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .pill {
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-muted);
+    }
+
+    .pill span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      font-size: 13px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      gap: 8px;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      color: var(--accent);
+      margin-top: 1px;
+      font-size: 16px;
+    }
+
+    .muted {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .badge-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      color: var(--text-muted);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+    }
+
+    /* How it works */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step {
+      border-radius: 16px;
+      padding: 10px 10px 9px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+      min-height: 100%;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .step-title {
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .step-text {
+      color: var(--text-muted);
+    }
+
+    /* Comparison */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .compare-card {
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .compare-card.limited {
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.06), rgba(15, 23, 42, 1));
+    }
+
+    .compare-card.full {
+      background: radial-gradient(circle at top, rgba(59, 245, 132, 0.12), rgba(15, 23, 42, 1));
+      border-color: rgba(34, 197, 94, 0.8);
+      box-shadow: 0 14px 32px rgba(16, 185, 129, 0.4);
+    }
+
+    .compare-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .compare-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .compare-label {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .compare-label.hot {
+      border-color: rgba(52, 211, 153, 0.9);
+      background: rgba(22, 163, 74, 0.18);
+      color: #bbf7d0;
+    }
+
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .compare-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .compare-list li span.icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    .compare-list li span.icon.ok {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--accent);
+    }
+
+    .compare-list li span.icon.no {
+      background: rgba(248, 113, 113, 0.16);
+      color: var(--danger);
+    }
+
+    .compare-footnote {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .faq-item {
+      padding: 10px 11px 9px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      font-size: 12px;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .faq-a {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 22px 20px 20px;
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.18), rgba(15, 23, 42, 1));
+      border-color: rgba(34, 197, 94, 0.8);
+      box-shadow: 0 18px 42px rgba(16, 185, 129, 0.55);
+      margin-top: 4px;
+    }
+
+    .cta-title {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .cta-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 14px;
+    }
+
+    .cta-price-row {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-size: 13px;
+    }
+
+    .cta-price-row .amount {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ecfdf5;
+    }
+
+    .cta-price-row .tag {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .cta-price-row .tag span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .cta-btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .cta-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      max-width: 1120px;
+      margin: 18px auto 0;
+      padding-top: 14px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      body {
+        padding: 22px 14px 32px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        grid-template-columns: 1fr !important;
+        padding: 20px 18px 18px;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .hero-subtitle {
+        font-size: 13px;
+      }
+
+      section {
+        padding: 18px 16px 16px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .grid-2,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn-row,
+      .cta-btn-row {
+        flex-direction: column;
+      }
+
+      .btn,
+      .cta-btn-row .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-logo">P</div>
+        <div class="brand-text">
+          <div class="brand-name">StudioRank Systems</div>
+          <div class="brand-tagline">SEO System Kits for Local Studios</div>
+        </div>
+      </div>
+      <div class="header-pill">
+        <span>✓</span>
+        Built for Pilates studios that want full classes and memberships, not full-time marketing
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-badge-row">
+            <div class="hero-pill">
+              <strong>New</strong> Pilates Studio SEO System Kit
+            </div>
+            <div class="hero-pill">
+              For boutique studios · multi-location chains · hybrid in-studio &amp; online classes
+            </div>
+          </div>
+
+          <h1>Pilates Studio SEO System Kit</h1>
+          <p class="hero-subtitle">
+            A plug-and-play SEO system that turns “Pilates near me” searches into booked intro offers, recurring memberships,
+            and waitlisted reformer classes—without needing a big agency.
+          </p>
+
+          <div class="hero-highlights">
+            <span><i>◎</i><strong>Local-first:</strong> own your city &amp; key neighborhoods</span>
+            <span><i>◎</i><strong>Offer-led:</strong> intro packs, memberships, private sessions, semi-privates</span>
+            <span><i>◎</i><strong>Studio-friendly:</strong> built for owners, not marketers</span>
+          </div>
+
+          <div class="hero-price-row">
+            <div class="price-main">
+              <span class="amount">$197</span>
+              <span class="label">one-time · yours forever</span>
+            </div>
+            <div class="price-tag">Turn searchers into loyal Pilates studio members</div>
+          </div>
+
+          <p class="hero-note">
+            No retainers, no ad agency contracts. Just a focused Pilates SEO framework that fits around your class schedule.
+          </p>
+
+          <div class="btn-row">
+            <a href="#limited-gpt-link" class="btn btn-ghost">
+              Try the Limited GPT First
+            </a>
+            <!-- TODO: replace with actual Limited GPT URL -->
+
+            <a href="#full-kit-checkout" class="btn btn-primary">
+              Get the Full SEO System Kit
+            </a>
+            <!-- TODO: replace with actual checkout URL -->
+          </div>
+
+          <div class="btn-secondary-text">
+            <i>★</i> Most studios use this kit to grow qualified organic leads and trial sign-ups within 60–90 days.
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <span class="metric-label">Built for</span>
+              <span class="metric-value">
+                <span>Reformer &amp; mat Pilates studios</span>, boutique concepts &amp; mixed modality spaces
+              </span>
+            </div>
+            <div class="metric">
+              <span class="metric-label">SEO focus</span>
+              <span class="metric-value">
+                “Pilates near me”, class type + city, intro offer &amp; membership intent
+              </span>
+            </div>
+            <div class="metric">
+              <span class="metric-label">Time to launch</span>
+              <span class="metric-value">Weekend build → <span>Monday live</span></span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="card-header">
+            <div>
+              <div class="eyebrow">Kit Snapshot</div>
+              <div class="card-title">Everything you need to rank &amp; fill your Pilates studio</div>
+            </div>
+            <div class="card-pill">One-time payment · $197</div>
+          </div>
+
+          <ul class="card-list">
+            <li>
+              <span class="icon">◎</span>
+              <div>
+                <strong>Pilates keyword maps</strong><br />
+                Pilates near me, reformer classes, beginners, prenatal, athletic, rehab-friendly, private sessions &amp; more.
+              </div>
+            </li>
+            <li>
+              <span class="icon">◎</span>
+              <div>
+                <strong>Done-for-you page outlines</strong><br />
+                Home, class types, pricing, intro offers, instructors, schedule, locations, FAQs &amp; blog topics.
+              </div>
+            </li>
+            <li>
+              <span class="icon">◎</span>
+              <div>
+                <strong>Local SEO playbook</strong><br />
+                Google Business Profile prompts, review system scripts &amp; listing checklist tuned to local studio searches.
+              </div>
+            </li>
+            <li>
+              <span class="icon">◎</span>
+              <div>
+                <strong>Content prompts inside the GPT</strong><br />
+                Studio-ready copy in minutes: class pages, instructor bios, blog posts &amp; updates you can polish quickly.
+              </div>
+            </li>
+          </ul>
+
+          <div class="card-footer">
+            <p>
+              Built specifically for Pilates studios so every page speaks to alignment, strength, energy &amp; community.
+            </p>
+            <div class="card-badge">
+              <span>✓</span>
+              Optimized for intro offers &amp; recurring memberships
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- WHO THIS KIT IS FOR -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Who this kit is for</div>
+            <h2 class="section-title">For studio owners who want full classes, not full-time marketing work</h2>
+          </div>
+          <p class="section-tagline">
+            Ideal for Pilates studio owners and managers who want a clear, repeatable SEO framework they can run
+            between classes instead of hiring an expensive agency.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <ul class="bullet-list">
+              <li>
+                You run a <strong>single Pilates studio</strong> and want your classes consistently discovered by locals
+                searching “Pilates near me” or “reformer classes”.
+              </li>
+              <li>
+                You manage a <strong>multi-location brand</strong> and need a repeatable structure for each studio
+                without duplicate content issues.
+              </li>
+              <li>
+                You’ve <strong>invested in a nice website</strong>, but it’s not bringing enough first-time visits,
+                intro offers or recurring memberships.
+              </li>
+              <li>
+                You want <strong>clear actions</strong> instead of vague advice—pages to build, words to use,
+                and simple tasks to do weekly.
+              </li>
+              <li>
+                You value <strong>community &amp; experience</strong> and want your online presence to match the feeling
+                of your studio space.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="pill-list" style="margin-bottom: 10px;">
+              <div class="pill"><span>Perfect for</span> boutique &amp; independent studios</div>
+              <div class="pill"><span>Ideal for</span> reformer-led &amp; small group formats</div>
+              <div class="pill"><span>Works with</span> WordPress, Squarespace, Wix, Webflow &amp; more</div>
+            </div>
+            <p class="muted" style="margin-bottom: 8px;">
+              If you can talk about your classes, instructors and studio culture, this kit will turn that into an
+              SEO-ready system that helps new clients find—and choose—your studio.
+            </p>
+            <div class="badge-inline">
+              <div class="badge-dot"></div>
+              No SEO jargon – written in plain language for studio owners &amp; managers.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT THIS KIT DOES FOR YOU -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">What this kit does for you</div>
+            <h2 class="section-title">Turn “we’re on Instagram” into “our classes are consistently full”</h2>
+          </div>
+          <p class="section-tagline">
+            Get a focused SEO framework that positions your Pilates studio as the obvious local choice for strength,
+            mobility and mind–body training—every day of the week.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <ul class="bullet-list">
+              <li>
+                <strong>Clarifies what to rank for.</strong>
+                Stop guessing. Know exactly which searches matter: beginners, reformer, prenatal, rehab-friendly,
+                athletic conditioning, and more.
+              </li>
+              <li>
+                <strong>Structures your entire site.</strong>
+                Move from scattered pages to a clean, scalable layout for class types, pricing, schedule and locations.
+              </li>
+              <li>
+                <strong>Speaks to real client goals.</strong>
+                Prompts focus on posture, back pain relief, core strength, toning and stress relief—not just equipment.
+              </li>
+              <li>
+                <strong>Boosts local map &amp; search visibility.</strong>
+                Targeted Google Business Profile tasks that reflect how clients actually search for Pilates.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul class="bullet-list">
+              <li>
+                <strong>Gives you a weekly rhythm.</strong>
+                Simple checklists for content updates, posts and reviews your team can do in 60–90 minutes per week.
+              </li>
+              <li>
+                <strong>Supports intro offers &amp; funnels.</strong>
+                Make it easy for new visitors to understand your intro deals and take the first step.
+              </li>
+              <li>
+                <strong>Reduces overdependence on paid ads.</strong>
+                Build a steady base of organic interest so ads become optional, not required.
+              </li>
+              <li>
+                <strong>Works with your existing tools.</strong>
+                Plug the system into your current booking software, CRM, and website platform—no tech migration.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU GET INSIDE -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">What you get inside</div>
+            <h2 class="section-title">The Pilates studio SEO playbook, packaged as a system</h2>
+          </div>
+          <p class="section-tagline">
+            This is not a generic fitness course. It’s a studio-specific execution kit with structure, prompts
+            and checklists you can start using this weekend.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <h3 style="font-size: 14px; margin-bottom: 6px;">1. Pilates SEO Foundation</h3>
+            <ul class="bullet-list" style="margin-bottom: 12px;">
+              <li>
+                Keyword map for core searches: Pilates near me, reformer classes, beginner Pilates, advanced, prenatal,
+                postnatal, private sessions &amp; more.
+              </li>
+              <li>
+                High-intent terms around “best Pilates near me”, “Pilates for back pain”, “Pilates membership”
+                and “intro offers”.
+              </li>
+              <li>
+                Competitor gap prompts to see exactly which class types and pages your studio is missing compared to others.
+              </li>
+            </ul>
+
+            <h3 style="font-size: 14px; margin-bottom: 6px;">2. Site Architecture Templates</h3>
+            <ul class="bullet-list">
+              <li>
+                Proven layout for home, about, class types, schedule, pricing, intro offers, memberships and FAQs.
+              </li>
+              <li>
+                Structures for single- and multi-location studios that avoid duplicate, copy–paste content.
+              </li>
+              <li>
+                Internal linking patterns that guide visitors from “curious” to “book a spot” in a few clicks.
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 style="font-size: 14px; margin-bottom: 6px;">3. Copy &amp; Content Prompts</h3>
+            <ul class="bullet-list" style="margin-bottom: 12px;">
+              <li>
+                Done-for-you GPT prompts for each class type page (reformer, mat, tower, prenatal, advanced, etc.).
+              </li>
+              <li>
+                FAQ clusters for what to wear, how booking works, cancellation policies, safety &amp; first-timer questions.
+              </li>
+              <li>
+                Instructor bio prompts that highlight training, personality and teaching style—without sounding stiff.
+              </li>
+            </ul>
+
+            <h3 style="font-size: 14px; margin-bottom: 6px;">4. Local SEO &amp; Review System</h3>
+            <ul class="bullet-list">
+              <li>
+                Google Business Profile setup &amp; optimization checklist tuned to Pilates studio searches.
+              </li>
+              <li>
+                Calendar for monthly posts: class spotlights, instructor highlights, client stories and tips.
+              </li>
+              <li>
+                Simple review-generation workflow your front desk or instructors can run in under 10 minutes a day.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">How it works</div>
+            <h2 class="section-title">Launch your Pilates studio SEO system in a weekend</h2>
+          </div>
+          <p class="section-tagline">
+            Follow the guided steps, plug in your studio details, and roll out a clear SEO system that quietly
+            fills your classes month after month.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-title">Download your kit</div>
+            <div class="step-text">
+              Get instant access after checkout. Open the studio-specific frameworks, checklists and GPT prompts
+              in your favorite workspace.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-title">Map your offers &amp; locations</div>
+            <div class="step-text">
+              Clarify your class types, intro deals, memberships and studio locations with guided worksheets.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-title">Generate &amp; refine your pages</div>
+            <div class="step-text">
+              Run the prompts, paste in your studio details and photos, then lightly edit to sound like you before publishing.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-title">Run the weekly playbook</div>
+            <div class="step-text">
+              Use the recurring checklist for posts, content updates and reviews that keep your studio discoverable.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIMITED GPT VS FULL KIT -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Limited GPT vs Full Kit</div>
+            <h2 class="section-title">Try the prompts, then unlock the full Pilates studio system</h2>
+          </div>
+          <p class="section-tagline">
+            The Limited GPT lets you test-drive the copy prompts. The full kit gives you the complete structure,
+            strategy and checklists to turn SEO into a reliable source of new members.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare-card limited">
+            <div class="compare-title-row">
+              <div class="compare-name">Pilates Studio SEO – Limited GPT</div>
+              <div class="compare-label">Free to explore</div>
+            </div>
+            <ul class="compare-list">
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Sample prompts for class type and home page copy.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Basic headlines and FAQ suggestions for first-time clients.</span>
+              </li>
+              <li>
+                <span class="icon no">✕</span>
+                <span>No complete Pilates keyword map or site architecture.</span>
+              </li>
+              <li>
+                <span class="icon no">✕</span>
+                <span>No weekly local SEO &amp; review engine checklist.</span>
+              </li>
+              <li>
+                <span class="icon no">✕</span>
+                <span>No implementation roadmap or launch plan.</span>
+              </li>
+            </ul>
+            <div class="compare-footnote">
+              Perfect if you want to feel how the Pilates-focused prompts work before grabbing the full kit.
+            </div>
+            <div class="btn-row" style="margin-top: 10px;">
+              <a href="#limited-gpt-link" class="btn btn-ghost" style="width: 100%; justify-content: center;">
+                Try the Limited GPT First
+              </a>
+              <!-- TODO: replace with actual Limited GPT URL -->
+            </div>
+          </div>
+
+          <div class="compare-card full">
+            <div class="compare-title-row">
+              <div class="compare-name">Full Pilates Studio SEO System Kit</div>
+              <div class="compare-label hot">Most studios choose this</div>
+            </div>
+            <ul class="compare-list">
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Full Pilates keyword map covering class types, goals &amp; local intent.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Complete site architecture templates for single &amp; multi-location studios.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Done-for-you page outlines + GPT prompts for every core studio page type.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Local SEO, Google Business Profile &amp; review engine checklists.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Execution roadmap for week 1, month 1, and quarter 1.</span>
+              </li>
+            </ul>
+            <div class="compare-footnote">
+              One-time <strong>$197</strong> investment. Use it for your current studio and any additional locations you open.
+            </div>
+            <div class="btn-row" style="margin-top: 10px;">
+              <a href="#full-kit-checkout" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                Get the Full SEO System Kit – $197
+              </a>
+              <!-- TODO: replace with actual checkout URL -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">FAQ</div>
+            <h2 class="section-title">Questions Pilates studio owners ask before grabbing the kit</h2>
+          </div>
+          <p class="section-tagline">
+            Still deciding if this is right for your studio? Here are straightforward answers in studio-friendly language.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">How is this different from generic “fitness marketing” courses?</div>
+            <div class="faq-a">
+              This kit is built specifically for Pilates studios. The examples, prompts and structures are based on
+              Pilates class types, goals and studio realities—not generic gym marketing advice.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Do I need to understand SEO or copywriting?</div>
+            <div class="faq-a">
+              No. The kit is written in plain language. You’ll see which pages to create, what to cover on each,
+              and get prompts that generate draft copy you can adjust in your own voice.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Will this work with my current website &amp; booking platform?</div>
+            <div class="faq-a">
+              Yes. The system focuses on structure, content and visibility. It works with WordPress, Squarespace,
+              Wix, Webflow and most platforms that connect to common booking systems.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Can my manager or VA implement this for me?</div>
+            <div class="faq-a">
+              Absolutely. The workflows and checklists are written so you can delegate most tasks while still
+              approving key messaging and visuals.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How long before we see more interest from search?</div>
+            <div class="faq-a">
+              Timelines vary by city and competition, but many studios notice better rankings and more organic
+              inquiries within 60–90 days of publishing the recommended pages and running the checklist consistently.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is $197 a subscription or one-time?</div>
+            <div class="faq-a">
+              It’s a one-time payment of <strong>$197</strong>. You keep ongoing access to the Pilates Studio
+              SEO System Kit and can reuse the frameworks as you grow or rebrand.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="cta-section">
+        <div class="eyebrow">Ready to fill your classes</div>
+        <div class="cta-title">Let more locals discover—and fall in love with—your Pilates studio</div>
+        <p class="cta-subtitle">
+          Grab the Pilates Studio SEO System Kit once for <strong>$197</strong>, plug in your studio details,
+          and launch a steady, search-driven flow of new clients while you focus on teaching.
+        </p>
+
+        <div class="cta-price-row">
+          <span class="amount">$197</span>
+          <span class="tag">
+            One-time · <span>no retainer</span> · use for all your studio locations
+          </span>
+        </div>
+
+        <div class="cta-btn-row">
+          <a href="#limited-gpt-link" class="btn btn-ghost">
+            Try the Limited GPT First
+          </a>
+          <!-- TODO: replace with actual Limited GPT URL -->
+
+          <a href="#full-kit-checkout" class="btn btn-primary">
+            Get the Full SEO System Kit
+          </a>
+          <!-- TODO: replace with actual checkout URL -->
+        </div>
+
+        <div class="cta-note">
+          Your classes already transform how people feel in their bodies. This kit helps more of them find you.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div>© <span id="year"></span> StudioRank Systems · Pilates Studio SEO System Kit</div>
+    <div class="footer-links">
+      <span>For educational &amp; marketing support purposes only. Not fitness, medical, or legal advice.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
