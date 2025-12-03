@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Landscaper SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-main: #050810;
+      --bg-alt: #0b1020;
+      --bg-soft: #101729;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.16);
+      --text-main: #f5f7ff;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2933;
+      --danger: #f97373;
+      --warning: #fb923c;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.96),
+        rgba(2, 6, 23, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 30%, #4ade80, #22c55e, #16a34a);
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: #020617;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .logo-text span:last-child {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .nav-pill {
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .nav-badge {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    /* Hero */
+
+    .hero {
+      margin-top: 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-left {
+      background: radial-gradient(circle at top left, #111827 0, #020617 55%);
+      border-radius: 24px;
+      padding: 22px 22px 20px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 11px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.38);
+      background: rgba(15, 23, 42, 0.95);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+    }
+
+    .pill-accent {
+      border-color: rgba(34, 197, 94, 0.7);
+      background: rgba(22, 101, 52, 0.45);
+      color: #bbf7d0;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    h1 {
+      font-size: clamp(28px, 3.1vw, 34px);
+      line-height: 1.07;
+      margin: 0 0 10px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      max-width: 520px;
+    }
+
+    .hero-metrics-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .metric-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(30, 64, 175, 0.7);
+    }
+
+    .metric-highlight {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-price-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .price-amount {
+      font-size: 26px;
+      font-weight: 700;
+      color: #bbf7d0;
+    }
+
+    .price-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .price-tag {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: -2px;
+      margin-bottom: 14px;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-decoration: none;
+      transition: all 0.17s ease-out;
+      white-space: nowrap;
+      min-width: 140px;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 20% 0, #4ade80, #22c55e, #16a34a);
+      color: #020617;
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.85);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+      box-shadow: 0 0 36px rgba(34, 197, 94, 1);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-main);
+      border-color: rgba(148, 163, 184, 0.55);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.85);
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+    }
+
+    .btn-subtext {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .hero-bottom-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .hero-guarantee {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-guarantee-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: var(--accent);
+    }
+
+    .hero-right {
+      background: linear-gradient(
+        145deg,
+        #020617 0,
+        #020617 18%,
+        #020617 40%,
+        #020617 53%
+      );
+      border-radius: 24px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .hero-right-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .badge-soft {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.7);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .tag {
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      color: var(--text-muted);
+    }
+
+    .hero-right-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .stat-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 14px;
+      padding: 10px 10px 9px;
+      border: 1px solid rgba(51, 65, 85, 0.95);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .stat-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .stat-positive {
+      color: var(--accent);
+    }
+
+    .stat-warning {
+      color: var(--warning);
+    }
+
+    .hero-right-footer {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-highlight-strip {
+      margin-top: 6px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+    }
+
+    .highlight-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(34, 197, 94, 1);
+    }
+
+    main {
+      margin-top: 38px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    section {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    section.light {
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .section-header-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .badge-outline {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .badge-outline span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .info-item {
+      background: var(--bg-soft);
+      border-radius: 14px;
+      padding: 11px 11px 10px;
+      border: 1px solid rgba(30, 41, 59, 0.9);
+    }
+
+    .info-item h3 {
+      font-size: 14px;
+      margin: 0 0 5px;
+    }
+
+    .info-item p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .info-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .info-list li {
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .info-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 11px;
+    }
+
+    .pill-small {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .pill-small-accent {
+      border-color: rgba(34, 197, 94, 0.8);
+      color: #bbf7d0;
+      background: rgba(22, 101, 52, 0.55);
+    }
+
+    /* What you get inside */
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .module-card {
+      background: var(--bg-soft);
+      border-radius: 14px;
+      padding: 11px 11px 10px;
+      border: 1px solid rgba(30, 64, 175, 0.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .module-tag {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.97);
+      color: var(--text-muted);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 5px;
+    }
+
+    .module-tag span {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 1);
+    }
+
+    .module-card h3 {
+      font-size: 14px;
+      margin: 0 0 5px;
+    }
+
+    .module-card p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .module-meta {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .module-meta span {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .module-accent {
+      border-color: rgba(34, 197, 94, 0.7);
+      color: #bbf7d0;
+    }
+
+    /* How it works */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .step-card {
+      background: var(--bg-soft);
+      border-radius: 14px;
+      padding: 10px 9px 9px;
+      border: 1px solid rgba(30, 41, 59, 0.95);
+      position: relative;
+    }
+
+    .step-number {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--accent);
+      margin-bottom: 6px;
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .step-card h3 {
+      font-size: 13px;
+      margin: 0 0 4px;
+    }
+
+    .step-card p {
+      margin: 0;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Comparison */
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .compare-column {
+      background: var(--bg-soft);
+      border-radius: 16px;
+      padding: 12px 12px 11px;
+      border: 1px solid rgba(30, 41, 59, 0.95);
+      position: relative;
+    }
+
+    .compare-column.full {
+      border-color: rgba(34, 197, 94, 0.9);
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+    }
+
+    .compare-title {
+      font-size: 14px;
+      margin: 0 0 4px;
+    }
+
+    .compare-tag {
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.98);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 5px;
+    }
+
+    .compare-tag strong {
+      color: var(--accent);
+    }
+
+    .compare-price {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .compare-price strong {
+      color: #bbf7d0;
+      font-size: 16px;
+    }
+
+    .compare-list {
+      list-style: none;
+      padding: 0;
+      margin: 6px 0 0;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .compare-list li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .compare-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    .compare-list.limited li::before {
+      content: "–";
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .compare-footnote {
+      margin-top: 7px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .faq-item {
+      background: var(--bg-soft);
+      border-radius: 14px;
+      padding: 10px 10px 9px;
+      border: 1px solid rgba(30, 41, 59, 0.95);
+    }
+
+    .faq-item h3 {
+      font-size: 13px;
+      margin: 0 0 4px;
+    }
+
+    .faq-item p {
+      margin: 0;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Final CTA */
+
+    .final-cta {
+      text-align: center;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      border-radius: 20px;
+      padding: 20px 18px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .final-cta h2 {
+      font-size: 20px;
+      margin: 0 0 6px;
+    }
+
+    .final-cta p {
+      margin: 0 0 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .final-price-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      align-items: baseline;
+      margin: 6px 0 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .final-price-row .price-amount {
+      font-size: 26px;
+    }
+
+    .final-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.9);
+      padding: 14px 20px 20px;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: rgba(2, 6, 23, 0.97);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 1040px) {
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 880px) {
+      .hero-grid,
+      .info-grid,
+      .modules-grid,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .hero-left,
+      .hero-right {
+        padding: 18px 15px 15px;
+      }
+
+      main {
+        margin-top: 26px;
+      }
+
+      header {
+        position: static;
+      }
+
+      .nav {
+        padding-inline: 16px;
+      }
+
+      .container {
+        padding-inline: 16px;
+      }
+
+      .hero-bottom-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .steps-grid {
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-right {
+        display: none;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .final-cta {
+        padding-inline: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav">
+        <div class="logo">
+          <div class="logo-mark">L</div>
+          <div class="logo-text">
+            <span>Landscaper SEO</span>
+            <span>System Kit • GPT-Powered</span>
+          </div>
+        </div>
+        <div class="nav-right">
+          <div class="nav-pill">
+            <span class="nav-pill-dot"></span>
+            <span>Built for local landscapers & lawn care pros</span>
+          </div>
+          <div class="nav-badge">One-time access • $197</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <section class="hero">
+        <div class="hero-grid">
+          <!-- Left: Core pitch -->
+          <div class="hero-left">
+            <div class="hero-pill-row">
+              <div class="pill pill-accent">
+                <span class="pill-dot"></span>
+                Landscaper SEO System Kit
+              </div>
+              <div class="pill">
+                Service pages, projects & local leads on autopilot
+              </div>
+            </div>
+
+            <h1>Turn “landscaper near me” searches into premium outdoor projects.</h1>
+            <p class="hero-sub">
+              A complete SEO system kit for landscapers & lawn care companies that
+              want more calls, quotes, and recurring maintenance from Google —
+              without hiring an agency or learning complicated SEO.
+            </p>
+
+            <div class="hero-metrics-row">
+              <div class="metric-pill">
+                <span class="metric-highlight">Launch-ready in 48 hours</span>
+                <span>with plug-and-play frameworks</span>
+              </div>
+              <div class="metric-pill">
+                <span class="metric-highlight">Built for field time first</span>
+                <span>not endless “marketing work”</span>
+              </div>
+            </div>
+
+            <div class="hero-price-row">
+              <div class="price-main">
+                <span class="price-amount">$197</span>
+                <span class="price-label">one-time for the full kit</span>
+              </div>
+              <div class="price-tag">
+                Replace scattered SEO tools & freelancers with one complete system
+                tailored to landscapers.
+              </div>
+            </div>
+
+            <div class="hero-note">
+              Ideal for: solo operators, small landscape crews, design-build firms,
+              and lawn care companies serving 1–5 cities.
+            </div>
+
+            <div class="btn-row">
+              <a href="#limited-gpt-link" class="btn btn-ghost">
+                Try the Limited GPT First
+              </a>
+              <a href="#full-kit-checkout" class="btn btn-primary">
+                Get the Full SEO System Kit
+              </a>
+            </div>
+
+            <div class="btn-subtext">
+              Instant access. Lifetime use. Updates included for this version of the kit.
+            </div>
+
+            <div class="hero-bottom-row">
+              <div class="hero-guarantee">
+                <div class="hero-guarantee-icon">✓</div>
+                <span>14-day “no results, no reason needed” refund guarantee.</span>
+              </div>
+              <div>Works with WordPress, Squarespace, Wix, Webflow & more.</div>
+            </div>
+          </div>
+
+          <!-- Right: Snapshot of what the system does -->
+          <div class="hero-right">
+            <div class="hero-right-header">
+              <div>
+                <div class="hero-right-title">From invisible to booked solid.</div>
+                <div class="section-sub">
+                  See what the Landscaper SEO System Kit helps you improve.
+                </div>
+              </div>
+              <div class="badge-soft">Systemized, not “SEO hacks”</div>
+            </div>
+
+            <div class="tag-row">
+              <div class="tag">Landscape design & install pages</div>
+              <div class="tag">Lawn care & fertilization keywords</div>
+              <div class="tag">Hardscaping & patio projects</div>
+              <div class="tag">City + “landscaper near me” pages</div>
+            </div>
+
+            <div class="hero-right-grid">
+              <div class="stat-card">
+                <div class="stat-label">Local search visibility</div>
+                <div class="stat-value stat-positive">↑ 3–5x</div>
+                <div class="stat-sub">
+                  Rank for “landscaper near me”, “retaining wall + your city” and
+                  “lawn care service” with focused page frameworks.
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Quote request rate</div>
+                <div class="stat-value stat-positive">15–30%</div>
+                <div class="stat-sub">
+                  Replace generic brochure text with project-focused copy and calls
+                  to action that drive real inquiries.
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Time spent on content</div>
+                <div class="stat-value stat-warning">–80%</div>
+                <div class="stat-sub">
+                  Let the GPT handle service descriptions, blog posts, and project
+                  write-ups — you just add photos & approve.
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Dependence on lead gen sites</div>
+                <div class="stat-value stat-warning">Optional</div>
+                <div class="stat-sub">
+                  Use your own website and Google presence as the main source of
+                  leads instead of paying per lead forever.
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-right-footer">
+              The Limited GPT lets you test the content engine. The full kit gives
+              you the structure, systems, and templates to scale it for years.
+            </div>
+
+            <div class="hero-highlight-strip">
+              <span class="highlight-dot"></span>
+              <span>
+                Perfect if you’re busy with referrals but barely show up when
+                homeowners search for landscaping in your area.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <main>
+        <!-- Who this kit is for -->
+        <section class="light">
+          <div class="section-header">
+            <div class="section-header-text">
+              <div class="section-label">Who this kit is for</div>
+              <h2 class="section-title">
+                Built specifically for landscapers, not generic “home service” sites.
+              </h2>
+              <p class="section-sub">
+                If your crews are talented but your website is quiet, this kit is
+                designed for you.
+              </p>
+            </div>
+            <div class="badge-outline">
+              Best for <span>local service areas up to 5 cities</span>
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-item">
+              <h3>Landscape & lawn care companies</h3>
+              <p>
+                You handle design, install, or ongoing lawn care and want more
+                steady work from property owners who find you on Google.
+              </p>
+              <ul class="info-list">
+                <li>Highlight design/build projects with SEO-friendly project pages.</li>
+                <li>Turn recurring lawn care into predictable, local leads.</li>
+                <li>Show up for the services you actually want to sell most.</li>
+              </ul>
+            </div>
+            <div class="info-item">
+              <h3>Specialty & hardscaping contractors</h3>
+              <p>
+                You focus on patios, retaining walls, lighting, drainage, or other
+                specialty services and need better search visibility for those jobs.
+              </p>
+              <ul class="info-list">
+                <li>Service frameworks for walls, patios, pathways & more.</li>
+                <li>Project write-up prompts that turn photos into sales assets.</li>
+                <li>City-specific pages tuned to bigger-ticket projects.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pill-row">
+            <div class="pill-small pill-small-accent">Landscape design & install</div>
+            <div class="pill-small">Lawn care & seasonal maintenance</div>
+            <div class="pill-small">Hardscaping & patios</div>
+            <div class="pill-small">Irrigation & drainage</div>
+            <div class="pill-small">Outdoor lighting & planting</div>
+          </div>
+        </section>
+
+        <!-- What this kit does for you -->
+        <section>
+          <div class="section-header">
+            <div class="section-header-text">
+              <div class="section-label">What this kit does for you</div>
+              <h2 class="section-title">
+                Turns your website into a lead machine instead of a digital brochure.
+              </h2>
+              <p class="section-sub">
+                Instead of guessing what pages to build or copying competitors, you
+                get a landscaper-specific SEO framework that maps search terms to
+                offers, pages, and content.
+              </p>
+            </div>
+            <div class="badge-outline">
+              Focused on <span>qualified project requests</span>, not just traffic
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-item">
+              <h3>Clarifies your local SEO game plan</h3>
+              <p>
+                Know which landscaping keywords matter in your market and which
+                pages you’ll use to win them.
+              </p>
+              <ul class="info-list">
+                <li>Map “money keywords” to high-value services & projects.</li>
+                <li>Build out city & neighborhood pages with a repeatable structure.</li>
+                <li>Use the GPT to expand into long-tail phrases homeowners search.</li>
+              </ul>
+            </div>
+            <div class="info-item">
+              <h3>Optimizes your site for quotes & calls</h3>
+              <p>
+                Every key page is designed to capture inquiries, not just look
+                pretty or list services.
+              </p>
+              <ul class="info-list">
+                <li>Use proven layouts for service, city, and project pages.</li>
+                <li>Plug in trust elements: before/after, testimonials, guarantees.</li>
+                <li>Guide visitors to book consults instead of bouncing to competitors.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- What you get inside -->
+        <section class="light">
+          <div class="section-header">
+            <div class="section-header-text">
+              <div class="section-label">What you get inside</div>
+              <h2 class="section-title">
+                A complete SEO framework tailored to landscapers & lawn care pros.
+              </h2>
+              <p class="section-sub">
+                Pages, prompts, checklists, and mini-systems that work together —
+                from first click to signed proposal.
+              </p>
+            </div>
+            <div class="badge-outline">
+              One kit, <span>no monthly subscription</span>
+            </div>
+          </div>
+
+          <div class="modules-grid">
+            <div class="module-card">
+              <div class="module-tag">
+                <span></span> Module 1 — Local SEO Blueprint
+              </div>
+              <h3>Landscaper keyword & page map</h3>
+              <p>
+                A simple plan that shows you exactly which pages your site needs:
+                services, projects, city pages, and supporting articles.
+              </p>
+              <ul class="info-list">
+                <li>“Landscaper near me” and service keyword clusters.</li>
+                <li>City page structures for 1–5 core locations.</li>
+                <li>Priority checklist so you know what to launch first.</li>
+              </ul>
+              <div class="module-meta">
+                <span class="module-accent">Copy-and-edit Notion / PDF templates</span>
+                <span>Fits new & existing websites</span>
+              </div>
+            </div>
+
+            <div class="module-card">
+              <div class="module-tag">
+                <span></span> Module 2 — Service & City Page Kit
+              </div>
+              <h3>High-converting landscaper page frameworks</h3>
+              <p>
+                Drag-and-drop blocks & GPT prompts for each core service and every
+                service area you target.
+              </p>
+              <ul class="info-list">
+                <li>Layouts for design, install, and maintenance services.</li>
+                <li>Guarantee, process, and “why choose us” blocks for landscapers.</li>
+                <li>FAQ & objection-handling sections tuned to homeowner concerns.</li>
+              </ul>
+              <div class="module-meta">
+                <span class="module-accent">Prompt library for each section</span>
+                <span>Optimized for common site builders</span>
+              </div>
+            </div>
+
+            <div class="module-card">
+              <div class="module-tag">
+                <span></span> Module 3 — Project & Content Engine
+              </div>
+              <h3>Showcase work & support rankings</h3>
+              <p>
+                Use the GPT to turn your project photos and notes into SEO-friendly
+                case studies, blogs, and neighborhood pages.
+              </p>
+              <ul class="info-list">
+                <li>Project write-up prompts for before/after galleries.</li>
+                <li>Monthly content calendars for seasonal topics.</li>
+                <li>Internal linking recipes that build authority in your area.</li>
+              </ul>
+              <div class="module-meta">
+                <span>Google Business Profile post prompts</span>
+                <span class="module-accent">30+ landscaper-focused content ideas</span>
+              </div>
+            </div>
+
+            <div class="module-card">
+              <div class="module-tag">
+                <span></span> Module 4 — Conversion & Follow-Up System
+              </div>
+              <h3>Turn inquiries into signed contracts</h3>
+              <p>
+                Scripts & prompts for quote forms, project inquiries, and follow-up
+                emails that move prospects from interest to install.
+              </p>
+              <ul class="info-list">
+                <li>Quote page copy & “next steps” messaging.</li>
+                <li>Follow-up prompts for design consults & estimates.</li>
+                <li>Upsell templates for maintenance, lighting, and add-ons.</li>
+              </ul>
+              <div class="module-meta">
+                <span class="module-accent">Built for busy landscaper owners</span>
+                <span>Copy/paste into your CRM or email tool</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- How it works -->
+        <section>
+          <div class="section-header">
+            <div class="section-header-text">
+              <div class="section-label">How it works</div>
+              <h2 class="section-title">
+                From “we just have a website” to “our crews are fully booked”.
+              </h2>
+              <p class="section-sub">
+                The kit turns SEO into a clear, repeatable habit you can handle in a
+                few hours a week — even during busy season.
+              </p>
+            </div>
+            <div class="badge-outline">
+              Designed to fit into <span>2–3 hours per week</span>
+            </div>
+          </div>
+
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <h3>Lay out your local SEO blueprint</h3>
+              <p>
+                Use the landscaper-specific map to choose your core services, target
+                neighborhoods, and quick-win pages that move the needle fastest.
+              </p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <h3>Build or upgrade your key pages</h3>
+              <p>
+                Plug the GPT prompts into your existing site builder. Update
+                service, city, and project pages using the provided frameworks.
+              </p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <h3>Turn on your project & content engine</h3>
+              <p>
+                Turn job photos and notes into SEO-friendly project pages, blogs,
+                and GBP posts that keep you visible all season.
+              </p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">4</div>
+              <h3>Optimize for better, bigger projects</h3>
+              <p>
+                Use the conversion & follow-up prompts to book more high-value work,
+                build recurring maintenance, and fill your schedule.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Limited GPT vs Full Kit -->
+        <section class="light">
+          <div class="section-header">
+            <div class="section-header-text">
+              <div class="section-label">Limited GPT vs full kit</div>
+              <h2 class="section-title">
+                Test the landscaper content engine. Then unlock the full system.
+              </h2>
+              <p class="section-sub">
+                The Limited GPT shows you how the landscaper-tuned prompts work.
+                The full Landscaper SEO System Kit gives you the full blueprint and
+                implementation assets.
+              </p>
+            </div>
+            <div class="badge-outline">
+              Both use the <span>same core GPT</span> — only the system is different
+            </div>
+          </div>
+
+          <div class="compare-grid">
+            <div class="compare-column">
+              <div class="compare-tag">
+                Limited GPT <strong>demo</strong>
+              </div>
+              <h3 class="compare-title">Try landscaper-specific prompts first</h3>
+              <p class="compare-price">
+                <strong>Free</strong> — limited prompts & structure
+              </p>
+              <ul class="compare-list limited">
+                <li>Generate a sample service description or project overview.</li>
+                <li>See how the GPT talks about landscaping & lawn care.</li>
+                <li>Great for testing tone, clarity, and client-facing language.</li>
+                <li>Does not include the full keyword map or page frameworks.</li>
+                <li>No implementation checklists or follow-up systems.</li>
+              </ul>
+              <div class="compare-footnote">
+                Ideal if you want to see the landscaper content engine in action
+                before investing in the full system.
+              </div>
+              <div class="btn-row" style="margin-top:8px;">
+                <a href="#limited-gpt-link" class="btn btn-ghost">Try the Limited GPT</a>
+              </div>
+            </div>
+
+            <div class="compare-column full">
+              <div class="compare-tag">
+                Full Kit <strong>recommended</strong>
+              </div>
+              <h3 class="compare-title">The complete Landscaper SEO System Kit</h3>
+              <p class="compare-price">
+                <strong>$197</strong> one-time — lifetime access
+              </p>
+              <ul class="compare-list">
+                <li>Full local SEO blueprint tailored to landscapers & lawn care.</li>
+                <li>Service & city page frameworks for 1–5 core locations.</li>
+                <li>Project & content engine with calendars and prompt library.</li>
+                <li>Google Business Profile post & review response prompts.</li>
+                <li>Conversion & follow-up scripts for bigger, better projects.</li>
+                <li>Implementation checklists you can hand off to office staff.</li>
+              </ul>
+              <div class="compare-footnote">
+                Best if you want a sustainable, systemized way to get jobs from
+                search — not just pay-per-lead sites or ads.
+              </div>
+              <div class="btn-row" style="margin-top:8px;">
+                <a href="#full-kit-checkout" class="btn btn-primary">
+                  Get the Full SEO System Kit
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section>
+          <div class="section-header">
+            <div class="section-header-text">
+              <div class="section-label">FAQ</div>
+              <h2 class="section-title">
+                Questions landscaper owners usually ask before they buy.
+              </h2>
+              <p class="section-sub">
+                If SEO has always felt confusing or “too technical”, this will help
+                you see exactly what you’re getting.
+              </p>
+            </div>
+            <div class="badge-outline">
+              Still unsure? <span>Start with the Limited GPT.</span>
+            </div>
+          </div>
+
+          <div class="faq-grid">
+            <div class="faq-item">
+              <h3>Do I need marketing or SEO experience?</h3>
+              <p>
+                No. The kit is written assuming you are a landscaper first, marketer
+                second. If you can edit text on your website or send instructions to
+                a VA, you can implement this system step-by-step.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>Will this work if I already have a website?</h3>
+              <p>
+                Yes. Most landscapers use the kit to improve what they already have.
+                You can retrofit the frameworks onto your current pages or rebuild
+                key ones from scratch using the included layouts and prompts.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>How fast can I expect results?</h3>
+              <p>
+                SEO isn’t instant, but once your core service and city pages are
+                live, you’ll usually see movement over the next few weeks, with
+                stronger rankings and leads over 3–6 months as content compounds.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>Does this only work in big cities?</h3>
+              <p>
+                It works in both dense cities and smaller towns. The blueprint shows
+                how to structure your pages whether you serve one small town, a
+                metro area, or several neighboring cities & suburbs.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>What tools do I need besides this kit?</h3>
+              <p>
+                Just your website platform and your Google Business Profile. Optional
+                tools (CRM, email, schedulers) can enhance the system, but they’re
+                not required to see results from the core SEO framework.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>What if I decide it’s not right for my business?</h3>
+              <p>
+                You’re covered by a simple 14-day refund guarantee. If you go
+                through the materials and feel it doesn’t fit your landscaping
+                business, reply to your purchase email within 14 days and request a
+                refund — no long explanation needed.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta">
+          <h2>Ready to turn Google searches into landscaping projects?</h2>
+          <p>
+            Start with the Limited GPT to see how landscaper-specific content is
+            generated. Then unlock the full Landscaper SEO System Kit when you’re
+            ready to plug in the complete system.
+          </p>
+
+          <div class="final-price-row">
+            <div>Full Kit:</div>
+            <div class="price-amount">$197</div>
+            <div>one-time • lifetime access • updates for this version included</div>
+          </div>
+
+          <div class="btn-row">
+            <a href="#limited-gpt-link" class="btn btn-ghost">
+              Try the Limited GPT First
+            </a>
+            <a href="#full-kit-checkout" class="btn btn-primary">
+              Get the Full SEO System Kit
+            </a>
+          </div>
+
+          <div class="final-note">
+            No subscriptions. No long-term retainers. Just a focused SEO system kit
+            built specifically for landscapers and lawn care companies.
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Landscaper SEO System Kit. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="#">Refund Policy</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
