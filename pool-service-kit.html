@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pool Service SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-main: #040509;
+      --bg-alt: #080a12;
+      --bg-elevated: #0e111b;
+      --accent: #34d399;
+      --accent-soft: rgba(52, 211, 153, 0.1);
+      --accent-strong: #22c55e;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --danger: #f97373;
+      --danger-soft: rgba(248, 113, 113, 0.08);
+      --radius-xl: 18px;
+      --radius-2xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
+      --shadow-subtle: 0 8px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020617 0, #020617 35%, #02040a 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      padding: 32px 16px 48px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent) 0, #059669 55%, transparent 70%);
+      box-shadow: 0 0 12px rgba(52, 211, 153, 0.9);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-left {
+      padding: 24px 24px 28px;
+      border-radius: var(--radius-2xl);
+      background: radial-gradient(circle at top left, #0b1120, #020617 55%, #020617 100%);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(52, 211, 153, 0.16), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: clamp(30px, 4vw, 38px);
+      margin: 14px 0 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, var(--accent), #4ade80);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .metric-pill {
+      flex: 1 1 140px;
+      min-width: 0;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: radial-gradient(circle at top, #020617, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .metric-label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .metric-value {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .price-main {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent-strong);
+    }
+
+    .price-tagline {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.08s ease-out, box-shadow 0.08s ease-out, background 0.15s ease-out,
+        border-color 0.15s ease-out, color 0.15s ease-out;
+      white-space: nowrap;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #4ade80);
+      color: #022c22;
+      box-shadow: 0 14px 30px rgba(34, 197, 94, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(34, 197, 94, 0.32);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      border-color: rgba(55, 65, 81, 0.9);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: var(--accent);
+    }
+
+    .btn-subtext {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-confidence {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .hero-confidence span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .check-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--accent);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .hero-right {
+      padding: 18px 18px 20px;
+      border-radius: var(--radius-2xl);
+      background: radial-gradient(circle at top right, #020617, #020617);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: var(--shadow-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .hero-right-title {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .hero-right-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .mini-card {
+      padding: 10px;
+      border-radius: 12px;
+      background: radial-gradient(circle at top left, #020617, #020617);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 12px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .mini-card span {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .mini-footer {
+      padding: 10px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot-green {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(52, 211, 153, 0.9);
+    }
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 380px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 16px 16px 18px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.98));
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.85);
+    }
+
+    .card-muted {
+      background: linear-gradient(135deg, #020617, #020617);
+    }
+
+    .pill-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .pill-label span {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .card-title {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .bullet-list {
+      margin: 10px 0 0;
+      padding-left: 0;
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .bullet-list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+
+    .bullet-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .how-it-works-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step-card {
+      padding: 14px 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top, #020617, #020617);
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    .step-label {
+      font-size: 13px;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .compare-card {
+      padding: 16px 16px 18px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, #020617, #020617);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-card.full {
+      border-color: rgba(52, 211, 153, 0.6);
+      background: radial-gradient(circle at top left, rgba(22, 163, 74, 0.3), #020617);
+    }
+
+    .compare-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .compare-tag strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .compare-title {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .compare-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .compare-pill {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(31, 41, 55, 0.9);
+      color: var(--text-muted);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .compare-pill.good {
+      border-color: rgba(52, 211, 153, 0.7);
+      color: var(--accent);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .faq-item {
+      padding: 12px 13px 13px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .faq-q {
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .faq-a {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .faq-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 12px;
+    }
+
+    .faq-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+
+    .faq-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .cta-section {
+      margin-top: 8px;
+      padding: 18px 18px 20px;
+      border-radius: var(--radius-2xl);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: radial-gradient(circle at top, rgba(21, 128, 61, 0.32), #020617);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .cta-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 14px;
+    }
+
+    .cta-price-line {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .cta-btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .cta-microcopy {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    footer {
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive: horizontal on desktop, vertical only on small screens */
+    @media (max-width: 880px) {
+      .hero,
+      .two-col,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .hero {
+        gap: 20px;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .how-it-works-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .btn-row {
+        justify-content: center;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page-wrap {
+        padding: 20px 12px 32px;
+      }
+
+      .how-it-works-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <main class="container">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-left">
+          <div class="hero-inner">
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Pool Service SEO System Kit
+              <span style="color: var(--text-muted);">Rank locally. Fill your routes.</span>
+            </div>
+
+            <h1>
+              Turn your <span class="hero-highlight">pool service website</span> into a
+              route-filling lead machine.
+            </h1>
+
+            <p class="hero-subtitle">
+              A ready-to-deploy SEO system for pool cleaning, maintenance, and repair
+              businesses that want more loyal clients, profitable routes, and fewer
+              slow seasons — without hiring an agency.
+            </p>
+
+            <div class="hero-metrics">
+              <div class="metric-pill">
+                <span class="metric-label">Optimized for local search</span>
+                <span class="metric-value">“Pool service + city” terms</span>
+              </div>
+              <div class="metric-pill">
+                <span class="metric-label">Setup time</span>
+                <span class="metric-value">&lt; 2–3 hours</span>
+              </div>
+            </div>
+
+            <div class="price-row">
+              <span class="price-main">$197</span>
+              <span class="price-tagline">
+                One-time payment for the complete Pool Service SEO System Kit.
+              </span>
+            </div>
+
+            <div class="btn-row">
+              <a href="#limited-gpt-link" class="btn btn-ghost">
+                <!-- TODO: replace with actual Limited GPT URL -->
+                <span>Try the Limited GPT First</span>
+              </a>
+              <a href="#full-kit-checkout" class="btn btn-primary">
+                <!-- TODO: replace with actual checkout URL -->
+                <span>Get the Full SEO System Kit</span>
+              </a>
+            </div>
+            <div class="btn-subtext">
+              No subscription • Yours forever • Built for pool service businesses
+            </div>
+
+            <div class="hero-confidence">
+              <span>
+                <span class="check-icon">✓</span>
+                Weekly & bi-weekly route-based services
+              </span>
+              <span>
+                <span class="check-icon">✓</span>
+                Openings, closings & repairs included
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-right">
+          <div class="hero-right-header">
+            <div class="hero-right-title">Inside the Pool Service SEO System Kit</div>
+            <div class="hero-right-pill">Local home services edition</div>
+          </div>
+
+          <div class="overview-grid">
+            <div class="mini-card">
+              <strong>Service Page SEO Map</strong>
+              <span>
+                Keyword-targeted outlines for cleaning, maintenance, openings,
+                closings, repairs, and equipment upgrades.
+              </span>
+            </div>
+            <div class="mini-card">
+              <strong>Route & Area Framework</strong>
+              <span>
+                Location page templates tuned for neighborhoods, communities,
+                and HOA-heavy areas you want to dominate.
+              </span>
+            </div>
+            <div class="mini-card">
+              <strong>Pool Content Prompts</strong>
+              <span>
+                Pre-built prompts for education posts that attract
+                homeowners ready to hand off their pool chores.
+              </span>
+            </div>
+            <div class="mini-card">
+              <strong>Lead-Ready Site Structure</strong>
+              <span>
+                A simple architecture that makes Google understand
+                what you do, which pools you service, and where.
+              </span>
+            </div>
+          </div>
+
+          <div class="mini-footer">
+            <span class="dot-green"></span>
+            <span>
+              Pair the Limited GPT with the full kit to generate
+              on-brand pool service pages that are SEO-aligned — not generic fluff.
+            </span>
+          </div>
+        </aside>
+      </section>
+
+      <!-- WHO THIS KIT IS FOR -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Who this kit is for</div>
+            <h2 class="section-title">Built for real pool service businesses, not agencies.</h2>
+          </div>
+          <p class="section-subtitle">
+            Whether you run a small pool route by yourself or manage multiple trucks,
+            this kit is designed to help local pool pros show up when homeowners search
+            for service — and convert those clicks into recurring accounts.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="pill-label">
+              <span>Solo Operator</span>
+              Building your first routes
+            </div>
+            <h3 class="card-title">You handle the pools. The system handles the SEO.</h3>
+            <p class="card-text">
+              Perfect if you’re running your own route, testing new neighborhoods,
+              and want a clear SEO plan you can implement between service stops.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Turn a basic 3–5 page site into a lead generator.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Focus on the services that lead to long-term contracts.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Use prompts that sound like a friendly pool tech, not corporate.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card card-muted">
+            <div class="pill-label">
+              <span>Small Team</span>
+              Multi-route & growing
+            </div>
+            <h3 class="card-title">Keep your team booked with the right clients.</h3>
+            <p class="card-text">
+              If you’re managing techs and want steady, predictable routes,
+              this kit helps you rank across high-value communities and
+              attract clients who care about quality, not just price.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Map routes to profitable zip codes and HOAs.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Standardize before/after photos, reviews and service logs for SEO.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Hand off prompts to office staff or a writer to scale faster.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT THIS KIT DOES FOR YOU -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">What this kit does for you</div>
+            <h2 class="section-title">From quiet schedule to consistently full pool routes.</h2>
+          </div>
+          <p class="section-subtitle">
+            The Pool Service SEO System Kit turns scattered pages and referrals-only
+            growth into a steady system that brings in weekly, bi-weekly, and
+            seasonal work right from Google.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">1. Aligns your site with “I’m ready to hire” searches</h3>
+            <p class="card-text">
+              Instead of chasing generic pool tips searches, the kit aligns your pages
+              with high-intent phrases like “pool cleaning near me”, “weekly pool
+              service [city]” and “pool pump repair [area]”.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Service page keyword maps for cleaning, maintenance & repair.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Location frameworks that highlight your real service areas.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Built-in FAQs that handle chemistry, reliability, and pricing concerns.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card card-muted">
+            <h3 class="card-title">2. Makes Google trust you as the local pool expert</h3>
+            <p class="card-text">
+              A clear site structure, consistent terminology, and localized proof
+              signals tell search engines that you’re the go-to pool provider in
+              your area, not just another listing.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Home, services, routes/areas, proof, and contact — all aligned.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Prompts for reviews, case blurbs, and maintenance logs.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>SEO content ideas tied to real clients and pools you service.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU GET INSIDE -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">What you get inside</div>
+            <h2 class="section-title">The complete pool service SEO toolkit in one place.</h2>
+          </div>
+          <p class="section-subtitle">
+            Everything is designed to work together: page outlines, keyword maps,
+            prompts, and checklists — so your pool website is easier to upgrade
+            than a filter change.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="pill-label">
+              <span>Core System</span>
+              Site & page structure
+            </div>
+            <h3 class="card-title">Website & Page Architecture</h3>
+            <p class="card-text">
+              A practical layout for pool service businesses that focuses on
+              recurring revenue and high-value jobs, not just one-off calls.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Homepage framework built around routes & memberships.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Service page outlines for cleaning, maintenance, repairs & upgrades.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Location page template for each city, community, or HOA area.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card card-muted">
+            <div class="pill-label">
+              <span>Execution Kit</span>
+              Prompts & checklists
+            </div>
+            <h3 class="card-title">SEO Prompts & Implementation Guides</h3>
+            <p class="card-text">
+              Copy-and-paste prompts and simple checklists that make launching
+              or refreshing your site a straightforward project — not a headache.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Pool-specific prompts for every high-intent page on your site.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>On-page checklist: titles, headings, links, CTAs, and photos.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Idea list for “route diaries” and seasonal update posts.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">How it works</div>
+            <h2 class="section-title">From download to route-ready SEO in four steps.</h2>
+          </div>
+          <p class="section-subtitle">
+            No complicated dashboards or jargon. Just simple steps you can follow
+            while you keep handling your pool routes and customer calls.
+          </p>
+        </div>
+
+        <div class="how-it-works-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-label">Download & pick your services</div>
+            <p>
+              Open the kit and choose the pool services and service areas that you
+              actually want more of: weekly cleaning, maintenance, repairs, and more.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-label">Plug in your details</div>
+            <p>
+              Use the prompts and outlines with your GPT to generate copy,
+              then quickly edit for your pricing, processes, and guarantees.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-label">Publish with the checklist</div>
+            <p>
+              Follow the on-page SEO checklist to get each page fully dialed in:
+              titles, headings, photos, service areas and strong calls-to-action.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-label">Refresh with small updates</div>
+            <p>
+              Add quick mini-updates — seasonal tips, before/after photos,
+              new testimonials — that help rankings climb while you work.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIMITED GPT VS FULL KIT -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Limited GPT vs Full Kit</div>
+            <h2 class="section-title">Use the GPT to sample. Use the full kit to scale.</h2>
+          </div>
+          <p class="section-subtitle">
+            The Limited GPT gives you a taste of pool-service copy and ideas.
+            The full SEO System Kit gives you the complete blueprint and structure
+            to claim your local market and keep routes full.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare-card">
+            <div class="compare-tag">
+              <strong>Limited GPT</strong> &middot; Try it first
+            </div>
+            <h3 class="compare-title">Great for quick tests & inspiration</h3>
+            <p class="card-text">
+              Use the Limited Pool Service GPT to brainstorm homepage ideas,
+              service descriptions, and FAQ angles before you commit to a full build.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">•</div>
+                <span>Generate example copy snippets for pool services.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">•</div>
+                <span>Try out different brand tones and guarantee messages.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">•</div>
+                <span>See how the approach feels for your market.</span>
+              </li>
+            </ul>
+            <div class="compare-pill-row">
+              <span class="compare-pill">Good for testing</span>
+              <span class="compare-pill">No full site map</span>
+              <span class="compare-pill">No execution checklists</span>
+            </div>
+          </div>
+
+          <div class="compare-card full">
+            <div class="compare-tag">
+              <strong>Full SEO System Kit</strong> &middot; $197 one-time
+            </div>
+            <h3 class="compare-title">Everything you need for local SEO that sticks</h3>
+            <p class="card-text">
+              The full Pool Service SEO System Kit is the complete playbook:
+              page architectures, keyword maps, prompts, and checklists that
+              you can reuse as your routes and team grow.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Complete site structure for services, routes, and proof pages.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>SEO-optimized outlines and prompts for every “money” page.</span>
+              </li>
+              <li>
+                <div class="bullet-icon">✓</div>
+                <span>Implementation checklists so nothing critical gets missed.</span>
+              </li>
+            </ul>
+            <div class="compare-pill-row">
+              <span class="compare-pill good">$197 one-time</span>
+              <span class="compare-pill good">Keep it forever</span>
+              <span class="compare-pill good">Pool-specific strategy</span>
+              <span class="compare-pill good">GPT-ready prompts</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section">
+        <div class="faq-label-row">
+          <div class="faq-label">Faq</div>
+          <div class="faq-note">Straight answers for busy pool pros.</div>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">Do I need to be tech-savvy to use this?</div>
+            <div class="faq-a">
+              No. If you can log into your website, paste text, and upload photos,
+              you can implement this kit. It’s written for pool business owners,
+              not marketers or developers.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Will this work if I only serve one city?</div>
+            <div class="faq-a">
+              Yes. The kit is designed for single-city businesses as well as
+              multi-area operators. You’ll start with your main city and can
+              add nearby neighborhoods or communities when you’re ready.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Does it matter what website platform I use?</div>
+            <div class="faq-a">
+              Not at all. The SEO system works on WordPress, Squarespace, Wix,
+              Webflow, and custom sites. You’re changing structure and content,
+              not the underlying platform.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How long until I see results?</div>
+            <div class="faq-a">
+              SEO timelines depend on your competition and current site quality.
+              Many local pool service providers see early movement in 4–12 weeks
+              after properly optimizing core pages.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is this a one-time purchase?</div>
+            <div class="faq-a">
+              Yes. The Pool Service SEO System Kit is a one-time payment of $197.
+              You own the frameworks and prompts forever and can reuse them as
+              you expand into new areas or add new services.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Can I use this alongside Google Ads or social media?</div>
+            <div class="faq-a">
+              Absolutely. Strong SEO pages make all your other channels perform
+              better, giving ad clicks and social traffic somewhere compelling
+              and clear to land and convert.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="cta-section">
+        <div class="section-kicker">Ready to stop losing clients to the next result?</div>
+        <h2 class="cta-title">Turn your pool service website into a route-filling asset.</h2>
+        <p class="cta-subtitle">
+          Get the complete Pool Service SEO System Kit for a one-time payment of
+          $197 and build the kind of search presence that quietly fills your
+          schedule with recurring, reliable pool clients.
+        </p>
+
+        <div class="cta-price-line">
+          One-time payment • No subscription • Reuse it as your routes and team grow.
+        </div>
+
+        <div class="cta-btn-row">
+          <a href="#limited-gpt-link" class="btn btn-ghost">
+            <!-- TODO: replace with actual Limited GPT URL -->
+            Try the Limited GPT First
+          </a>
+          <a href="#full-kit-checkout" class="btn btn-primary">
+            <!-- TODO: replace with actual checkout URL -->
+            Get the Full SEO System Kit for $197
+          </a>
+        </div>
+
+        <div class="cta-microcopy">
+          Implement at your own pace while your SEO foundation quietly improves in the background.
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <div>&copy; <span id="year"></span> Pool Service SEO System Kit. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#full-kit-checkout">Get the full kit</a>
+          <a href="#limited-gpt-link">Try the Limited GPT</a>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Set current year in footer
+    (function () {
+      const el = document.getElementById("year");
+      if (el) el.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
