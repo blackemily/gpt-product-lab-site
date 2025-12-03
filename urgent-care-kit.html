@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Urgent Care SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #05070a;
+      --bg-alt: #0b1118;
+      --bg-elevated: #111827;
+      --accent: #3bf584;
+      --accent-soft: rgba(59, 245, 132, 0.12);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2933;
+      --danger: #fb7185;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.65);
+      --radius-xl: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #020617 0, #020617 30%, #02040a 60%, #020617 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      padding: 32px 16px 48px;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0, #6ee7b7, #22c55e 40%, #16a34a 70%, #052e16 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #ecfdf5;
+      box-shadow: 0 0 24px rgba(34, 197, 94, 0.9);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.85);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-pill span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: stretch;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(12, 148, 136, 0.3));
+      border-radius: var(--radius-xl);
+      padding: 26px 26px 22px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      opacity: 0.3;
+      background:
+        radial-gradient(circle at 0 0, rgba(59, 245, 132, 0.14), transparent 52%),
+        radial-gradient(circle at 100% 0, rgba(45, 212, 191, 0.12), transparent 58%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .hero-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-pill strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 30px;
+      line-height: 1.12;
+      margin-bottom: 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-highlights span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .hero-highlights span strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-highlights span i {
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    .hero-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .price-main .amount {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ecfdf5;
+    }
+
+    .price-main .label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .price-tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 500;
+      border: 1px solid rgba(16, 185, 129, 0.6);
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.18s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(16, 185, 129, 0.65);
+      filter: brightness(1.05);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-main);
+      border-color: rgba(55, 65, 81, 0.9);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(75, 85, 99, 0.9);
+    }
+
+    .btn-secondary-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .btn-secondary-text i {
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .metric-label {
+      color: var(--text-muted);
+    }
+
+    .metric-value {
+      font-size: 13px;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .metric-value span {
+      color: var(--accent);
+    }
+
+    /* Side card */
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      border-radius: 18px;
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.12), rgba(15, 23, 42, 1));
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 18px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 100%;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .card-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .card-list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .card-list li span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .card-list li strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .card-footer {
+      margin-top: 4px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+    }
+
+    .card-footer p {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .card-badge {
+      justify-self: flex-end;
+      padding: 6px 9px;
+      border-radius: 14px;
+      background: rgba(6, 78, 59, 0.9);
+      border: 1px solid rgba(45, 212, 191, 0.8);
+      font-size: 10px;
+      color: #a7f3d0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-badge span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.18);
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    /* Generic sections */
+    section {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 20px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 20px 20px 18px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    section + section {
+      margin-top: -4px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .section-tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .pill {
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-muted);
+    }
+
+    .pill span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      font-size: 13px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      gap: 8px;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      color: var(--accent);
+      margin-top: 1px;
+      font-size: 16px;
+    }
+
+    .muted {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .badge-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      color: var(--text-muted);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+    }
+
+    /* How it works */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step {
+      border-radius: 16px;
+      padding: 10px 10px 9px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+      min-height: 100%;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .step-title {
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .step-text {
+      color: var(--text-muted);
+    }
+
+    /* Comparison */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .compare-card {
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .compare-card.limited {
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.06), rgba(15, 23, 42, 1));
+    }
+
+    .compare-card.full {
+      background: radial-gradient(circle at top, rgba(59, 245, 132, 0.12), rgba(15, 23, 42, 1));
+      border-color: rgba(34, 197, 94, 0.8);
+      box-shadow: 0 14px 32px rgba(16, 185, 129, 0.4);
+    }
+
+    .compare-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .compare-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .compare-label {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .compare-label.hot {
+      border-color: rgba(52, 211, 153, 0.9);
+      background: rgba(22, 163, 74, 0.18);
+      color: #bbf7d0;
+    }
+
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .compare-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .compare-list li span.icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    .compare-list li span.icon.ok {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--accent);
+    }
+
+    .compare-list li span.icon.no {
+      background: rgba(248, 113, 113, 0.16);
+      color: var(--danger);
+    }
+
+    .compare-footnote {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .faq-item {
+      padding: 10px 11px 9px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      font-size: 12px;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .faq-a {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 22px 20px 20px;
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.18), rgba(15, 23, 42, 1));
+      border-color: rgba(34, 197, 94, 0.8);
+      box-shadow: 0 18px 42px rgba(16, 185, 129, 0.55);
+      margin-top: 4px;
+    }
+
+    .cta-title {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .cta-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 14px;
+    }
+
+    .cta-price-row {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-size: 13px;
+    }
+
+    .cta-price-row .amount {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ecfdf5;
+    }
+
+    .cta-price-row .tag {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .cta-price-row .tag span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .cta-btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .cta-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      max-width: 1120px;
+      margin: 18px auto 0;
+      padding-top: 14px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      body {
+        padding: 22px 14px 32px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        grid-template-columns: 1fr !important;
+        padding: 20px 18px 18px;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .hero-subtitle {
+        font-size: 13px;
+      }
+
+      section {
+        padding: 18px 16px 16px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .grid-2,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn-row,
+      .cta-btn-row {
+        flex-direction: column;
+      }
+
+      .btn,
+      .cta-btn-row .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-logo">U</div>
+        <div class="brand-text">
+          <div class="brand-name">ClinicRank Systems</div>
+          <div class="brand-tagline">SEO System Kits for Local Care</div>
+        </div>
+      </div>
+      <div class="header-pill">
+        <span>✓</span>
+        Built for urgent care centers that want steady walk-ins & online check-ins
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-badge-row">
+            <div class="hero-pill">
+              <strong>New</strong> Urgent Care SEO System Kit
+            </div>
+            <div class="hero-pill">
+              For single-location, multi-site & on-demand urgent care operators
+            </div>
+          </div>
+
+          <h1>Urgent Care SEO System Kit</h1>
+          <p class="hero-subtitle">
+            A plug-and-play SEO system that turns “urgent care near me” searches into same-day visits, online check-ins,
+            and repeat urgent care patients in your service area.
+          </p>
+
+          <div class="hero-highlights">
+            <span><i>◎</i><strong>Local-first:</strong> own your zip codes & radius</span>
+            <span><i>◎</i><strong>Symptom-led:</strong> search terms like sore throat, ear pain, UTI, flu & more</span>
+            <span><i>◎</i><strong>Open-hours aware:</strong> optimized for evenings & weekends</span>
+          </div>
+
+          <div class="hero-price-row">
+            <div class="price-main">
+              <span class="amount">$197</span>
+              <span class="label">one-time · yours forever</span>
+            </div>
+            <div class="price-tag">Turn Google searches into predictable urgent care volume</div>
+          </div>
+
+          <p class="hero-note">
+            No retainers, no contracts, no generic “healthcare marketing” fluff—just a focused urgent care SEO system.
+          </p>
+
+          <div class="btn-row">
+            <a href="#limited-gpt-link" class="btn btn-ghost">
+              Try the Limited GPT First
+            </a>
+            <!-- TODO: replace with actual Limited GPT URL -->
+
+            <a href="#full-kit-checkout" class="btn btn-primary">
+              Get the Full SEO System Kit
+            </a>
+            <!-- TODO: replace with actual checkout URL -->
+          </div>
+
+          <div class="btn-secondary-text">
+            <i>★</i> Most urgent care centers use this kit to grow qualified organic visits within 60–90 days.
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <span class="metric-label">Built for</span>
+              <span class="metric-value"><span>Local urgent care</span> clinics & multi-site groups</span>
+            </div>
+            <div class="metric">
+              <span class="metric-label">SEO focus</span>
+              <span class="metric-value">“Urgent care near me”, symptom + clinic, service & insurance intent</span>
+            </div>
+            <div class="metric">
+              <span class="metric-label">Time to launch</span>
+              <span class="metric-value">Weekend build → <span>Monday live</span></span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="card-header">
+            <div>
+              <div class="eyebrow">Kit Snapshot</div>
+              <div class="card-title">Everything you need to rank & fill your urgent care center</div>
+            </div>
+            <div class="card-pill">One-time payment · $197</div>
+          </div>
+
+          <ul class="card-list">
+            <li>
+              <span class="icon">◎</span>
+              <div>
+                <strong>Urgent care keyword maps</strong><br />
+                From “urgent care near me” to sore throat, stitches, x-ray, flu, COVID, rapid tests, minor injuries & more.
+              </div>
+            </li>
+            <li>
+              <span class="icon">◎</span>
+              <div>
+                <strong>Done-for-you page outlines</strong><br />
+                Home, services, “What we treat”, insurance, pricing, online check-in, location pages & FAQ clusters.
+              </div>
+            </li>
+            <li>
+              <span class="icon">◎</span>
+              <div>
+                <strong>Local SEO playbook</strong><br />
+                Google Business Profile prompts, review scripts & citation checklists tuned to urgent care behavior.
+              </div>
+            </li>
+            <li>
+              <span class="icon">◎</span>
+              <div>
+                <strong>Content prompts inside the GPT</strong><br />
+                Generate visit-ready copy in minutes instead of spending weeks drafting pages from scratch.
+              </div>
+            </li>
+          </ul>
+
+          <div class="card-footer">
+            <p>
+              Built specifically for urgent care centers so every search term matches real-world visit reasons.
+            </p>
+            <div class="card-badge">
+              <span>✓</span>
+              Optimized for walk-in & online check-in intent
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- WHO THIS KIT IS FOR -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Who this kit is for</div>
+            <h2 class="section-title">For urgent care operators who want full lobbies, not mystery marketing</h2>
+          </div>
+          <p class="section-tagline">
+            Ideal for owners, operators, and managers who want a clear, repeatable SEO system they can run in-house,
+            without being dependent on an agency.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <ul class="bullet-list">
+              <li>
+                You run a <strong>single urgent care clinic</strong> and want to consistently show up for “urgent care near me”
+                and symptom searches in your city.
+              </li>
+              <li>
+                You operate a <strong>multi-location urgent care group</strong> and need a repeatable SEO structure for each
+                clinic without duplicate content problems.
+              </li>
+              <li>
+                You’ve <strong>invested in a website</strong>, but calls and online check-ins from organic search are low or
+                inconsistent.
+              </li>
+              <li>
+                You’re tired of <strong>vague SEO reports</strong> and just want a concrete list of pages, prompts, and
+                tasks to complete each week.
+              </li>
+              <li>
+                You know <strong>Google reviews & maps</strong> drive volume, but you don’t have a reliable review engine
+                your front desk actually uses.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="pill-list" style="margin-bottom: 10px;">
+              <div class="pill"><span>Perfect for</span> walk-in & online check-in urgent care</div>
+              <div class="pill"><span>Ideal for</span> centers open evenings & weekends</div>
+              <div class="pill"><span>Works with</span> WordPress, Webflow, Wix & more</div>
+            </div>
+            <p class="muted" style="margin-bottom: 8px;">
+              If you can describe your services, hours, insurance options, and ideal patients, this kit will turn that
+              knowledge into a well-structured, SEO-ready urgent care site.
+            </p>
+            <div class="badge-inline">
+              <div class="badge-dot"></div>
+              No SEO background needed – built so operators & front desk teams can run it.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT THIS KIT DOES FOR YOU -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">What this kit does for you</div>
+            <h2 class="section-title">Turn “we’re online” into “we’re the default urgent care choice”</h2>
+          </div>
+          <p class="section-tagline">
+            Get a focused SEO framework that builds authority around your urgent care services, hours, and locations so
+            you show up when patients need you most.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <ul class="bullet-list">
+              <li>
+                <strong>Clarifies what to rank for.</strong> Stop guessing which symptom and service terms matter. 
+                Know exactly what patients type before they walk in.
+              </li>
+              <li>
+                <strong>Structures your entire urgent care site.</strong> Replace random pages with a clear system
+                covering conditions, services, FAQs, and locations.
+              </li>
+              <li>
+                <strong>Aligns with real visit reasons.</strong> Prompts are written around urgent problems:
+                injuries, illness, tests, and after-hours care.
+              </li>
+              <li>
+                <strong>Boosts map & “near me” visibility.</strong> Google Business Profile prompts and tasks tuned
+                for urgent care search behavior.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul class="bullet-list">
+              <li>
+                <strong>Gives your team a weekly checklist.</strong> Simple recurring tasks your front desk or
+                marketing assistant can run without confusion.
+              </li>
+              <li>
+                <strong>Supports insurance & self-pay messaging.</strong> Create clear pages and FAQs around cost,
+                coverage, and what to expect.
+              </li>
+              <li>
+                <strong>Reduces reliance on paid ads.</strong> Improve organic volume so you’re not forced to spend
+                more every season just to stay visible.
+              </li>
+              <li>
+                <strong>Works alongside your EMR & tools.</strong> No tech overhaul needed—plug into what you already use.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU GET INSIDE -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">What you get inside</div>
+            <h2 class="section-title">The urgent care SEO playbook, packaged as a system</h2>
+          </div>
+          <p class="section-tagline">
+            Not just theory—this is a ready-to-run execution kit designed around real urgent care search behavior and
+            operations.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <h3 style="font-size: 14px; margin-bottom: 6px;">1. Urgent Care SEO Foundation</h3>
+            <ul class="bullet-list" style="margin-bottom: 12px;">
+              <li>Complete keyword map for “urgent care near me”, symptom + clinic, tests, shots & minor procedures.</li>
+              <li>Prioritized list of high-intent queries for evenings, weekends, and holidays.</li>
+              <li>Competitor gap prompts to quickly see what your site is missing compared to top local centers.</li>
+            </ul>
+
+            <h3 style="font-size: 14px; margin-bottom: 6px;">2. Site Architecture Templates</h3>
+            <ul class="bullet-list">
+              <li>Home, “What we treat”, services, pricing, insurance & location page templates.</li>
+              <li>Proven layout for multi-location urgent care groups with provider-neutral content.</li>
+              <li>Navigation and internal linking patterns that highlight your core urgent care strengths.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 style="font-size: 14px; margin-bottom: 6px;">3. Copy & Content Prompts</h3>
+            <ul class="bullet-list" style="margin-bottom: 12px;">
+              <li>Done-for-you GPT prompts to generate draft copy for each urgent care service and condition page.</li>
+              <li>FAQ clusters for seasonal illness, injuries, testing, vaccines, and “should I go to urgent care?” queries.</li>
+              <li>Review request scripts for post-visit follow-up by SMS or email.</li>
+            </ul>
+
+            <h3 style="font-size: 14px; margin-bottom: 6px;">4. Local SEO & Review System</h3>
+            <ul class="bullet-list">
+              <li>Google Business Profile setup & optimization checklist tailored to urgent care.</li>
+              <li>Monthly micro-content calendar for posts, photos, and education that match search demand.</li>
+              <li>Simple review-generation workflow your front desk can run in under 10 minutes a day.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">How it works</div>
+            <h2 class="section-title">Launch your urgent care SEO system in a weekend</h2>
+          </div>
+          <p class="section-tagline">
+            Follow the guided steps, plug your center’s details into the prompts, and roll out an SEO structure that
+            compounds with every visit and review.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-title">Download your kit</div>
+            <div class="step-text">
+              Get instant access after checkout. Open the urgent-care-specific frameworks, checklists and GPT prompts in
+              your preferred workspace.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-title">Map your services & locations</div>
+            <div class="step-text">
+              Connect your real-world services, hours, and locations to the keywords and pages that matter online.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-title">Generate & refine your pages</div>
+            <div class="step-text">
+              Run the included prompts, paste in your clinic details, then refine using the page templates for quick
+              publishing.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-title">Run the weekly playbook</div>
+            <div class="step-text">
+              Turn on the recurring checklist for content updates, posts, reviews, and local signals that keep your
+              urgent care visible and trusted.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIMITED GPT VS FULL KIT -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Limited GPT vs Full Kit</div>
+            <h2 class="section-title">Test the prompts, then unlock the full urgent care system</h2>
+          </div>
+          <p class="section-tagline">
+            The Limited GPT gives you a taste of the prompts. The full kit gives you the complete structure, strategy and
+            checklists to make urgent care SEO a reliable volume channel.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare-card limited">
+            <div class="compare-title-row">
+              <div class="compare-name">Urgent Care SEO – Limited GPT</div>
+              <div class="compare-label">Free to explore</div>
+            </div>
+            <ul class="compare-list">
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Sample prompts for urgent care service and “What we treat” pages.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Basic headlines and FAQ suggestions around urgent care symptoms.</span>
+              </li>
+              <li>
+                <span class="icon no">✕</span>
+                <span>No complete keyword map or location structure templates.</span>
+              </li>
+              <li>
+                <span class="icon no">✕</span>
+                <span>No weekly local SEO & review engine checklist.</span>
+              </li>
+              <li>
+                <span class="icon no">✕</span>
+                <span>No implementation roadmap or prioritization guidance.</span>
+              </li>
+            </ul>
+            <div class="compare-footnote">
+              Great if you want to experience the urgent-care-focused prompts before investing in the full system.
+            </div>
+            <div class="btn-row" style="margin-top: 10px;">
+              <a href="#limited-gpt-link" class="btn btn-ghost" style="width: 100%; justify-content: center;">
+                Try the Limited GPT First
+              </a>
+              <!-- TODO: replace with actual Limited GPT URL -->
+            </div>
+          </div>
+
+          <div class="compare-card full">
+            <div class="compare-title-row">
+              <div class="compare-name">Full Urgent Care SEO System Kit</div>
+              <div class="compare-label hot">Most urgent care centers choose this</div>
+            </div>
+            <ul class="compare-list">
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Full urgent care keyword map for symptoms, services, tests, and local intent.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Complete site architecture templates for single & multi-location centers.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Done-for-you page outlines + GPT prompts for every core urgent care page type.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Local SEO, Google Business Profile & review engine checklists.</span>
+              </li>
+              <li>
+                <span class="icon ok">✓</span>
+                <span>Execution roadmap for week 1, month 1, and quarter 1.</span>
+              </li>
+            </ul>
+            <div class="compare-footnote">
+              One-time <strong>$197</strong> investment. Use it for your existing locations and any new urgent care
+              centers you open.
+            </div>
+            <div class="btn-row" style="margin-top: 10px;">
+              <a href="#full-kit-checkout" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                Get the Full SEO System Kit – $197
+              </a>
+              <!-- TODO: replace with actual checkout URL -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section>
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">FAQ</div>
+            <h2 class="section-title">Questions urgent care leaders ask before grabbing the kit</h2>
+          </div>
+          <p class="section-tagline">
+            Still deciding if this is right for your urgent care center? Here are straight answers to common questions.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">How is this different from a general “medical SEO” course?</div>
+            <div class="faq-a">
+              This kit is built specifically for urgent care. The keyword maps, outlines, and prompts are centered on
+              urgent care visits, not generic healthcare topics or long-term specialty care.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Do I need to understand SEO to use this?</div>
+            <div class="faq-a">
+              No. It’s written so operators, managers, or front desk leads can follow it. You’ll see exactly which pages
+              to create, what to say, and the recurring tasks to run each week.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Will this work with our existing website platform?</div>
+            <div class="faq-a">
+              Yes. The system focuses on structure, content and local signals. It works with WordPress, Webflow, Wix,
+              Squarespace and most common website builders used by urgent care centers.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How long before we see more organic visits?</div>
+            <div class="faq-a">
+              Timelines vary, but most centers see improved rankings and organic visit volume within 60–90 days of
+              publishing the recommended pages and running the local checklist consistently.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Can my front desk or marketing assistant run this?</div>
+            <div class="faq-a">
+              Yes. The workflows are broken into clear tasks. Your team can handle content updates, posts, reviews, and
+              basic monitoring without decoding SEO jargon.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is $197 a subscription or one-time?</div>
+            <div class="faq-a">
+              It’s a one-time payment of <strong>$197</strong>. You keep ongoing access to the Urgent Care SEO System
+              Kit and can reuse it for additional locations as you grow.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="cta-section">
+        <div class="eyebrow">Ready to be the default choice</div>
+        <div class="cta-title">Turn “urgent care near me” into “we’ll see you soon”</div>
+        <p class="cta-subtitle">
+          Grab the Urgent Care SEO System Kit once for <strong>$197</strong>, plug in your center’s details, and launch
+          a focused SEO engine that brings you steady visits while you run operations.
+        </p>
+
+        <div class="cta-price-row">
+          <span class="amount">$197</span>
+          <span class="tag">
+            One-time · <span>no retainer</span> · use for all your urgent care locations
+          </span>
+        </div>
+
+        <div class="cta-btn-row">
+          <a href="#limited-gpt-link" class="btn btn-ghost">
+            Try the Limited GPT First
+          </a>
+          <!-- TODO: replace with actual Limited GPT URL -->
+
+          <a href="#full-kit-checkout" class="btn btn-primary">
+            Get the Full SEO System Kit
+          </a>
+          <!-- TODO: replace with actual checkout URL -->
+        </div>
+
+        <div class="cta-note">
+          Your team handles the care. This kit makes sure your community finds you first.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div>© <span id="year"></span> ClinicRank Systems · Urgent Care SEO System Kit</div>
+    <div class="footer-links">
+      <span>For educational & marketing support purposes only. Not medical advice or clinical guidance.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
