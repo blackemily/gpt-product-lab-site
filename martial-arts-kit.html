@@ -16,7 +16,6 @@
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
       --border-subtle: rgba(148, 163, 184, 0.2);
-      --danger: #f97373;
       --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.6);
       --radius-xl: 18px;
       --radius-2xl: 24px;
@@ -32,9 +31,10 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.13), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.16), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.15), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.18), transparent 55%),
+        var(--bg);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
     }
@@ -52,6 +52,7 @@
       padding: 32px 20px 72px;
     }
 
+    /* Header */
     header {
       display: flex;
       align-items: center;
@@ -70,8 +71,9 @@
       width: 34px;
       height: 34px;
       border-radius: 14px;
-      background: radial-gradient(circle at 30% 0%, #bbf7d0, #22c55e 35%, #16a34a 65%, #0f172a);
-      box-shadow: 0 0 30px rgba(34, 197, 94, 0.65);
+      background:
+        conic-gradient(from 180deg, #22c55e, #16a34a, #0f172a, #22c55e);
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.7);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -117,7 +119,7 @@
       justify-content: center;
       padding: 1px 8px;
       border-radius: 999px;
-      background: rgba(34, 197, 94, 0.14);
+      background: var(--accent-soft);
       color: var(--accent-text);
       font-weight: 500;
       font-size: 11px;
@@ -125,13 +127,14 @@
 
     /* Hero */
     .hero {
-      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 55%),
-                  radial-gradient(circle at bottom, rgba(59, 130, 246, 0.08), transparent 50%),
-                  rgba(15, 23, 42, 0.9);
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.23), transparent 55%),
+        radial-gradient(circle at bottom, rgba(59, 130, 246, 0.12), transparent 50%),
+        rgba(15, 23, 42, 0.96);
       border-radius: 28px;
-      border: 1px solid rgba(148, 163, 184, 0.45);
+      border: 1px solid rgba(148, 163, 184, 0.5);
       box-shadow: var(--shadow-soft);
-      padding: 26px 28px 26px;
+      padding: 26px 28px 24px;
       margin-bottom: 40px;
       position: relative;
       overflow: hidden;
@@ -141,8 +144,9 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 10% 0%, rgba(34, 197, 94, 0.25), transparent 55%);
-      opacity: 0.7;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(34, 197, 94, 0.26), transparent 55%);
+      opacity: 0.85;
       pointer-events: none;
       mix-blend-mode: screen;
     }
@@ -178,7 +182,7 @@
     h1 {
       font-size: 32px;
       line-height: 1.15;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     h1 span {
@@ -190,14 +194,14 @@
       line-height: 1.6;
       color: var(--text-muted);
       max-width: 520px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .hero-metrics {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .metric {
@@ -206,9 +210,9 @@
       gap: 2px;
       padding: 10px 12px;
       border-radius: 16px;
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(15, 23, 42, 0.9);
       border: 1px solid rgba(148, 163, 184, 0.4);
-      min-width: 140px;
+      min-width: 150px;
     }
 
     .metric-label {
@@ -232,7 +236,7 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 16px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .price-main {
@@ -258,7 +262,7 @@
       border-radius: var(--radius-pill);
       background: rgba(22, 163, 74, 0.22);
       color: var(--accent-text);
-      border: 1px solid rgba(74, 222, 128, 0.4);
+      border: 1px solid rgba(74, 222, 128, 0.45);
     }
 
     .hero-note {
@@ -286,7 +290,12 @@
       border: 1px solid transparent;
       cursor: pointer;
       text-decoration: none;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+      transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast);
       white-space: nowrap;
     }
 
@@ -303,9 +312,9 @@
     }
 
     .btn-ghost {
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.85);
       color: var(--accent-text);
-      border-color: rgba(148, 163, 184, 0.55);
+      border-color: rgba(148, 163, 184, 0.6);
     }
 
     .btn-ghost:hover {
@@ -316,26 +325,31 @@
 
     .hero-side {
       border-radius: 22px;
-      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.3), transparent 72%),
-                  rgba(15, 23, 42, 0.96);
+      background:
+        radial-gradient(circle at top, rgba(34, 197, 94, 0.3), transparent 72%),
+        rgba(15, 23, 42, 0.98);
       border: 1px solid rgba(148, 163, 184, 0.5);
       padding: 16px 16px 18px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
+    }
+
+    .hero-side-top {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .hero-side-title {
       font-size: 13px;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 2px;
     }
 
     .hero-side-sub {
       font-size: 12px;
       color: var(--text-muted);
-      margin-bottom: 10px;
     }
 
     .hero-list {
@@ -343,7 +357,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       row-gap: 6px;
-      margin-bottom: 10px;
+      margin-top: 4px;
     }
 
     .hero-list li {
@@ -368,6 +382,33 @@
       flex-shrink: 0;
     }
 
+    .hero-programs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .hero-program-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .hero-program-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
     .trust-row {
       display: flex;
       justify-content: space-between;
@@ -381,8 +422,8 @@
     .trust-pill {
       padding: 4px 8px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.5);
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -436,15 +477,16 @@
     }
 
     .card {
-      background: rgba(15, 23, 42, 0.92);
+      background: rgba(15, 23, 42, 0.95);
       border-radius: var(--radius-xl);
       border: 1px solid var(--border-subtle);
       padding: 16px 16px 16px;
     }
 
     .card-soft {
-      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), transparent 60%),
-                  rgba(15, 23, 42, 0.95);
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), transparent 60%),
+        rgba(15, 23, 42, 0.97);
     }
 
     .pill-list {
@@ -457,8 +499,8 @@
     .pill-item {
       padding: 10px 10px;
       border-radius: 14px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.35);
       font-size: 12px;
     }
 
@@ -511,8 +553,8 @@
     .feature {
       padding: 12px 12px;
       border-radius: 16px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.97);
+      border: 1px solid rgba(148, 163, 184, 0.4);
       display: flex;
       flex-direction: column;
       gap: 4px;
@@ -543,9 +585,9 @@
     }
 
     .step {
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.95);
       border-radius: 16px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
+      border: 1px solid rgba(148, 163, 184, 0.4);
       padding: 12px 11px 11px;
       display: flex;
       flex-direction: column;
@@ -588,14 +630,15 @@
     .compare-col {
       border-radius: var(--radius-xl);
       padding: 14px 14px 14px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.97);
     }
 
     .compare-col.full {
-      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.23), transparent 65%),
-                  rgba(15, 23, 42, 0.97);
-      border-color: rgba(74, 222, 128, 0.75);
+      background:
+        radial-gradient(circle at top, rgba(34, 197, 94, 0.26), transparent 65%),
+        rgba(15, 23, 42, 0.99);
+      border-color: rgba(74, 222, 128, 0.8);
       box-shadow: 0 16px 42px rgba(34, 197, 94, 0.4);
     }
 
@@ -649,8 +692,8 @@
     .faq-item {
       padding: 10px 11px 11px;
       border-radius: 14px;
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.4);
       font-size: 12px;
     }
 
@@ -668,10 +711,11 @@
     .cta-final {
       border-radius: 26px;
       padding: 22px 22px 24px;
-      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.25), transparent 60%),
-                  rgba(15, 23, 42, 0.98);
-      border: 1px solid rgba(74, 222, 128, 0.7);
-      box-shadow: 0 20px 45px rgba(34, 197, 94, 0.4);
+      background:
+        radial-gradient(circle at top, rgba(34, 197, 94, 0.28), transparent 60%),
+        rgba(15, 23, 42, 0.99);
+      border: 1px solid rgba(74, 222, 128, 0.75);
+      box-shadow: 0 20px 45px rgba(34, 197, 94, 0.45);
       text-align: center;
       margin-top: 10px;
     }
@@ -707,11 +751,12 @@
 
     /* Footer */
     footer {
-      border-top: 1px solid rgba(148, 163, 184, 0.3);
+      border-top: 1px solid rgba(148, 163, 184, 0.35);
       padding: 16px 20px 22px;
       margin-top: auto;
       font-size: 11px;
       color: var(--text-muted);
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
     }
 
     .footer-inner {
@@ -790,6 +835,10 @@
       h1 {
         font-size: 26px;
       }
+
+      .hero-programs {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -801,7 +850,7 @@
           <div class="brand-logo">MA</div>
           <div class="brand-text">
             <div class="brand-title">SEO SYSTEM KIT</div>
-            <div class="brand-subtitle">Done-for-you ranking system for martial arts academies</div>
+            <div class="brand-subtitle">Search-to-student engine for martial arts schools</div>
           </div>
         </div>
         <div class="top-pill">
@@ -810,29 +859,30 @@
         </div>
       </header>
 
+      <!-- Hero -->
       <section class="hero">
         <div class="hero-grid">
           <div>
             <div class="hero-tagline">
               <span class="hero-tag-dot"></span>
-              More trial students, not just more clicks
+              From “martial arts near me” to mats filled with students
             </div>
             <h1><span>Martial Arts</span> SEO System Kit</h1>
             <p class="hero-sub">
-              A complete SEO and content system built specifically for martial arts schools and academies.
-              Turn “martial arts near me” searches into booked trials and full-time students — without becoming a full-time marketer.
+              A plug-and-play SEO and content system built specifically for martial arts schools and academies.
+              Turn local searches into intro lessons, trials, and long-term students without wrestling with marketing jargon.
             </p>
 
             <div class="hero-metrics">
               <div class="metric">
-                <span class="metric-label">Designed for local dojos</span>
-                <span class="metric-value">+10–35</span>
-                <span class="metric-note">additional trial sign-ups per month (typical range when implemented)</span>
+                <span class="metric-label">Designed for local academies</span>
+                <span class="metric-value">+10–30</span>
+                <span class="metric-note">extra trial requests per month (typical range with consistent use)</span>
               </div>
               <div class="metric">
-                <span class="metric-label">Implementation time</span>
+                <span class="metric-label">Setup window</span>
                 <span class="metric-value">7–14 days</span>
-                <span class="metric-note">to have a full SEO engine live</span>
+                <span class="metric-note">to launch a complete SEO foundation</span>
               </div>
             </div>
 
@@ -841,10 +891,10 @@
                 <div class="price-amount">$197</div>
                 <div class="price-label">one-time • lifetime access</div>
               </div>
-              <div class="price-chip">Use across kids, adults &amp; family programs</div>
+              <div class="price-chip">Use for kids, adults &amp; competition teams</div>
             </div>
             <div class="hero-note">
-              No retainers, no confusing jargon, no guessing. Just a proven framework you can plug into your website and content.
+              No agencies, no retainers, no mystery deliverables — just a focused system you or your staff can run.
             </div>
 
             <div class="btn-row">
@@ -858,32 +908,61 @@
           </div>
 
           <aside class="hero-side">
-            <div>
-              <div class="hero-side-title">Built for real martial arts academies</div>
+            <div class="hero-side-top">
+              <div class="hero-side-title">Made for real dojos, gyms &amp; academies</div>
               <div class="hero-side-sub">
-                Optimized for BJJ, Muay Thai, karate, taekwondo, mixed arts, kids &amp; adult programs.
+                Works for BJJ, Muay Thai, karate, taekwondo, Krav Maga, MMA, and blended systems — from small community dojos to multi-location schools.
               </div>
               <ul class="hero-list">
                 <li>
                   <div class="hero-bullet">1</div>
-                  <div>Plug in your city, styles, schedule, and head instructor — the system localizes everything for your dojo.</div>
+                  <div>Drop in your city, styles, programs, and head instructor details — the kit tailors your SEO plan to your school.</div>
                 </li>
                 <li>
                   <div class="hero-bullet">2</div>
-                  <div>Generate SEO-ready pages, blogs, and FAQs that speak to nervous beginners and committed students.</div>
+                  <div>Generate student-focused pages, blog posts, and FAQs that speak to parents, adults, and total beginners.</div>
                 </li>
                 <li>
                   <div class="hero-bullet">3</div>
-                  <div>Ship a full content calendar around trials, belt tests, competition teams, and family programs.</div>
+                  <div>Build pages that clearly explain class structure, safety, and belt progression so visitors feel confident booking a trial.</div>
+                </li>
+                <li>
+                  <div class="hero-bullet">4</div>
+                  <div>Launch content around events — belt tests, camps, seminars, and tournaments — to keep your academy visible year-round.</div>
+                </li>
+                <li>
+                  <div class="hero-bullet">5</div>
+                  <div>Align your website, Google profile, and social channels so they all tell the same story about your culture and programs.</div>
                 </li>
               </ul>
             </div>
-            <div class="trust-row">
-              <div class="trust-pill">
-                <span class="trust-dot"></span>
-                SEO flows, outlines &amp; prompts tuned for martial arts schools
+
+            <div>
+              <div class="hero-programs">
+                <div class="hero-program-pill">
+                  <span class="hero-program-dot"></span>
+                  Kids &amp; youth programs
+                </div>
+                <div class="hero-program-pill">
+                  <span class="hero-program-dot"></span>
+                  Adult &amp; fundamentals
+                </div>
+                <div class="hero-program-pill">
+                  <span class="hero-program-dot"></span>
+                  Competition teams
+                </div>
+                <div class="hero-program-pill">
+                  <span class="hero-program-dot"></span>
+                  Self-defense &amp; fitness
+                </div>
               </div>
-              <div>Respectful of safety &amp; culture</div>
+              <div class="trust-row">
+                <div class="trust-pill">
+                  <span class="trust-dot"></span>
+                  Culture-first, safety-minded messaging
+                </div>
+                <div>SEO that respects the art</div>
+              </div>
             </div>
           </aside>
         </div>
@@ -894,47 +973,45 @@
         <div class="section-header">
           <div>
             <div class="section-kicker">WHO THIS KIT IS FOR</div>
-            <h2 class="section-title">Owners &amp; instructors who want full classes, not full inboxes</h2>
+            <h2 class="section-title">Owners &amp; instructors who want full classes, not full stress</h2>
           </div>
           <p class="section-sub">
-            If “work on the website” has been on your list for months, this kit gives you the exact pages, keywords,
-            and prompts to finally execute — or hand off to your team.
+            If “fix the website” or “do more SEO” keeps getting pushed after classes, this kit gives you a clear,
+            repeatable path you can follow between sessions.
           </p>
         </div>
+
         <div class="two-col">
           <div class="card card-soft">
             <ul class="bullet-list">
               <li>
                 <span class="dot"></span>
                 <div>
-                  <strong>Martial arts schools &amp; academies</strong> teaching BJJ, Muay Thai, karate, taekwondo,
-                  Krav Maga, or mixed systems that want more trials and long-term members.
+                  <strong>Independent academies &amp; dojos</strong> that rely on word of mouth but want search to pull its weight
+                  for kids, adults, and family programs.
                 </div>
               </li>
               <li>
                 <span class="dot"></span>
                 <div>
-                  <strong>Kids &amp; family programs</strong> that need parent-friendly messaging focused on confidence,
-                  discipline, and focus — not just “fighting.”
+                  <strong>Multi-location schools &amp; franchises</strong> that need a consistent SEO playbook they can copy
+                  into every new city or neighborhood.
                 </div>
               </li>
               <li>
                 <span class="dot"></span>
                 <div>
-                  <strong>Multi-location dojos &amp; franchises</strong> that want a repeatable SEO playbook they can
-                  deploy in every city without reinventing the wheel.
-                </div>
+                  <strong>Instructors wearing the “marketing hat”</strong> who want checklists and templates instead of “random tips from YouTube.”</div>
               </li>
               <li>
                 <span class="dot"></span>
                 <div>
-                  <strong>Instructors doing their own marketing</strong> who want clear, step-by-step guidance instead
-                  of random marketing tips from social media.
+                  <strong>Gyms adding martial arts programs</strong> that need those classes to show up in local search as serious offerings, not an afterthought.
                 </div>
               </li>
             </ul>
             <p class="muted">
-              If you can describe your classes, schedule, and community, this kit can turn that into search traffic and student inquiries.
+              If you can describe your classes and your students, the kit can turn that into pages and content that rank and convert.
             </p>
           </div>
 
@@ -942,19 +1019,19 @@
             <ul class="pill-list">
               <li class="pill-item">
                 <div class="pill-label">Perfect if...</div>
-                <div class="pill-main">You want full classes and waitlists coming from Google, not just word of mouth.</div>
+                <div class="pill-main">You want a predictable flow of trial lessons from Google every month.</div>
               </li>
               <li class="pill-item">
                 <div class="pill-label">Perfect if...</div>
-                <div class="pill-main">You have a site or landing page but no clear SEO structure or content plan.</div>
+                <div class="pill-main">You already have a site but it doesn’t reflect your programs or community clearly.</div>
               </li>
               <li class="pill-item">
                 <div class="pill-label">Not ideal if...</div>
-                <div class="pill-main">You’re unwilling to publish any new content or update your class pages.</div>
+                <div class="pill-main">You don’t want to publish new content or update your program pages at all.</div>
               </li>
               <li class="pill-item">
                 <div class="pill-label">Not ideal if...</div>
-                <div class="pill-main">You expect “page 1 tomorrow” with zero implementation and patience.</div>
+                <div class="pill-main">You expect instant “page 1” rankings with no patience or consistency.</div>
               </li>
             </ul>
           </div>
@@ -966,11 +1043,11 @@
         <div class="section-header">
           <div>
             <div class="section-kicker">WHAT THIS KIT DOES FOR YOU</div>
-            <h2 class="section-title">Turn local searches into booked trials &amp; memberships</h2>
+            <h2 class="section-title">Turn local interest into trial bookings &amp; memberships</h2>
           </div>
           <p class="section-sub">
-            Instead of generic fitness content, you’ll launch a targeted SEO funnel that answers real questions,
-            showcases your instructors, and moves visitors to schedule a class.
+            Instead of generic fitness content, you’ll launch a martial-arts-specific SEO funnel that answers real questions,
+            showcases your instructors, and makes it easy to try a class.
           </p>
         </div>
 
@@ -979,23 +1056,23 @@
             <ul class="bullet-list">
               <li>
                 <span class="dot"></span>
-                <div><strong>Maps your local demand</strong> so you see which phrases parents and adults use before choosing a martial arts school.</div>
+                <div><strong>Maps your local demand</strong> around kids classes, adult training, self-defense, and competition teams.</div>
               </li>
               <li>
                 <span class="dot"></span>
-                <div><strong>Builds a conversion-focused site structure</strong> around your class types, schedule, intro offers, and locations.</div>
+                <div><strong>Builds a clean site structure</strong> around your programs, schedule, locations, and intro offers so Google and parents understand you instantly.</div>
               </li>
               <li>
                 <span class="dot"></span>
-                <div><strong>Generates safety-conscious, family-friendly content</strong> using prompts that keep your culture &amp; values front and center.</div>
+                <div><strong>Generates culture-aligned content</strong> that emphasizes respect, safety, and growth — not just “fighting.”</div>
               </li>
               <li>
                 <span class="dot"></span>
-                <div><strong>Boosts intro offers &amp; trials</strong> with proven on-page layouts and call-to-action placements.</div>
+                <div><strong>Boosts intro offers</strong> with page layouts that guide visitors to book a trial, not keep scrolling forever.</div>
               </li>
             </ul>
             <p class="muted">
-              The goal is simple: more qualified intro calls and trials, not just more random traffic.
+              The focus is simple: more qualified trial students walking through your door from organic search.
             </p>
           </div>
 
@@ -1003,19 +1080,19 @@
             <ul class="bullet-list">
               <li>
                 <span class="dot"></span>
-                <div>Reduce dependence on agencies and lead-gen companies that send low-quality inquiries.</div>
+                <div>Clarify your message so every page matches what actually happens on your mats.</div>
               </li>
               <li>
                 <span class="dot"></span>
-                <div>Give your team plug-and-play prompts instead of vague “post more” advice.</div>
+                <div>Give staff clear instructions for what to publish each week or month.</div>
               </li>
               <li>
                 <span class="dot"></span>
-                <div>Align website messaging with your intro class experience &amp; belt journey.</div>
+                <div>Break free from agencies and lead-gen companies that don’t understand your art or culture.</div>
               </li>
               <li>
                 <span class="dot"></span>
-                <div>Build an asset that compounds: more content, more rankings, more students.</div>
+                <div>Build a long-term asset that compounds: more content, more rankings, more students, more referrals.</div>
               </li>
             </ul>
           </div>
@@ -1030,8 +1107,7 @@
             <h2 class="section-title">A complete SEO &amp; content system for your martial arts school</h2>
           </div>
           <p class="section-sub">
-            Everything is tuned to martial arts: kids, adults, family, competition teams, &amp; self-defense — all structured
-            and prompt-ready.
+            Everything tuned to martial arts: kids, adults, family, self-defense, camps, and competitions — structured for fast execution.
           </p>
         </div>
 
@@ -1040,31 +1116,31 @@
             <div class="feature-grid">
               <div class="feature">
                 <div class="feature-tag">Core system</div>
-                <div class="feature-title">Dojo SEO Architecture Blueprint</div>
+                <div class="feature-title">Martial Arts Site Architecture Blueprint</div>
                 <div class="feature-desc">
-                  Visual map of the exact pages you need (and don’t need) to rank for “martial arts in [city]”
-                  and your core programs.
+                  Diagram of the exact pages you need (and what to avoid) to rank for “martial arts in [city]”
+                  and your key programs.
                 </div>
               </div>
               <div class="feature">
                 <div class="feature-tag">Content</div>
-                <div class="feature-title">30-Day Student Intent Content Calendar</div>
+                <div class="feature-title">Student Intent Content Calendar (30+ Days)</div>
                 <div class="feature-desc">
-                  Day-by-day blog and FAQ topics for kids programs, adult training, self-defense, and fitness-oriented students.
+                  Day-by-day topics that answer parent concerns, adult goals, self-defense questions, and competition curiosity.
                 </div>
               </div>
               <div class="feature">
                 <div class="feature-tag">Prompts</div>
-                <div class="feature-title">AI-Ready Page &amp; Blog Prompts</div>
+                <div class="feature-title">AI-Ready Page, Blog &amp; FAQ Prompts</div>
                 <div class="feature-desc">
-                  Guardrailed prompts that pull your academy details into respectful, SEO-tuned drafts in minutes.
+                  Guardrailed prompts that pull in your school details and produce SEO-ready drafts in minutes.
                 </div>
               </div>
               <div class="feature">
                 <div class="feature-tag">Conversion</div>
-                <div class="feature-title">Trial &amp; Membership Landing Wireframes</div>
+                <div class="feature-title">Trial &amp; Membership Offer Wireframes</div>
                 <div class="feature-desc">
-                  Layouts &amp; copy blocks that move visitors from curiosity to booking a free class or intro offer.
+                  Page layouts that move visitors from nervous browsing to “book a class” with clear, friendly language.
                 </div>
               </div>
             </div>
@@ -1074,23 +1150,23 @@
             <ul class="bullet-list">
               <li>
                 <span class="dot"></span>
-                <div><strong>Martial arts keyword clusters:</strong> local, high-intent phrases grouped by age group, style, and search stage.</div>
+                <div><strong>Keyword clusters:</strong> grouped by age group, style, goals (fitness, confidence, competition) and search stage.</div>
               </li>
               <li>
                 <span class="dot"></span>
-                <div><strong>Google Business Profile content system:</strong> posts, Q&amp;A, and offer prompts aligned with your classes and events.</div>
+                <div><strong>Google Business Profile system:</strong> posts, Q&amp;A, and offer templates that mirror your on-site content.</div>
               </li>
               <li>
                 <span class="dot"></span>
-                <div><strong>Review &amp; story templates:</strong> ask for testimonials that highlight confidence, discipline, and community.</div>
+                <div><strong>Review &amp; story prompts:</strong> collect testimonials that highlight confidence, discipline, focus, and community.</div>
               </li>
               <li>
                 <span class="dot"></span>
-                <div><strong>Execution checklists:</strong> “do this, then this” worksheets for owners, front desk, or agencies.</div>
+                <div><strong>Execution checklists:</strong> step-by-step lists for owners, front desk, or agencies so everyone knows what to do next.</div>
               </li>
             </ul>
             <p class="muted">
-              All formatted so you can copy into your favorite AI tool, CMS, or project manager without rework.
+              Everything is formatted to copy straight into your AI tool, website builder, or project management board.
             </p>
           </div>
         </div>
@@ -1101,10 +1177,10 @@
         <div class="section-header">
           <div>
             <div class="section-kicker">HOW IT WORKS</div>
-            <h2 class="section-title">From scattered marketing to a focused enrollment engine</h2>
+            <h2 class="section-title">From scattered promotion to a focused enrollment engine</h2>
           </div>
           <p class="section-sub">
-            You don’t need to be a “marketing black belt.” Follow the steps, plug in your academy details, and publish.
+            You don’t need a marketing black belt — just follow the rounds and keep showing up.
           </p>
         </div>
 
@@ -1112,34 +1188,33 @@
           <div class="steps">
             <div class="step">
               <div class="step-number">01</div>
-              <div class="step-title">Set up your academy profile</div>
+              <div class="step-title">Complete your academy profile</div>
               <div class="step-desc">
-                Fill out a short intake: city, styles (BJJ, karate, Muay Thai, etc.), age groups, schedule, and
-                what makes your community unique.
+                Fill in a simple worksheet: city, nearby areas, styles, age groups, schedule, instructor bios,
+                and what makes your culture special.
               </div>
             </div>
             <div class="step">
               <div class="step-number">02</div>
-              <div class="step-title">Build your SEO foundation</div>
+              <div class="step-title">Set your SEO foundation</div>
               <div class="step-desc">
-                Use the site architecture blueprint to organize home, programs, locations, schedule,
-                and FAQ pages — no guesswork.
+                Use the architecture blueprint to organize your home, programs, schedule, locations, and FAQ pages
+                into a clean, search-friendly structure.
               </div>
             </div>
             <div class="step">
               <div class="step-number">03</div>
-              <div class="step-title">Generate content with prompts</div>
+              <div class="step-title">Generate &amp; refine content</div>
               <div class="step-desc">
-                Drop the included prompts into your AI tool of choice and generate drafts for pages, blogs,
-                and GBP posts in one focused sprint.
+                Drop the prompts into your AI tool of choice, produce drafts for pages and blogs, then lightly edit
+                to match your voice and policies.
               </div>
             </div>
             <div class="step">
               <div class="step-number">04</div>
               <div class="step-title">Publish &amp; track enrollments</div>
               <div class="step-desc">
-                Launch your new content, update your Google listing, and measure intro offers, calls,
-                and form fills from organic search.
+                Publish pages, update your Google profile, and track how many calls, forms, and trial bookings are coming from organic search.
               </div>
             </div>
           </div>
@@ -1151,11 +1226,11 @@
         <div class="section-header">
           <div>
             <div class="section-kicker">LIMITED GPT VS FULL KIT</div>
-            <h2 class="section-title">Test the ideas, then unlock the full dojo system</h2>
+            <h2 class="section-title">Experiment with the GPT, then unlock the full game plan</h2>
           </div>
           <p class="section-sub">
-            The Limited GPT gives you a taste of the strategy. The Full SEO System Kit gives you the complete,
-            repeatable playbook for your martial arts school.
+            The Limited GPT gives you a small taste of the strategy. The Full SEO System Kit gives you the complete,
+            repeatable approach for your school or network of schools.
           </p>
         </div>
 
@@ -1166,23 +1241,23 @@
             <ul class="compare-list">
               <li>
                 <span class="compare-icon">•</span>
-                <span>Generate a few sample keywords, content ideas, and page outlines for your academy.</span>
+                <span>Generate sample keywords, content ideas, and a few outlines tailored to your academy.</span>
               </li>
               <li>
                 <span class="compare-icon">•</span>
-                <span>Helpful for exploring what’s possible without committing to the full system.</span>
+                <span>Great for experimenting and sharing quick examples with co-owners or instructors.</span>
               </li>
               <li>
                 <span class="compare-icon">•</span>
-                <span>Great to show owners or instructors how SEO can support enrollment.</span>
+                <span>Helpful if you want to see how AI can talk about your classes and benefits.</span>
               </li>
               <li>
                 <span class="compare-icon">•</span>
-                <span>No complete blueprint, prompts library, or action checklists.</span>
+                <span>Does <strong>not</strong> include the full blueprint, calendars, or implementation checklists.</span>
               </li>
             </ul>
             <p class="compare-note">
-              Use this if you’re “just curious” and want a preview of how the system thinks for martial arts.
+              Use this if you’re just exploring and want a preview of how the system “thinks” for martial arts.
             </p>
           </div>
 
@@ -1192,27 +1267,27 @@
             <ul class="compare-list">
               <li>
                 <span class="compare-icon">✓</span>
-                <span>Complete SEO architecture for single or multi-location academies.</span>
+                <span>Complete SEO architecture for single or multi-location academies and gyms.</span>
               </li>
               <li>
                 <span class="compare-icon">✓</span>
-                <span>30-day content calendar + evergreen topic bank tuned for student intent.</span>
+                <span>30+ day content calendar plus evergreen topics you can cycle through all year.</span>
               </li>
               <li>
                 <span class="compare-icon">✓</span>
-                <span>Page, blog, FAQ, and GBP prompts designed for safe, culture-aligned content.</span>
+                <span>SEO-tuned prompts for pages, blogs, FAQs, and Google Business Profile posts.</span>
               </li>
               <li>
                 <span class="compare-icon">✓</span>
-                <span>Execution checklists for owners, front desk, or external agencies.</span>
+                <span>Execution checklists for owners, admin/front desk, and external agencies.</span>
               </li>
               <li>
                 <span class="compare-icon">✓</span>
-                <span>One-time payment of <strong>$197</strong>, use it for each location you operate.</span>
+                <span>One-time payment of <strong>$197</strong>, use it for every location you own.</span>
               </li>
             </ul>
             <p class="compare-note">
-              Choose this if you’re serious about turning organic search into a consistent new-student pipeline.
+              Choose this if you want a real system you can run again and again — not a one-off experiment.
             </p>
           </div>
         </div>
@@ -1228,54 +1303,54 @@
         <div class="section-header">
           <div>
             <div class="section-kicker">FAQ</div>
-            <h2 class="section-title">Answers for busy school owners</h2>
+            <h2 class="section-title">Answers for busy martial arts school owners</h2>
           </div>
           <p class="section-sub">
-            Quick details on how the Martial Arts SEO System Kit works, how long it takes, and who can use it.
+            The essentials on how the Martial Arts SEO System Kit works, how long it takes, and who can use it.
           </p>
         </div>
 
         <div class="faq-grid">
           <div class="faq-item">
-            <div class="faq-q">How “done-for-you” is this system?</div>
+            <div class="faq-q">Is this a course, software, or a done-for-you service?</div>
             <div class="faq-a">
-              The kit gives you the strategy, structure, prompts, and checklists. You (or your team/agency) use them
-              to generate drafts in your AI tool, lightly edit for accuracy and tone, and publish.
+              It’s a system kit: blueprints, templates, prompts, and checklists. You or your team use it with your
+              preferred AI tool and website platform. No logins, no subscriptions, no retainers.
             </div>
           </div>
           <div class="faq-item">
-            <div class="faq-q">Do I need to be a marketing expert to use it?</div>
+            <div class="faq-q">Do I need marketing experience to use it?</div>
             <div class="faq-a">
-              No. The steps are written for school owners and instructors. If you can fill out simple forms and
-              copy–paste prompts, you can move through the system. Marketing experience just speeds things up.
+              No. The kit is written in plain language for school owners and instructors. Each step tells you exactly
+              what to fill in, what to generate, and what to publish.
             </div>
           </div>
           <div class="faq-item">
-            <div class="faq-q">Can I use this for multiple locations?</div>
+            <div class="faq-q">Can this be used for multiple locations or styles?</div>
             <div class="faq-a">
-              Yes. Your $197 purchase covers all locations you own. The architecture and prompts are built to be cloned
-              for each city, neighborhood, and style mix you offer.
+              Yes. Your $197 purchase covers all locations you own. The architecture and prompts are designed to be
+              cloned and lightly tweaked for each city, neighborhood, and style mix.
             </div>
           </div>
           <div class="faq-item">
-            <div class="faq-q">Will this replace my agency or lead-gen service?</div>
+            <div class="faq-q">Will this replace my agency or lead-gen provider?</div>
             <div class="faq-a">
-              It can. Some academies use the kit to take back control of their marketing. Others keep their agency but
-              hand them the system so execution is clear and measurable instead of “mystery SEO.”
+              It can. Some schools use the kit to bring SEO completely in-house. Others keep their agency but hand them
+              the system so the work is structured, transparent, and aligned with your goals.
             </div>
           </div>
           <div class="faq-item">
-            <div class="faq-q">How soon will I see results?</div>
+            <div class="faq-q">How long before I see results?</div>
             <div class="faq-a">
-              Most schools can implement the core foundation within 1–2 weeks. Rankings and organic inquiries typically
-              build over 2–6 months depending on competition and publishing pace.
+              Many academies can implement the foundation within 1–2 weeks. Organic rankings and trial inquiries
+              typically build over 2–6 months depending on your competition and how consistently you publish.
             </div>
           </div>
           <div class="faq-item">
-            <div class="faq-q">Will this work for any martial art style?</div>
+            <div class="faq-q">Does this favor any particular martial art?</div>
             <div class="faq-a">
-              Yes. The system is style-agnostic and focuses on student intent and local search. You’ll adapt the prompts
-              and examples to your specific arts, culture, and teaching approach.
+              No. The system is style-agnostic. It focuses on student intent, safety, and local search behavior.
+              You adapt the examples and language to fit your art, lineage, and culture.
             </div>
           </div>
         </div>
@@ -1284,9 +1359,9 @@
       <!-- Final CTA -->
       <section class="section">
         <div class="cta-final">
-          <div class="cta-title">Ready to turn searchers into new students?</div>
+          <div class="cta-title">Ready to turn searchers into students on your mats?</div>
           <div class="cta-sub">
-            Launch a proven SEO and content system tailored to martial arts academies — without monthly retainers or guesswork.
+            Launch a focused SEO and content system built for martial arts schools — without monthly retainers or guesswork.
           </div>
           <div class="cta-price">
             One-time payment of <span>$197</span> • lifetime access • use across all your school locations.
@@ -1296,7 +1371,7 @@
             <a href="#full-kit-checkout" class="btn btn-primary">Get the Full SEO System Kit</a>
           </div>
           <div class="cta-note">
-            No subscriptions. No long contracts. Just a focused system you can implement at your own pace.
+            No subscriptions. No contracts. Just a clear, repeatable SEO system you can run between classes.
           </div>
         </div>
       </section>
@@ -1308,12 +1383,13 @@
         <div class="footer-links">
           <a href="#terms">Terms</a>
           <a href="#privacy">Privacy</a>
-          <a href="#disclaimer">Legal &amp; Marketing Disclaimer</a>
+          <a href="#disclaimer">Marketing &amp; Legal Disclaimer</a>
         </div>
       </div>
     </footer>
   </div>
 
+  <!-- Dynamic year -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
