@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mobile Groomer SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-main: #020617;
+      --bg-card: #020819;
+      --bg-soft: #020c1b;
+      --accent: #4ade80;
+      --accent-soft: rgba(74, 222, 128, 0.12);
+      --accent-strong: #22c55e;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --text-soft: #6b7280;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --danger: #f97373;
+      --shadow-soft: 0 22px 45px rgba(15, 23, 42, 0.88);
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #0b1120 0, #020617 45%, #000 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 72px;
+    }
+
+    header {
+      margin-bottom: 32px;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 15px;
+      background: radial-gradient(circle at 30% 0, #22c55e, #16a34a 40%, #0f172a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.55);
+      color: #ecfdf5;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text span:first-child {
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .logo-text span:last-child {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 12px;
+      color: var(--text-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #bbf7d0 0, #22c55e 50%, #14532d 100%);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+    }
+
+    h1 {
+      font-size: clamp(30px, 4vw, 38px);
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+
+    .headline-highlight {
+      background: linear-gradient(90deg, rgba(34, 197, 94, 0.18), transparent);
+      padding: 2px 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(74, 222, 128, 0.35);
+      font-size: 13px;
+      color: #bbf7d0;
+    }
+
+    .headline-highlight span:last-child {
+      color: var(--text-muted);
+    }
+
+    .subheading {
+      margin-top: 12px;
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    .hero-card {
+      margin-top: 22px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, #022c22 0, #020617 45%, #020617 100%);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: var(--shadow-soft);
+      padding: 22px 22px 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: flex-start;
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-bullets {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 16px;
+      margin-top: 4px;
+    }
+
+    .hero-bullet {
+      display: flex;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      align-items: flex-start;
+    }
+
+    .hero-bullet-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--accent-strong);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .hero-microcopy {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-top: 6px;
+    }
+
+    .hero-aside {
+      border-radius: 24px;
+      padding: 14px 16px 16px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(5, 46, 22, 0.94));
+      border: 1px solid rgba(74, 222, 128, 0.5);
+    }
+
+    .price-tag {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .price-main {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.06em;
+      color: #bbf7d0;
+    }
+
+    .price-currency {
+      font-size: 16px;
+      opacity: 0.85;
+    }
+
+    .price-pill {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      background: rgba(15, 118, 110, 0.35);
+      color: #a5f3fc;
+      border: 1px solid rgba(45, 212, 191, 0.5);
+    }
+
+    .price-note {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 12px;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .meta-item {
+      padding: 8px 10px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.86);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .meta-label {
+      display: block;
+      color: var(--text-soft);
+      margin-bottom: 2px;
+    }
+
+    .meta-value {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      box-shadow: 0 10px 35px rgba(34, 197, 94, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 45px rgba(22, 163, 74, 0.6);
+      background: linear-gradient(135deg, #4ade80, #16a34a);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.92);
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(148, 163, 184, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .btn-pill-subtext {
+      font-size: 11px;
+      color: var(--text-soft);
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    main {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    section {
+      border-radius: var(--radius-lg);
+      background: rgba(2, 6, 23, 0.88);
+      border: 1px solid var(--border-subtle);
+      padding: 18px 20px 20px;
+      backdrop-filter: blur(18px);
+    }
+
+    section h2 {
+      font-size: 18px;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .section-intro {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 0 0 14px;
+      max-width: 540px;
+    }
+
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 20px;
+      align-items: flex-start;
+    }
+
+    .pill-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .list-bullet {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(51, 65, 85, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #e5e7eb;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .list-bullet.green {
+      background: rgba(22, 163, 74, 0.25);
+      color: #bbf7d0;
+    }
+
+    .muted {
+      color: var(--text-soft);
+    }
+
+    .strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .stacked {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mini-card {
+      border-radius: 16px;
+      padding: 10px 11px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(30, 64, 175, 0.75);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .mini-card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-bottom: 3px;
+    }
+
+    .mini-card strong {
+      color: #e5e7eb;
+    }
+
+    .inline-price {
+      color: #bbf7d0;
+      font-weight: 600;
+    }
+
+    /* What you get inside */
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px 17px;
+    }
+
+    .deliverable-card {
+      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 10px 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .deliverable-title {
+      font-size: 13px;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .deliverable-tag {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-soft);
+    }
+
+    .deliverable-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    /* How it works */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .step-card {
+      border-radius: 18px;
+      padding: 10px 11px;
+      background: var(--bg-card);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .step-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-bottom: 5px;
+    }
+
+    .step-num {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #e5e7eb;
+    }
+
+    .step-title {
+      font-size: 13px;
+      color: #e5e7eb;
+      margin-bottom: 3px;
+    }
+
+    /* Comparison */
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .compare-card {
+      border-radius: 18px;
+      padding: 11px 12px;
+      background: var(--bg-card);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .compare-card.limited {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
+    }
+
+    .compare-card.full {
+      background: radial-gradient(circle at top left, rgba(22, 163, 74, 0.2), rgba(15, 23, 42, 0.95));
+      border-color: rgba(74, 222, 128, 0.85);
+      box-shadow: 0 18px 40px rgba(22, 163, 74, 0.45);
+    }
+
+    .compare-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .compare-title {
+      font-size: 15px;
+      color: #e5e7eb;
+      margin-top: 2px;
+      margin-bottom: 4px;
+    }
+
+    .compare-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 12px;
+    }
+
+    .compare-list li {
+      display: flex;
+      gap: 7px;
+      align-items: flex-start;
+    }
+
+    .compare-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .compare-icon.good {
+      background: rgba(22, 163, 74, 0.2);
+      color: #bbf7d0;
+    }
+
+    .compare-icon.bad {
+      background: rgba(127, 29, 29, 0.4);
+      color: #fecaca;
+    }
+
+    .compare-footnote {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 18px;
+    }
+
+    .faq-item {
+      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 9px 11px 10px;
+      font-size: 13px;
+    }
+
+    .faq-q {
+      font-size: 13px;
+      color: #e5e7eb;
+      margin-bottom: 3px;
+    }
+
+    .faq-a {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Final CTA */
+
+    .cta-section {
+      border-radius: 26px;
+      background: radial-gradient(circle at top, rgba(74, 222, 128, 0.14), rgba(2, 6, 23, 0.98));
+      border: 1px solid rgba(74, 222, 128, 0.6);
+      padding: 20px 22px 22px;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 20px;
+      margin-bottom: 6px;
+      letter-spacing: -0.03em;
+    }
+
+    .cta-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .cta-price {
+      font-size: 14px;
+      color: #bbf7d0;
+      margin-bottom: 10px;
+    }
+
+    .cta-price strong {
+      font-size: 20px;
+      letter-spacing: -0.05em;
+    }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(30, 64, 175, 0.6);
+      font-size: 11px;
+      color: var(--text-soft);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    footer a {
+      color: var(--text-soft);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive behavior */
+    @media (max-width: 880px) {
+      .hero-grid,
+      .two-col-grid,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-card {
+        padding: 18px 15px 20px;
+      }
+
+      .page-wrap {
+        padding-inline: 14px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .logo-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-bullets {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-row {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header>
+      <div class="logo-row">
+        <div class="logo-mark">
+          <div class="logo-icon">MG</div>
+          <div class="logo-text">
+            <span>SEO SYSTEM KIT</span>
+            <span>Mobile grooming bookings on autopilot</span>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>Built for mobile groomers</span>
+        </div>
+      </div>
+
+      <div class="headline-highlight">
+        <span>Mobile Groomer SEO System Kit</span>
+        <span>Fill your van with ideal grooming clients from Google</span>
+      </div>
+
+      <h1>Be the first mobile groomer pet parents see — and the one they actually book.</h1>
+      <p class="subheading">
+        A plug-and-play SEO system designed specifically for mobile dog &amp; cat groomers who
+        want premium, recurring clients from Google, Maps, and local search — without coupon sites or ad spend.
+      </p>
+
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-main">
+            <div class="pill-label">What this system does</div>
+            <p class="section-intro">
+              Instead of hoping referrals and Facebook groups stay busy, this kit gives you proven
+              SEO pages, grooming-specific keywords, and simple instructions so you appear when
+              local pet parents search for a mobile groomer right now.
+            </p>
+
+            <div class="hero-bullets">
+              <div class="hero-bullet">
+                <div class="hero-bullet-icon">★</div>
+                <div>
+                  <span class="strong">Ranks you in “mobile dog groomer near me” searches</span><br />
+                  See exactly which service-area keywords to target and where to place them on your site.
+                </div>
+              </div>
+              <div class="hero-bullet">
+                <div class="hero-bullet-icon">★</div>
+                <div>
+                  <span class="strong">Turns price shoppers into loyal clients</span><br />
+                  Conversion-ready copy and layouts tuned to busy, convenience-focused pet parents.
+                </div>
+              </div>
+              <div class="hero-bullet">
+                <div class="hero-bullet-icon">★</div>
+                <div>
+                  <span class="strong">Boosts your Google Maps &amp; service-area visibility</span><br />
+                  Frameworks for showing up across multiple neighborhoods — not just one ZIP code.
+                </div>
+              </div>
+              <div class="hero-bullet">
+                <div class="hero-bullet-icon">★</div>
+                <div>
+                  <span class="strong">Works even if tech isn’t your thing</span><br />
+                  Step-by-step checklist you can follow between appointments or hand to a VA.
+                </div>
+              </div>
+            </div>
+
+            <p class="hero-microcopy">
+              Built purely for mobile grooming vans and home-based groomers who travel —
+              no generic “local business” filler, no long-term agency retainers, no monthly SEO tools required.
+            </p>
+          </div>
+
+          <aside class="hero-aside">
+            <div class="price-tag">
+              <span class="price-main">
+                <span class="price-currency">$</span>197
+              </span>
+              <span class="price-pill">One-time payment · Lifetime access</span>
+            </div>
+            <p class="price-note">
+              One new recurring full-groom client can more than pay for the Mobile Groomer SEO System Kit.
+              Every booking after that is pure return.
+            </p>
+
+            <div class="hero-meta">
+              <div class="meta-item">
+                <span class="meta-label">Ideal for</span>
+                <span class="meta-value">Solo vans &amp; small mobile fleets</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Time to implement</span>
+                <span class="meta-value">One weekend or a few evenings</span>
+              </div>
+            </div>
+
+            <div class="meta-item" style="margin-bottom: 8px;">
+              <span class="meta-label">You’ll need</span>
+              <span class="meta-value">Basic website editor + Google account</span>
+            </div>
+
+            <div class="btn-row">
+              <a
+                href="#limited-gpt-link"
+                class="btn btn-ghost"
+              >
+                Try the Limited GPT First
+              </a>
+              <!-- TODO: replace with actual Limited GPT URL -->
+
+              <a
+                href="#full-kit-checkout"
+                class="btn btn-primary"
+              >
+                Get the Full SEO System Kit
+              </a>
+              <!-- TODO: replace with actual checkout URL -->
+            </div>
+            <div class="btn-pill-subtext">
+              Secure checkout · Instant access · Built for mobile groomers worldwide
+            </div>
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Who this kit is for -->
+      <section>
+        <div class="section-eyebrow">Who this kit is for</div>
+        <h2>Created for working mobile groomers — not marketers.</h2>
+        <p class="section-intro">
+          If you’d rather be grooming than fiddling with SEO tools, but you still want a full route
+          of ideal clients, this kit is for you.
+        </p>
+
+        <div class="two-col-grid">
+          <div>
+            <div class="pill-label">Perfect fit if you are</div>
+            <ul class="list">
+              <li>
+                <div class="list-bullet green">1</div>
+                <div>
+                  A <span class="strong">mobile dog or cat groomer</span> who drives to clients’
+                  homes and wants your calendar booked with easy, local routes.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet green">2</div>
+                <div>
+                  Running a <span class="strong">single grooming van or a small fleet</span> and
+                  need predictable inquiries in your best neighborhoods and ZIP codes.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet green">3</div>
+                <div>
+                  A home-based groomer offering <span class="strong">pickup &amp; mobile-style service</span>
+                  and wanting to rank beyond word of mouth.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet green">4</div>
+                <div>
+                  Tired of coupon sites and deal hunters — you want
+                  <span class="strong">trust-driven, convenience-focused, higher-value clients.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="stacked">
+            <div class="mini-card">
+              <div class="mini-card-label">Not a fit if</div>
+              <div>
+                You don’t serve a defined area, <span class="strong">don’t plan to have a website</span>,
+                or want only occasional, last-minute fills instead of a stable client base.
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-card-label">Best results</div>
+              <div>
+                Mobile groomers willing to follow the system,
+                <span class="strong">ask for reviews after appointments</span>,
+                and stick to a few key service areas for maximum visibility.
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-card-label">What you really gain</div>
+              <div>
+                A repeatable SEO roadmap that you can use for your current route — and
+                clone for new vans, new cities, or expanded service radiuses as you grow.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- What this kit does for you -->
+      <section>
+        <div class="section-eyebrow">What this kit does for you</div>
+        <h2>Turn local search into a steady pipeline of grooming appointments.</h2>
+        <p class="section-intro">
+          The Mobile Groomer SEO System Kit is built around how time-poor pet parents
+          search for grooming: nearby, convenient, trustworthy, and recurring.
+        </p>
+
+        <div class="two-col-grid">
+          <div>
+            <div class="pill-label">Results you can feel</div>
+            <ul class="list">
+              <li>
+                <div class="list-bullet green">✓</div>
+                <div>
+                  <span class="strong">More “I found your van on Google” inquiries</span> for
+                  full grooms, mini grooms, baths, deshedding, and nail trims.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet green">✓</div>
+                <div>
+                  <span class="strong">Higher-quality clients</span> who value convenience,
+                  safety, and reliability — not just the cheapest price.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet green">✓</div>
+                <div>
+                  A <span class="strong">booked-out route</span> focused on your preferred
+                  neighborhoods so you spend more time grooming and less time driving.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet green">✓</div>
+                <div>
+                  A website that works like a <span class="strong">24/7 booking assistant</span>,
+                  answering questions and collecting ideal leads while you’re on the road.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="pill-label">Behind the scenes</div>
+            <ul class="list">
+              <li>
+                <div class="list-bullet">A</div>
+                <div>
+                  Page structures that <span class="strong">mirror how pet parents compare mobile groomers</span>:
+                  safety, cleanliness, van setup, breed experience, and scheduling.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet">B</div>
+                <div>
+                  Technical SEO basics explained in plain language so
+                  <span class="strong">your site loads fast on phones and looks trustworthy</span>.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet">C</div>
+                <div>
+                  Local SEO frameworks for <span class="strong">service-area pages, city clusters,
+                  and key zip codes</span> that pull in clients along your regular routes.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet">D</div>
+                <div>
+                  Review and photo strategies focused on <span class="strong">before &amp; afters,
+                  anxious dogs, senior pets, and special handling</span> that both rank and reassure.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- What you get inside -->
+      <section>
+        <div class="section-eyebrow">What you get inside</div>
+        <h2>Your complete SEO system, tailored to mobile grooming.</h2>
+        <p class="section-intro">
+          Every piece is plug-and-play. Copy, paste, customize to your services and route,
+          and ship — no blank pages or expensive consultants required.
+        </p>
+
+        <div class="deliverables-grid">
+          <div class="deliverable-card">
+            <div class="deliverable-title">
+              Mobile Groomer Homepage &amp; Service Templates
+              <span class="deliverable-tag">Copy + Layout</span>
+            </div>
+            <p>
+              High-converting page frameworks for your homepage, grooming packages,
+              add-ons, and “About the van” page — all written with mobile convenience
+              and safety in mind.
+            </p>
+            <div class="deliverable-meta">
+              <span>3–4 core page frameworks</span>
+              <span>Pet parent-focused messaging</span>
+            </div>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-title">
+              Mobile Groomer Keyword Map
+              <span class="deliverable-tag">Research Done For You</span>
+            </div>
+            <p>
+              A curated list of search terms pet parents use to find mobile groomers,
+              organized by city, neighborhood, and service type — ready to plug into your pages.
+            </p>
+            <div class="deliverable-meta">
+              <span>“Near me” + city keywords</span>
+              <span>Intent-based clusters</span>
+            </div>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-title">
+              Google Business Profile Optimization Kit
+              <span class="deliverable-tag">Local SEO</span>
+            </div>
+            <p>
+              A step-by-step guide to optimizing your Google Business Profile for mobile grooming:
+              services, photos, descriptions, and posts that highlight your van and route.
+            </p>
+            <div class="deliverable-meta">
+              <span>Photo &amp; post prompts</span>
+              <span>Review request scripts</span>
+            </div>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-title">
+              Content &amp; FAQ System for Groomers
+              <span class="deliverable-tag">Content Engine</span>
+            </div>
+            <p>
+              24+ SEO-ready topic ideas and outlines that answer questions like “how often should my dog
+              be groomed?” and “is mobile grooming right for nervous dogs?” in your area.
+            </p>
+            <div class="deliverable-meta">
+              <span>Topics + outlines</span>
+              <span>Internal linking prompts</span>
+            </div>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-title">
+              Review &amp; Rebooking Playbook
+              <span class="deliverable-tag">Retention &amp; Trust</span>
+            </div>
+            <p>
+              Scripts and message templates that turn one-time grooms into recurring schedule clients,
+              while collecting high-impact Google reviews that boost your rankings.
+            </p>
+            <div class="deliverable-meta">
+              <span>Text &amp; email templates</span>
+              <span>60–90 day rebook flows</span>
+            </div>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-title">
+              Implementation Checklist &amp; Tracking Sheet
+              <span class="deliverable-tag">Execution</span>
+            </div>
+            <p>
+              A simple dashboard to track what’s implemented, where you rank, and how many inquiries
+              are coming from Google so you can see the system working over time.
+            </p>
+            <div class="deliverable-meta">
+              <span>Step-by-step checklist</span>
+              <span>Rank &amp; lead tracker</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section>
+        <div class="section-eyebrow">How it works</div>
+        <h2>From “hidden online” to booked-out grooming route in four focused steps.</h2>
+        <p class="section-intro">
+          You don’t need to implement everything at once. This kit is built for real
+          groomer schedules — quick wins first, deeper improvements next.
+        </p>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-pill">
+              <span class="step-num">1</span>
+              <span>Set your service areas</span>
+            </div>
+            <div class="step-title">Define the route you want</div>
+            <p>
+              Download the kit and plug in your city, key neighborhoods, and ideal driving radius.
+              The keyword map and page prompts adapt to your preferred route.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-pill">
+              <span class="step-num">2</span>
+              <span>Update your core pages</span>
+            </div>
+            <div class="step-title">Make your site “bookable”</div>
+            <p>
+              Use the homepage and service templates to refresh your copy, showcase your van,
+              and clarify pricing ranges, breeds, and availability in SEO-friendly language.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-pill">
+              <span class="step-num">3</span>
+              <span>Optimize Google Business</span>
+            </div>
+            <div class="step-title">Show up in Maps &amp; local search</div>
+            <p>
+              Follow the Google Business Profile checklist to highlight that you’re mobile,
+              update service areas, and start posting using the built-in prompts.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-pill">
+              <span class="step-num">4</span>
+              <span>Turn grooms into SEO</span>
+            </div>
+            <div class="step-title">Reviews &amp; rebookings on repeat</div>
+            <p>
+              Use the review and rebooking scripts after each appointment to grow your Google
+              reputation and keep your grooming schedule full months in advance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Limited GPT vs Full Kit -->
+      <section>
+        <div class="section-eyebrow">Limited GPT vs full system</div>
+        <h2>Try the Limited GPT — then unlock the complete Mobile Groomer SEO System Kit.</h2>
+        <p class="section-intro">
+          The Limited GPT is your test drive for ideas. The full kit is your complete
+          SEO engine for consistent, profitable grooming routes.
+        </p>
+
+        <div class="compare-grid">
+          <div class="compare-card limited">
+            <div class="compare-label">Limited GPT</div>
+            <div class="compare-title">Great for quick prompts &amp; ideas</div>
+            <ul class="compare-list">
+              <li>
+                <div class="compare-icon good">●</div>
+                <div>
+                  Generate example headlines, FAQs, and social posts tailored to mobile grooming.
+                </div>
+              </li>
+              <li>
+                <div class="compare-icon good">●</div>
+                <div>
+                  Explore keyword themes and content angles before you commit to the full system.
+                </div>
+              </li>
+              <li>
+                <div class="compare-icon bad">×</div>
+                <div>
+                  No structured implementation checklist, tracking sheet, or pre-built keyword map.
+                </div>
+              </li>
+              <li>
+                <div class="compare-icon bad">×</div>
+                <div>
+                  No complete page templates or service-area frameworks optimized for your route.
+                </div>
+              </li>
+            </ul>
+            <div class="compare-footnote">
+              Use the Limited GPT to “feel out” the strategy and see how mobile groomer SEO applies
+              to your business.
+            </div>
+          </div>
+
+          <div class="compare-card full">
+            <div class="compare-label">Full SEO System Kit</div>
+            <div class="compare-title">
+              Everything you need to rank, get reviews, and fill your schedule.
+            </div>
+            <ul class="compare-list">
+              <li>
+                <div class="compare-icon good">✓</div>
+                <div>
+                  <span class="strong">All Limited GPT benefits</span> plus plug-and-play
+                  templates, examples, and checklists for your entire funnel.
+                </div>
+              </li>
+              <li>
+                <div class="compare-icon good">✓</div>
+                <div>
+                  Done-for-you keyword map, page frameworks, and content topics
+                  focused exclusively on mobile grooming.
+                </div>
+              </li>
+              <li>
+                <div class="compare-icon good">✓</div>
+                <div>
+                  Google Business Profile system and review playbook that highlight your van,
+                  safety, and convenience to stand out in local search.
+                </div>
+              </li>
+              <li>
+                <div class="compare-icon good">✓</div>
+                <div>
+                  One-time investment of <span class="inline-price">$197</span> —
+                  lifetime access to updates as best practices evolve.
+                </div>
+              </li>
+            </ul>
+            <div class="compare-footnote">
+              Ideal if you’re ready to treat your mobile grooming business like a route-based
+              machine — with SEO quietly filling your calendar in the background.
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row" style="margin-top: 14px;">
+          <a
+            href="#limited-gpt-link"
+            class="btn btn-ghost"
+          >
+            Try the Limited GPT First
+          </a>
+          <!-- TODO: replace with actual Limited GPT URL -->
+
+          <a
+            href="#full-kit-checkout"
+            class="btn btn-primary"
+          >
+            Get the Full SEO System Kit for $197
+          </a>
+          <!-- TODO: replace with actual checkout URL -->
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section>
+        <div class="section-eyebrow">FAQ</div>
+        <h2>Questions mobile groomers usually ask before they jump in.</h2>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">Do I need to be “good with tech” to use this?</div>
+            <div class="faq-a">
+              No. If you can edit basic text on your website (or send instructions to a VA,
+              designer, or friend), you can implement this kit. Everything is written in
+              plain language for working groomers, not SEO pros.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Will this work if I’m just starting my mobile grooming business?</div>
+            <div class="faq-a">
+              Yes. In many ways, it’s ideal. You can launch your first site and Google profile
+              with the right structure from day one, instead of rebuilding everything later.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How long until I see results from the SEO changes?</div>
+            <div class="faq-a">
+              SEO isn’t instant, but mobile grooming is often less competitive than big salons.
+              Many groomers see ranking and inquiry improvements within a few weeks, with stronger,
+              more stable results over 3–6 months as reviews and content build up.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is this only for dog grooming, or cats too?</div>
+            <div class="faq-a">
+              The system works for dogs, cats, and mixed services. You’ll see prompts and examples
+              you can customize for your exact offerings, including specialty or breed-specific grooming.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">What if I don’t have a website yet?</div>
+            <div class="faq-a">
+              You’ll get page templates and copy you can plug into simple builders like Squarespace,
+              Wix, or WordPress. Having at least a basic site (even one page) is recommended to get
+              the full benefit from the kit.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is $197 a one-time payment or a subscription?</div>
+            <div class="faq-a">
+              It’s a <span class="strong">one-time payment of $197</span> for the complete Mobile Groomer
+              SEO System Kit, including future updates to the core materials. No ongoing subscription,
+              no hidden fees, and you own the system for life.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="cta-section">
+        <div class="cta-title">
+          Ready to keep your mobile grooming route full with clients who found you on Google?
+        </div>
+        <div class="cta-sub">
+          Install the Mobile Groomer SEO System Kit once and let it quietly bring you ideal
+          pet parents every week — while you focus on grooming, not marketing.
+        </div>
+        <div class="cta-price">
+          Get the complete Mobile Groomer SEO System Kit today for
+          <strong>$197</strong> — one-time payment, lifetime access.
+        </div>
+
+        <div class="btn-row">
+          <a
+            href="#limited-gpt-link"
+            class="btn btn-ghost"
+          >
+            Try the Limited GPT First
+          </a>
+          <!-- TODO: replace with actual Limited GPT URL -->
+
+          <a
+            href="#full-kit-checkout"
+            class="btn btn-primary"
+          >
+            Get the Full SEO System Kit
+          </a>
+          <!-- TODO: replace with actual checkout URL -->
+        </div>
+        <div class="btn-pill-subtext">
+          Instant download · Works worldwide · Designed for real mobile grooming businesses
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Mobile Groomer SEO System Kit. All rights reserved.</div>
+      <div>
+        <a href="#terms">Terms</a> ·
+        <a href="#privacy">Privacy</a> ·
+        <a href="#support">Support</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple year auto-update
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
