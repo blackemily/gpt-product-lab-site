@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pet Adoption SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #050708;
+      --bg-elevated: #0c1115;
+      --bg-soft: #111821;
+      --accent: #28e07a;
+      --accent-soft: rgba(40, 224, 122, 0.12);
+      --accent-strong: #4bf89d;
+      --text: #f5f7fa;
+      --text-soft: #a7b3c5;
+      --border-subtle: #1c2733;
+      --danger: #ff6b6b;
+      --muted: #6b7280;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --shadow-soft: 0 22px 45px rgba(0, 0, 0, 0.45);
+      --shadow-subtle: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #172a3a 0, #050708 55%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px 48px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-weight: 650;
+      letter-spacing: 0.01em;
+    }
+
+    p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 32px;
+      padding: 28px 26px 26px;
+      background: linear-gradient(
+          135deg,
+          rgba(40, 224, 122, 0.12),
+          transparent 55%
+        ),
+        var(--bg-elevated);
+      border-radius: 28px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(102, 252, 142, 0.26);
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -120px;
+      background: radial-gradient(
+        circle at top right,
+        rgba(40, 224, 122, 0.15),
+        transparent 55%
+      );
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-main,
+    .hero-side {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(40, 224, 122, 0.32);
+      background: rgba(8, 16, 18, 0.9);
+      color: var(--accent-strong);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 14px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(40, 224, 122, 0.9);
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 3.1vw, 2.4rem);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, #6bffb4, #2df089);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 560px;
+      margin-bottom: 18px;
+      font-size: 0.98rem;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .price-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: rgba(3, 10, 10, 0.9);
+      border: 1px solid rgba(40, 224, 122, 0.5);
+      box-shadow: 0 0 0 1px rgba(7, 28, 19, 0.8);
+    }
+
+    .price-main {
+      font-size: 1.05rem;
+      font-weight: 650;
+      color: var(--accent-strong);
+    }
+
+    .price-label {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .meta-tag {
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(7, 11, 14, 0.9);
+      font-size: 0.73rem;
+      color: var(--muted);
+    }
+
+    .meta-tag strong {
+      color: var(--accent-strong);
+      font-weight: 550;
+    }
+
+    .hero-quickwins {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-bottom: 22px;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .hero-quickwins span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .hero-quickwins .check {
+      width: 15px;
+      height: 15px;
+      border-radius: 999px;
+      background: rgba(40, 224, 122, 0.12);
+      border: 1px solid rgba(40, 224, 122, 0.7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--accent-strong);
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.18s ease-out;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #020814;
+      font-weight: 650;
+      box-shadow: 0 12px 30px rgba(40, 224, 122, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(40, 224, 122, 0.55);
+    }
+
+    .btn-ghost {
+      background: rgba(7, 10, 14, 0.9);
+      color: var(--text-soft);
+      border-color: rgba(148, 163, 184, 0.3);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.6);
+      background: rgba(12, 19, 27, 0.96);
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .hero-trust span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-trust-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(40, 224, 122, 0.9);
+    }
+
+    /* Hero side */
+
+    .hero-card {
+      background: rgba(6, 10, 16, 0.96);
+      border-radius: 20px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 16px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .hero-card-chip {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.7rem;
+      color: #7dd3fc;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+
+    .kpi-pill {
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(30, 64, 175, 0.7);
+    }
+
+    .kpi-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 4px;
+    }
+
+    .kpi-value {
+      font-size: 0.95rem;
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .kpi-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .hero-snippets {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 0.75rem;
+    }
+
+    .snippet {
+      padding: 6px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .snippet-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(40, 224, 122, 0.4);
+      box-shadow: 0 0 6px rgba(40, 224, 122, 0.7);
+    }
+
+    /* Generic sections */
+
+    .section {
+      background: rgba(5, 9, 14, 0.96);
+      border-radius: var(--radius-xl);
+      padding: 22px 22px 20px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-subtle);
+      margin-bottom: 22px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-header-text h2 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .section-header-text p {
+      font-size: 0.86rem;
+    }
+
+    .section-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 999px;
+      padding: 4px 10px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      white-space: nowrap;
+    }
+
+    /* Two-column grids */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.05fr);
+      gap: 18px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .pill-item {
+      display: flex;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .pill-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(40, 224, 122, 0.08);
+      border: 1px solid rgba(40, 224, 122, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--accent-strong);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pill-body-title {
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+      color: var(--text);
+    }
+
+    .pill-body-text {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .subtle-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* "What You Get Inside" */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.05fr);
+      gap: 16px;
+    }
+
+    .feature-card {
+      border-radius: 16px;
+      padding: 12px 12px 11px;
+      background: rgba(11, 17, 24, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .feature-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .feature-title {
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+      color: var(--text);
+    }
+
+    .feature-desc {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+    }
+
+    .feature-list {
+      padding-left: 18px;
+      margin: 0;
+      list-style: disc;
+    }
+
+    .feature-list li {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    /* How it works */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step-card {
+      background: var(--bg-soft);
+      border-radius: 16px;
+      padding: 10px 10px 9px;
+      border: 1px solid rgba(31, 41, 55, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      position: relative;
+    }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(40, 224, 122, 0.09);
+      border: 1px solid rgba(40, 224, 122, 0.7);
+      color: var(--accent-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-size: 0.86rem;
+      color: var(--text);
+    }
+
+    .step-text {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    /* Comparison */
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 18px;
+    }
+
+    .compare-card {
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-card.limited {
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .compare-card.full {
+      border-color: rgba(40, 224, 122, 0.7);
+      box-shadow: 0 0 0 1px rgba(40, 224, 122, 0.2);
+    }
+
+    .compare-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 6px;
+    }
+
+    .compare-chip.limited {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .compare-chip.full {
+      background: rgba(40, 224, 122, 0.1);
+      color: var(--accent-strong);
+      border: 1px solid rgba(40, 224, 122, 0.7);
+    }
+
+    .compare-title {
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+    }
+
+    .compare-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .compare-list {
+      padding-left: 18px;
+      margin: 0 0 6px;
+      list-style: disc;
+    }
+
+    .compare-list li {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      margin-bottom: 3px;
+    }
+
+    .compare-price {
+      font-size: 0.86rem;
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .compare-ribbon {
+      position: absolute;
+      top: 10px;
+      right: -46px;
+      transform: rotate(36deg);
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #020617;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      padding: 3px 52px;
+      font-weight: 650;
+      box-shadow: 0 10px 25px rgba(40, 224, 122, 0.5);
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.05fr);
+      gap: 16px;
+    }
+
+    .faq-item {
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .faq-q {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .faq-a {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    /* Final CTA */
+
+    .cta-section {
+      background: radial-gradient(
+          circle at top right,
+          rgba(40, 224, 122, 0.12),
+          transparent 60%
+        ),
+        var(--bg-elevated);
+      border-radius: 26px;
+      padding: 22px 24px 22px;
+      border: 1px solid rgba(40, 224, 122, 0.6);
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      margin-top: 26px;
+    }
+
+    .cta-title {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .cta-sub {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      margin-bottom: 18px;
+    }
+
+    .cta-price-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .cta-price {
+      font-size: 1.4rem;
+      font-weight: 650;
+      color: var(--accent-strong);
+    }
+
+    .cta-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .cta-buttons .btn-row {
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--accent-strong);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 880px) {
+      .page {
+        padding: 22px 14px 40px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr !important;
+        padding: 22px 18px 18px;
+      }
+
+      .hero-meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-quickwins {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .grid-2,
+      .features-grid,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section {
+        padding: 18px 16px 16px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-row {
+        width: 100%;
+      }
+
+      .btn {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="container">
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-main">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Pet Adoption SEO System Kit
+          </div>
+          <h1 id="hero-title">
+            Pet Adoption SEO System Kit:
+            <span class="hero-highlight">match more pets with the right families</span> through search.
+          </h1>
+          <p class="hero-subtitle">
+            A plug-and-play SEO system built specifically for shelters, rescues,
+            and adoption organizations that want qualified adopters finding them
+            through Google&mdash;not just social posts and luck.
+          </p>
+
+          <div class="hero-meta-row">
+            <div class="price-pill" aria-label="One-time price">
+              <span class="price-main">$197</span>
+              <span class="price-label">One-time kit access</span>
+            </div>
+            <span class="meta-tag">
+              Built for <strong>shelters, rescues, &amp; foster groups</strong>
+            </span>
+            <span class="meta-tag"> Works for single-city &amp; regional orgs </span>
+          </div>
+
+          <div class="hero-quickwins">
+            <span>
+              <span class="check">✓</span>
+              Rank for “adopt a dog/cat near me” in your area
+            </span>
+            <span>
+              <span class="check">✓</span>
+              Structure your adoptable pet listings for search visibility
+            </span>
+            <span>
+              <span class="check">✓</span>
+              Turn information seekers into qualified adoption applications
+            </span>
+          </div>
+
+          <div class="btn-row">
+            <a href="#limited-gpt-link" class="btn btn-ghost">
+              Try the Limited GPT First
+            </a>
+            <a href="#full-kit-checkout" class="btn btn-primary">
+              Get the Full SEO System Kit
+            </a>
+          </div>
+
+          <div class="hero-trust">
+            <span>
+              <span class="hero-trust-dot"></span>
+              Works for municipal shelters, non-profits, and volunteer-run rescues
+            </span>
+            <span> No SEO experience required&mdash;just follow the system </span>
+          </div>
+        </div>
+
+        <aside class="hero-side" aria-label="Preview of Pet Adoption SEO outcomes">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div>
+                <div class="hero-card-title">
+                  Adoption visibility snapshot
+                </div>
+                <p style="font-size: 0.78rem; margin-top: 2px;">
+                  Example outcome using the Pet Adoption SEO System Kit for a
+                  city-wide rescue featuring dogs &amp; cats in foster homes.
+                </p>
+              </div>
+              <div class="hero-card-chip">SEO system, not a plugin</div>
+            </div>
+
+            <div class="hero-kpi-grid">
+              <div class="kpi-pill">
+                <div class="kpi-label">90 days</div>
+                <div class="kpi-value">+137%</div>
+                <div class="kpi-sub">organic visits from “adopt + pet + city”</div>
+              </div>
+              <div class="kpi-pill">
+                <div class="kpi-label">Applications</div>
+                <div class="kpi-value">+48%</div>
+                <div class="kpi-sub">adoption &amp; foster interest forms</div>
+              </div>
+              <div class="kpi-pill">
+                <div class="kpi-label">Key programs</div>
+                <div class="kpi-value">4</div>
+                <div class="kpi-sub">adoption, foster, volunteering &amp; donations</div>
+              </div>
+              <div class="kpi-pill">
+                <div class="kpi-label">Time on site</div>
+                <div class="kpi-value">+31%</div>
+                <div class="kpi-sub">via improved pet profile &amp; education hubs</div>
+              </div>
+            </div>
+
+            <div class="hero-snippets" aria-hidden="true">
+              <span class="snippet">
+                <span class="snippet-dot"></span>
+                “adopt a dog near me”
+              </span>
+              <span class="snippet">
+                <span class="snippet-dot"></span>
+                “cat adoption [your city]”
+              </span>
+              <span class="snippet">
+                <span class="snippet-dot"></span>
+                “how to adopt a rescue dog”
+              </span>
+              <span class="snippet">
+                <span class="snippet-dot"></span>
+                “foster program for pets”
+              </span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- WHO THIS KIT IS FOR -->
+      <section class="section" aria-labelledby="who-for-title">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="who-for-title">Who this kit is for</h2>
+            <p>
+              The Pet Adoption SEO System Kit is built for teams focused on
+              lifesaving work, not full-time marketing.
+            </p>
+          </div>
+          <div class="section-tag">Adoption-first targeting</div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <ul class="pill-list">
+              <li class="pill-item">
+                <div class="pill-badge">1</div>
+                <div>
+                  <div class="pill-body-title">Brick-and-mortar animal shelters</div>
+                  <p class="pill-body-text">
+                    You handle a steady flow of animals and need more potential
+                    adopters finding your shelter instead of only large national
+                    sites and directories.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">2</div>
+                <div>
+                  <div class="pill-body-title">Foster-based rescues</div>
+                  <p class="pill-body-text">
+                    Your animals live in foster homes spread across a region, and
+                    you want SEO to consistently connect good-fit adopters with
+                    specific dogs, cats, and special cases.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">3</div>
+                <div>
+                  <div class="pill-body-title">Breed-specific rescues</div>
+                  <p class="pill-body-text">
+                    You specialize in a breed or type (e.g., bully breeds, seniors,
+                    special needs) and want searchers looking for exactly that to
+                    land on your website first.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <ul class="pill-list">
+              <li class="pill-item">
+                <div class="pill-badge">4</div>
+                <div>
+                  <div class="pill-body-title">Multi-location &amp; regional orgs</div>
+                  <p class="pill-body-text">
+                    You operate in several cities or counties and need a repeatable
+                    SEO playbook for programs, events, and adoptable pets across
+                    different areas.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">5</div>
+                <div>
+                  <div class="pill-body-title">Volunteer-run &amp; small non-profits</div>
+                  <p class="pill-body-text">
+                    You don’t have a dedicated marketer. You need clear, simple
+                    instructions and templates volunteers can actually use without
+                    starting from scratch.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">6</div>
+                <div>
+                  <div class="pill-body-title">All-in-one pet welfare organizations</div>
+                  <p class="pill-body-text">
+                    You juggle adoption, foster, TNR, community outreach, and
+                    clinics. The kit helps you clarify and structure everything so
+                    people can find the right program fast.
+                  </p>
+                </div>
+              </li>
+            </ul>
+            <p class="subtle-note">
+              If your mission is to increase adoptions and reduce length of stay,
+              this kit is engineered to bring more of the right people to your
+              programs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT THIS KIT DOES FOR YOU -->
+      <section class="section" aria-labelledby="benefits-title">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="benefits-title">What this kit does for you</h2>
+            <p>
+              Turn your programs, adoptable pets, and educational content into a
+              structured SEO system that quietly drives adoptions every month.
+            </p>
+          </div>
+          <div class="section-tag">Mission-aligned outcomes</div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <ul class="pill-list">
+              <li class="pill-item">
+                <div class="pill-badge">A</div>
+                <div>
+                  <div class="pill-body-title">
+                    Help people find adoptable pets in your care
+                  </div>
+                  <p class="pill-body-text">
+                    Identify the real searches potential adopters use&mdash;“adopt
+                    a puppy/cat/senior dog near me”, “rescue dogs in [city]”&mdash;
+                    and connect them to your listings and programs.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">B</div>
+                <div>
+                  <div class="pill-body-title">
+                    Structure pet profiles to show up in search
+                  </div>
+                  <p class="pill-body-text">
+                    Use consistent, SEO-friendly formats for pet bios, statuses,
+                    and categories so search engines can actually understand and
+                    surface your animals and adoption resources.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">C</div>
+                <div>
+                  <div class="pill-body-title">
+                    Increase qualified applications, not just traffic
+                  </div>
+                  <p class="pill-body-text">
+                    Use content and page layouts that filter for ready, informed
+                    adopters who understand your process and expectations before
+                    they apply.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <ul class="pill-list">
+              <li class="pill-item">
+                <div class="pill-badge">D</div>
+                <div>
+                  <div class="pill-body-title">
+                    Explain your adoption process once, at scale
+                  </div>
+                  <p class="pill-body-text">
+                    Clear, searchable process pages and FAQs reduce repeated
+                    questions, freeing up staff and volunteers while improving
+                    adopter experience.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">E</div>
+                <div>
+                  <div class="pill-body-title">
+                    Build trust with education &amp; transparency
+                  </div>
+                  <p class="pill-body-text">
+                    Educational guides on preparing for adoption, behavior,
+                    medical needs, and returns make you the trusted authority in
+                    your region, online and offline.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">F</div>
+                <div>
+                  <div class="pill-body-title">
+                    Turn SEO into a routine your team can run
+                  </div>
+                  <p class="pill-body-text">
+                    With checklists and content prompts, SEO becomes a shared,
+                    manageable task for staff and volunteers&mdash;not a mystery
+                    project on the back burner.
+                  </p>
+                </div>
+              </li>
+            </ul>
+            <p class="subtle-note">
+              Result: more of the right families discover your animals and
+              programs, with fewer bottlenecks and less confusion along the way.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU GET INSIDE -->
+      <section class="section" aria-labelledby="inside-title">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="inside-title">
+              What you get inside the Pet Adoption SEO System Kit
+            </h2>
+            <p>
+              Every component is shaped around how adoption organizations actually
+              operate&mdash;programs, pet listings, volunteers, and limited time.
+            </p>
+          </div>
+          <div class="section-tag">$197, one-time</div>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-tag">Module 1</div>
+            <div class="feature-title">Adoption Keyword &amp; Topic Blueprint</div>
+            <p class="feature-desc">
+              A ready-made map of how people search for adoption, fostering, and
+              shelter services in your region.
+            </p>
+            <ul class="feature-list">
+              <li>
+                Keyword buckets for dogs, cats, kittens, puppies, special needs,
+                and seniors
+              </li>
+              <li>
+                “Adopter intent tiers” from casual browsing to ready-to-apply
+              </li>
+              <li>
+                Templates for mapping keywords to programs, pet listings, and
+                education pages
+              </li>
+            </ul>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-tag">Module 2</div>
+            <div class="feature-title">Program &amp; Local Landing Page Templates</div>
+            <p class="feature-desc">
+              Structured pages for your main adoption, foster, volunteer, and
+              donation programs across cities or service areas.
+            </p>
+            <ul class="feature-list">
+              <li>
+                Home, “adopt”, “foster”, and “get involved” page outlines wired
+                for SEO
+              </li>
+              <li>
+                City &amp; region landing page templates for “near me” searches
+              </li>
+              <li>
+                Copy prompts to highlight your mission, impact, and transparency
+              </li>
+            </ul>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-tag">Module 3</div>
+            <div class="feature-title">Adoptable Pet Profile System</div>
+            <p class="feature-desc">
+              A standardized way to create SEO-friendly pet profiles that still
+              feel humane and individual.
+            </p>
+            <ul class="feature-list">
+              <li>
+                Bio templates for dogs, cats, bonded pairs, special needs, and
+                long-stay pets
+              </li>
+              <li>
+                Field suggestions (age, behavior, compatibility) tuned for search
+                &amp; clarity
+              </li>
+              <li>
+                Internal link patterns to guide visitors from profiles into
+                applications and education
+              </li>
+            </ul>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-tag">Module 4</div>
+            <div class="feature-title">
+              Adoption Process &amp; Application Flow Framework
+            </div>
+            <p class="feature-desc">
+              Clear paths from initial search to submitted application that reduce
+              confusion and drop-off.
+            </p>
+            <ul class="feature-list">
+              <li>
+                Step-by-step adoption process pages and graphical timelines
+              </li>
+              <li>
+                Application, screening, and “what to expect next” page prompts
+              </li>
+              <li>
+                Follow-up email angles to keep qualified adopters engaged
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="subtle-note">
+          Plus: implementation checklists, publishing workflows, and content
+          prompts your communications staff or volunteers can use without needing
+          advanced SEO knowledge.
+        </p>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="section" aria-labelledby="how-title">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="how-title">How it works</h2>
+            <p>
+              The kit walks you through a simple path: clarify your programs,
+              launch high-impact pages, then grow your education and pet profile
+              system over time.
+            </p>
+          </div>
+          <div class="section-tag">4-step implementation</div>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-title">Clarify your adoption ecosystem</div>
+            <p class="step-text">
+              Use the quick-start worksheet to define your programs (adoption,
+              foster, volunteer, clinic), service areas, and adopter journeys.
+              This becomes the foundation for your keyword and content map.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Launch core SEO-ready pages</div>
+            <p class="step-text">
+              Plug your details into the templates for home, “adopt”, program
+              pages, and local city/region pages so search engines understand who
+              you serve and where.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Revamp pet profiles &amp; education hubs</div>
+            <p class="step-text">
+              Standardize pet bios and build educational hubs around adoption
+              prep, behavior, and expectations so the right adopters feel ready
+              and confident to apply.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-title">Run the ongoing SEO routine</div>
+            <p class="step-text">
+              Follow the weekly &amp; monthly checklists to publish new content,
+              update pet profiles, and strengthen key pages, so your visibility
+              and application volume grow over time.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- LIMITED GPT VS FULL KIT -->
+      <section class="section" aria-labelledby="compare-title">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="compare-title">
+              Limited GPT vs Full Pet Adoption SEO System Kit
+            </h2>
+            <p>
+              Explore ideas with the Limited GPT, then unlock the full $197 kit
+              for the complete implementation system.
+            </p>
+          </div>
+          <div class="section-tag">Compare options</div>
+        </div>
+
+        <div class="compare-grid">
+          <article class="compare-card limited">
+            <div class="compare-chip limited">Limited GPT</div>
+            <div class="compare-title">Try the Pet Adoption SEO assistant</div>
+            <p class="compare-sub">
+              A focused GPT that helps you brainstorm adoption SEO ideas and
+              content angles tailored to your programs and region.
+            </p>
+            <ul class="compare-list">
+              <li>
+                Ask questions about keywords for adoption, fostering, and
+                volunteering
+              </li>
+              <li>
+                Get example page outlines for programs and pet profiles
+              </li>
+              <li>
+                Explore how the system thinks about intent and user journeys
+              </li>
+              <li>
+                Great for testing fit with your organization’s communication style
+              </li>
+            </ul>
+            <p class="compare-sub">
+              The Limited GPT is powerful for brainstorming, but it does not
+              include the full library of templates, checklists, or concrete,
+              step-by-step implementation plans.
+            </p>
+          </article>
+
+          <article class="compare-card full">
+            <div class="compare-ribbon">Most value</div>
+            <div class="compare-chip full">Full SEO System Kit</div>
+            <div class="compare-title">
+              The complete Pet Adoption SEO playbook
+            </div>
+            <p class="compare-sub">
+              Everything inside the prompts, plus a complete, battle-tested SEO
+              system your team can run for your adoption programs.
+            </p>
+            <ul class="compare-list">
+              <li>
+                All modules &amp; templates: pages, profiles, calendars, and
+                checklists
+              </li>
+              <li>
+                Pre-built keyword &amp; topic maps for adoption, foster, and
+                support programs
+              </li>
+              <li>
+                Local SEO, education content, and application flows wired together
+              </li>
+              <li>
+                Documentation you can share with staff, board, and volunteers
+              </li>
+            </ul>
+            <p class="compare-price">$197 one-time, no subscription.</p>
+            <p class="compare-sub">
+              Best for organizations that want a clear, mission-aligned SEO
+              system instead of scattered, one-off campaigns.
+            </p>
+          </article>
+        </div>
+
+        <div class="btn-row" style="justify-content: center; margin-top: 16px;">
+          <a href="#limited-gpt-link" class="btn btn-ghost">
+            Try the Limited GPT First
+          </a>
+          <a href="#full-kit-checkout" class="btn btn-primary">
+            Get the Full SEO System Kit for $197
+          </a>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" aria-labelledby="faq-title">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="faq-title">Frequently asked questions</h2>
+            <p>
+              Common questions from shelters, rescues, and adoption coordinators
+              before they implement the kit.
+            </p>
+          </div>
+          <div class="section-tag">Answers before you buy</div>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3 class="faq-q">
+              Do we need a marketing or tech person on staff to use this?
+            </h3>
+            <p class="faq-a">
+              No. The kit is written for animal welfare teams first, marketers
+              second. As long as someone can edit your site (or work with your web
+              vendor), they can plug in the templates and follow the checklists.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">
+              Will this still help if we rely heavily on national listing sites?
+            </h3>
+            <p class="faq-a">
+              Yes. The kit helps you build a strong, searchable home base on your
+              own website while still benefiting from external listing platforms.
+              Many organizations use both: national reach plus a clear local
+              presence and process on their own domain.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">
+              What if we already have a website and some SEO work done?
+            </h3>
+            <p class="faq-a">
+              Perfect. You can use the kit to audit your existing structure,
+              identify gaps in key programs and pet profiles, strengthen local
+              landing pages, and build out education hubs that align with your
+              current efforts rather than replacing them.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">
+              How soon will we see adoption-related results?
+            </h3>
+            <p class="faq-a">
+              SEO is gradual, but many organizations see leading indicators within
+              weeks: more organic traffic to “adopt” pages, better engagement with
+              pet profiles, and more inquiries. The larger, compounding gains in
+              applications and awareness typically show up over 3&ndash;6+ months
+              as the routine is followed consistently.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">
+              Can volunteers help implement the Pet Adoption SEO System Kit?
+            </h3>
+            <p class="faq-a">
+              Absolutely. The kit includes checklists and prompts that can be
+              assigned to trained volunteers or interns. You can keep oversight at
+              the staff level while letting volunteers handle structured tasks like
+              content updates and profile improvements.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">
+              Is the $197 price a subscription or a one-time payment?
+            </h3>
+            <p class="faq-a">
+              It’s a one-time payment of <strong>$197</strong> for the Pet
+              Adoption SEO System Kit. No recurring fees. Once you have it, you
+              can reuse the system across campaigns, programs, and location
+              expansions.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="cta-section" aria-labelledby="cta-title">
+        <h2 id="cta-title" class="cta-title">
+          Ready to help more pets
+          <span class="hero-highlight">find the right homes</span> through search?
+        </h2>
+        <p class="cta-sub">
+          Get the Pet Adoption SEO System Kit today and turn everyday Google
+          searches into informed adopters discovering your animals and programs.
+        </p>
+
+        <div class="cta-price-row">
+          <span class="cta-price">$197</span>
+          <span class="cta-note">
+            One-time access &middot; Built for shelters &amp; rescues &middot; No
+            subscription
+          </span>
+        </div>
+
+        <div class="cta-buttons">
+          <div class="btn-row">
+            <a href="#limited-gpt-link" class="btn btn-ghost">
+              Try the Limited GPT First
+            </a>
+            <a href="#full-kit-checkout" class="btn btn-primary">
+              Get the Full SEO System Kit
+            </a>
+          </div>
+          <p class="cta-note">
+            Start with the Limited GPT if you’d like to explore the approach&mdash;upgrade to the full $197 kit when
+            you’re ready to implement the complete system.
+          </p>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <p>
+          This kit shares SEO and communications frameworks, not legal or
+          regulatory advice. Always follow local laws, regulations, and ethical
+          guidelines for animal welfare and adoption.
+        </p>
+        <p style="margin-top: 6px;">
+          &copy; <span id="year"></span> Pet Adoption SEO System Kit. All rights
+          reserved.
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
