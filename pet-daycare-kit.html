@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pet Daycare SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-main: #020617;
+      --bg-card: #020819;
+      --bg-soft: #020c1b;
+      --accent: #4ade80;
+      --accent-soft: rgba(74, 222, 128, 0.12);
+      --accent-strong: #22c55e;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --text-soft: #6b7280;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --danger: #f97373;
+      --shadow-soft: 0 22px 45px rgba(15, 23, 42, 0.88);
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #0b1120 0, #020617 45%, #000 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 72px;
+    }
+
+    header {
+      margin-bottom: 32px;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 15px;
+      background: radial-gradient(circle at 30% 0, #22c55e, #16a34a 40%, #0f172a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.55);
+      color: #ecfdf5;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text span:first-child {
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .logo-text span:last-child {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 12px;
+      color: var(--text-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #bbf7d0 0, #22c55e 50%, #14532d 100%);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+    }
+
+    h1 {
+      font-size: clamp(30px, 4vw, 38px);
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+
+    .headline-highlight {
+      background: linear-gradient(90deg, rgba(34, 197, 94, 0.18), transparent);
+      padding: 2px 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(74, 222, 128, 0.35);
+      font-size: 13px;
+      color: #bbf7d0;
+    }
+
+    .headline-highlight span:last-child {
+      color: var(--text-muted);
+    }
+
+    .subheading {
+      margin-top: 12px;
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    .hero-card {
+      margin-top: 22px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, #022c22 0, #020617 45%, #020617 100%);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: var(--shadow-soft);
+      padding: 22px 22px 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: flex-start;
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-bullets {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 16px;
+      margin-top: 4px;
+    }
+
+    .hero-bullet {
+      display: flex;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      align-items: flex-start;
+    }
+
+    .hero-bullet-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--accent-strong);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .hero-microcopy {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-top: 6px;
+    }
+
+    .hero-aside {
+      border-radius: 24px;
+      padding: 14px 16px 16px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(5, 46, 22, 0.94));
+      border: 1px solid rgba(74, 222, 128, 0.5);
+    }
+
+    .price-tag {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .price-main {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.06em;
+      color: #bbf7d0;
+    }
+
+    .price-currency {
+      font-size: 16px;
+      opacity: 0.85;
+    }
+
+    .price-pill {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      background: rgba(15, 118, 110, 0.35);
+      color: #a5f3fc;
+      border: 1px solid rgba(45, 212, 191, 0.5);
+    }
+
+    .price-note {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 12px;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .meta-item {
+      padding: 8px 10px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.86);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .meta-label {
+      display: block;
+      color: var(--text-soft);
+      margin-bottom: 2px;
+    }
+
+    .meta-value {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      box-shadow: 0 10px 35px rgba(34, 197, 94, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 45px rgba(22, 163, 74, 0.6);
+      background: linear-gradient(135deg, #4ade80, #16a34a);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.92);
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(148, 163, 184, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .btn-pill-subtext {
+      font-size: 11px;
+      color: var(--text-soft);
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    main {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    section {
+      border-radius: var(--radius-lg);
+      background: rgba(2, 6, 23, 0.88);
+      border: 1px solid var(--border-subtle);
+      padding: 18px 20px 20px;
+      backdrop-filter: blur(18px);
+    }
+
+    section h2 {
+      font-size: 18px;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .section-intro {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 0 0 14px;
+      max-width: 540px;
+    }
+
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 20px;
+      align-items: flex-start;
+    }
+
+    .pill-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .list-bullet {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(51, 65, 85, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #e5e7eb;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .list-bullet.green {
+      background: rgba(22, 163, 74, 0.25);
+      color: #bbf7d0;
+    }
+
+    .muted {
+      color: var(--text-soft);
+    }
+
+    .strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .stacked {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mini-card {
+      border-radius: 16px;
+      padding: 10px 11px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(30, 64, 175, 0.75);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .mini-card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-bottom: 3px;
+    }
+
+    .mini-card strong {
+      color: #e5e7eb;
+    }
+
+    .inline-price {
+      color: #bbf7d0;
+      font-weight: 600;
+    }
+
+    /* What you get inside */
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px 17px;
+    }
+
+    .deliverable-card {
+      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 10px 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .deliverable-title {
+      font-size: 13px;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .deliverable-tag {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-soft);
+    }
+
+    .deliverable-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    /* How it works */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .step-card {
+      border-radius: 18px;
+      padding: 10px 11px;
+      background: var(--bg-card);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .step-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-bottom: 5px;
+    }
+
+    .step-num {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #e5e7eb;
+    }
+
+    .step-title {
+      font-size: 13px;
+      color: #e5e7eb;
+      margin-bottom: 3px;
+    }
+
+    /* Comparison */
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .compare-card {
+      border-radius: 18px;
+      padding: 11px 12px;
+      background: var(--bg-card);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .compare-card.limited {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
+    }
+
+    .compare-card.full {
+      background: radial-gradient(circle at top left, rgba(22, 163, 74, 0.2), rgba(15, 23, 42, 0.95));
+      border-color: rgba(74, 222, 128, 0.85);
+      box-shadow: 0 18px 40px rgba(22, 163, 74, 0.45);
+    }
+
+    .compare-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .compare-title {
+      font-size: 15px;
+      color: #e5e7eb;
+      margin-top: 2px;
+      margin-bottom: 4px;
+    }
+
+    .compare-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 12px;
+    }
+
+    .compare-list li {
+      display: flex;
+      gap: 7px;
+      align-items: flex-start;
+    }
+
+    .compare-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .compare-icon.good {
+      background: rgba(22, 163, 74, 0.2);
+      color: #bbf7d0;
+    }
+
+    .compare-icon.bad {
+      background: rgba(127, 29, 29, 0.4);
+      color: #fecaca;
+    }
+
+    .compare-footnote {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 18px;
+    }
+
+    .faq-item {
+      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 9px 11px 10px;
+      font-size: 13px;
+    }
+
+    .faq-q {
+      font-size: 13px;
+      color: #e5e7eb;
+      margin-bottom: 3px;
+    }
+
+    .faq-a {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Final CTA */
+
+    .cta-section {
+      border-radius: 26px;
+      background: radial-gradient(circle at top, rgba(74, 222, 128, 0.14), rgba(2, 6, 23, 0.98));
+      border: 1px solid rgba(74, 222, 128, 0.6);
+      padding: 20px 22px 22px;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 20px;
+      margin-bottom: 6px;
+      letter-spacing: -0.03em;
+    }
+
+    .cta-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .cta-price {
+      font-size: 14px;
+      color: #bbf7d0;
+      margin-bottom: 10px;
+    }
+
+    .cta-price strong {
+      font-size: 20px;
+      letter-spacing: -0.05em;
+    }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(30, 64, 175, 0.6);
+      font-size: 11px;
+      color: var(--text-soft);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    footer a {
+      color: var(--text-soft);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive behavior */
+    @media (max-width: 880px) {
+      .hero-grid,
+      .two-col-grid,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-card {
+        padding: 18px 15px 20px;
+      }
+
+      .page-wrap {
+        padding-inline: 14px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .logo-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-bullets {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-row {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header>
+      <div class="logo-row">
+        <div class="logo-mark">
+          <div class="logo-icon">PD</div>
+          <div class="logo-text">
+            <span>SEO SYSTEM KIT</span>
+            <span>Pet daycare enrollments on autopilot</span>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>Built for pet &amp; dog daycares</span>
+        </div>
+      </div>
+
+      <div class="headline-highlight">
+        <span>Pet Daycare SEO System Kit</span>
+        <span>Fill your daycare with ideal, recurring clients from Google</span>
+      </div>
+
+      <h1>Be the go-to pet daycare in your city — without discount sites or ad spend.</h1>
+      <p class="subheading">
+        A plug-and-play SEO system built specifically for pet &amp; dog daycare facilities that
+        want consistent enrollments from Google, Maps, and local search — not just word of mouth.
+      </p>
+
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-main">
+            <div class="pill-label">What this system does</div>
+            <p class="section-intro">
+              Instead of guessing what parents need to see on your site, this kit gives you proven
+              SEO pages, daycare-specific keywords, and clear instructions so you show up when
+              local pet parents search for safe, fun, trustworthy daycare today.
+            </p>
+
+            <div class="hero-bullets">
+              <div class="hero-bullet">
+                <div class="hero-bullet-icon">★</div>
+                <div>
+                  <span class="strong">Ranks you in “dog daycare near me” searches</span><br />
+                  See exactly which local and neighborhood keywords to target and where to place them.
+                </div>
+              </div>
+              <div class="hero-bullet">
+                <div class="hero-bullet-icon">★</div>
+                <div>
+                  <span class="strong">Turns site visitors into tour requests &amp; enrollments</span><br />
+                  Conversion-ready layouts tailored to busy, safety-focused pet parents.
+                </div>
+              </div>
+              <div class="hero-bullet">
+                <div class="hero-bullet-icon">★</div>
+                <div>
+                  <span class="strong">Boosts your Google Maps visibility</span><br />
+                  Local SEO frameworks for showing up in Maps, “near me,” and surrounding suburbs.
+                </div>
+              </div>
+              <div class="hero-bullet">
+                <div class="hero-bullet-icon">★</div>
+                <div>
+                  <span class="strong">Works even if you’re not “techy”</span><br />
+                  Step-by-step checklists you can follow or hand to a staff member or VA.
+                </div>
+              </div>
+            </div>
+
+            <p class="hero-microcopy">
+              Built purely for daycares and boarding/daycare hybrids — no generic “local business”
+              fluff, no long-term agency retainers, no monthly SEO software required.
+            </p>
+          </div>
+
+          <aside class="hero-aside">
+            <div class="price-tag">
+              <span class="price-main">
+                <span class="price-currency">$</span>197
+              </span>
+              <span class="price-pill">One-time payment · Lifetime access</span>
+            </div>
+            <p class="price-note">
+              One or two new recurring daycare clients can more than pay for the Pet Daycare SEO
+              System Kit. Every month after that is pure upside.
+            </p>
+
+            <div class="hero-meta">
+              <div class="meta-item">
+                <span class="meta-label">Ideal for</span>
+                <span class="meta-value">Independent &amp; boutique daycares</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Time to implement</span>
+                <span class="meta-value">Weekend-friendly (3–5 hours)</span>
+              </div>
+            </div>
+
+            <div class="meta-item" style="margin-bottom: 8px;">
+              <span class="meta-label">You’ll need</span>
+              <span class="meta-value">Basic website editor + Google account</span>
+            </div>
+
+            <div class="btn-row">
+              <a
+                href="#limited-gpt-link"
+                class="btn btn-ghost"
+              >
+                Try the Limited GPT First
+              </a>
+              <!-- TODO: replace with actual Limited GPT URL -->
+
+              <a
+                href="#full-kit-checkout"
+                class="btn btn-primary"
+              >
+                Get the Full SEO System Kit
+              </a>
+              <!-- TODO: replace with actual checkout URL -->
+            </div>
+            <div class="btn-pill-subtext">
+              Secure checkout · Instant access · Built for pet daycares worldwide
+            </div>
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Who this kit is for -->
+      <section>
+        <div class="section-eyebrow">Who this kit is for</div>
+        <h2>Made for real pet daycare operators — not SEO agencies.</h2>
+        <p class="section-intro">
+          If you’d rather focus on safe play groups, happy staff, and smooth operations,
+          but still want a waitlist-worthy daycare, this kit was built for you.
+        </p>
+
+        <div class="two-col-grid">
+          <div>
+            <div class="pill-label">Perfect fit if you are</div>
+            <ul class="list">
+              <li>
+                <div class="list-bullet green">1</div>
+                <div>
+                  A <span class="strong">dog or pet daycare owner/manager</span> who wants
+                  more of the right dogs (and fewer “bad fits”) on your play floor.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet green">2</div>
+                <div>
+                  Running a <span class="strong">daycare + boarding or daycare + training hybrid</span>
+                  and need SEO that respects your full service stack.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet green">3</div>
+                <div>
+                  A multi-location daycare who wants a
+                  <span class="strong">repeatable system for each facility and suburb</span>.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet green">4</div>
+                <div>
+                  Tired of paid ads and coupon sites and ready for
+                  <span class="strong">trust-based, search-driven enrollments all year</span>.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="stacked">
+            <div class="mini-card">
+              <div class="mini-card-label">Not a fit if</div>
+              <div>
+                You don’t plan to accept ongoing daycare clients,
+                <span class="strong">won’t use a website</span>,
+                or want only occasional “when it’s slow” spikes rather than a full, steady roster.
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-card-label">Best results</div>
+              <div>
+                Daycares that can deliver a great experience and
+                <span class="strong">consistently request reviews and referrals</span> —
+                the kit shows you exactly when and how to ask.
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-card-label">What you really gain</div>
+              <div>
+                A clear SEO playbook you can plug into any location —
+                and hand to future staff or marketers so
+                <span class="strong">your strategy never lives in one person’s head</span>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- What this kit does for you -->
+      <section>
+        <div class="section-eyebrow">What this kit does for you</div>
+        <h2>Turn local search into stable daycare revenue, month after month.</h2>
+        <p class="section-intro">
+          The Pet Daycare SEO System Kit is built around how worried, busy pet parents
+          search, compare, and choose daycare facilities in your city.
+        </p>
+
+        <div class="two-col-grid">
+          <div>
+            <div class="pill-label">Results you can feel</div>
+            <ul class="list">
+              <li>
+                <div class="list-bullet green">✓</div>
+                <div>
+                  <span class="strong">More “We found you on Google” inquiries</span> for daycare,
+                  daycare + boarding, evaluations, and trial days.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet green">✓</div>
+                <div>
+                  <span class="strong">Higher-quality fits</span> who care about safety, staff,
+                  enrichment, and routine — not just cheapest daily rates.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet green">✓</div>
+                <div>
+                  A <span class="strong">smoother enrollment pipeline</span> from search → tour →
+                  evaluation → recurring packages.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet green">✓</div>
+                <div>
+                  A website that works like a
+                  <span class="strong">24/7 front desk assistant</span> — answering questions and
+                  collecting leads while staff is busy with dogs.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="pill-label">Behind the scenes</div>
+            <ul class="list">
+              <li>
+                <div class="list-bullet">A</div>
+                <div>
+                  Page structures that <span class="strong">mirror how parents read your site</span>:
+                  safety, staff, play groups, vaccinations, cameras, and pricing.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet">B</div>
+                <div>
+                  Technical SEO basics (speed, mobile, headings, meta tags)
+                  in plain language so <span class="strong">your site is fast and trustworthy</span>.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet">C</div>
+                <div>
+                  Local SEO frameworks for <span class="strong">city pages, neighborhoods, and
+                  nearby suburbs</span> that constantly introduce new ideal clients.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet">D</div>
+                <div>
+                  Review and testimonial frameworks focused on
+                  <span class="strong">safety, staff, cleanliness, and communication</span> —
+                  the real decision-makers for daycare parents.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- What you get inside -->
+      <section>
+        <div class="section-eyebrow">What you get inside</div>
+        <h2>Your complete SEO system, tailored to pet &amp; dog daycare.</h2>
+        <p class="section-intro">
+          Every component is built for daycares. Copy, paste, customize to your brand and city,
+          and ship — no blank pages, no “local plumber” examples.
+        </p>
+
+        <div class="deliverables-grid">
+          <div class="deliverable-card">
+            <div class="deliverable-title">
+              Daycare Homepage &amp; Services Templates
+              <span class="deliverable-tag">Copy + Layout</span>
+            </div>
+            <p>
+              High-converting page frameworks for your homepage, daycare packages, add-ons,
+              and “About our team &amp; facility” page — tuned for safety, enrichment, and trust.
+            </p>
+            <div class="deliverable-meta">
+              <span>3–4 core page frameworks</span>
+              <span>Parent-first messaging</span>
+            </div>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-title">
+              Pet Daycare Keyword Map
+              <span class="deliverable-tag">Research Done For You</span>
+            </div>
+            <p>
+              A curated list of search terms pet parents use for daycare, half-day, full-day,
+              evaluations, and daycare + boarding, organized by city and intent.
+            </p>
+            <div class="deliverable-meta">
+              <span>“Near me” + city clusters</span>
+              <span>Intent-based groupings</span>
+            </div>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-title">
+              Google Business Profile Optimization Kit
+              <span class="deliverable-tag">Local SEO</span>
+            </div>
+            <p>
+              Step-by-step guide to optimizing your Google Business Profile with daycare-specific
+              categories, photos, services, and posts so you stand out in Maps and the local 3-pack.
+            </p>
+            <div class="deliverable-meta">
+              <span>Photo &amp; post prompts</span>
+              <span>Review request scripts</span>
+            </div>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-title">
+              Content &amp; FAQ System for Daycares
+              <span class="deliverable-tag">Content Engine</span>
+            </div>
+            <p>
+              24+ SEO-ready topics and outlines that answer common worries like
+              “Is daycare safe?”, “How often should my dog go?”, and “What about puppies?”
+              in your local area.
+            </p>
+            <div class="deliverable-meta">
+              <span>Topics + outlines</span>
+              <span>Internal link prompts</span>
+            </div>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-title">
+              Tour, Evaluation &amp; Review Playbook
+              <span class="deliverable-tag">Conversion &amp; Trust</span>
+            </div>
+            <p>
+              Email, SMS, and phone scripts that move parents from inquiry to tour,
+              from tour to evaluation, and from happy client to review and referrals.
+            </p>
+            <div class="deliverable-meta">
+              <span>Messaging templates</span>
+              <span>Follow-up sequences</span>
+            </div>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-title">
+              Implementation Checklist &amp; Tracking Sheet
+              <span class="deliverable-tag">Execution</span>
+            </div>
+            <p>
+              A simple dashboard to track what’s implemented, which locations rank where,
+              and how many inquiries are coming from Google each month.
+            </p>
+            <div class="deliverable-meta">
+              <span>Step-by-step checklist</span>
+              <span>Rank &amp; lead tracker</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section>
+        <div class="section-eyebrow">How it works</div>
+        <h2>From “hidden online” to waitlisted daycare in four focused steps.</h2>
+        <p class="section-intro">
+          You don’t have to overhaul everything at once. This kit is designed for busy
+          teams — quick wins first, deeper improvements next.
+        </p>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-pill">
+              <span class="step-num">1</span>
+              <span>Plug in your city &amp; locations</span>
+            </div>
+            <div class="step-title">Set your local foundation</div>
+            <p>
+              Download the kit, add your city, neighborhoods, and locations. The keyword map
+              and examples adapt to your daycare’s service area and structure.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-pill">
+              <span class="step-num">2</span>
+              <span>Update your core pages</span>
+            </div>
+            <div class="step-title">Make your site “tour-ready”</div>
+            <p>
+              Use the homepage and services templates to clearly communicate safety, staff,
+              play groups, pricing ranges, and enrollment steps in SEO-friendly language.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-pill">
+              <span class="step-num">3</span>
+              <span>Optimize Google Business</span>
+            </div>
+            <div class="step-title">Show up in Maps &amp; search</div>
+            <p>
+              Follow the Google Business Profile checklist to tune your categories, photos,
+              services, and posts — especially for multi-location setups.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-pill">
+              <span class="step-num">4</span>
+              <span>Turn happy clients into SEO</span>
+            </div>
+            <div class="step-title">Reviews &amp; referrals on repeat</div>
+            <p>
+              Use the review and referral playbook after successful evaluations and first weeks
+              to steadily grow your Google reputation and word-of-mouth engine.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Limited GPT vs Full Kit -->
+      <section>
+        <div class="section-eyebrow">Limited GPT vs full system</div>
+        <h2>Try the Limited GPT — then unlock the complete Pet Daycare SEO System Kit.</h2>
+        <p class="section-intro">
+          The Limited GPT is your test drive for ideas. The full kit is your complete,
+          repeatable SEO engine for long-term daycare enrollments.
+        </p>
+
+        <div class="compare-grid">
+          <div class="compare-card limited">
+            <div class="compare-label">Limited GPT</div>
+            <div class="compare-title">Great for quick prompts &amp; inspiration</div>
+            <ul class="compare-list">
+              <li>
+                <div class="compare-icon good">●</div>
+                <div>
+                  Generate sample headlines, FAQs, and social posts tailored to pet daycare.
+                </div>
+              </li>
+              <li>
+                <div class="compare-icon good">●</div>
+                <div>
+                  Explore keyword themes and content angles before you commit to the full system.
+                </div>
+              </li>
+              <li>
+                <div class="compare-icon bad">×</div>
+                <div>
+                  No structured implementation plan, tracking sheet, or done-for-you keyword map.
+                </div>
+              </li>
+              <li>
+                <div class="compare-icon bad">×</div>
+                <div>
+                  No complete page templates or multi-location frameworks tuned for daycares.
+                </div>
+              </li>
+            </ul>
+            <div class="compare-footnote">
+              Use it to “taste” the strategy and see how daycare-specific SEO feels on your brand.
+            </div>
+          </div>
+
+          <div class="compare-card full">
+            <div class="compare-label">Full SEO System Kit</div>
+            <div class="compare-title">
+              Everything you need to rank, get reviews, and fill your roster.
+            </div>
+            <ul class="compare-list">
+              <li>
+                <div class="compare-icon good">✓</div>
+                <div>
+                  <span class="strong">All Limited GPT benefits</span> plus plug-and-play
+                  templates, examples, and checklists for your entire funnel.
+                </div>
+              </li>
+              <li>
+                <div class="compare-icon good">✓</div>
+                <div>
+                  Done-for-you daycare keyword map, page frameworks, and content topics
+                  focused solely on pet daycare and daycare hybrids.
+                </div>
+              </li>
+              <li>
+                <div class="compare-icon good">✓</div>
+                <div>
+                  Google Business Profile system and review playbook that highlight safety,
+                  staff, and enrichment — what parents care about most.
+                </div>
+              </li>
+              <li>
+                <div class="compare-icon good">✓</div>
+                <div>
+                  One-time investment of <span class="inline-price">$197</span> —
+                  lifetime access to core updates as best practices evolve.
+                </div>
+              </li>
+            </ul>
+            <div class="compare-footnote">
+              Ideal if you’re ready to treat your daycare like a resilient, search-powered
+              business — not a “hope they find us” operation.
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row" style="margin-top: 14px;">
+          <a
+            href="#limited-gpt-link"
+            class="btn btn-ghost"
+          >
+            Try the Limited GPT First
+          </a>
+          <!-- TODO: replace with actual Limited GPT URL -->
+
+          <a
+            href="#full-kit-checkout"
+            class="btn btn-primary"
+          >
+            Get the Full SEO System Kit for $197
+          </a>
+          <!-- TODO: replace with actual checkout URL -->
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section>
+        <div class="section-eyebrow">FAQ</div>
+        <h2>Questions pet daycare owners usually ask before they jump in.</h2>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">Do I need to be “good with tech” to use this?</div>
+            <div class="faq-a">
+              No. If you (or someone on your team) can edit basic text and images on your website,
+              you can implement this kit. Everything is written for operators and managers,
+              not SEO pros or developers.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Will this work if I also offer boarding, training, or grooming?</div>
+            <div class="faq-a">
+              Yes. Many daycares are multi-service facilities. The kit includes structures and
+              prompts you can adapt to daycare-only or daycare + other services without diluting
+              your main offer.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How long until I see results from the SEO changes?</div>
+            <div class="faq-a">
+              SEO isn’t instant, but with a strong Google Business Profile and updated pages,
+              many daycares see ranking and inquiry improvements in a few weeks, with stronger,
+              more stable gains over 3–6 months as content and reviews build.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is this only for dog daycare, or cats and other pets too?</div>
+            <div class="faq-a">
+              The system is flexible. You’ll see dog-centric examples, plus prompts and wording
+              you can adapt for cats and other small pets if your facility accepts them.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">What if I don’t have a website yet?</div>
+            <div class="faq-a">
+              You’ll get page templates and copy that plug into simple builders like Squarespace,
+              Wix, or WordPress. Even a basic one-page site is enough to start seeing benefits
+              from the kit.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Is $197 a one-time payment or a subscription?</div>
+            <div class="faq-a">
+              It’s a <span class="strong">one-time payment of $197</span> for the complete Pet Daycare
+              SEO System Kit, including future updates to the core materials. No ongoing subscription,
+              no hidden fees, and you own the system for life.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="cta-section">
+        <div class="cta-title">
+          Ready to keep your daycare full with clients who found you on Google first?
+        </div>
+        <div class="cta-sub">
+          Install the Pet Daycare SEO System Kit once and let it quietly bring you
+          ideal pet parents every week — while you focus on safe play, happy staff,
+          and smooth operations.
+        </div>
+        <div class="cta-price">
+          Get the complete Pet Daycare SEO System Kit today for
+          <strong>$197</strong> — one-time payment, lifetime access.
+        </div>
+
+        <div class="btn-row">
+          <a
+            href="#limited-gpt-link"
+            class="btn btn-ghost"
+          >
+            Try the Limited GPT First
+          </a>
+          <!-- TODO: replace with actual Limited GPT URL -->
+
+          <a
+            href="#full-kit-checkout"
+            class="btn btn-primary"
+          >
+            Get the Full SEO System Kit
+          </a>
+          <!-- TODO: replace with actual checkout URL -->
+        </div>
+        <div class="btn-pill-subtext">
+          Instant download · Works worldwide · Designed for real pet daycare businesses
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Pet Daycare SEO System Kit. All rights reserved.</div>
+      <div>
+        <a href="#terms">Terms</a> ·
+        <a href="#privacy">Privacy</a> ·
+        <a href="#support">Support</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple year auto-update
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
