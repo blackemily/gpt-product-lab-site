@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pet Sitter SEO System Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #050708;
+      --bg-elevated: #0c1115;
+      --bg-soft: #111821;
+      --accent: #28e07a;
+      --accent-soft: rgba(40, 224, 122, 0.12);
+      --accent-strong: #4bf89d;
+      --text: #f5f7fa;
+      --text-soft: #a7b3c5;
+      --border-subtle: #1c2733;
+      --danger: #ff6b6b;
+      --muted: #6b7280;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --shadow-soft: 0 22px 45px rgba(0, 0, 0, 0.45);
+      --shadow-subtle: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #172a3a 0, #050708 55%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px 48px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-weight: 650;
+      letter-spacing: 0.01em;
+    }
+
+    p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 32px;
+      padding: 28px 26px 26px;
+      background: linear-gradient(
+          135deg,
+          rgba(40, 224, 122, 0.12),
+          transparent 55%
+        ),
+        var(--bg-elevated);
+      border-radius: 28px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(102, 252, 142, 0.26);
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -120px;
+      background: radial-gradient(
+        circle at top right,
+        rgba(40, 224, 122, 0.15),
+        transparent 55%
+      );
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-main,
+    .hero-side {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(40, 224, 122, 0.32);
+      background: rgba(8, 16, 18, 0.9);
+      color: var(--accent-strong);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 14px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(40, 224, 122, 0.9);
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 3.1vw, 2.4rem);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, #6bffb4, #2df089);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 560px;
+      margin-bottom: 18px;
+      font-size: 0.98rem;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .price-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: rgba(3, 10, 10, 0.9);
+      border: 1px solid rgba(40, 224, 122, 0.5);
+      box-shadow: 0 0 0 1px rgba(7, 28, 19, 0.8);
+    }
+
+    .price-main {
+      font-size: 1.05rem;
+      font-weight: 650;
+      color: var(--accent-strong);
+    }
+
+    .price-label {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .meta-tag {
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(7, 11, 14, 0.9);
+      font-size: 0.73rem;
+      color: var(--muted);
+    }
+
+    .meta-tag strong {
+      color: var(--accent-strong);
+      font-weight: 550;
+    }
+
+    .hero-quickwins {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-bottom: 22px;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .hero-quickwins span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .hero-quickwins .check {
+      width: 15px;
+      height: 15px;
+      border-radius: 999px;
+      background: rgba(40, 224, 122, 0.12);
+      border: 1px solid rgba(40, 224, 122, 0.7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--accent-strong);
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.18s ease-out;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #020814;
+      font-weight: 650;
+      box-shadow: 0 12px 30px rgba(40, 224, 122, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(40, 224, 122, 0.55);
+    }
+
+    .btn-ghost {
+      background: rgba(7, 10, 14, 0.9);
+      color: var(--text-soft);
+      border-color: rgba(148, 163, 184, 0.3);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.6);
+      background: rgba(12, 19, 27, 0.96);
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .hero-trust span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-trust-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(40, 224, 122, 0.9);
+    }
+
+    /* Hero side */
+
+    .hero-card {
+      background: rgba(6, 10, 16, 0.96);
+      border-radius: 20px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 16px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .hero-card-chip {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.7rem;
+      color: #7dd3fc;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+
+    .kpi-pill {
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(30, 64, 175, 0.7);
+    }
+
+    .kpi-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 4px;
+    }
+
+    .kpi-value {
+      font-size: 0.95rem;
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .kpi-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .hero-snippets {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 0.75rem;
+    }
+
+    .snippet {
+      padding: 6px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .snippet-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(40, 224, 122, 0.4);
+      box-shadow: 0 0 6px rgba(40, 224, 122, 0.7);
+    }
+
+    /* Generic sections */
+
+    .section {
+      background: rgba(5, 9, 14, 0.96);
+      border-radius: var(--radius-xl);
+      padding: 22px 22px 20px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-subtle);
+      margin-bottom: 22px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-header-text h2 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .section-header-text p {
+      font-size: 0.86rem;
+    }
+
+    .section-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 999px;
+      padding: 4px 10px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      white-space: nowrap;
+    }
+
+    /* Two-column grids */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.05fr);
+      gap: 18px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .pill-item {
+      display: flex;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .pill-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(40, 224, 122, 0.08);
+      border: 1px solid rgba(40, 224, 122, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--accent-strong);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pill-body-title {
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+      color: var(--text);
+    }
+
+    .pill-body-text {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .subtle-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* "What You Get Inside" */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.05fr);
+      gap: 16px;
+    }
+
+    .feature-card {
+      border-radius: 16px;
+      padding: 12px 12px 11px;
+      background: rgba(11, 17, 24, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .feature-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .feature-title {
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+      color: var(--text);
+    }
+
+    .feature-desc {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+    }
+
+    .feature-list {
+      padding-left: 18px;
+      margin: 0;
+      list-style: disc;
+    }
+
+    .feature-list li {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    /* How it works */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step-card {
+      background: var(--bg-soft);
+      border-radius: 16px;
+      padding: 10px 10px 9px;
+      border: 1px solid rgba(31, 41, 55, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      position: relative;
+    }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(40, 224, 122, 0.09);
+      border: 1px solid rgba(40, 224, 122, 0.7);
+      color: var(--accent-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-size: 0.86rem;
+      color: var(--text);
+    }
+
+    .step-text {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    /* Comparison */
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 18px;
+    }
+
+    .compare-card {
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-card.limited {
+      border-color:rgba(148, 163, 184, 0.6);
+    }
+
+    .compare-card.full {
+      border-color: rgba(40, 224, 122, 0.7);
+      box-shadow: 0 0 0 1px rgba(40, 224, 122, 0.2);
+    }
+
+    .compare-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 6px;
+    }
+
+    .compare-chip.limited {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .compare-chip.full {
+      background: rgba(40, 224, 122, 0.1);
+      color: var(--accent-strong);
+      border: 1px solid rgba(40, 224, 122, 0.7);
+    }
+
+    .compare-title {
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+    }
+
+    .compare-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .compare-list {
+      padding-left: 18px;
+      margin: 0 0 6px;
+      list-style: disc;
+    }
+
+    .compare-list li {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      margin-bottom: 3px;
+    }
+
+    .compare-price {
+      font-size: 0.86rem;
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .compare-ribbon {
+      position: absolute;
+      top: 10px;
+      right: -46px;
+      transform: rotate(36deg);
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #020617;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      padding: 3px 52px;
+      font-weight: 650;
+      box-shadow: 0 10px 25px rgba(40, 224, 122, 0.5);
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.05fr);
+      gap: 16px;
+    }
+
+    .faq-item {
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .faq-q {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .faq-a {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    /* Final CTA */
+
+    .cta-section {
+      background: radial-gradient(
+          circle at top right,
+          rgba(40, 224, 122, 0.12),
+          transparent 60%
+        ),
+        var(--bg-elevated);
+      border-radius: 26px;
+      padding: 22px 24px 22px;
+      border: 1px solid rgba(40, 224, 122, 0.6);
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      margin-top: 26px;
+    }
+
+    .cta-title {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .cta-sub {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      margin-bottom: 18px;
+    }
+
+    .cta-price-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .cta-price {
+      font-size: 1.4rem;
+      font-weight: 650;
+      color: var(--accent-strong);
+    }
+
+    .cta-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .cta-buttons .btn-row {
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--accent-strong);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 880px) {
+      .page {
+        padding: 22px 14px 40px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr !important;
+        padding: 22px 18px 18px;
+      }
+
+      .hero-meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-quickwins {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .grid-2,
+      .features-grid,
+      .compare-grid,
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section {
+        padding: 18px 16px 16px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-row {
+        width: 100%;
+      }
+
+      .btn {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="container">
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-main">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Pet Sitter SEO System Kit
+          </div>
+          <h1 id="hero-title">
+            Become the <span class="hero-highlight">go-to pet sitter</span> every local search finds first.
+          </h1>
+          <p class="hero-subtitle">
+            A plug-and-play SEO system built specifically for solo sitters, small teams, and pet sitting businesses who
+            want fully booked calendars from Google&mdash;not just referrals and luck.
+          </p>
+
+          <div class="hero-meta-row">
+            <div class="price-pill" aria-label="One-time price">
+              <span class="price-main">$197</span>
+              <span class="price-label">One-time kit access</span>
+            </div>
+            <span class="meta-tag">
+              Optimized for <strong>pet sitters &amp; dog walkers</strong>
+            </span>
+            <span class="meta-tag"> Ideal for: solo, small teams &amp; agencies </span>
+          </div>
+
+          <div class="hero-quickwins">
+            <span>
+              <span class="check">✓</span>
+              Rank for “pet sitter near me” in your area
+            </span>
+            <span>
+              <span class="check">✓</span>
+              Get found for dog walking, drop-in visits &amp; overnights
+            </span>
+            <span>
+              <span class="check">✓</span>
+              Turn searchers into booked, repeat clients
+            </span>
+          </div>
+
+          <div class="btn-row">
+            <a href="#limited-gpt-link" class="btn btn-ghost">
+              Try the Limited GPT First
+            </a>
+            <a href="#full-kit-checkout" class="btn btn-primary">
+              Get the Full SEO System Kit
+            </a>
+          </div>
+
+          <div class="hero-trust">
+            <span>
+              <span class="hero-trust-dot"></span>
+              Works for home-based sitters, teams, and multi-city operations
+            </span>
+            <span> No tech background needed&mdash;just follow the system </span>
+          </div>
+        </div>
+
+        <aside class="hero-side" aria-label="Preview of Pet Sitter SEO outcomes">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div>
+                <div class="hero-card-title">
+                  Pet sitter visibility snapshot
+                </div>
+                <p style="font-size: 0.78rem; margin-top: 2px;">
+                  Example outcome using the Pet Sitter SEO System Kit for a local sitter offering walks, visits &amp; overnights.
+                </p>
+              </div>
+              <div class="hero-card-chip">SEO system, not a plugin</div>
+            </div>
+
+            <div class="hero-kpi-grid">
+              <div class="kpi-pill">
+                <div class="kpi-label">90 days</div>
+                <div class="kpi-value">+128%</div>
+                <div class="kpi-sub">organic visits from “pet sitter + city”</div>
+              </div>
+              <div class="kpi-pill">
+                <div class="kpi-label">Booking requests</div>
+                <div class="kpi-value">+74%</div>
+                <div class="kpi-sub">form fills &amp; calls from SEO</div>
+              </div>
+              <div class="kpi-pill">
+                <div class="kpi-label">Key services</div>
+                <div class="kpi-value">5</div>
+                <div class="kpi-sub">pages for walks, drop-ins &amp; overnights</div>
+              </div>
+              <div class="kpi-pill">
+                <div class="kpi-label">Repeat clients</div>
+                <div class="kpi-value">+29%</div>
+                <div class="kpi-sub">via trust-building content paths</div>
+              </div>
+            </div>
+
+            <div class="hero-snippets" aria-hidden="true">
+              <span class="snippet">
+                <span class="snippet-dot"></span>
+                “pet sitter near me”
+              </span>
+              <span class="snippet">
+                <span class="snippet-dot"></span>
+                “dog walker [your city]”
+              </span>
+              <span class="snippet">
+                <span class="snippet-dot"></span>
+                “cat sitter for shy cats”
+              </span>
+              <span class="snippet">
+                <span class="snippet-dot"></span>
+                “overnight pet sitting in my home”
+              </span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- WHO THIS KIT IS FOR -->
+      <section class="section" aria-labelledby="who-for-title">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="who-for-title">Who this kit is for</h2>
+            <p>
+              The Pet Sitter SEO System Kit is designed for people who actually care for pets day-to-day, not full-time marketers.
+            </p>
+          </div>
+          <div class="section-tag">Pet sitter-first targeting</div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <ul class="pill-list">
+              <li class="pill-item">
+                <div class="pill-badge">1</div>
+                <div>
+                  <div class="pill-body-title">Solo pet sitters building a client base</div>
+                  <p class="pill-body-text">
+                    You take amazing care of pets but need more predictable clients. The kit helps you show up when locals search for sitters, walkers, and trustworthy care.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">2</div>
+                <div>
+                  <div class="pill-body-title">Small sitting &amp; walking teams</div>
+                  <p class="pill-body-text">
+                    You’re managing a small team, juggling schedules and bookings. You want your website to reliably bring in high-quality leads you can assign across your sitters.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">3</div>
+                <div>
+                  <div class="pill-body-title">Boarding &amp; in-home care providers</div>
+                  <p class="pill-body-text">
+                    You offer in-home visits, overnights, or limited boarding and want the right people finding you for the exact services and neighborhoods you cover.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <ul class="pill-list">
+              <li class="pill-item">
+                <div class="pill-badge">4</div>
+                <div>
+                  <div class="pill-body-title">Dog walkers expanding into SEO</div>
+                  <p class="pill-body-text">
+                    You’ve built up some word-of-mouth but want to be discoverable for “dog walker near me” and similar searches in the specific areas you serve.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">5</div>
+                <div>
+                  <div class="pill-body-title">Pet sitter agencies &amp; franchise owners</div>
+                  <p class="pill-body-text">
+                    You manage multiple sitters or locations and need a repeatable SEO playbook that works across different service areas and cities.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">6</div>
+                <div>
+                  <div class="pill-body-title">New sitters going from side hustle to full-time</div>
+                  <p class="pill-body-text">
+                    You’re ready to stop relying solely on apps and referrals and want your own site to consistently bring in clients who book directly with you.
+                  </p>
+                </div>
+              </li>
+            </ul>
+            <p class="subtle-note">
+              If you care for pets and want Google to start quietly filling your calendar with local owners, this kit is built around you.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT THIS KIT DOES FOR YOU -->
+      <section class="section" aria-labelledby="benefits-title">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="benefits-title">What this kit does for you</h2>
+            <p>
+              Turn your trust, reliability, and love for pets into search visibility, consistent leads, and booked sits&mdash;without a marketing degree.
+            </p>
+          </div>
+          <div class="section-tag">Practical outcomes</div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <ul class="pill-list">
+              <li class="pill-item">
+                <div class="pill-badge">A</div>
+                <div>
+                  <div class="pill-body-title">Target the right local “ready to book” searches</div>
+                  <p class="pill-body-text">
+                    You’ll quickly identify and organize searches like “pet sitter near me”, “cat sitter [city]”, and
+                    “overnight dog sitter” so your services show up where ready-to-book owners are looking.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">B</div>
+                <div>
+                  <div class="pill-body-title">Show why you’re safer &amp; more reliable than apps</div>
+                  <p class="pill-body-text">
+                    Use structured pages and FAQs to highlight trust signals: meet &amp; greet processes, insurance, reviews, keys &amp; home security, and emergency plans.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">C</div>
+                <div>
+                  <div class="pill-body-title">Keep your schedule as full as you want it</div>
+                  <p class="pill-body-text">
+                    A clear site structure and booking funnel leads new visitors from “just browsing” to filling out your intake form, calling, or booking a meet &amp; greet.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <ul class="pill-list">
+              <li class="pill-item">
+                <div class="pill-badge">D</div>
+                <div>
+                  <div class="pill-body-title">Cut down on time-wasting inquiries</div>
+                  <p class="pill-body-text">
+                    Well-crafted service pages and policies set expectations up front, so you attract the right type of clients in the right areas and with the right pets.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">E</div>
+                <div>
+                  <div class="pill-body-title">Build long-term authority in your neighborhoods</div>
+                  <p class="pill-body-text">
+                    Helpful content around pet care, schedules, and travel tips builds authority and trust, making you the obvious choice in your area over time.
+                  </p>
+                </div>
+              </li>
+
+              <li class="pill-item">
+                <div class="pill-badge">F</div>
+                <div>
+                  <div class="pill-body-title">Turn SEO into a simple weekly habit</div>
+                  <p class="pill-body-text">
+                    Use the included routines, checklists, and content prompts so your marketing fits into your life&mdash;not the other way around.
+                  </p>
+                </div>
+              </li>
+            </ul>
+            <p class="subtle-note">
+              Result: more ideal clients find you, trust you faster, and book you for the exact services you love offering.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU GET INSIDE -->
+      <section class="section" aria-labelledby="inside-title">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="inside-title">What you get inside the Pet Sitter SEO System Kit</h2>
+            <p>
+              Every part of the kit is built around how real pet sitting businesses operate: services, neighborhoods, schedules, and trust.
+            </p>
+          </div>
+          <div class="section-tag">$197, one-time</div>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-tag">Module 1</div>
+            <div class="feature-title">Local Pet Sitter Keyword Blueprint</div>
+            <p class="feature-desc">
+              A done-for-you map of the keywords pet owners actually use when searching for sitters and walkers where they live.
+            </p>
+            <ul class="feature-list">
+              <li>Keyword buckets for sitters, walkers, cat specialists &amp; overnights</li>
+              <li>“Booking intent tiers” from browsing to urgent requests</li>
+              <li>Templates for mapping keywords to services, locations &amp; FAQs</li>
+            </ul>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-tag">Module 2</div>
+            <div class="feature-title">Service &amp; Neighborhood Page Templates</div>
+            <p class="feature-desc">
+              Clear, high-converting page layouts built for your services and the exact areas you cover.
+            </p>
+            <ul class="feature-list">
+              <li>Home page and core services (walks, drop-ins, overnights, boarding)</li>
+              <li>Neighborhood &amp; city landing pages for “near me” visibility</li>
+              <li>Copy prompts to highlight trust, reviews, and policies</li>
+            </ul>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-tag">Module 3</div>
+            <div class="feature-title">Trust &amp; Safety Content System</div>
+            <p class="feature-desc">
+              Structured content to answer safety, home access, and emergency questions before the first call.
+            </p>
+            <ul class="feature-list">
+              <li>Trust page outlines (about, safety, emergency plans, keys &amp; home)</li>
+              <li>FAQ templates for first-time sitter clients and anxious pet parents</li>
+              <li>Review &amp; testimonial placement patterns for maximum impact</li>
+            </ul>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-tag">Module 4</div>
+            <div class="feature-title">Lead &amp; Booking Funnel Framework</div>
+            <p class="feature-desc">
+              Simple flows that guide visitors from search result to confident booking with you.
+            </p>
+            <ul class="feature-list">
+              <li>Intake form and “request a meet &amp; greet” copy templates</li>
+              <li>Site structure diagrams for solo sitters, teams, and agencies</li>
+              <li>Follow-up email angles for turning inquiries into regulars</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="subtle-note">
+          Plus: implementation checklists, publishing workflows, and content prompts you can use yourself or hand off to a virtual assistant or team member.
+        </p>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="section" aria-labelledby="how-title">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="how-title">How it works</h2>
+            <p>
+              The kit walks you through a simple, repeatable path: clarify your services &amp; areas, launch the right pages, then grow your authority.
+            </p>
+          </div>
+          <div class="section-tag">4-step implementation</div>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-title">Define your pet sitting profile</div>
+            <p class="step-text">
+              Use the quick-start worksheet to clarify your services, coverage area, schedule, and ideal clients. This feeds directly into your keyword and content map.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Build your core SEO-ready pages</div>
+            <p class="step-text">
+              Plug your details into the done-for-you templates: home, service pages, and neighborhood pages so search engines and owners instantly understand what you offer.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Publish trust &amp; policy content</div>
+            <p class="step-text">
+              Use the trust system to create pages and FAQs around safety, keys &amp; homes, cancellations, and emergencies that build confidence before the first message.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-title">Run your ongoing SEO routine</div>
+            <p class="step-text">
+              Follow the weekly &amp; monthly checklist to update content, collect reviews, and publish helpful posts so your rankings and bookings grow over time.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- LIMITED GPT VS FULL KIT -->
+      <section class="section" aria-labelledby="compare-title">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="compare-title">Limited GPT vs Full Pet Sitter SEO System Kit</h2>
+            <p>
+              Experiment with the Limited GPT to get ideas, then unlock the full $197 kit for the complete implementation playbook.
+            </p>
+          </div>
+          <div class="section-tag">Compare options</div>
+        </div>
+
+        <div class="compare-grid">
+          <article class="compare-card limited">
+            <div class="compare-chip limited">Limited GPT</div>
+            <div class="compare-title">Try the Pet Sitter SEO assistant</div>
+            <p class="compare-sub">
+              A focused GPT that lets you explore pet sitter SEO prompts and content angles tailored to your services and area.
+            </p>
+            <ul class="compare-list">
+              <li>Ask niche questions about pet sitter &amp; walker keywords</li>
+              <li>Get example service page outlines and FAQ ideas</li>
+              <li>Explore how the system thinks about local search and intent</li>
+              <li>Great for testing the approach before going all in</li>
+            </ul>
+            <p class="compare-sub">
+              The Limited GPT is excellent for brainstorming, but it doesn’t include the full library of ready-to-use templates, checklists, or step-by-step guides.
+            </p>
+          </article>
+
+          <article class="compare-card full">
+            <div class="compare-ribbon">Most value</div>
+            <div class="compare-chip full">Full SEO System Kit</div>
+            <div class="compare-title">The complete Pet Sitter SEO playbook</div>
+            <p class="compare-sub">
+              Everything inside the prompts, plus a complete, structured system you can implement in your pet sitting business.
+            </p>
+            <ul class="compare-list">
+              <li>All modules &amp; templates: pages, funnels, calendars, checklists</li>
+              <li>Pre-built keyword &amp; topic maps for sitters, walkers &amp; overnights</li>
+              <li>Local SEO, trust content, and booking systems wired together</li>
+              <li>Documentation you can give to team members or VAs</li>
+            </ul>
+            <p class="compare-price">$197 one-time, no subscription.</p>
+            <p class="compare-sub">
+              Best for sitters who want to stop guessing with marketing and start running a repeatable SEO system that quietly fills their calendar.
+            </p>
+          </article>
+        </div>
+
+        <div class="btn-row" style="justify-content: center; margin-top: 16px;">
+          <a href="#limited-gpt-link" class="btn btn-ghost">
+            Try the Limited GPT First
+          </a>
+          <a href="#full-kit-checkout" class="btn btn-primary">
+            Get the Full SEO System Kit for $197
+          </a>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" aria-labelledby="faq-title">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="faq-title">Frequently asked questions</h2>
+            <p>
+              Questions pet sitters often ask before diving into the kit.
+            </p>
+          </div>
+          <div class="section-tag">Answers before you buy</div>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3 class="faq-q">
+              Do I need SEO or tech experience to use this?
+            </h3>
+            <p class="faq-a">
+              No. The kit is written for pet sitters first and marketers second. You’ll get step-by-step instructions, examples, and copy prompts you can paste into your website builder or hand off to someone who helps with your site.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">
+              Will this work if I’m brand new to pet sitting?
+            </h3>
+            <p class="faq-a">
+              Yes. In fact, it’s easier to set things up correctly from day one. The kit helps you position your services, areas, and policies clearly, even if you’re just starting and building your first website.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">
+              What if I already have a website and some clients?
+            </h3>
+            <p class="faq-a">
+              Perfect. You can use the kit to audit what you have, reorganize pages into a clearer structure, and fill in gaps for local search and trust content. Many sitters discover quick wins by improving pages they already have.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">
+              How soon will I see results from the Pet Sitter SEO System Kit?
+            </h3>
+            <p class="faq-a">
+              SEO is not instant, but many sitters see early signs within weeks: more profile views, more “pet sitter + city” traffic, and more form submissions. The bigger, compounding wins usually come over 3&ndash;6+ months as you keep following the routine.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">
+              Does this replace listing sites and apps?
+            </h3>
+            <p class="faq-a">
+              It doesn’t have to. Many sitters use the kit to build a strong, independent presence alongside apps, gradually shifting more bookings through their own site where they control the relationship and pricing.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">
+              Is the $197 price a subscription or a one-time payment?
+            </h3>
+            <p class="faq-a">
+              It’s a one-time payment of <strong>$197</strong> for the Pet Sitter SEO System Kit. No recurring fees. Once you have the system, you can use it across your services and locations as much as you like.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="cta-section" aria-labelledby="cta-title">
+        <h2 id="cta-title" class="cta-title">
+          Ready to be the <span class="hero-highlight">first pet sitter</span> owners see (and trust) in search?
+        </h2>
+        <p class="cta-sub">
+          Get the Pet Sitter SEO System Kit today and turn local Google searches into reliable, repeat pet sitting clients&mdash;on your terms.
+        </p>
+
+        <div class="cta-price-row">
+          <span class="cta-price">$197</span>
+          <span class="cta-note">
+            One-time access &middot; Built for pet sitters &middot; No subscription
+          </span>
+        </div>
+
+        <div class="cta-buttons">
+          <div class="btn-row">
+            <a href="#limited-gpt-link" class="btn btn-ghost">
+              Try the Limited GPT First
+            </a>
+            <a href="#full-kit-checkout" class="btn btn-primary">
+              Get the Full SEO System Kit
+            </a>
+          </div>
+          <p class="cta-note">
+            Start with the Limited GPT to explore the approach&mdash;upgrade to the full $197 kit when you’re ready to implement the complete system.
+          </p>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <p>
+          This kit shares marketing and SEO frameworks, not legal or financial advice. Always follow local regulations and platform terms for pet sitting services.
+        </p>
+        <p style="margin-top: 6px;">
+          &copy; <span id="year"></span> Pet Sitter SEO System Kit. All rights reserved.
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
